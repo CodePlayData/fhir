@@ -1,0 +1,30 @@
+{
+    "name": "@codeplaydata/fhir",
+    "version": "0.0.1",
+    "type": "module",
+    "main": "index.js",
+    "scripts": {
+        "build": "tsc && cp LICENSE ./dist/LICENSE && cp CHANGELOG.md ./dist/CHANGELOG.md &&   cp README.md ./dist/README && cp package.json ./dist/package.json",
+        "publish": "npm publish ./dist --access=public",
+        "test": "npm run build && node --test --trace-warnings --experimental-fetch"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/codeplaydata/fhir.git"
+    },
+    "keywords": [
+        "health",
+        "fhir",
+        "data"
+    ],
+    "author": "Pedro Paulo dos Santos (dr2p) - https://github.com/dr2pedro",
+    "license": "Apache 2.0",
+    "bugs": {
+        "url": "https://github.com/codeplaydata/fhir/issues"
+    },
+    "homepage": "https://github.com/codeplaydata/fhir#readme",
+    "devDependencies": {
+        "@types/node": "^18.11.9",
+        "typescript": "^4.7.4"
+    }
+}
