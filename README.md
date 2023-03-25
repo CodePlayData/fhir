@@ -19,3 +19,12 @@ O HL7 Fhir é um padrão de conformidade dos dados de saúde utilizado internaci
 ---
 
 ## Justificativa
+As principais bibliotecas de FHIR (incluindo as do Java) se concentram na implementação de arquitetura em que esses padrões serão trabalhados, mas a essência de como o dado deve ser é ausente, _i.e._ o paradigma orientado a dados em uma de suas premissas permitem que os dados de saúde já instanciados sejam imutáveis, o que é ideal para esse tipo de dado.
+
+Abaixo vemos um resumo fornecido por Yehonathan Sharvit de como essas regras devem ser respeitadas:
+
+![ Orientação a Dados - Fonte: https://blog.klipse.tech/dop/2022/06/22/principles-of-dop.html](https://blog.klipse.tech/uml/chapter00/do-principles-mind-map.png)
+
+<br>
+
+## Implementação
