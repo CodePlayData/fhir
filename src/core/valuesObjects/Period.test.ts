@@ -1,4 +1,4 @@
-// @filename: Coding.ts
+// @filename: Period.test.ts
 
 /**
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,18 +17,11 @@
 
 */
 
-import { Code } from "./Code";
+import test from "node:test";
+import assert from "node:assert";
+import { Period } from "./Period.js";
 
-class Coding {
-    constructor(
-        readonly system?: URL,
-        readonly version?: string,
-        readonly code?: Code<string>["code"],
-        readonly display?: string,
-        readonly userSelected?: boolean
-    ){};
-}
-
-export {
-    Coding
-}
+test('Deve instanciar um Period.', () => {
+    const period = new Period(new Date('2023-02-05'), new Date('2025-02-05'));
+    assert.deepEqual(period.start, new Date('2023-02-05'));
+});

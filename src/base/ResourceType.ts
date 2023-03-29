@@ -1,4 +1,4 @@
-// @filename: Code.ts
+// @filename: ResourceType.ts
 
 /**
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,21 +17,10 @@
 
 */
 
-import { InvalidCode } from "./error/InvalidCode";
-
-class Code<T extends string> {
-    constructor(readonly code: T){
-        this.validateCode(this.code);
-    };
-
-    private validateCode(code: T) {
-        const codeRegex = new RegExp(`[^\s]+(\s[^\s]+)*`);
-        if(!codeRegex.test(code)) {
-            throw new InvalidCode();
-        }
-    }
+interface ResourceType {
+    readonly resourceType: string;
 }
 
 export {
-    Code
+    ResourceType
 }

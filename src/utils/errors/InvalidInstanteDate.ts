@@ -1,4 +1,4 @@
-// @filename: Period.ts
+// @filename: InvalidInstanteDate.ts
 
 /**
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,15 +17,12 @@
 
 */
 
-import { DateTime } from "./DateTime";
-
-class Period {
-    constructor(
-        readonly start: DateTime,
-        readonly end: DateTime
-    ){};
+class InvalidInstanteDate extends Error {
+    constructor() {
+        super('This string is not in a Intante date format.');
+    }
 }
 
 export {
-    Period
+    InvalidInstanteDate
 }

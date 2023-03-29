@@ -1,4 +1,4 @@
-//@filename: InvalidCode.ts
+// @filename: Entity.ts
 
 /**
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,12 +17,13 @@
 
 */
 
-class InvalidCode extends Error {
-    constructor(){
-        super('O código fornecido é inválido, deve seguir o formato `[^\s]+(\s[^\s]+)*`');
-    };
+import { Identifier } from "../valuesObjects/Identifier.js";
+
+
+abstract class Entity {
+    constructor(readonly identifier?: Identifier){};
 }
 
 export {
-    InvalidCode
+    Entity
 }

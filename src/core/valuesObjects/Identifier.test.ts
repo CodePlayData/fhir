@@ -1,4 +1,4 @@
-// @filename: Reference.ts
+// @filename: Idenfier.test.ts
 
 /**
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,17 +17,11 @@
 
 */
 
-import { Identifier } from "./Identifier";
+import test from "node:test";
+import assert from "node:assert";
+import { Identifier } from "./Identifier.js";
 
-class Reference<T extends { reference?: URL, type?: string, identifier?: Identifier, display?: string }> {
-    constructor(
-        readonly reference?: T['reference'],
-        readonly type?: T['type'],
-        readonly identifier?: T['identifier'],
-        readonly display?: T['display']
-    ){};
-}
-
-export { 
-    Reference
-}
+test('Deve instanciar um Identifier.', () => {
+    const id = new Identifier('usual');
+    assert.strictEqual(id.use?.toString(), 'usual');
+})

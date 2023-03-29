@@ -17,22 +17,25 @@
 
 */
 
-import { IdentifierUse } from "../types/IdentifierUse";
-import { Code } from "./Code";
-import { CodeableConcept } from "./CodeableConcept";
-import { Period } from "./Period";
-import { Reference } from "./Reference";
+import { IdentifierUse } from "../../configs/valueSets/IdentifierUse.js";
+import { Code } from "../constructors/Code.js";
+import { CodeableConcept } from "./CodeableConcept.js";
+import { Period } from "./Period.js";
+import { Reference } from "../entities/Reference.js";
 
 
 class Identifier {
+    use?: Code;
     constructor(
-        readonly use?: Code<IdentifierUse>,
+        use?: IdentifierUse,
         readonly type?: CodeableConcept,
-        readonly system?: URL,
+        readonly system?: URL | `${string}:${string}`,
         readonly value?: string,
         readonly period?: Period,
-        readonly assigner?: Reference<{ reference?: URL, type?: string, identifier?: Identifier, display?: string }>
-    ){};
+        readonly assigner?: Reference
+    ){
+        this.use = new Code(use);
+    };
 }
 
 export {
