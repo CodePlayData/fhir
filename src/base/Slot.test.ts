@@ -1,6 +1,6 @@
 // @filename: Slot.test.ts
 
-/**
+/*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
 
    Licensed under the Apache License, Version 2.0 (the "License");
@@ -146,7 +146,9 @@ test('Deve instanciar um Slot com identificacao do tipo de agendamento que ira g
             )
         ]
     );
-    assert.strictEqual(slot.appointmentType![0].coding![0].code, 'WALKIN');
+    const appointmentType = slot.appointmentType as CodeableConcept[];
+    const coding = appointmentType[0].coding as Coding[];
+    assert.strictEqual(coding[0].code, 'WALKIN');
 });
 
 test('Deve instanciar um Slot com um status.', () => {
@@ -171,7 +173,7 @@ test('Deve instanciar um Slot definindo um status de inicio e a um final.', () =
         undefined,
         undefined,
         undefined,
-        new Instant("201-10-30T10:45:31.449+05:30"),
+        new Instant("2019-10-30T10:45:31.449+05:30"),
         new Instant("2019-10-30T11:15:31.450+05:30")
     )
     assert.strictEqual(slot.end?.toString(), "2019-10-30T11:15:31.450+05:30");
@@ -196,10 +198,12 @@ test('Deve instanciar um Slot com comentario.', () => {
         "Assessments should be performed before requesting appointments in this slot.")
 });
 
-test('Deve instanciar um Slot completo e válido com a referência disponível.', () => {
+
+
+test('Deve instanciar um Slot completo e valido com a referencia disponivel.', () => {
     const slot = new Slot(
         [
-            new Identifier(undefined, undefined, 'urn:system', 'slot-001')
+            new Identifier(undefined, undefined, 'urn:system', 'slot-0001')
         ],
         [
             new CodeableConcept(
@@ -224,6 +228,97 @@ test('Deve instanciar um Slot completo e válido com a referência disponível.'
                     )
                 ]
             )
-        ]
+        ],
+        [
+            new CodeableConcept(
+                [
+                    new Coding(
+                        new URL("http://snomed.info/sct"),
+                        undefined,
+                        "408480009",
+                        "Clinical immunology"
+                    )
+                ]
+            )
+        ],
+        new CodeableConcept(
+            [
+                new Coding(
+                    new URL("http://hl7.org/fhir/v2/0276"),
+                    undefined,
+                    'WALKIN',
+                    "A previously unscheduled walk-in visit"
+                )
+            ]
+        ),
+        undefined,
+        'free',
+        new Instant("2019-10-30T10:45:31.449+05:30"),
+        new Instant("2019-10-30T11:15:31.450+05:30"),
+        undefined,
+        "Assessments should be performed before requesting appointments in this slot."
     )
+
+    
+
+    assert.strictEqual(
+        JSON.stringify(slot),
+        JSON.stringify({
+            "identifier": [ 
+                {
+                    "system": "urn:system",
+                    "value": "slot-0001"
+                }
+            ],
+            "serviceCategory": [ 
+                {
+                    "coding": 
+                    [ 
+                        {
+                            "system": "http://terminology.hl7.org/CodeSystem/service-category",
+                            "code": "17",
+                            "display": "General Practice"
+                        } 
+                    ]
+                } 
+            ],
+            "serviceType": [ 
+                {
+                    "coding": [ 
+                        {
+                            "system": "http://terminology.hl7.org/CodeSystem/service-type",
+                            "code": "57",
+                            "display": "Immunization"
+                        } 
+                    ]
+                } 
+            ],
+            "specialty": [ 
+                {
+                    "coding": [ 
+                        {
+                            "system": "http://snomed.info/sct",
+                            "code": "408480009",
+                            "display": "Clinical immunology"
+                        }
+                    ]
+                } 
+            ],
+            "appointmentType": {
+                "coding": [ 
+                    {
+                        "system": "http://hl7.org/fhir/v2/0276",
+                        "code": "WALKIN",
+                        "display": "A previously unscheduled walk-in visit"
+              
+                    }
+                ]
+            },
+            "status": "free",
+            "start": "2019-10-30T10:45:31.449+05:30",
+            "end": "2019-10-30T11:15:31.450+05:30",
+            "comment": "Assessments should be performed before requesting appointments in this slot.",
+            "resourceType": "Slot"
+        })
+    );
 });

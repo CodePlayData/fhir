@@ -1,6 +1,6 @@
 // @filename: CodeableReference.ts
 
-/**
+/*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
 
    Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,7 +20,16 @@
 import { CodeableConcept } from "./CodeableConcept";
 import { Reference } from "../entities/Reference.js";
 
-
+/**
+ *  A common pattern in healthcare records is that a single element may refer to either a concept in 
+ *  principle, or a specific instance of the concept as seen in practice. For instance, a medication 
+ *  may be prescribed because the patient has a headache - e.g. to refer to a headache by a SNOMED CT 
+ *  code for a kind of headache. Alternatively, the record may refer to a specific observation or 
+ *  problem in the problem list as evidence for the patient's headache, which conveys details specific 
+ *  to the patient.
+ * 
+ *  Source: https://build.fhir.org/references.html#CodeableReference
+ */
 class CodeableReference {
     constructor(
         readonly concept?: CodeableConcept,

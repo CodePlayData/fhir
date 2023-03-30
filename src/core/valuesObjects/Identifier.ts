@@ -1,6 +1,6 @@
 // @filename: Identifier.ts
 
-/**
+/*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
 
    Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,18 +23,26 @@ import { CodeableConcept } from "./CodeableConcept.js";
 import { Period } from "./Period.js";
 import { Reference } from "../entities/Reference.js";
 
-
+/**
+ *  A string, typically numeric or alphanumeric, that is associated with a single object or entity 
+ *  within a given system. Typically, identifiers are used to connect content in resources to 
+ *  external content available in other frameworks or protocols. Identifiers are associated with 
+ *  objects and may be changed or retired due to human or system process and errors.
+ *  
+ *  Source: https://build.fhir.org/datatypes.html#Identifier.
+ */
 class Identifier {
-    use?: Code;
     constructor(
-        use?: IdentifierUse,
+        readonly use?: IdentifierUse | Code,
         readonly type?: CodeableConcept,
         readonly system?: URL | `${string}:${string}`,
         readonly value?: string,
         readonly period?: Period,
         readonly assigner?: Reference
     ){
-        this.use = new Code(use);
+        if(typeof(use) === 'string') {
+            this.use = new Code(use);
+        }
     };
 }
 

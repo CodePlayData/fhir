@@ -1,6 +1,6 @@
 // @filename: CodeableConcept.ts
 
-/**
+/*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
 
    Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,6 +19,13 @@
 
 import { Coding } from "./Coding";
 
+/**
+ *  A CodeableConcept represents a value that is usually supplied by providing a reference 
+ *  to one or more terminologies or ontologies but may also be defined by the provision of text. 
+ *  This is a common pattern in healthcare data.
+ * 
+ *  Source: https://build.fhir.org/datatypes.html#CodeableConcept.
+ */
 class CodeableConcept {
     constructor(readonly coding?: Coding[], readonly text?: string){};
 }

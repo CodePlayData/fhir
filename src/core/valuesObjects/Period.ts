@@ -1,6 +1,6 @@
 // @filename: Period.ts
 
-/**
+/*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
 
    Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,6 +19,15 @@
 
 import { DateTime } from "../constructors/DateTime";
 
+/**
+ *  A time period defined by a start and end date/time. 
+ *  A period specifies a range of times. The context of use will 
+ *  specify whether the entire range applies (e.g. "the patient was 
+ *  an inpatient of the hospital for this time range") or one value 
+ *  from the period applies (e.g. "give to the patient between 2 and 4 pm on 24-Jun 2013").
+ * 
+ *  Source: https://build.fhir.org/datatypes.html#Period.
+ */
 class Period {
     constructor(
         readonly start: DateTime,

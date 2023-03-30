@@ -1,6 +1,6 @@
 // @filename: ReferenceType.ts
 
-/**
+/*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
 
    Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,6 +17,7 @@
 
 */
 
+/** The FHIR HL7 Resource type. */
 type ResourceType = 
     'Resource'                        |
     'Binary'                          |

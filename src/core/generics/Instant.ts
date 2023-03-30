@@ -1,6 +1,6 @@
 // @filename: Instant.ts
 
-/**
+/*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
 
    Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,6 +19,13 @@
 
 import { InvalidInstanteDate } from "../../utils/errors/InvalidInstanteDate.js";
 
+/**
+ *  This FHIR HL7 primitive type refers to an instant in time in the format 
+ *  YYYY-MM-DDThh:mm:ss.sss+zz:zz (e.g. 2015-02-07T13:28:17.239+02:00 or 2017-01-01T00:00:00Z). 
+ *  The time SHALL specified at least to the second and SHALL include a timezone offset.
+ * 
+ *  Source: https://build.fhir.org/datatypes.html#instant.
+ */
 class Instant<T extends String> {
     constructor(private readonly _date: T) {
         this._validateDate(_date.toString());
@@ -31,9 +38,13 @@ class Instant<T extends String> {
         }
     }
 
-    toString() {
+    toJSON() {
         return this._date
-    }   
+    }
+
+    toString() {
+        return this.toJSON();
+    }
 }
 
 export {

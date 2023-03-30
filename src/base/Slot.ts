@@ -1,6 +1,6 @@
 // @filename: Slot.ts
 
-/**
+/*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
 
    Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,6 +26,11 @@ import { Reference } from "../core/entities/Reference.js";
 import { Aggregate } from "./Aggregate.js";
 import { Identifier } from "../core/valuesObjects/Identifier.js";
 
+/**
+ *  A slot of time on a schedule that may be available for booking appointments.
+ * 
+ *  Source: http://hl7.org/fhir/slot.html.
+ */
 class Slot implements Aggregate, ResourceType {
     resourceType = 'Slot';
     constructor(
@@ -34,7 +39,8 @@ class Slot implements Aggregate, ResourceType {
         // version 5 update
         readonly serviceType?: CodeableReference[] | CodeableConcept[],
         readonly specialty?: CodeableConcept[],
-        readonly appointmentType?: CodeableConcept[],
+        // version 5 update
+        readonly appointmentType?: CodeableConcept | CodeableConcept[],
         readonly schedule?: Reference,
         readonly status?: Code,
         readonly start?: Instant<string>,

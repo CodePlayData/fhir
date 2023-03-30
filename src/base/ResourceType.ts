@@ -1,6 +1,6 @@
 // @filename: ResourceType.ts
 
-/**
+/*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
 
    Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,6 +17,11 @@
 
 */
 
+/**
+ *  This identifier a FHIR HL7 Resource. 
+ * 
+ *  Source: https://www.hl7.org/fhir/valueset-resource-types.html.
+ */
 interface ResourceType {
     readonly resourceType: string;
 }

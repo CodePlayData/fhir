@@ -1,6 +1,6 @@
 // @filename: Reference.ts
 
-/**
+/*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
 
    Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,6 +21,9 @@ import { ResourceType } from "../../configs/valueSets/ResourceType";
 import { Identifier } from "../valuesObjects/Identifier.js";
 import { Entity } from "./Entity.js";
 
+/**
+ *  The FHIR structure that points to some Resource, usually by the identification.
+ */
 class Reference extends Entity {
     constructor(
         readonly reference?: URL,

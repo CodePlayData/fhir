@@ -1,6 +1,6 @@
 // @filename: DateTime.ts
 
-/**
+/*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
 
    Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,6 +17,11 @@
 
 */
 
+/** 
+ *  A date, date-time or partial date (e.g. just year or year + month) as used in human communication.
+ * 
+ *  Source: https://build.fhir.org/datatypes.html#dateTime.
+ */
 class DateTime extends Date{};
 
 export {

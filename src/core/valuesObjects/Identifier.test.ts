@@ -1,6 +1,6 @@
 // @filename: Idenfier.test.ts
 
-/**
+/*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
 
    Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,4 +24,15 @@ import { Identifier } from "./Identifier.js";
 test('Deve instanciar um Identifier.', () => {
     const id = new Identifier('usual');
     assert.strictEqual(id.use?.toString(), 'usual');
-})
+});
+
+test('Deve instanciar um Identifier igual a um modelo pre-definido.', () => {
+    const id = new Identifier(undefined, undefined, 'urn:system', 'slot-0001');
+    assert.deepEqual(
+        JSON.stringify(id),
+        JSON.stringify({
+            "system": "urn:system",
+            "value": "slot-0001"
+        })
+    )
+});

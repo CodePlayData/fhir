@@ -1,6 +1,6 @@
 // @filename: InvalidInstanteDate.ts
 
-/**
+/*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
 
    Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,9 +17,12 @@
 
 */
 
+/**
+ *  The typed error thar indicates that a Instant is invalid.
+ */
 class InvalidInstanteDate extends Error {
     constructor() {
-        super('This string is not in a Intante date format.');
+        super('This string is not in a Instante date format.');
     }
 }
 

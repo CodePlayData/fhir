@@ -1,6 +1,6 @@
 // @filename: Code.ts
 
-/**
+/*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
 
    Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,6 +17,11 @@
 
 */
 
+/** 
+ *  Indicates that the value is taken from a set of controlled strings defined elsewhere.
+ * 
+ *  Source: https://build.fhir.org/datatypes.html#code.
+ */
 class Code extends String {}
 
 export {

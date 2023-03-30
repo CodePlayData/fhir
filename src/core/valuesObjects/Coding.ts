@@ -1,6 +1,6 @@
 // @filename: Coding.ts
 
-/**
+/*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
 
    Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,6 +19,11 @@
 
 import { Code } from "../constructors/Code.js";
 
+/**
+ *  A Coding is a representation of a defined concept using a symbol from a defined "code system".
+ * 
+ *  Source: https://build.fhir.org/datatypes.html#Coding.
+ */
 class Coding {
     constructor(
         readonly system?: URL,
