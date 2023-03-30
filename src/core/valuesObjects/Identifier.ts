@@ -21,7 +21,7 @@ import { IdentifierUse } from "../../configs/valueSets/IdentifierUse.js";
 import { Code } from "../constructors/Code.js";
 import { CodeableConcept } from "./CodeableConcept.js";
 import { Period } from "./Period.js";
-import { Reference } from "../entities/Reference.js";
+import { Reference } from "../generics/Reference.js";
 
 /**
  *  A string, typically numeric or alphanumeric, that is associated with a single object or entity 
@@ -38,7 +38,7 @@ class Identifier {
         readonly system?: URL | `${string}:${string}`,
         readonly value?: string,
         readonly period?: Period,
-        readonly assigner?: Reference
+        readonly assigner?: Reference<any>
     ){
         if(typeof(use) === 'string') {
             this.use = new Code(use);

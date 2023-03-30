@@ -17,22 +17,19 @@
 
 */
 
-import { ResourceType } from "../../configs/valueSets/ResourceType";
+import { ResourceType } from "../../base/ResourceType";
 import { Identifier } from "../valuesObjects/Identifier.js";
-import { Entity } from "./Entity.js";
 
 /**
  *  The FHIR structure that points to some Resource, usually by the identification.
  */
-class Reference extends Entity {
+class Reference <T extends ResourceType['resourceType'] | any> {
     constructor(
         readonly reference?: URL,
-        readonly type?: ResourceType,
+        readonly type?: T,
         readonly identifier?: Identifier,
         readonly display?: string
-    ){
-        super(identifier)
-    };
+    ){};
 }
 
 export { 

@@ -19,9 +19,9 @@
 
 import test from "node:test";
 import assert from "node:assert";
-import { Reference } from "./Reference.js";
+import { Reference } from "../generics/Reference.js";
 
 test('Deve instanciar uma Reference.', () => {
-    const reference = new Reference(undefined, 'Practitioner');
+    const reference = new Reference<any>(undefined, 'Practitioner');
     assert.strictEqual(reference.type, 'Practitioner');
 });

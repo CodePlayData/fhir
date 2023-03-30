@@ -1,5 +1,7 @@
 // @filename: ResourceType.ts
 
+import { ResourceTypeValueSet } from "../configs/valueSets/ResourceTypeValueSet";
+
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
 
@@ -23,7 +25,7 @@
  *  Source: https://www.hl7.org/fhir/valueset-resource-types.html.
  */
 interface ResourceType {
-    readonly resourceType: string;
+    readonly resourceType: ResourceTypeValueSet;
 }
 
 export {

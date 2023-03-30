@@ -17,7 +17,7 @@
 
 */
 
-import { Reference } from "../core/entities/Reference";
+import { Reference } from "../core/generics/Reference";
 import { CodeableConcept } from "../core/valuesObjects/CodeableConcept";
 import { CodeableReference } from "../core/valuesObjects/CodeableReference";
 import { Identifier } from "../core/valuesObjects/Identifier";
@@ -26,9 +26,9 @@ import { Aggregate } from "./Aggregate";
 import { ResourceType } from "./ResourceType";
 
 class Schedule implements Aggregate, ResourceType {
-    resourceType = 'Schedule';
+    readonly resourceType = 'Schedule';
     constructor(
-        readonly actor: Reference,
+        readonly actor: Reference<any>,
         readonly identifier?: Identifier[],
         readonly active?: boolean,
         readonly serviceCategory?: CodeableConcept,

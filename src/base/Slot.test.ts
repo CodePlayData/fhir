@@ -25,6 +25,7 @@ import { CodeableConcept } from "../core/valuesObjects/CodeableConcept.js";
 import { Coding } from "../core/valuesObjects/Coding.js";
 import { CodeableReference } from "../core/valuesObjects/CodeableReference.js";
 import { Instant } from "../core/generics/Instant.js";
+import { Reference } from "../core/generics/Reference.js";
 
 test('Deve instanciar um Slot vazio.', () => {
     const slot = new Slot();
@@ -33,61 +34,41 @@ test('Deve instanciar um Slot vazio.', () => {
 
 test('Deve instanciar um Slot com pelo menos um identificador.', () => {
     const slot = new Slot(
-        [
-            new Identifier(undefined, undefined, 'urn:system', 'slot-001')
-        ]
-    );
+        {
+            schedule: new Reference(new URL("https://schedule.example.com")),
+            identifier: [ 
+                new Identifier(undefined, undefined, 'urn:system', 'slot-001')
+            ]
+        });
     assert.strictEqual(slot.identifier![0].system, 'urn:system');
 });
 
 test('Deve instanciar um Slot com a identificacao da categoria do servico.', () => {
     const slot = new Slot(
-        undefined,
-        [
-            new CodeableConcept(
-                [
-                    new Coding(
-                        new URL("http://terminology.hl7.org/CodeSystem/service-category"),
-                        undefined,
-                        "17",
-                        "General Practice"
-                    )
-                ]
-            )
-        ]
+        {
+            schedule: new Reference(new URL("https://schedule.example.com")),
+            serviceCategory: [
+                new CodeableConcept(
+                    [
+                        new Coding(
+                            new URL("http://terminology.hl7.org/CodeSystem/service-category"),
+                            undefined,
+                            "17",
+                            "General Practice"
+                        )
+                    ]
+                )
+            ]
+        }
     );
     assert.strictEqual(slot.serviceCategory![0].coding![0].display, "General Practice");
 });
 
 test('Deve instanciar um Slot com a identificacao do tipo do servico (v4).', () => {
     const slot = new Slot(
-        undefined,
-        undefined,
-        [
-            new CodeableConcept(
-                [
-                    new Coding(
-                        new URL("http://terminology.hl7.org/CodeSystem/service-type"),
-                        undefined,
-                        "57",
-                        "Immunization"
-                    )
-                ]
-            )
-        ]
-    );
-
-    const code = slot.serviceType![0] as CodeableConcept;
-    assert.strictEqual(code.coding![0].display, "Immunization");
-
-});
-
-test('Deve instanciar um Slot com a identificacao do tipo de servico (v5).', () => {
-    const slot = new Slot(
-        undefined,
-        undefined,
-        [
-            new CodeableReference(
+        {
+            schedule: new Reference(new URL("https://schedule.example.com")),
+            serviceType: [
                 new CodeableConcept(
                     [
                         new Coding(
@@ -98,8 +79,33 @@ test('Deve instanciar um Slot com a identificacao do tipo de servico (v5).', () 
                         )
                     ]
                 )
-            )
-        ]
+            ]
+        }
+    );
+
+    const code = slot.serviceType![0] as CodeableConcept;
+    assert.strictEqual(code.coding![0].display, "Immunization");
+});
+
+test('Deve instanciar um Slot com a identificacao do tipo de servico (v5).', () => {
+    const slot = new Slot(
+        {
+            schedule: new Reference(new URL("https://schedule.example.com")),
+            serviceType: [
+                new CodeableReference(
+                    new CodeableConcept(
+                        [
+                            new Coding(
+                                new URL("http://terminology.hl7.org/CodeSystem/service-type"),
+                                undefined,
+                                "57",
+                                "Immunization"
+                            )
+                        ]
+                    )
+                )
+            ]
+        }        
     );
 
     const code = slot.serviceType![0] as CodeableReference;
@@ -108,43 +114,42 @@ test('Deve instanciar um Slot com a identificacao do tipo de servico (v5).', () 
 
 test('Deve instanciar um Slot com identificacao da especialidade.', () => {
     const slot = new Slot(
-        undefined,
-        undefined,
-        undefined,
-        [
-            new CodeableConcept(
-                [
-                    new Coding(
-                        new URL("http://snomed.info/sct"),
-                        undefined,
-                        "408480009",
-                        "Clinical immunology"
-                    )
-                ]
-            )
-        ]
+        {
+            schedule: new Reference(new URL("https://schedule.example.com")),
+            specialty: [
+                new CodeableConcept(
+                    [
+                        new Coding(
+                            new URL("http://snomed.info/sct"),
+                            undefined,
+                            "408480009",
+                            "Clinical immunology"
+                        )
+                    ]
+                )
+            ]
+        }        
     );
     assert.strictEqual(slot.specialty![0].coding![0].display, "Clinical immunology");
 });
 
 test('Deve instanciar um Slot com identificacao do tipo de agendamento que ira gerar.', () => {
     const slot = new Slot(
-        undefined,
-        undefined,
-        undefined,
-        undefined,
-        [
-            new CodeableConcept(
-                [
-                    new Coding(
-                        new URL("http://hl7.org/fhir/v2/0276"),
-                        undefined,
-                        'WALKIN',
-                        "A previously unscheduled walk-in visit"
-                    )
-                ]
-            )
-        ]
+        {
+            schedule: new Reference(new URL("https://schedule.example.com")),
+            appointmentType: [
+                new CodeableConcept(
+                    [
+                        new Coding(
+                            new URL("http://hl7.org/fhir/v2/0276"),
+                            undefined,
+                            'WALKIN',
+                            "A previously unscheduled walk-in visit"
+                        )
+                    ]
+                )
+            ]
+        }
     );
     const appointmentType = slot.appointmentType as CodeableConcept[];
     const coding = appointmentType[0].coding as Coding[];
@@ -153,110 +158,94 @@ test('Deve instanciar um Slot com identificacao do tipo de agendamento que ira g
 
 test('Deve instanciar um Slot com um status.', () => {
     const slot = new Slot(
-        undefined,
-        undefined,
-        undefined,
-        undefined,
-        undefined,
-        undefined,
-        'free'
+        {
+            schedule: new Reference(new URL("https://schedule.example.com")),
+            status: 'free'
+        }
     )
     assert.strictEqual(slot.status, 'free');
 });
 
 test('Deve instanciar um Slot definindo um status de inicio e a um final.', () => {
     const slot = new Slot(
-        undefined,
-        undefined,
-        undefined,
-        undefined,
-        undefined,
-        undefined,
-        undefined,
-        new Instant("2019-10-30T10:45:31.449+05:30"),
-        new Instant("2019-10-30T11:15:31.450+05:30")
+        {
+            schedule: new Reference(new URL("https://schedule.example.com")),
+            start: new Instant("2019-10-30T10:45:31.449+05:30"),
+            end: new Instant("2019-10-30T11:15:31.450+05:30")
+
+        }
     )
     assert.strictEqual(slot.end?.toString(), "2019-10-30T11:15:31.450+05:30");
 });
 
 test('Deve instanciar um Slot com comentario.', () => {
     const slot = new Slot(
-        undefined,
-        undefined,
-        undefined,
-        undefined,
-        undefined,
-        undefined,
-        undefined,
-        undefined,
-        undefined,
-        false,
-        "Assessments should be performed before requesting appointments in this slot."
+        {
+            schedule: new Reference(new URL("https://schedule.example.com")),
+            comment: "Assessments should be performed before requesting appointments in this slot."
+        }
     )
     assert.strictEqual(
         slot.comment,
         "Assessments should be performed before requesting appointments in this slot.")
 });
 
-
-
 test('Deve instanciar um Slot completo e valido com a referencia disponivel.', () => {
     const slot = new Slot(
-        [
-            new Identifier(undefined, undefined, 'urn:system', 'slot-0001')
-        ],
-        [
-            new CodeableConcept(
-                [
-                    new Coding(
-                        new URL("http://terminology.hl7.org/CodeSystem/service-category"),
-                        undefined,
-                        "17",
-                        "General Practice"
-                    )
-                ]
-            )
-        ],
-        [
-            new CodeableConcept(
-                [
-                    new Coding(
-                        new URL("http://terminology.hl7.org/CodeSystem/service-type"),
-                        undefined,
-                        "57",
-                        "Immunization"
-                    )
-                ]
-            )
-        ],
-        [
-            new CodeableConcept(
-                [
-                    new Coding(
-                        new URL("http://snomed.info/sct"),
-                        undefined,
-                        "408480009",
-                        "Clinical immunology"
-                    )
-                ]
-            )
-        ],
-        new CodeableConcept(
-            [
-                new Coding(
-                    new URL("http://hl7.org/fhir/v2/0276"),
-                    undefined,
-                    'WALKIN',
-                    "A previously unscheduled walk-in visit"
+        {
+            schedule: new Reference(new URL("https://schedule.example.com")),
+            identifier: [ new Identifier(undefined, undefined, 'urn:system', 'slot-0001')],
+            serviceCategory: [
+                new CodeableConcept(
+                    [
+                        new Coding(
+                            new URL("http://terminology.hl7.org/CodeSystem/service-category"),
+                            undefined,
+                            "17",
+                            "General Practice"
+                        )
+                    ]
                 )
-            ]
-        ),
-        undefined,
-        'free',
-        new Instant("2019-10-30T10:45:31.449+05:30"),
-        new Instant("2019-10-30T11:15:31.450+05:30"),
-        undefined,
-        "Assessments should be performed before requesting appointments in this slot."
+            ],
+            serviceType: [
+                new CodeableConcept(
+                    [
+                        new Coding(
+                            new URL("http://terminology.hl7.org/CodeSystem/service-type"),
+                            undefined,
+                            "57",
+                            "Immunization"
+                        )
+                    ]
+                )
+            ],
+            specialty: [
+                new CodeableConcept(
+                    [
+                        new Coding(
+                            new URL("http://snomed.info/sct"),
+                            undefined,
+                            "408480009",
+                            "Clinical immunology"
+                        )
+                    ]
+                )
+            ],
+            appointmentType: new CodeableConcept(
+                [
+                    new Coding(
+                        new URL("http://hl7.org/fhir/v2/0276"),
+                        undefined,
+                        'WALKIN',
+                        "A previously unscheduled walk-in visit"
+                    )
+                ]
+            ),
+            status: 'free',
+            start: new Instant("2019-10-30T10:45:31.449+05:30"),
+            end: new Instant("2019-10-30T11:15:31.450+05:30"),
+            comment: "Assessments should be performed before requesting appointments in this slot."
+        }
     )
 
     
@@ -264,6 +253,7 @@ test('Deve instanciar um Slot completo e valido com a referencia disponivel.', (
     assert.strictEqual(
         JSON.stringify(slot),
         JSON.stringify({
+            "resourceType": "Slot",
             "identifier": [ 
                 {
                     "system": "urn:system",
@@ -314,11 +304,13 @@ test('Deve instanciar um Slot completo e valido com a referencia disponivel.', (
                     }
                 ]
             },
+            "schedule" : {
+                "reference" : "https://schedule.example.com/"
+            },
             "status": "free",
             "start": "2019-10-30T10:45:31.449+05:30",
             "end": "2019-10-30T11:15:31.450+05:30",
-            "comment": "Assessments should be performed before requesting appointments in this slot.",
-            "resourceType": "Slot"
+            "comment": "Assessments should be performed before requesting appointments in this slot."
         })
     );
 });

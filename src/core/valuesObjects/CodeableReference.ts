@@ -18,7 +18,7 @@
 */
 
 import { CodeableConcept } from "./CodeableConcept";
-import { Reference } from "../entities/Reference.js";
+import { Reference } from "../generics/Reference.js";
 
 /**
  *  A common pattern in healthcare records is that a single element may refer to either a concept in 
@@ -33,7 +33,7 @@ import { Reference } from "../entities/Reference.js";
 class CodeableReference {
     constructor(
         readonly concept?: CodeableConcept,
-        readonly reference?: Reference
+        readonly reference?: Reference<any>
     ){}
 }
 

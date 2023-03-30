@@ -23,7 +23,7 @@ import { CodeableReference } from "./CodeableReference.js";
 import { CodeableConcept } from "./CodeableConcept.js";
 import { Coding } from "./Coding.js";
 import { Code } from "../constructors/Code.js";
-import { Reference } from "../entities/Reference.js";
+import { Reference } from "../generics/Reference.js";
 
 test('Deve instanciar uma CodeableReference vazia.', () => {
     const ref = new CodeableReference();

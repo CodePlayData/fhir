@@ -22,9 +22,24 @@ import { Code } from "../core/constructors/Code.js";
 import { CodeableConcept } from "../core/valuesObjects/CodeableConcept.js";
 import { CodeableReference } from "../core/valuesObjects/CodeableReference.js";
 import { Instant } from "../core/generics/Instant.js";
-import { Reference } from "../core/entities/Reference.js";
+import { Reference } from "../core/generics/Reference.js";
 import { Aggregate } from "./Aggregate.js";
 import { Identifier } from "../core/valuesObjects/Identifier.js";
+import { Schedule } from "./Schedule.js";
+
+type SlotSchema = {
+    readonly identifier?: Identifier[],
+    readonly serviceCategory?: CodeableConcept[],
+    readonly serviceType?: CodeableReference[] | CodeableConcept[],
+    readonly specialty?: CodeableConcept[],
+    readonly appointmentType?: CodeableConcept | CodeableConcept[],
+    readonly schedule: Reference<Schedule>,
+    readonly status?: Code,
+    readonly start?: Instant<string>,
+    readonly end?: Instant<string>,
+    readonly overbooked?: boolean,
+    readonly comment?: string
+}
 
 /**
  *  A slot of time on a schedule that may be available for booking appointments.
@@ -32,22 +47,32 @@ import { Identifier } from "../core/valuesObjects/Identifier.js";
  *  Source: http://hl7.org/fhir/slot.html.
  */
 class Slot implements Aggregate, ResourceType {
-    resourceType = 'Slot';
-    constructor(
-        readonly identifier?: Identifier[],
-        readonly serviceCategory?: CodeableConcept[],
-        // version 5 update
-        readonly serviceType?: CodeableReference[] | CodeableConcept[],
-        readonly specialty?: CodeableConcept[],
-        // version 5 update
-        readonly appointmentType?: CodeableConcept | CodeableConcept[],
-        readonly schedule?: Reference,
-        readonly status?: Code,
-        readonly start?: Instant<string>,
-        readonly end?: Instant<string>,
-        readonly overbooked?: boolean,
-        readonly comment?: string
-    ) {}
+    readonly resourceType = 'Slot';
+    readonly identifier;
+    readonly serviceCategory;
+    readonly serviceType;
+    readonly specialty;
+    readonly appointmentType;
+    readonly schedule;
+    readonly status;
+    readonly start;
+    readonly end;
+    readonly overbooked;
+    readonly comment;
+    
+    constructor(slot?: SlotSchema) {
+        this.identifier = slot?.identifier;
+        this.serviceCategory = slot?.serviceCategory;
+        this.serviceType = slot?.serviceType;
+        this.specialty = slot?.specialty;
+        this.appointmentType = slot?.appointmentType;
+        this.schedule = slot?.schedule;
+        this.status = slot?.status;
+        this.start = slot?.start;
+        this.end = slot?.end;
+        this.overbooked = slot?.overbooked;
+        this.comment = slot?.comment;
+    }
 }
 
 export {

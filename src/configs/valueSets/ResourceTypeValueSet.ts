@@ -18,7 +18,7 @@
 */
 
 /** The FHIR HL7 Resource type. */
-type ResourceType = 
+type ResourceTypeValueSet = 
     'Resource'                        |
     'Binary'                          |
     'Bundle'                          |
@@ -164,5 +164,5 @@ type ResourceType =
     'Parameters'
 
 export {
-    ResourceType
+    ResourceTypeValueSet
 }
