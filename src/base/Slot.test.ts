@@ -322,3 +322,7 @@ test('Deve instanciar um Slot completo e valido com a referencia disponivel.', (
         })
     );
 });
+
+// O último teste é o de validação no https://simplifier.net/. Logado é possível publicar um snnipet
+// e clicar no botão de 'validate'. Ali ele vai mencionar todas as pendências para ser considerada
+// um payload válido.
