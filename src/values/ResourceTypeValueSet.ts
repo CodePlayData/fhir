@@ -17,7 +17,11 @@
 
 */
 
-/** The FHIR HL7 Resource type. */
+/** 
+ *  The FHIR HL7 Resource type.
+ * 
+ *  This type for now, is a simple string.
+ * */
 type ResourceTypeValueSet = 
     'Resource'                        |
     'Binary'                          |

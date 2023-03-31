@@ -17,13 +17,17 @@
 
 */
 
+/**
+ *  The free/busy status of the slot.
+ * 
+ *  Source: http://hl7.org/fhir/ValueSet/slotstatus.
+ */
 type SlotStatus = 
-    'busy'              |
-    'free'              |
-    'busy-unavailabe'   |
-    'busy-tentative'    |
-    'entered-in-error'
-
+    { code: 'busy', display: 'Busy', definition: 'Indicates that the time interval is busy because one or more events have been scheduled for that interval.' } |
+    { code: 'free', display: 'Free', definition: 'Indicates that the time interval is free for scheduling.' } |
+    { code: 'busy-unavailabe', display: 'Busy (Unavailable)', definition: 'Indicates that the time interval is busy and that the interval cannot be scheduled.' } |
+    { code: 'busy-tentative', display: 'Busy (Tentative)', definition: 'Indicates that the time interval is busy because one or more events have been tentatively scheduled for that interval.' } |
+    { code: 'entered-in-error', display: 'Entered in error', definition: "This instance should not have been part of this patient's medical record." }
 
 export {
     SlotStatus
