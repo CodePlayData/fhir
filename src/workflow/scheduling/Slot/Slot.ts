@@ -17,26 +17,31 @@
 
 */
 
-import { ResourceType } from "./ResourceType.js";
-import { Code } from "../core/constructors/Code.js";
-import { CodeableConcept } from "../core/valuesObjects/CodeableConcept.js";
-import { CodeableReference } from "../core/valuesObjects/CodeableReference.js";
-import { Instant } from "../core/generics/Instant.js";
-import { Reference } from "../core/generics/Reference.js";
-import { Aggregate } from "./Aggregate.js";
-import { Identifier } from "../core/valuesObjects/Identifier.js";
-import { Schedule } from "./Schedule.js";
+import { ResourceType } from "../../ResourceType.js";
+import { Code } from "../../../core/generics/Code.js";
+import { CodeableConcept, CodeableConceptSchema } from "../../../core/generics/CodeableConcept.js";
+import { CodeableReference } from "../../../core/valuesObjects/CodeableReference.js";
+import { Instant } from "../../../core/generics/Instant.js";
+import { Reference } from "../../../core/generics/Reference.js";
+import { Aggregate } from "../../Aggregate.js";
+import { Identifier } from "../../../core/valuesObjects/Identifier.js";
+import { Schedule } from "../Schedule.js";
+import { SlotStatus } from "../../../values/SlotStatus.js";
+import { Coding, CodingSchema } from "../../../core/valuesObjects/Coding.js";
+import { AppointmentReasonCodes } from "../../../values/AppointmentReasonCodes.js";
 
 type SlotSchema = {
     readonly identifier?: Identifier[],
-    readonly serviceCategory?: CodeableConcept[],
-    readonly serviceType?: CodeableReference[] | CodeableConcept[],
-    readonly specialty?: CodeableConcept[],
-    readonly appointmentType?: CodeableConcept | CodeableConcept[],
+    readonly serviceCategory?: CodeableConcept<{}>[],
+    // v5 update. The codeableReference is a HealthCareInstitution, todo.
+    readonly serviceType?: CodeableReference[] | CodeableConcept<{}>[],
+    readonly specialty?: CodeableConcept<{}>[],
+    // v5 update
+    readonly appointmentType?: CodeableConcept<any> | CodeableConcept<any>[],
     readonly schedule: Reference<Schedule>,
-    readonly status?: Code,
-    readonly start?: Instant<string>,
-    readonly end?: Instant<string>,
+    readonly status: Code<SlotStatus>,
+    readonly start: Instant<string>,
+    readonly end: Instant<string>,
     readonly overbooked?: boolean,
     readonly comment?: string
 }
@@ -60,14 +65,14 @@ class Slot implements Aggregate, ResourceType {
     readonly overbooked;
     readonly comment;
     
-    constructor(slot?: SlotSchema) {
+    constructor(slot: SlotSchema) {
         this.identifier = slot?.identifier;
         this.serviceCategory = slot?.serviceCategory;
         this.serviceType = slot?.serviceType;
         this.specialty = slot?.specialty;
         this.appointmentType = slot?.appointmentType;
         this.schedule = slot?.schedule;
-        this.status = slot?.status;
+        this.status = slot!.status;
         this.start = slot?.start;
         this.end = slot?.end;
         this.overbooked = slot?.overbooked;
@@ -76,5 +81,6 @@ class Slot implements Aggregate, ResourceType {
 }
 
 export {
-    Slot
+    Slot,
+    SlotSchema
 }

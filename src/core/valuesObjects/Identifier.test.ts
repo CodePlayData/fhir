@@ -20,13 +20,36 @@
 import test from "node:test";
 import assert from "node:assert";
 import { Identifier } from "./Identifier.js";
+import { Code } from "../generics/Code.js";
+import { CodeableConcept } from "../generics/CodeableConcept.js";
+import { Coding } from "./Coding.js";
 
-test('Deve instanciar um Identifier.', () => {
-    const id = new Identifier('usual');
+test('Deve instanciar um Identifier vazio.', () => {
+    const id = new Identifier();
+    assert.strictEqual(id.use, undefined);
+});
+
+test('Deve instanciar um Identifier com o codigo de uso.', () => {
+    const id = new Identifier(new Code('usual'));
     assert.strictEqual(id.use?.toString(), 'usual');
 });
 
-test('Deve instanciar um Identifier igual a um modelo pre-definido.', () => {
+test('Deve instanciar um Identifier com o tipo.', () => {
+    const id = new Identifier(
+        undefined,
+        new CodeableConcept(
+            [
+                new Coding(
+                    undefined,
+                    undefined,
+                    new Code('DL')
+                )
+            ]
+        )
+    )
+});
+
+test('Deve instanciar um Identifier igual a um modelo pre-definido que contem system e value.', () => {
     const id = new Identifier(undefined, undefined, 'urn:system', 'slot-0001');
     assert.deepEqual(
         JSON.stringify(id),

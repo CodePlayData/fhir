@@ -1,6 +1,4 @@
-// @filename: ResourceType.ts
-
-import { ResourceTypeValueSet } from "../configs/valueSets/ResourceTypeValueSet";
+// @filename: AppointmentReasonCodes.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -20,14 +18,17 @@ import { ResourceTypeValueSet } from "../configs/valueSets/ResourceTypeValueSet"
 */
 
 /**
- *  This identifier a FHIR HL7 Resource. 
+ *  Value Set of codes that describe the kind of appointment or the reason why an appointment has been scheduled.
  * 
- *  Source: https://www.hl7.org/fhir/valueset-resource-types.html.
+ *  Source: https://terminology.hl7.org/5.1.0/ValueSet-v2-0276.html.
  */
-interface ResourceType {
-    readonly resourceType: ResourceTypeValueSet;
-}
+type AppointmentReasonCodes = 
+    'ROUTINE'    |
+    'WALKIN'     |
+    'CHECKUP'    |
+    'FOLLOWUP'   |
+    'EMERGENCY'
 
 export {
-    ResourceType
+    AppointmentReasonCodes
 }

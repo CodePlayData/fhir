@@ -17,23 +17,32 @@
 
 */
 
-import { Code } from "../constructors/Code.js";
+import { Code } from "../generics/Code.js";
+
+type CodingSchema = {
+    readonly system?: URL,
+    readonly version?: string,
+    readonly code?: Code<string>,
+    readonly display?: string,
+    readonly userSelected?: boolean
+}
 
 /**
  *  A Coding is a representation of a defined concept using a symbol from a defined "code system".
  * 
  *  Source: https://build.fhir.org/datatypes.html#Coding.
  */
-class Coding {
+class Coding<T extends CodingSchema> {
     constructor(
-        readonly system?: URL,
-        readonly version?: string,
-        readonly code?: Code,
-        readonly display?: string,
-        readonly userSelected?: boolean
-    ){};
+        readonly system?: T['system'],
+        readonly version?: T['version'],
+        readonly code?: T['code'],
+        readonly display?: T['display'],
+        readonly userSelected?: T['userSelected']
+    ) {};
 }
 
 export {
-    Coding
+    Coding,
+    CodingSchema
 }

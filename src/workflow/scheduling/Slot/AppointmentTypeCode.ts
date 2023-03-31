@@ -1,4 +1,4 @@
-// @filename: Reference.ts
+// @filename: AppointmentTypeCode.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,21 +17,11 @@
 
 */
 
-import { ResourceType } from "../../workflow/ResourceType";
-import { Identifier } from "../valuesObjects/Identifier.js";
+import { Code } from "../../../core/generics/Code.js";
+import { AppointmentReasonCodes } from "../../../values/AppointmentReasonCodes.js";
 
-/**
- *  The FHIR structure that points to some Resource, usually by the identification.
- */
-class Reference <T extends ResourceType> {
-    constructor(
-        readonly reference?: URL,
-        readonly type?: T['resourceType'],
-        readonly identifier?: Identifier,
-        readonly display?: string
-    ){};
-}
+class AppointmentTypeCode extends Code<AppointmentReasonCodes> {}
 
-export { 
-    Reference
+export {
+    AppointmentTypeCode
 }

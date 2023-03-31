@@ -17,7 +17,7 @@
 
 */
 
-import { CodeableConcept } from "./CodeableConcept";
+import { CodeableConcept } from "../generics/CodeableConcept";
 import { Reference } from "../generics/Reference.js";
 
 /**
@@ -32,7 +32,7 @@ import { Reference } from "../generics/Reference.js";
  */
 class CodeableReference {
     constructor(
-        readonly concept?: CodeableConcept,
+        readonly concept?: CodeableConcept<any>,
         readonly reference?: Reference<any>
     ){}
 }

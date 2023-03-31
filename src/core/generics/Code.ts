@@ -22,7 +22,18 @@
  * 
  *  Source: https://build.fhir.org/datatypes.html#code.
  */
-class Code extends String {}
+class Code<T extends string> {
+    constructor(readonly code: T){
+    }
+
+    toString(): string {
+        return this.code;
+    }
+
+    toJSON() {
+        return this.toString()
+    }
+};
 
 export {
     Code

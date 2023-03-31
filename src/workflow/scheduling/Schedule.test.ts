@@ -1,4 +1,4 @@
-// @filename: Code.test.ts
+// @filename: Schedule.test.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -19,9 +19,7 @@
 
 import test from "node:test";
 import assert from "node:assert";
-import { Code } from "./Code.js";
 
-test('Deve instanciar um Code.', () => {
-    const code = new Code("Z012");
-    assert.strictEqual(code.toString(), "Z012");
+test('', () => {
+
 });

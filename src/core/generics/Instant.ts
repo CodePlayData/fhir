@@ -17,7 +17,7 @@
 
 */
 
-import { InvalidInstanteDate } from "../../utils/errors/InvalidInstanteDate.js";
+import { InvalidInstanteDate } from "../../errors/InvalidInstanteDate.js";
 
 /**
  *  This FHIR HL7 primitive type refers to an instant in time in the format 

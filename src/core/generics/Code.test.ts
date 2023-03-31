@@ -1,4 +1,4 @@
-// @filename: CodeableConcept.ts
+// @filename: Code.test.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,19 +17,11 @@
 
 */
 
-import { Coding } from "./Coding";
+import test from "node:test";
+import assert from "node:assert";
+import { Code } from "../generics/Code.js";
 
-/**
- *  A CodeableConcept represents a value that is usually supplied by providing a reference 
- *  to one or more terminologies or ontologies but may also be defined by the provision of text. 
- *  This is a common pattern in healthcare data.
- * 
- *  Source: https://build.fhir.org/datatypes.html#CodeableConcept.
- */
-class CodeableConcept {
-    constructor(readonly coding?: Coding[], readonly text?: string){};
-}
-
-export {
-    CodeableConcept
-}
+test('Deve instanciar um Code.', () => {
+    const code = new Code("Z012");
+    assert.strictEqual(code.toString(), "Z012");
+});

@@ -17,11 +17,13 @@
 
 */
 
-import { IdentifierUse } from "../../configs/valueSets/IdentifierUse.js";
-import { Code } from "../constructors/Code.js";
-import { CodeableConcept } from "./CodeableConcept.js";
+import { IdentifierUse } from "../../values/IdentifierUse.js";
+import { Code } from "../generics/Code.js";
+import { CodeableConcept, CodeableConceptSchema } from "../generics/CodeableConcept.js";
 import { Period } from "./Period.js";
 import { Reference } from "../generics/Reference.js";
+import { Coding, CodingSchema } from "./Coding.js";
+import { IdentifierType as IdentifierTypeValueSet } from "../../values/IdentifierType.js";
 
 /**
  *  A string, typically numeric or alphanumeric, that is associated with a single object or entity 
@@ -33,8 +35,8 @@ import { Reference } from "../generics/Reference.js";
  */
 class Identifier {
     constructor(
-        readonly use?: IdentifierUse | Code,
-        readonly type?: CodeableConcept,
+        readonly use?: Code<IdentifierUse>,
+        readonly type?: CodeableConcept<IdentifierType>,
         readonly system?: URL | `${string}:${string}`,
         readonly value?: string,
         readonly period?: Period,
@@ -45,6 +47,17 @@ class Identifier {
         }
     };
 }
+
+type IdentifierType = CodeableConcept<{
+    readonly coding?: Coding<{
+        readonly system?: URL;
+        readonly version?: string;
+        readonly code?: Code<IdentifierTypeValueSet>;
+        readonly display?: string;
+        readonly userSelected?: boolean;
+    }>[] | undefined;
+    readonly text?: string | undefined;
+}>
 
 export {
     Identifier

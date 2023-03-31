@@ -1,4 +1,6 @@
-// @filename: Reference.ts
+// @filename: ResourceType.ts
+
+import { ResourceTypeValueSet } from "../values/ResourceTypeValueSet";
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,21 +19,19 @@
 
 */
 
-import { ResourceType } from "../../workflow/ResourceType";
-import { Identifier } from "../valuesObjects/Identifier.js";
-
 /**
- *  The FHIR structure that points to some Resource, usually by the identification.
+ *  This identifier a FHIR HL7 Resource. 
+ * 
+ *  Source: https://www.hl7.org/fhir/valueset-resource-types.html.
  */
-class Reference <T extends ResourceType> {
-    constructor(
-        readonly reference?: URL,
-        readonly type?: T['resourceType'],
-        readonly identifier?: Identifier,
-        readonly display?: string
-    ){};
+interface ResourceType {
+    readonly resourceType: ResourceTypeValueSet;
+    readonly id?: string,
+    readonly meta?: {
+        [key: string]: any;
+    }
 }
 
-export { 
-    Reference
+export {
+    ResourceType
 }

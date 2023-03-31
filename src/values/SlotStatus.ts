@@ -1,4 +1,4 @@
-// @filename: IdentifierUse.ts
+// @filename: SlotStatus.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,14 +17,14 @@
 
 */
 
-/** The idenfier type. */
-type IdentifierUse = 
-    'usual'    |
-    'official' |
-    'temp'     |
-    'secondary'|
-    'old'
+type SlotStatus = 
+    'busy'              |
+    'free'              |
+    'busy-unavailabe'   |
+    'busy-tentative'    |
+    'entered-in-error'
 
-export type {
-    IdentifierUse
+
+export {
+    SlotStatus
 }

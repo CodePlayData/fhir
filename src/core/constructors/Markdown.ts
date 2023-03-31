@@ -1,4 +1,4 @@
-// @filename: Reference.ts
+// @filename: Markdown.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,21 +17,8 @@
 
 */
 
-import { ResourceType } from "../../workflow/ResourceType";
-import { Identifier } from "../valuesObjects/Identifier.js";
+class Markdown extends String{};
 
-/**
- *  The FHIR structure that points to some Resource, usually by the identification.
- */
-class Reference <T extends ResourceType> {
-    constructor(
-        readonly reference?: URL,
-        readonly type?: T['resourceType'],
-        readonly identifier?: Identifier,
-        readonly display?: string
-    ){};
-}
-
-export { 
-    Reference
+export {
+    Markdown
 }

@@ -19,7 +19,7 @@
 
 import test from "node:test";
 import assert from "node:assert";
-import { CodeableConcept } from "./CodeableConcept.js";
+import { CodeableConcept } from "../generics/CodeableConcept.js";
 
 test('Deve instanciar um CodeableConcept.', () => {
     const codeable = new CodeableConcept(undefined, 'Testando 1, 2, 3,...');

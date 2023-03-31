@@ -17,24 +17,30 @@
 
 */
 
-import { Reference } from "../core/generics/Reference";
-import { CodeableConcept } from "../core/valuesObjects/CodeableConcept";
-import { CodeableReference } from "../core/valuesObjects/CodeableReference";
-import { Identifier } from "../core/valuesObjects/Identifier";
-import { Period } from "../core/valuesObjects/Period";
-import { Aggregate } from "./Aggregate";
-import { ResourceType } from "./ResourceType";
+import { Reference } from "../../core/generics/Reference";
+import { CodeableConcept } from "../../core/generics/CodeableConcept";
+import { CodeableReference } from "../../core/valuesObjects/CodeableReference";
+import { Identifier } from "../../core/valuesObjects/Identifier";
+import { Period } from "../../core/valuesObjects/Period";
+import { Aggregate } from "../Aggregate";
+import { ResourceType } from "../ResourceType";
 
+
+/**
+ *  A container for slots of time that may be available for booking appointments.
+ * 
+ *  Source: http://hl7.org/fhir/R5/schedule.html.
+ */
 class Schedule implements Aggregate, ResourceType {
     readonly resourceType = 'Schedule';
     constructor(
-        readonly actor: Reference<any>,
         readonly identifier?: Identifier[],
         readonly active?: boolean,
-        readonly serviceCategory?: CodeableConcept,
-        readonly serviceType?: CodeableReference[] | CodeableConcept[],
-        readonly specialty?: CodeableConcept[],
+        readonly serviceCategory?: CodeableConcept<any>,
+        readonly serviceType?: CodeableReference[] | CodeableConcept<any>[],
+        readonly specialty?: CodeableConcept<any>[],
         readonly name?: string,
+        readonly actor?: Reference<any>,
         readonly planningHorizon?: Period,
         readonly comment?: string
     ) {}
