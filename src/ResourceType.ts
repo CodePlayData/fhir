@@ -1,7 +1,5 @@
 // @filename: ResourceType.ts
 
-import { ResourceTypeValueSet } from "../values/ResourceTypeValueSet";
-
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
 
@@ -18,6 +16,8 @@ import { ResourceTypeValueSet } from "../values/ResourceTypeValueSet";
    limitations under the License.
 
 */
+
+import { ResourceTypeValueSet } from "./values/ResourceTypeValueSet";
 
 /**
  *  This identifier a FHIR HL7 Resource. 

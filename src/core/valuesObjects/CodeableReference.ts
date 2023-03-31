@@ -20,6 +20,11 @@
 import { CodeableConcept } from "../generics/CodeableConcept";
 import { Reference } from "../generics/Reference.js";
 
+type CodeableReferenceSchema = {
+    readonly concept?: CodeableConcept<any>,
+    readonly reference?: Reference<any>
+}
+
 /**
  *  A common pattern in healthcare records is that a single element may refer to either a concept in 
  *  principle, or a specific instance of the concept as seen in practice. For instance, a medication 
@@ -30,13 +35,14 @@ import { Reference } from "../generics/Reference.js";
  * 
  *  Source: https://build.fhir.org/references.html#CodeableReference
  */
-class CodeableReference {
+class CodeableReference <T extends CodeableReferenceSchema> {
     constructor(
-        readonly concept?: CodeableConcept<any>,
-        readonly reference?: Reference<any>
+        readonly concept?: T['concept'],
+        readonly reference?: T['reference']
     ){}
 }
 
 export {
-    CodeableReference
+    CodeableReference,
+    CodeableReferenceSchema
 }

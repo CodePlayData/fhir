@@ -18,50 +18,101 @@
 */
 
 /** 
- *  **A coded type for an identifier that can be used to determine which identifier to use for a specific purpose.**
+ *  A coded type for an identifier that can be used to determine which identifier to use for a specific purpose.
  *  
- *  **System**: http://hl7.org/fhir/ValueSet/identifier-type.
- * 
- *  |    Code   |   |  Definition  |
- *  |:----------|---|:-------------|
- *  | DL        |   | Driver's license number.|
- *  | PPN       |   | A unique number assigned to the document affirming that a person is a citizen of the country. |
- *  | BRN       |   | Breed Registry Number. |
- *  | MR        |   | An identifier that is unique to a patient within a set of medical records, not necessarily unique within an application. |
- *  | MCN       |   | Microchip Number. |
- *  | EN        |   | Employer number. |
- *  | TAX       |   | Tax ID number. |
- *  | NIIP      |   | National Insurance Payor Identifier (Payor) |
- *  | PRN       |   | A number that is unique to an individual provider, a provider group or an organization within an Assigning Authority. |
- *  | MD        |   | An identifier that is unique to a medical doctor within the jurisdiction of a licensing board. |
- *  | DR        |   | Donor Registration Number. |
- *  | ACSN      |   | Accession Identifier  |
- *  | UDI       |   | An identifier assigned to a device using the Unique Device Identification framework as defined by IMDRF (http://imdrf.org). |
- *  | SNO       |   | An identifier affixed to an item by the manufacturer when it is first made, where each item has a different identifier. |
- *  | SB        |   | An identifier issued by a governmental organization to a person to identify the person should they apply for or receive social services and/or benefits. |
- *  | PLAC      |   | An identifier for a request where the identifier is issued by the person or service making the request. |
- *  | FILL      |   | An identifier for a request where the identifier is issued by the person, or service, that produces the observations or fulfills the request. |
- *  | JHN       |   | Jurisdictional health number. |
+ *  Source: http://hl7.org/fhir/ValueSet/identifier-type.
  */
-type IdentifierType = 
-  'DL'    |
-  'PPN'   |
-  'BRN'   |
-  'MR'    |
-  'MCN'   |
-  'EN'    |
-  'TAX'   |
-  'NIIP'  |
-  'PRN'   |
-  'MD'    |
-  'DR'    |
-  'ACSN'  |
-  'UDI'   |
-  'SNO'   |
-  'SB'    |
-  'PLAC'  |
-  'FILL'  |
-  'JHN'
+type IdentifierType =
+  {
+    code: "DL",
+    display: "Driver's license number",
+    definition: "Driver's license number"
+  } |
+  {
+    code: "PPN",
+    display: "Passport number",
+    definition: "A unique number assigned to the document affirming that a person is a citizen of the country."
+  } |
+  {
+    code: "BRN",
+    display: "Breed Registry Number",
+    definition: "Breed Registry Number"
+  } |
+  {
+    code: "MR",
+    display: "Medical record number",
+    definition: "An identifier that is unique to a patient within a set of medical records, not necessarily unique within an application."
+  } |
+  {
+    code: "MCN",
+    display: "Microchip Number",
+    definition: "Microchip Number"
+  } |
+  {
+    code: "EN",
+    display: "Employer number",
+    definition: "Employer number"
+  } |
+  {
+    code: "TAX",
+    display: "Tax ID number",
+    definition: "Tax ID number"
+  } |
+  {
+    code: "NIIP",
+    display: "National Insurance Payor Identifier (Payor)",
+    definition: "National Insurance Payor Identifier (Payor)"
+  } |
+  {
+    code: "PRN",
+    display: "Provider number",
+    definition: "A number that is unique to an individual provider, a provider group or an organization within an Assigning Authority."
+  } |
+  {
+    code: "MD",
+    display: "Medical License number",
+    definition: "An identifier that is unique to a medical doctor within the jurisdiction of a licensing board."
+  } |
+  {
+    code: "DR",
+    display: "Donor Registration Number",
+    definition: "Donor Registration Number"
+  } |
+  {
+    code: "ACSN",
+    display: "Accession ID",
+    definition: "Accession Identifier"
+  } |
+  {
+    code: "UDI",
+    display: "Universal Device Identifier",
+    definition: "An identifier assigned to a device using the Unique Device Identification framework as defined by IMDRF (http://imdrf.org)."
+  } |
+  {
+    code: "SNO",
+    display: "Serial Number",
+    definition: "An identifier affixed to an item by the manufacturer when it is first made, where each item has a different identifier."
+  } |
+  {
+    code: "SB",
+    display: "Social Beneficiary Identifier",
+    definition: "An identifier issued by a governmental organization to a person to identify the person should they apply for or receive social services and/or benefits"
+  } |
+  {
+    code: "PLAC",
+    display: "Placer Identifier",
+    definition: "An identifier for a request where the identifier is issued by the person or service making the request."
+  } |
+  {
+    code: "FILL",
+    display: "Filler Identifier",
+    definition: "An identifier for a request where the identifier is issued by the person, or service, that produces the observations or fulfills the request."
+  } |
+  {
+    code: "JHN",
+    display: "Jurisdictional health number",
+    definition: "Jurisdictional health number"
+  }
 
 export {
   IdentifierType

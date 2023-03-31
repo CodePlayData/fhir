@@ -1,4 +1,4 @@
-// @filename: Aggregate.ts
+// @filename: HealthcareService.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,18 +17,15 @@
 
 */
 
+import { Aggregate } from "../Aggregate.js";
+import { ResourceType } from "../ResourceType.js";
 import { Identifier } from "../core/valuesObjects/Identifier.js";
 
-/**
- *  This interface identifies an DDD aggregate in this system. 
- *  
- *  Source: https://martinfowler.com/bliki/DDD_Aggregate.html.
- */
-interface Aggregate {
-    /** Must contain a Array of Identifier of the domain objects that composes this. */
+class HealthcareService implements Aggregate, ResourceType {
+    readonly resourceType = 'HealthcareService';
     readonly identifier?: Identifier[]
-}
+};
 
 export {
-    Aggregate
+    HealthcareService
 }

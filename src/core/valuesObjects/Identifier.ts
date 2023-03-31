@@ -19,11 +19,12 @@
 
 import { IdentifierUse } from "../../values/IdentifierUse.js";
 import { Code } from "../generics/Code.js";
-import { CodeableConcept, CodeableConceptSchema } from "../generics/CodeableConcept.js";
+import { CodeableConcept } from "../generics/CodeableConcept.js";
 import { Period } from "./Period.js";
 import { Reference } from "../generics/Reference.js";
-import { Coding, CodingSchema } from "./Coding.js";
+import { Coding } from "./Coding.js";
 import { IdentifierType as IdentifierTypeValueSet } from "../../values/IdentifierType.js";
+import { Organization } from "../../admin/Organization.js";
 
 /**
  *  A string, typically numeric or alphanumeric, that is associated with a single object or entity 
@@ -35,12 +36,12 @@ import { IdentifierType as IdentifierTypeValueSet } from "../../values/Identifie
  */
 class Identifier {
     constructor(
-        readonly use?: Code<IdentifierUse>,
-        readonly type?: CodeableConcept<IdentifierType>,
+        readonly use?: Code<IdentifierUse['code']>,
+        readonly type?: CodeableConcept<IdentifierTypeCodes>,
         readonly system?: URL | `${string}:${string}`,
         readonly value?: string,
         readonly period?: Period,
-        readonly assigner?: Reference<any>
+        readonly assigner?: Reference<Organization>
     ){
         if(typeof(use) === 'string') {
             this.use = new Code(use);
@@ -48,11 +49,11 @@ class Identifier {
     };
 }
 
-type IdentifierType = CodeableConcept<{
-    readonly coding?: Coding<{
+type IdentifierTypeCodes = CodeableConcept<{
+        readonly coding?: Coding<{
         readonly system?: URL;
         readonly version?: string;
-        readonly code?: Code<IdentifierTypeValueSet>;
+        readonly code?: Code<IdentifierTypeValueSet['code']>;
         readonly display?: string;
         readonly userSelected?: boolean;
     }>[] | undefined;

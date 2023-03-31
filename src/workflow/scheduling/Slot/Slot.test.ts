@@ -23,7 +23,7 @@ import { Slot } from "./Slot.js";
 import { Identifier } from "../../../core/valuesObjects/Identifier.js";
 import { CodeableConcept } from "../../../core/generics/CodeableConcept.js";
 import { Coding } from "../../../core/valuesObjects/Coding.js";
-import { CodeableReference } from "../../../core/valuesObjects/CodeableReference.js";
+import { CodeableReference, CodeableReferenceSchema } from "../../../core/valuesObjects/CodeableReference.js";
 import { Instant } from "../../../core/generics/Instant.js";
 import { Reference } from "../../../core/generics/Reference.js";
 import { Code } from "../../../core/generics/Code.js";
@@ -52,8 +52,8 @@ test('Deve instanciar um Slot com a identificacao da categoria do servico.', () 
                         new Coding(
                             new URL("http://terminology.hl7.org/CodeSystem/service-category"),
                             undefined,
-                            new Code("17"),
-                            "General Practice"
+                            new Code('1'),
+                            'Adoption'
                         )
                     ]
                 )
@@ -64,7 +64,7 @@ test('Deve instanciar um Slot com a identificacao da categoria do servico.', () 
         }
     );
     const serviceCategory = slot.serviceCategory as CodeableConcept<any>[];
-    assert.strictEqual(serviceCategory[0].coding[0].display, "General Practice");
+    assert.strictEqual(serviceCategory[0].coding[0].display, "Adoption");
 });
 
 test('Deve instanciar um Slot com a identificacao do tipo do servico (v4).', () => {
@@ -117,7 +117,7 @@ test('Deve instanciar um Slot com a identificacao do tipo de servico (v5).', () 
         }        
     );
 
-    const code = slot.serviceType![0] as CodeableReference;
+    const code = slot.serviceType![0] as CodeableReference<CodeableReferenceSchema>;
     assert.strictEqual(code.concept?.coding![0].display, "Immunization");
 });
 

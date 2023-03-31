@@ -22,8 +22,8 @@ import { CodeableConcept } from "../../core/generics/CodeableConcept";
 import { CodeableReference } from "../../core/valuesObjects/CodeableReference";
 import { Identifier } from "../../core/valuesObjects/Identifier";
 import { Period } from "../../core/valuesObjects/Period";
-import { Aggregate } from "../Aggregate";
-import { ResourceType } from "../ResourceType";
+import { Aggregate } from "../../Aggregate";
+import { ResourceType } from "../../ResourceType";
 
 
 /**
@@ -37,7 +37,7 @@ class Schedule implements Aggregate, ResourceType {
         readonly identifier?: Identifier[],
         readonly active?: boolean,
         readonly serviceCategory?: CodeableConcept<any>,
-        readonly serviceType?: CodeableReference[] | CodeableConcept<any>[],
+        readonly serviceType?: CodeableReference<{}>[] | CodeableConcept<any>[],
         readonly specialty?: CodeableConcept<any>[],
         readonly name?: string,
         readonly actor?: Reference<any>,

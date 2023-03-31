@@ -23,7 +23,7 @@
  *  Source: https://build.fhir.org/datatypes.html#code.
  */
 class Code<T extends string> {
-    constructor(readonly code: T){
+    constructor(private readonly code: T){
     }
 
     toString(): string {

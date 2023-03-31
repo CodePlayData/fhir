@@ -17,27 +17,31 @@
 
 */
 
-import { ResourceType } from "../../ResourceType.js";
+import { ResourceType } from "../../../ResourceType.js";
 import { Code } from "../../../core/generics/Code.js";
-import { CodeableConcept, CodeableConceptSchema } from "../../../core/generics/CodeableConcept.js";
+import { CodeableConcept } from "../../../core/generics/CodeableConcept.js";
 import { CodeableReference } from "../../../core/valuesObjects/CodeableReference.js";
 import { Instant } from "../../../core/generics/Instant.js";
 import { Reference } from "../../../core/generics/Reference.js";
-import { Aggregate } from "../../Aggregate.js";
+import { Aggregate } from "../../../Aggregate.js";
 import { Identifier } from "../../../core/valuesObjects/Identifier.js";
 import { Schedule } from "../Schedule.js";
 import { SlotStatus } from "../../../values/SlotStatus.js";
-import { Coding, CodingSchema } from "../../../core/valuesObjects/Coding.js";
+import { ServiceCategory as ServiceCategoryValueSet } from "../../../values/ServiceCategory.js";
+import { Coding } from "../../../core/valuesObjects/Coding.js";
+import { HealthcareService as HealthcareServiceResource } from "../../../admin/HealthcareService.js";
+import { ServiceType as ServiceTypeValueSet } from "../../../values/ServiceType.js";
+import { PracticeSettingCodeValueSet as PracticeSettingCode } from "../../../values/PracticeSettingCodeValueSet.js";
 import { AppointmentReasonCodes } from "../../../values/AppointmentReasonCodes.js";
 
 type SlotSchema = {
     readonly identifier?: Identifier[],
-    readonly serviceCategory?: CodeableConcept<{}>[],
-    // v5 update. The codeableReference is a HealthCareInstitution, todo.
-    readonly serviceType?: CodeableReference[] | CodeableConcept<{}>[],
-    readonly specialty?: CodeableConcept<{}>[],
+    readonly serviceCategory?: CodeableConcept<ServiceCategory>[],
     // v5 update
-    readonly appointmentType?: CodeableConcept<any> | CodeableConcept<any>[],
+    readonly serviceType?: CodeableReference<HealthcareService>[] | CodeableConcept<ServiceType>[],
+    readonly specialty?: CodeableConcept<PracticeSettingCodeValueSet>[],
+    // v5 update
+    readonly appointmentType?: CodeableConcept<Hl7VSAppointmentReasonCodes> | CodeableConcept<Hl7VSAppointmentReasonCodes>[],
     readonly schedule: Reference<Schedule>,
     readonly status: Code<SlotStatus>,
     readonly start: Instant<string>,
@@ -45,6 +49,57 @@ type SlotSchema = {
     readonly overbooked?: boolean,
     readonly comment?: string
 }
+
+type ServiceCategory = CodeableConcept<{
+    readonly coding?: Coding<{
+        readonly system?: URL;
+        readonly version?: string;
+        readonly code?: Code<ServiceCategoryValueSet['code']>;
+        readonly display?: ServiceCategoryValueSet['display'];
+        readonly userSelected?: boolean;
+    }>[] | undefined;
+    readonly text?: string | undefined;
+}>;
+
+type HealthcareService = CodeableReference<{
+    readonly concept?: CodeableConcept<any>,
+    readonly reference?: Reference<HealthcareServiceResource>
+}>
+
+type ServiceType = CodeableConcept<{
+    readonly coding?: Coding<{
+        readonly system?: URL;
+        readonly version?: string;
+        readonly code?: Code<ServiceTypeValueSet['code']>;
+        readonly display?: ServiceTypeValueSet['display'];
+        readonly userSelected?: boolean;
+    }>[] | undefined;
+    readonly text?: string;
+}>
+
+type PracticeSettingCodeValueSet = CodeableConcept<{
+    readonly coding?: Coding<{
+        readonly system?: URL;
+        readonly version?: string;
+        readonly code?: Code<PracticeSettingCode['code']>;
+        readonly display?: PracticeSettingCode['display'];
+        readonly userSelected?: boolean;
+    }>[] | undefined;
+    readonly text?: string | undefined;
+}>
+
+type Hl7VSAppointmentReasonCodes = CodeableConcept<{
+    readonly coding?: Coding<{
+        readonly system?: URL;
+        readonly version?: string;
+        readonly code?: Code<AppointmentReasonCodes['code']>;
+        readonly display?: AppointmentReasonCodes['display'];
+        readonly userSelected?: boolean;
+    }>[] | undefined;
+    readonly text?: string | undefined;
+}>
+
+
 
 /**
  *  A slot of time on a schedule that may be available for booking appointments.

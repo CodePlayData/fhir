@@ -1,4 +1,4 @@
-// @filename: Reference.ts
+// @filename: Aggregate.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,21 +17,18 @@
 
 */
 
-import { ResourceType } from "../../ResourceType.js";
-import { Identifier } from "../valuesObjects/Identifier.js";
+import { Identifier } from "./core/valuesObjects/Identifier.js";
 
 /**
- *  The FHIR structure that points to some Resource, usually by the identification.
+ *  This interface identifies an DDD aggregate in this system. 
+ *  
+ *  Source: https://martinfowler.com/bliki/DDD_Aggregate.html.
  */
-class Reference <T extends ResourceType> {
-    constructor(
-        readonly reference?: URL,
-        readonly type?: T['resourceType'],
-        readonly identifier?: Identifier,
-        readonly display?: string
-    ){};
+interface Aggregate {
+    /** Must contain a Array of Identifier of the domain objects that composes this. */
+    readonly identifier?: Identifier[]
 }
 
-export { 
-    Reference
+export {
+    Aggregate
 }

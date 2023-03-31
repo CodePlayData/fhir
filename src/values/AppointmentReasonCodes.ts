@@ -22,12 +22,13 @@
  * 
  *  Source: https://terminology.hl7.org/5.1.0/ValueSet-v2-0276.html.
  */
-type AppointmentReasonCodes = 
-    'ROUTINE'    |
-    'WALKIN'     |
-    'CHECKUP'    |
-    'FOLLOWUP'   |
-    'EMERGENCY'
+type AppointmentReasonCodes =
+    { code: 'ROUTINE', display: 'Routine appointment - default if not valued', definition: 'Routine appointment - default if not valued' } |
+    { code: 'WALKIN', display: 'A previously unscheduled walk-in visit', definition: 'A previously unscheduled walk-in visit' } |
+    { code: 'CHECKUP', display: 'A routine check-up, such as an annual physical', definition: 'A routine check-up, such as an annual physical' } |
+    { code: 'FOLLOWUP', display: 'A follow up visit from a previous appointment', definition: 'A follow up visit from a previous appointment' } |
+    { code: 'EMERGENCY', display: 'Emergency appointment', definition: 'Emergency appointment' }
+
 
 export {
     AppointmentReasonCodes
