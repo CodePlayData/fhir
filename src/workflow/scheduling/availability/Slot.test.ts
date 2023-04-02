@@ -20,13 +20,13 @@
 import test from "node:test";
 import assert from "node:assert";
 import { Slot } from "./Slot.js";
-import { Identifier } from "../../core/valuesObjects/Identifier.js";
-import { CodeableConcept } from "../../core/generics/CodeableConcept.js";
-import { Coding } from "../../core/valuesObjects/Coding.js";
-import { CodeableReference, CodeableReferenceSchema } from "../../core/valuesObjects/CodeableReference.js";
-import { Instant } from "../../core/generics/Instant.js";
-import { Reference } from "../../core/generics/Reference.js";
-import { Code } from "../../core/generics/Code.js";
+import { Identifier } from "../../../core/valuesObjects/Identifier.js";
+import { CodeableConcept } from "../../../core/generics/CodeableConcept.js";
+import { Coding } from "../../../core/valuesObjects/Coding.js";
+import { CodeableReference, CodeableReferenceSchema } from "../../../core/valuesObjects/CodeableReference.js";
+import { Instant } from "../../../core/generics/Instant.js";
+import { Reference } from "../../../core/generics/Reference.js";
+import { Code } from "../../../core/generics/Code.js";
 
 test('Deve instanciar um Slot com pelo menos um identificador.', () => {
     const slot = new Slot(
@@ -193,7 +193,7 @@ test('Deve instanciar um Slot definindo um status de inicio e a um final.', () =
             status: new Code('free')
         }
     )
-    assert.strictEqual(slot.end?.toString(), "2019-10-30T11:15:31.450+05:30");
+    assert.strictEqual(JSON.stringify(slot.end), '"2019-10-30T11:15:31.450+05:30"');
 });
 
 test('Deve instanciar um Slot com comentario.', () => {

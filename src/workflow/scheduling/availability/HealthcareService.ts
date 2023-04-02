@@ -1,4 +1,4 @@
-// @filename: Code.test.ts
+// @filename: HealthcareService.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,11 +17,16 @@
 
 */
 
-import test from "node:test";
-import assert from "node:assert";
-import { Code } from "../generics/Code.js";
+import { CodeableConcept } from "../../../core/generics/CodeableConcept.js"
+import { Reference } from "../../../core/generics/Reference.js"
+import { CodeableReference } from "../../../core/valuesObjects/CodeableReference.js"
+import { HealthcareService as HealthcareServiceResource } from "../../../admin/HealthcareService.js";
 
-test('Deve instanciar um Code.', () => {
-    const code = new Code("Z012");
-    assert.strictEqual(JSON.stringify(code), '"Z012"');
-});
+type HealthcareService = CodeableReference<{
+    readonly concept?: CodeableConcept<any>,
+    readonly reference?: Reference<HealthcareServiceResource>
+}>
+
+export {
+    HealthcareService
+}

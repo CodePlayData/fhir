@@ -17,22 +17,22 @@
 
 */
 
-import { ResourceType } from "../../ResourceType.js";
-import { Code } from "../../core/generics/Code.js";
-import { CodeableConcept } from "../../core/generics/CodeableConcept.js";
-import { CodeableReference } from "../../core/valuesObjects/CodeableReference.js";
-import { Instant } from "../../core/generics/Instant.js";
-import { Reference } from "../../core/generics/Reference.js";
-import { Aggregate } from "../../Aggregate.js";
-import { Identifier } from "../../core/valuesObjects/Identifier.js";
+import { ResourceType } from "../../../ResourceType.js";
+import { Code } from "../../../core/generics/Code.js";
+import { CodeableConcept } from "../../../core/generics/CodeableConcept.js";
+import { CodeableReference } from "../../../core/valuesObjects/CodeableReference.js";
+import { Instant } from "../../../core/generics/Instant.js";
+import { Reference } from "../../../core/generics/Reference.js";
+import { Aggregate } from "../../../Aggregate.js";
+import { Identifier } from "../../../core/valuesObjects/Identifier.js";
 import { Schedule } from "./Schedule.js";
-import { SlotStatus } from "../../values/SlotStatus.js";
-import { ServiceCategory as ServiceCategoryValueSet } from "../../values/ServiceCategory.js";
-import { Coding } from "../../core/valuesObjects/Coding.js";
-import { HealthcareService as HealthcareServiceResource } from "../../admin/HealthcareService.js";
-import { ServiceType as ServiceTypeValueSet } from "../../values/ServiceType.js";
-import { PracticeSettingCodeValueSet as PracticeSettingCode } from "../../values/PracticeSettingCodeValueSet.js";
-import { AppointmentReasonCodes } from "../../values/AppointmentReasonCodes.js";
+import { SlotStatus } from "../../../values/SlotStatus.js";
+import { Coding } from "../../../core/valuesObjects/Coding.js";
+import { AppointmentReasonCodes } from "../../../values/AppointmentReasonCodes.js";
+import { ServiceCategory } from "./ServiceCategory.js";
+import { HealthcareService } from "./HealthcareService.js";
+import { ServiceType } from "./ServiceType.js";
+import { PracticeSettingCodeValueSet } from "./PracticeSettingCodeValueSet.js";
 
 type SlotSchema = {
     readonly identifier?: Identifier[],
@@ -49,44 +49,6 @@ type SlotSchema = {
     readonly overbooked?: boolean,
     readonly comment?: string
 }
-
-type ServiceCategory = CodeableConcept<{
-    readonly coding?: Coding<{
-        readonly system?: URL;
-        readonly version?: string;
-        readonly code?: Code<ServiceCategoryValueSet['code']>;
-        readonly display?: ServiceCategoryValueSet['display'];
-        readonly userSelected?: boolean;
-    }>[] | undefined;
-    readonly text?: string | undefined;
-}>;
-
-type HealthcareService = CodeableReference<{
-    readonly concept?: CodeableConcept<any>,
-    readonly reference?: Reference<HealthcareServiceResource>
-}>
-
-type ServiceType = CodeableConcept<{
-    readonly coding?: Coding<{
-        readonly system?: URL;
-        readonly version?: string;
-        readonly code?: Code<ServiceTypeValueSet['code']>;
-        readonly display?: ServiceTypeValueSet['display'];
-        readonly userSelected?: boolean;
-    }>[] | undefined;
-    readonly text?: string;
-}>
-
-type PracticeSettingCodeValueSet = CodeableConcept<{
-    readonly coding?: Coding<{
-        readonly system?: URL;
-        readonly version?: string;
-        readonly code?: Code<PracticeSettingCode['code']>;
-        readonly display?: PracticeSettingCode['display'];
-        readonly userSelected?: boolean;
-    }>[] | undefined;
-    readonly text?: string | undefined;
-}>
 
 type Hl7VSAppointmentReasonCodes = CodeableConcept<{
     readonly coding?: Coding<{

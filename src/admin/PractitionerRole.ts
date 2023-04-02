@@ -1,4 +1,4 @@
-// @filename: Code.test.ts
+// @filename: PractitionerRole.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,11 +17,15 @@
 
 */
 
-import test from "node:test";
-import assert from "node:assert";
-import { Code } from "../generics/Code.js";
+import { Aggregate } from "../Aggregate.js";
+import { ResourceType } from "../ResourceType.js";
+import { Identifier } from "../core/valuesObjects/Identifier.js";
 
-test('Deve instanciar um Code.', () => {
-    const code = new Code("Z012");
-    assert.strictEqual(JSON.stringify(code), '"Z012"');
-});
+class PractitionerRole implements Aggregate, ResourceType {
+    readonly resourceType = 'PractitionerRole';
+    readonly identifier?: Identifier[]
+};
+
+export {
+    PractitionerRole
+}

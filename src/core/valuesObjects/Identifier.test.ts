@@ -31,7 +31,7 @@ test('Deve instanciar um Identifier vazio.', () => {
 
 test('Deve instanciar um Identifier com o codigo de uso.', () => {
     const id = new Identifier(new Code('usual'));
-    assert.strictEqual(id.use?.toString(), 'usual');
+    assert.strictEqual(JSON.stringify(id.use), '"usual"');
 });
 
 test('Deve instanciar um Identifier com o tipo.', () => {
@@ -47,6 +47,7 @@ test('Deve instanciar um Identifier com o tipo.', () => {
             ]
         )
     )
+    assert.strictEqual(JSON.stringify(id), '{"type":{"coding":[{"code":"DL"}]}}');
 });
 
 test('Deve instanciar um Identifier igual a um modelo pre-definido que contem system e value.', () => {

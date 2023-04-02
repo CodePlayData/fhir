@@ -23,5 +23,5 @@ import { Instant } from "./Instant.js";
 
 test('Deve instanciar um Instant.', () => {
   const instant = new Instant('2015-02-07T13:28:17.239+02:00');
-  assert.strictEqual(instant.toString(), '2015-02-07T13:28:17.239+02:00');
+  assert.strictEqual(JSON.stringify(instant), '"2015-02-07T13:28:17.239+02:00"');
 });

@@ -17,14 +17,38 @@
 
 */
 
-import { Reference } from "../../core/generics/Reference";
-import { CodeableConcept } from "../../core/generics/CodeableConcept";
-import { CodeableReference } from "../../core/valuesObjects/CodeableReference";
-import { Identifier } from "../../core/valuesObjects/Identifier";
-import { Period } from "../../core/valuesObjects/Period";
-import { Aggregate } from "../../Aggregate";
-import { ResourceType } from "../../ResourceType";
+import { Reference } from "../../../core/generics/Reference.js";
+import { CodeableConcept } from "../../../core/generics/CodeableConcept.js";
+import { CodeableReference } from "../../../core/valuesObjects/CodeableReference.js";
+import { Identifier } from "../../../core/valuesObjects/Identifier.js";
+import { Period } from "../../../core/valuesObjects/Period.js";
+import { Aggregate } from "../../../Aggregate.js";
+import { ResourceType } from "../../../ResourceType.js";
+import { ServiceCategory } from "./ServiceCategory.js";
+import { HealthcareService } from "./HealthcareService.js";
+import { ServiceType } from "./ServiceType.js";
+import { PracticeSettingCodeValueSet } from "./PracticeSettingCodeValueSet.js";
+import { Markdown } from "../../../core/constructors/Markdown.js";
+import { Patient } from "../../../admin/Patient.js";
+import { Practitioner } from "../../../admin/Practitioner.js";
+import { PractitionerRole } from "../../../admin/PractitionerRole.js";
+import { CareTeam } from "../../../admin/CareTeam.js";
+import { RelatedPerson } from "../../../admin/RelatedPerson.js";
+import { Device } from "../../../admin/Device.js";
+import { HealthcareService as HealthcareServiceResource } from "../../../admin/HealthcareService";
+import { Location } from "../../../admin/Location.js";
 
+type ScheduleSchema = {
+    readonly identifier?: Identifier[],
+    readonly active?: boolean,
+    readonly serviceCategory?: CodeableConcept<ServiceCategory>,
+    readonly serviceType?: CodeableReference<HealthcareService>[] | CodeableConcept<ServiceType>[],
+    readonly specialty?: CodeableConcept<PracticeSettingCodeValueSet>[],
+    readonly name?: string,
+    readonly actor?: Reference<Patient | Practitioner | PractitionerRole | CareTeam | RelatedPerson | Device | HealthcareServiceResource | Location>,
+    readonly planningHorizon?: Period,
+    readonly comment?: Markdown
+}
 
 /**
  *  A container for slots of time that may be available for booking appointments.
@@ -33,17 +57,27 @@ import { ResourceType } from "../../ResourceType";
  */
 class Schedule implements Aggregate, ResourceType {
     readonly resourceType = 'Schedule';
-    constructor(
-        readonly identifier?: Identifier[],
-        readonly active?: boolean,
-        readonly serviceCategory?: CodeableConcept<any>,
-        readonly serviceType?: CodeableReference<{}>[] | CodeableConcept<any>[],
-        readonly specialty?: CodeableConcept<any>[],
-        readonly name?: string,
-        readonly actor?: Reference<any>,
-        readonly planningHorizon?: Period,
-        readonly comment?: string
-    ) {}
+    readonly identifier;
+    readonly active;
+    readonly serviceCategory;
+    readonly serviceType;
+    readonly specialty;
+    readonly name;
+    readonly actor;
+    readonly planningHorizon;
+    readonly comment;
+
+    constructor(schedule: ScheduleSchema) {
+        this.identifier = schedule?.identifier;
+        this.active = schedule?.active;
+        this.serviceCategory = schedule?.serviceCategory;
+        this.serviceType = schedule?.serviceType;
+        this.specialty = schedule?.specialty;
+        this.name = schedule?.name;
+        this.actor = schedule?.actor;
+        this.planningHorizon = schedule?.planningHorizon;
+        this.comment = schedule?.comment;
+    }
 }
 
 export {
