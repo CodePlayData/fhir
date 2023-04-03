@@ -1,4 +1,4 @@
-// @filename: Appointment.ts
+// @filename: PositiveInt.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,13 +17,8 @@
 
 */
 
-import { Aggregate } from "../../../Aggregate.js";
-import { ResourceType } from "../../../ResourceType.js";
-
-class Appointment implements Aggregate, ResourceType {
-
-}
+type PositiveInt = bigint;
 
 export {
-    Appointment
+    PositiveInt
 }

@@ -1,4 +1,4 @@
-// @filename: Appointment.ts
+// @filename: Group.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,13 +17,15 @@
 
 */
 
-import { Aggregate } from "../../../Aggregate.js";
-import { ResourceType } from "../../../ResourceType.js";
+import { Aggregate } from "../Aggregate.js";
+import { ResourceType } from "../ResourceType.js";
+import { Identifier } from "../core/valuesObjects/Identifier.js";
 
-class Appointment implements Aggregate, ResourceType {
-
-}
+class Group implements Aggregate, ResourceType {
+    readonly resourceType = 'Group';
+    readonly identifier?: Identifier[]
+};
 
 export {
-    Appointment
+    Group
 }
