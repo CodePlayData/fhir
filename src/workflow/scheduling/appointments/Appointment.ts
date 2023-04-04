@@ -19,9 +19,24 @@
 
 import { Aggregate } from "../../../Aggregate.js";
 import { ResourceType } from "../../../ResourceType.js";
+import { Code } from "../../../core/generics/Code.js";
+import { CodeableConcept } from "../../../core/generics/CodeableConcept.js";
+import { Identifier } from "../../../core/valuesObjects/Identifier.js";
+import { AppointmentStatus } from "../../../values/AppointmentStatus.js";
+
+type AppointmentSchema = {
+    readonly identifier?: Identifier[],
+    readonly status: Code<AppointmentStatus['code']>,
+    readonly cancellationReason: CodeableConcept<{}>
+}
 
 class Appointment implements Aggregate, ResourceType {
+    readonly resourceType = 'Appointment';
+    readonly identifier;
 
+    constructor(appointment: AppointmentSchema) {
+        this.identifier = appointment?.identifier;
+    }
 }
 
 export {
