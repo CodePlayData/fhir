@@ -21,6 +21,26 @@ import { Aggregate } from "../Aggregate.js";
 import { ResourceType } from "../ResourceType.js";
 import { Identifier } from "../core/valuesObjects/Identifier.js";
 
+/**
+ *  Information about a person that is involved in a patient's health or the care for a patient, but who is not the target 
+ *  of healthcare, nor has a formal responsibility in the care process.
+ * 
+ *  ### Scope and Usage
+ *  RelatedPersons typically have a personal relationship or non-healthcare-specific professional relationship to the patient. 
+ *  A RelatedPerson resource is primarily used for attribution of information, since RelatedPersons are often a source of 
+ *  information about the patient. For keeping information about people for contact purposes for a patient, use a Patient's 
+ *  Contact element. Some individuals may serve as both a Patient's Contact and a Related Person.
+ * 
+ *  Example RelatedPersons are:
+ *  * A patient's wife or husband
+ *  * A patient's relatives or friends
+ *  * A neighbor bringing a patient to the hospital
+ *  * The owner or trainer of a horse
+ *  * A patient's attorney or guardian
+ *  * A Guide Dog
+ * 
+ *  Source: https://www.hl7.org/fhir/relatedperson.html.
+ */
 class RelatedPerson implements Aggregate, ResourceType {
     readonly resourceType = 'RelatedPerson';
     readonly identifier?: Identifier[]

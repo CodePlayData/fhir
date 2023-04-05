@@ -1,4 +1,4 @@
-// @filename: Markdown.ts
+// EncounterReasonCodes.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -16,14 +16,3 @@
    limitations under the License.
 
 */
-
-/**
- *  A FHIR string that may contain markdown syntax for optional processing by a markdown presentation engine.
- *  
- *  Source: https://www.hl7.org/fhir/datatypes.html#markdown.
- */
-class Markdown extends String{};
-
-export {
-    Markdown
-}

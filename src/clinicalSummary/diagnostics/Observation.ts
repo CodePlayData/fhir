@@ -1,4 +1,4 @@
-// @filename: HealthcareService.ts
+// @filename: Observation.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,16 +17,10 @@
 
 */
 
-import { CodeableConcept } from "../../../core/generics/CodeableConcept.js"
-import { Reference } from "../../../core/generics/Reference.js"
-import { CodeableReference } from "../../../core/valuesObjects/CodeableReference.js"
-import { HealthcareService as HealthcareServiceResource } from "../../../admin/HealthcareService.js";
+class Observation {
 
-type HealthcareService = CodeableReference<{
-    readonly concept?: CodeableConcept<any>,
-    readonly reference?: Reference<HealthcareServiceResource>
-}>
+}
 
 export {
-    HealthcareService
+    Observation
 }

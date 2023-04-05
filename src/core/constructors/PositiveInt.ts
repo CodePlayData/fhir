@@ -17,6 +17,11 @@
 
 */
 
+/**
+ *  Any positive integer in the range 1..2,147,483,647.
+ * 
+ *  Source: https://www.hl7.org/fhir/datatypes.html#positiveInt.
+ */
 type PositiveInt = bigint;
 
 export {

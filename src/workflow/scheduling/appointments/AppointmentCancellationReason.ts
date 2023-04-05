@@ -1,4 +1,4 @@
-// @filename: PracticeSettingCodeValueSet.ts
+// @filename: AppointmentCancellationReason.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -18,21 +18,21 @@
 */
 
 import { Code } from "../../../core/generics/Code.js";
-import { CodeableConcept } from "../../../core/generics/CodeableConcept.js";
+import { CodeableConcept } from "../../../core/generics/CodeableConcept.js"
 import { Coding } from "../../../core/valuesObjects/Coding.js";
-import { PracticeSettingCodeValueSet as PracticeSettingCode } from "../../../values/PracticeSettingCodeValueSet.js";
+import { AppointmentCancellationReason as AppointmentCancellationReasonValueSet } from "../../../values/AppointmentCancellationReason.js";
 
-type PracticeSettingCodeValueSet = CodeableConcept<{
+type AppointmentCancellationReason = CodeableConcept<{
     readonly coding?: Coding<{
         readonly system?: URL;
         readonly version?: string;
-        readonly code?: Code<PracticeSettingCode['code']>;
-        readonly display?: PracticeSettingCode['display'];
+        readonly code?: Code<AppointmentCancellationReasonValueSet['code']>;
+        readonly display?: AppointmentCancellationReasonValueSet['display'];
         readonly userSelected?: boolean;
     }>[] | undefined;
-    readonly text?: string | undefined;
+    readonly text?: string;
 }>
 
 export {
-    PracticeSettingCodeValueSet
+    AppointmentCancellationReason
 }

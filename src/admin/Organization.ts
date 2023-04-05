@@ -21,6 +21,13 @@ import { Aggregate } from "../Aggregate.js";
 import { ResourceType } from "../ResourceType.js";
 import { Identifier } from "../core/valuesObjects/Identifier.js";
 
+/**
+ *  A formally or informally recognized grouping of people or organizations formed for the purpose of achieving some form of 
+ *  collective action. Includes companies, institutions, corporations, departments, community groups, healthcare practice 
+ *  groups, payer/insurer, etc.
+ * 
+ *  Source: https://www.hl7.org/fhir/organization.html.
+ */
 class Organization implements Aggregate, ResourceType {
     readonly resourceType = 'Organization';
     readonly identifier?: Identifier[]

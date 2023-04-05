@@ -1,4 +1,4 @@
-// @filename: ServiceType.ts
+// @filename: ServiceCategory.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,22 +17,22 @@
 
 */
 
-import { Code } from "../../../core/generics/Code.js";
-import { CodeableConcept } from "../../../core/generics/CodeableConcept.js";
-import { Coding } from "../../../core/valuesObjects/Coding.js";
-import { ServiceType as ServiceTypeValueSet } from "../../../values/ServiceType.js";
+import { Code } from "../core/generics/Code.js";
+import { CodeableConcept } from "../core/generics/CodeableConcept.js";
+import { Coding } from "../core/valuesObjects/Coding.js";
+import { ServiceCategory as ServiceCategoryValueSet } from "../values/ServiceCategory.js";
 
-type ServiceType = CodeableConcept<{
+type ServiceCategory = CodeableConcept<{
     readonly coding?: Coding<{
         readonly system?: URL;
         readonly version?: string;
-        readonly code?: Code<ServiceTypeValueSet['code']>;
-        readonly display?: ServiceTypeValueSet['display'];
+        readonly code?: Code<ServiceCategoryValueSet['code']>;
+        readonly display?: ServiceCategoryValueSet['display'];
         readonly userSelected?: boolean;
     }>[] | undefined;
     readonly text?: string;
-}>
+}>;
 
 export {
-    ServiceType
+    ServiceCategory
 }

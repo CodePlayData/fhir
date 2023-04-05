@@ -27,12 +27,11 @@ import { Aggregate } from "../../../Aggregate.js";
 import { Identifier } from "../../../core/valuesObjects/Identifier.js";
 import { Schedule } from "./Schedule.js";
 import { SlotStatus } from "../../../values/SlotStatus.js";
-import { Coding } from "../../../core/valuesObjects/Coding.js";
-import { AppointmentReasonCodes } from "../../../values/AppointmentReasonCodes.js";
-import { ServiceCategory } from "./ServiceCategory.js";
-import { HealthcareService } from "./HealthcareService.js";
-import { ServiceType } from "./ServiceType.js";
-import { PracticeSettingCodeValueSet } from "./PracticeSettingCodeValueSet.js";
+import { ServiceCategory } from "../../../shared/ServiceCategory.js";
+import { HealthcareService } from "../../../shared/HealthcareService.js";
+import { ServiceType } from "../../../shared/ServiceType.js";
+import { PracticeSettingCodeValueSet } from "../../../shared/PracticeSettingCodeValueSet.js";
+import { Hl7VSAppointmentReasonCodes } from "../../../shared/Hl7VSAppointmentReasonCodes.js";
 
 type SlotSchema = {
     readonly identifier?: Identifier[],
@@ -49,19 +48,6 @@ type SlotSchema = {
     readonly overbooked?: boolean,
     readonly comment?: string
 }
-
-type Hl7VSAppointmentReasonCodes = CodeableConcept<{
-    readonly coding?: Coding<{
-        readonly system?: URL;
-        readonly version?: string;
-        readonly code?: Code<AppointmentReasonCodes['code']>;
-        readonly display?: AppointmentReasonCodes['display'];
-        readonly userSelected?: boolean;
-    }>[] | undefined;
-    readonly text?: string | undefined;
-}>
-
-
 
 /**
  *  A slot of time on a schedule that may be available for booking appointments.

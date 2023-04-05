@@ -1,4 +1,4 @@
-// @filename: Markdown.ts
+// @filename: HealthcareService.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,13 +17,16 @@
 
 */
 
-/**
- *  A FHIR string that may contain markdown syntax for optional processing by a markdown presentation engine.
- *  
- *  Source: https://www.hl7.org/fhir/datatypes.html#markdown.
- */
-class Markdown extends String{};
+import { CodeableConcept } from "../core/generics/CodeableConcept.js"
+import { Reference } from "../core/generics/Reference.js"
+import { CodeableReference } from "../core/valuesObjects/CodeableReference.js"
+import { HealthcareService as HealthcareServiceResource } from "../admin/HealthcareService.js";
+
+type HealthcareService = CodeableReference<{
+    readonly concept?: CodeableConcept<any>,
+    readonly reference?: Reference<HealthcareServiceResource>
+}>
 
 export {
-    Markdown
+    HealthcareService
 }

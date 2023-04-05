@@ -22,6 +22,8 @@ import { Identifier } from "../valuesObjects/Identifier.js";
 
 /**
  *  The FHIR structure that points to some Resource, usually by the identification.
+ * 
+ *  Source: https://www.hl7.org/fhir/references.html#Reference.
  */
 class Reference <T extends ResourceType> {
     constructor(

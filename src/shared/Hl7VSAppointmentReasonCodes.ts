@@ -1,4 +1,9 @@
-// @filename: ServiceCategory.ts
+// @filename: Hl7VSAppointmentReasonCodes.ts
+
+import { Code } from "../core/generics/Code";
+import { CodeableConcept } from "../core/generics/CodeableConcept";
+import { Coding } from "../core/valuesObjects/Coding";
+import { AppointmentReasonCodes } from "../values/AppointmentReasonCodes";
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,22 +22,17 @@
 
 */
 
-import { Code } from "../../../core/generics/Code.js";
-import { CodeableConcept } from "../../../core/generics/CodeableConcept.js";
-import { Coding } from "../../../core/valuesObjects/Coding.js";
-import { ServiceCategory as ServiceCategoryValueSet } from "../../../values/ServiceCategory.js";
-
-type ServiceCategory = CodeableConcept<{
+type Hl7VSAppointmentReasonCodes = CodeableConcept<{
     readonly coding?: Coding<{
         readonly system?: URL;
         readonly version?: string;
-        readonly code?: Code<ServiceCategoryValueSet['code']>;
-        readonly display?: ServiceCategoryValueSet['display'];
+        readonly code?: Code<AppointmentReasonCodes['code']>;
+        readonly display?: AppointmentReasonCodes['display'];
         readonly userSelected?: boolean;
     }>[] | undefined;
-    readonly text?: string;
-}>;
+    readonly text?: string | undefined;
+}>
 
 export {
-    ServiceCategory
+    Hl7VSAppointmentReasonCodes
 }

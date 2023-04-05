@@ -1,4 +1,4 @@
-// @filename: Markdown.ts
+// @filename: Condition.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,13 +17,10 @@
 
 */
 
-/**
- *  A FHIR string that may contain markdown syntax for optional processing by a markdown presentation engine.
- *  
- *  Source: https://www.hl7.org/fhir/datatypes.html#markdown.
- */
-class Markdown extends String{};
+class Condition {
+
+}
 
 export {
-    Markdown
+    Condition
 }

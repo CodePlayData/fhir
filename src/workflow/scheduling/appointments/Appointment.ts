@@ -21,13 +21,26 @@ import { Aggregate } from "../../../Aggregate.js";
 import { ResourceType } from "../../../ResourceType.js";
 import { Code } from "../../../core/generics/Code.js";
 import { CodeableConcept } from "../../../core/generics/CodeableConcept.js";
+import { CodeableReference } from "../../../core/valuesObjects/CodeableReference.js";
 import { Identifier } from "../../../core/valuesObjects/Identifier.js";
+import { HealthcareService } from "../../../shared/HealthcareService.js";
+import { Hl7VSAppointmentReasonCodes } from "../../../shared/Hl7VSAppointmentReasonCodes.js";
+import { PracticeSettingCodeValueSet } from "../../../shared/PracticeSettingCodeValueSet.js";
+import { ServiceCategory } from "../../../shared/ServiceCategory.js";
+import { ServiceType } from "../../../shared/ServiceType.js";
 import { AppointmentStatus } from "../../../values/AppointmentStatus.js";
+import { AppointmentCancellationReason } from "./AppointmentCancellationReason.js";
 
 type AppointmentSchema = {
     readonly identifier?: Identifier[],
     readonly status: Code<AppointmentStatus['code']>,
-    readonly cancellationReason: CodeableConcept<{}>
+    readonly cancellationReason?: CodeableConcept<AppointmentCancellationReason>,
+    readonly class?: CodeableConcept<any>,
+    readonly serviceCategory?: CodeableConcept<ServiceCategory>[]
+    readonly serviceType?: CodeableReference<HealthcareService>[] | CodeableConcept<ServiceType>[],
+    readonly specialty?: CodeableConcept<PracticeSettingCodeValueSet>[],
+    readonly appointmentType?: CodeableConcept<Hl7VSAppointmentReasonCodes> | CodeableConcept<Hl7VSAppointmentReasonCodes>[],
+    readonly reason?: CodeableReference<{}>
 }
 
 class Appointment implements Aggregate, ResourceType {
