@@ -29,13 +29,174 @@ type EncounterReasonCodes =
     display: 'General examination or investigation of persons without complaint or reported diagnosis',
     definition: 'General examination or investigation of persons without complaint or reported diagnosis'
   } |
-  // ...
+  {
+    code: 'QA00.0',
+    display: 'General adult medical examination',
+    definition: 'Encounter for periodic examination (annual) (physical) and any associated laboratory and  \
+    radiologic examinations on adult, except for Routine child health examination (QA00.1), Routine general \
+    health check-up of defined subpopulation (QA03), Routine newborn health examination (QA00.2) or Symptoms, \
+    signs or clinical findings, not elsewhere classified (MA00-MH2Y)'
+  } |
+  {
+    code: 'QA00.1',
+    display: 'Routine child health examination',
+    definition: 'Routine health check for child over 28 days of age through 19 years of age, except for Health \
+    supervision or care of abandoned infant (QC22) or Health supervision or care of other healthy infant or child \
+     (QC20-QC2Z)'
+  } |
+  {
+    code: 'QA00.2',
+    display: 'Routine newborn health examination',
+    definition: 'Health examination for infant under 29 days of age, except for Routine child health examination (QA00.1)'
+  } |
+  {
+    code: 'QA00.3',
+    display: 'General psychiatric examination',
+    definition: 'General psychiatric examination except for examination requested for medicolegal reasons (QA04).'
+  } |
+  {
+    code: 'QA00.4',
+    display: 'Examination of potential donor of organ or tissue',
+    definition: 'Examination of potential donor of organ or tissue'
+  } |
+  {
+    code: 'QA00.5',
+    display: 'Examination for normal comparison or control in clinical research programme',
+    definition: 'Examination for normal comparison or control in clinical research programme'
+  } | 
+  {
+    code: 'QA00.6',
+    display: 'Examination of eyes or vision',
+    definition: 'Examination of eyes or vision except for Examination for driving license (QA01.4)'
+  } |
+  {
+    code: 'QA00.61',
+    display: 'Normal Visual Field',
+    definition: 'Normal Visual Field',
+    postcoordination: 'XK9J - Bilateral' | 'XK8G - Left' | 'XK9K - Right' | 'XK70 - Unilateral, unspecified'
+  } |
+  {
+    code: 'QA00.6Y',
+    display: 'Other specified examination of eyes or vision',
+    definition: 'Other specified examination of eyes or vision'
+  } | 
+  {
+    code: 'QA00.6Z',
+    display: 'Examination of eyes or vision, unspecified',
+    definition: 'Examination of eyes or vision, unspecified'
+  } | 
+  {
+    code: 'QA00.7',
+    display: 'Examination of ears and hearing',
+    definition: 'Examination of ears and hearing'
+  } |
+  {
+    code: 'QA00.8',
+    display: 'Dental examination',
+    definition: 'Dental examination'
+  } |
+  {
+    code: 'QA00.9',
+    display: 'Gynaecological examination',
+    definition: 'Gynaecological examination except for routine examination for contraceptive maintenance (QA21.5) or Pregnancy examination or test (QA40).'
+  } |
+  {
+    code: 'QA00.A',
+    display: 'Skin or other sensitisation tests',
+    definition: 'Skin or other sensitisation tests'
+  } |
+  {
+    code: 'QA00.B',
+    display: 'Radiological examination',
+    definition: 'Radiological examination except for Special screening examination for neoplasm of breast (QA09.3)'
+  } |
+  {
+    code: 'QA00.C',
+    display: 'Laboratory examination',
+    definition: 'Laboratory examination'
+  } |
+  {
+    code: 'QA00.D',
+    display: 'Encounter for blood typing',
+    definition: 'Encounter for blood typing'
+  } |
+  {
+    code: 'QA00.E',
+    display: 'Encounter for antibody response examination',
+    definition: 'Encounter for antibody response examination except for Skin or other sensitisation tests (QA00.A)'
+  } | 
+  {
+    code: 'QA00.Y',
+    display: 'Other specified general examination or investigation of persons without complaint or reported diagnosis',
+    definition: 'Other specified general examination or investigation of persons without complaint or reported diagnosis'
+  } |
+  {
+    code: 'QA00.Z',
+    display: 'General examination or investigation of persons without complaint or reported diagnosis, unspecified',
+    definition: 'General examination or investigation of persons without complaint or reported diagnosis, unspecified'
+  } |
   {
     code: 'QA01',
     display: 'Examination or encounter for administrative purposes',
     definition: 'Examination or encounter for administrative purposes'
   } |
-  // ...
+  {
+    code: 'QA01.0',
+    display: 'Examination for admission to educational institution',
+    definition: 'Examination for admission to educational institution'
+  } |
+  {
+    code: 'QA01.1',
+    display: 'Pre-employment examination',
+    definition: 'Pre-employment examination except for Occupational health examination (QA03.0)'
+  } |
+  {
+    code: 'QA01.2',
+    display: 'Examination for admission to residential institutions',
+    definition: 'Examination for admission to residential institutions except for Routine general health check-up of inhabitants of institutions (QA03.1)'
+  } |
+  {
+    code: 'QA01.3',
+    display: 'Examination for recruitment to armed forces',
+    definition: 'Examination for recruitment to armed forces except for Routine general health check-up of armed forces (QA03.2)'
+  } |
+  {
+    code: 'QA01.4',
+    display: 'Examination for driving license',
+    definition: 'Examination for driving license'
+  } |
+  {
+    code: 'QA01.5',
+    display: 'Examination for participation in sport',
+    definition: 'Examination for participation in sport except for Blood-alcohol or blood-drug test (QA04.0) or Routine general health check-up of sports teams (QA03.3)'
+  } |
+  {
+    code: 'QA01.6',
+    display: ' Examination for insurance purposes',
+    definition: 'Examination for insurance purposes'
+  } |
+  {
+    code: 'QA01.7',
+    display: 'Issue of medical certificate',
+    definition: 'Issue of medical certificate except for General adult medical examination (QA00.0)'
+  } |
+  {
+    code: 'QA01.8',
+    display: 'Encounter for adoption services',
+    definition: 'Encounter to provide pre or post-adoption services to assist prospective adoptive \
+    parents in making an informed decision prior to adoption or to address the medical history and \
+    current health of the child and provide parental guidance'
+  } |
+  {
+    code: 'QA01.Y',
+    display: 'Other specified examination or encounter for administrative purposes',
+    definition: 'Other specified examination or encounter for administrative purposes'
+  } |
+  {
+    code: 'QA01.Z',
+    display: 'Examination or encounter for administrative purposes, unspecified',
+    definition: 'Examination or encounter for administrative purposes, unspecified'
+  } |
   {
     code: 'QA02',
     display: 'Medical observation or evaluation for suspected diseases or conditions, ruled out',
