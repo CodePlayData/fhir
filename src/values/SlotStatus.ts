@@ -17,12 +17,14 @@
 
 */
 
+import { ValueSet } from "./ValueSet.js"
+
 /**
  *  The free/busy status of the slot.
  * 
  *  Source: http://hl7.org/fhir/ValueSet/slotstatus.
  */
-type SlotStatus = 
+type SlotStatus = ValueSet &
     { code: 'busy', display: 'Busy', definition: 'Indicates that the time interval is busy because one or more events have been scheduled for that interval.' } |
     { code: 'free', display: 'Free', definition: 'Indicates that the time interval is free for scheduling.' } |
     { code: 'busy-unavailabe', display: 'Busy (Unavailable)', definition: 'Indicates that the time interval is busy and that the interval cannot be scheduled.' } |

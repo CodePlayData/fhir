@@ -17,12 +17,14 @@
 
 */
 
+import { ValueSet } from "./ValueSet.js"
+
 /**
  *  This value set defines a set of codes that can be used to indicate how an individual participates in an encounter.
  * 
  *  Source: http://hl7.org/fhir/ValueSet/encounter-participant-type.
  */
-type ParticipantType = 
+type ParticipantType = ValueSet &
     { code: 'ADM', display: 'admitter', definition: 'The practitioner who is responsible for admitting a patient to a patient encounter.' } |
     { code: 'ATND', display: 'attender', definition: "The practitioner that has responsibility for overseeing a patient's care during a patient encounter." } |
     { code: 'CALLBCK', display: 'callback contact', definition: 'A person or organization who should be contacted for follow-up questions about the act in place of the author.' } |
@@ -32,6 +34,7 @@ type ParticipantType =
     { code: 'REF', display: 'referrer', definition: 'A person having referred the subject of the service to the performer (referring physician). Typically, a referring physician will receive a report.' } |
     { code: 'translator', display: 'Translator', definition: 'A translator who is facilitating communication with the patient during the encounter.' } |
     { code: 'emergency', display: 'Emergency', definition: 'A person to be contacted in case of an emergency during the encounter.' }
+
 
 export {
     ParticipantType

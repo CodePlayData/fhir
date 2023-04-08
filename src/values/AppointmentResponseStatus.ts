@@ -17,12 +17,14 @@
 
 */
 
+import { ValueSet } from "./ValueSet.js"
+
 /**
  *  The Participation status for a participant in response to a request for an appointment.
  * 
  *  Source: http://hl7.org/fhir/ValueSet/appointmentresponse-status.
  */
-type AppointmentResponseStatus = 
+type AppointmentResponseStatus = ValueSet &
     { code: 'accepted', display: 'Accepted', definition: 'The participant has accepted the appointment.' } |
     { code: 'declined', display: 'Declined', definition: 'The participant has declined the appointment and will not participate in the appointment.' } |
     { code: 'tentative', display: 'Tentative', definition: 'The participant has tentatively accepted the appointment. This could be automatically created by a system and requires further processing before it can be accepted. There is no commitment that attendance will occur.' } |

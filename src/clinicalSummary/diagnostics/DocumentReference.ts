@@ -1,4 +1,4 @@
-// @filename: Procedure.ts
+// @filename: DocumentReference.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,10 +17,16 @@
 
 */
 
-class Procedure {
-    readonly resourceType = 'Procedure';
+import { Aggregate } from "../../Aggregate.js";
+import { ResourceType } from "../../ResourceType.js";
+import { Identifier } from "../../core/valuesObjects/Identifier.js";
+
+
+class DocumentReference implements Aggregate, ResourceType {
+    readonly resourceType = 'Account';
+    readonly identifier?: Identifier[]
 }
 
 export {
-    Procedure
+    DocumentReference
 }

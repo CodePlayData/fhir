@@ -17,12 +17,14 @@
 
 */
 
+import { ValueSet } from "./ValueSet.js"
+
 /** 
  *  A coded type for an identifier that can be used to determine which identifier to use for a specific purpose.
  *  
  *  Source: http://hl7.org/fhir/ValueSet/identifier-type.
  */
-type IdentifierType =
+type IdentifierType = ValueSet &
   {
     code: "DL",
     display: "Driver's license number",

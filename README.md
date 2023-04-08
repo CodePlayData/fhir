@@ -111,6 +111,8 @@ No fluxo de atendimento de Agendamento um ValueSet que é SNOMED e pode ser subs
 
 Uma outra questão que surge com os ValueSets são os que existem e são muito extensos (>300 opções). Para esses também será definida uma interface e ficará a cargo do usuário implementar um jeito de fornecer esses objetos de valor.
 
+> O único Value Set implementado como string direto sem a estrutura do { code, display e description } é o do ResourceType, que identifica o tipo de recurso utilizado.
+
 
 <br>
 

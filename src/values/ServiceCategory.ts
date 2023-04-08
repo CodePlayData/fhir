@@ -16,13 +16,16 @@
    limitations under the License.
 
 */
+
+import { ValueSet } from "./ValueSet.js"
+
 /** 
  *  This value set defines an example set of codes that can be used to classify groupings of service-types/specialties.
  *  
  *  Source: http://terminology.hl7.org/CodeSystem/service-category.
  */
 
-type ServiceCategory =
+type ServiceCategory = ValueSet &
     { code: "1", display: "Adoption", definition: "Adoption" } |
     { code: "2", display: "Aged Care", definition: "Aged Care" } |
     { code: "34", display: "Allied Health", definition: "Allied Health" } |

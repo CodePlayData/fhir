@@ -18,6 +18,7 @@
 */
 
 class Condition {
+    readonly resourceType = 'Condition';
 
 }
 

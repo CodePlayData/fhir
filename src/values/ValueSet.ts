@@ -19,7 +19,7 @@
 
 interface ValueSet {
     code: string,
-    display: string,
+    display?: string,
     definition?: string
 }
 

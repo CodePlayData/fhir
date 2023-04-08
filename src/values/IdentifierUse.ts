@@ -17,12 +17,14 @@
 
 */
 
+import { ValueSet } from "./ValueSet.js"
+
 /** 
  *  Identifies the purpose for this identifier, if known.
  *  
  *  Source: http://hl7.org/fhir/identifier-use.
  */
-type IdentifierUse = 
+type IdentifierUse = ValueSet &
     { code: 'usual', display: 'Usual', definition: 'The identifier recommended for display and use in real-world interactions which should be used when such identifier is different from the "official" identifier.' } |
     { code: 'official', display: 'Official', definition: 'The identifier considered to be most trusted for the identification of this item. Sometimes also known as "primary" and "main". The determination of "official" is subjective and implementation guides often provide additional guidelines for use.' } |
     { code: 'temp', display: 'Temp', definition: 'A temporary identifier.' } |

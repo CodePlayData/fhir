@@ -17,12 +17,14 @@
 
 */
 
+import { ValueSet } from "./ValueSet.js"
+
 /**
  *  This value set defines an example set of codes of service-types.
  *
  *  Source: http://terminology.hl7.org/CodeSystem/service-type.
  */
-type ServiceType =
+type ServiceType = ValueSet &
     {
         code: "1",
         display: "Adoption/Permanent Care Info/Support",

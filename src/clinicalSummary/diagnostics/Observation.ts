@@ -18,7 +18,7 @@
 */
 
 class Observation {
-
+    readonly resourceType = 'Observation';
 }
 
 export {

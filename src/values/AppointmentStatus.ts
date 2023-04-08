@@ -17,12 +17,14 @@
 
 */
 
+import { ValueSet } from "./ValueSet.js"
+
 /**
  *  The free/busy status of an appointment.
  * 
  *  Source: http://hl7.org/fhir/ValueSet/appointmentstatus.
  */
-type AppointmentStatus = 
+type AppointmentStatus = ValueSet &
     { code: 'proposed', display: 'Proposed', definition: 'None of the participant(s) have finalized their acceptance of the appointment request, and the start/end time might not be set yet.' } |
     { code: 'pending', display: 'Pending', definition: 'Some or all of the participant(s) have not finalized their acceptance of the appointment request.' } |
     { code: 'booked', display: 'Booked', definition: 'All participant(s) have been considered and the appointment is confirmed to go ahead at the date/times specified.' } |

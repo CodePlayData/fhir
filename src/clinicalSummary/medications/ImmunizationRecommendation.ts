@@ -18,7 +18,7 @@
 */
 
 class ImmunizationRecommendation {
-
+    readonly resourceType = 'ImmunizationRecommendation';
 }
 
 export {

@@ -17,12 +17,14 @@
 
 */
 
+import { ValueSet } from "./ValueSet.js"
+
 /**
  *  Value Set of codes that describe the kind of appointment or the reason why an appointment has been scheduled.
  * 
  *  Source: https://terminology.hl7.org/5.1.0/ValueSet-v2-0276.html.
  */
-type AppointmentReasonCodes =
+type AppointmentReasonCodes = ValueSet &
     { code: 'ROUTINE', display: 'Routine appointment - default if not valued', definition: 'Routine appointment - default if not valued' } |
     { code: 'WALKIN', display: 'A previously unscheduled walk-in visit', definition: 'A previously unscheduled walk-in visit' } |
     { code: 'CHECKUP', display: 'A routine check-up, such as an annual physical', definition: 'A routine check-up, such as an annual physical' } |

@@ -43,6 +43,7 @@ import { Identifier } from "../core/valuesObjects/Identifier.js";
  *  Source: https://www.hl7.org/fhir/careteam.html.
  *  
  */
+
 class CareTeam implements Aggregate, ResourceType {
     readonly resourceType = 'CareTeam';
     readonly identifier?: Identifier[]

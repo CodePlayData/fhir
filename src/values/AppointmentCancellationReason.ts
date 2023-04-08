@@ -1,7 +1,5 @@
 // @filename: AppointmentCancellationReason.ts
 
-import { ValueSet } from "./ValueSet"
-
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
 
@@ -18,6 +16,8 @@ import { ValueSet } from "./ValueSet"
    limitations under the License.
 
 */
+
+import { ValueSet } from "./ValueSet.js"
 
 /**
  *  This example value set defines a set of reasons for the cancellation of an appointment.
