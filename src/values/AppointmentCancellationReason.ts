@@ -1,5 +1,7 @@
 // @filename: AppointmentCancellationReason.ts
 
+import { ValueSet } from "./ValueSet"
+
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
 
@@ -22,7 +24,7 @@
  * 
  *  Source: http://terminology.hl7.org/CodeSystem/appointment-cancellation-reason.
  */
-type AppointmentCancellationReason = 
+type AppointmentCancellationReason = ValueSet &
     { code: 'pat',  display: 'Patient' } |
     { code: 'pat-crs',  display: 'Patient: Canceled via automated reminder system' } |
     { code: 'pat-cpp', display: 'Patient: Canceled via Patient Portal' } |
