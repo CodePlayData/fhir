@@ -25,10 +25,10 @@ import { Code } from "../../../core/generics/Code.js";
 import { CodeableConcept } from "../../../core/generics/CodeableConcept.js";
 import { Reference } from "../../../core/generics/Reference.js";
 import { CodeableReference } from "../../../core/valuesObjects/CodeableReference.js";
-import { Coding } from "../../../core/valuesObjects/Coding.js";
+import { Coding, CodingSchema } from "../../../core/valuesObjects/Coding.js";
 import { ValueSet } from "../../../values/ValueSet.js";
 
-type EncounterReasonCodes = CodeableReference<{
+type EncounterReasonCodesv5 = CodeableReference<{
     readonly concept?: CodeableConcept<{
         readonly coding?: Coding<{
             readonly system?: URL;
@@ -43,6 +43,18 @@ type EncounterReasonCodes = CodeableReference<{
     readonly reference?: Reference<Condition | Procedure | Observation | ImmunizationRecommendation>
 }>
 
+type EncounterReasonCodesv4 = CodeableConcept<{
+    readonly coding?: Coding<{
+        readonly system?: URL;
+        readonly version?: string;
+        readonly code?: Code<ValueSet['code']>;
+        readonly display?: ValueSet['display'];
+        readonly userSelected?: boolean;
+    }>[],
+    readonly text?: string
+}>
+
 export {
-    EncounterReasonCodes
+    EncounterReasonCodesv5,
+    EncounterReasonCodesv4
 }

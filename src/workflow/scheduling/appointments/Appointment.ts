@@ -20,6 +20,18 @@
 import { Aggregate } from "../../../Aggregate.js";
 import { ResourceType } from "../../../ResourceType.js";
 import { Account } from "../../../admin/Account.js";
+import { Communication } from "../../../admin/Communication.js";
+import { Group } from "../../../admin/Group.js";
+import { Patient } from "../../../admin/Patient.js";
+import { CarePlan } from "../../../clinical/careProvision/CarePlan.js";
+import { ServiceRequest } from "../../../clinical/careProvision/ServiceRequest.js";
+import { MedicationRequest } from "../../../clinical/medications/MedicationRequest.js";
+import { DeviceRequest } from "../../../clinical/request&response/DeviceRequest.js";
+import { DocumentReference } from "../../../clinical/diagnostics/DocumentReference.js";
+import { Observation } from "../../../clinical/diagnostics/Observation.js";
+import { ImmunizationRecommendation } from "../../../clinical/medications/ImmunizationRecommendation.js";
+import { Condition } from "../../../clinical/summary/Condition.js";
+import { Procedure } from "../../../clinical/summary/Procedure.js";
 import { DateTime } from "../../../core/constructors/DateTime.js";
 import { PositiveInt } from "../../../core/constructors/PositiveInt.js";
 import { Code } from "../../../core/generics/Code.js";
@@ -27,6 +39,7 @@ import { CodeableConcept } from "../../../core/generics/CodeableConcept.js";
 import { Instant } from "../../../core/generics/Instant.js";
 import { Reference } from "../../../core/generics/Reference.js";
 import { Annotation } from "../../../core/valuesObjects/Annotation.js";
+import { Binary } from "../../../core/valuesObjects/Binary.js";
 import { CodeableReference } from "../../../core/valuesObjects/CodeableReference.js";
 import { Identifier } from "../../../core/valuesObjects/Identifier.js";
 import { Period } from "../../../core/valuesObjects/Period.js";
@@ -40,7 +53,8 @@ import { AppointmentStatus } from "../../../values/AppointmentStatus.js";
 import { Slot } from "../availability/Slot.js";
 import { ActPriority } from "./ActPriority.js";
 import { AppointmentCancellationReason } from "./AppointmentCancellationReason.js";
-import { EncounterReasonCodes } from "./EncounterReasonCodes.js";
+import { EncounterReasonCodesv5, EncounterReasonCodesv4 } from "./EncounterReasonCodes.js";
+import { Participant } from "./Participant.js";
 
 type AppointmentSchema = {
     readonly identifier?: Identifier[],
@@ -50,9 +64,11 @@ type AppointmentSchema = {
     readonly serviceCategory?: CodeableConcept<ServiceCategory>[]
     readonly serviceType?: CodeableReference<HealthcareService>[] | CodeableConcept<ServiceType>[],
     readonly specialty?: CodeableConcept<PracticeSettingCodeValueSet>[],
-    readonly appointmentType?: CodeableConcept<Hl7VSAppointmentReasonCodes> | CodeableConcept<Hl7VSAppointmentReasonCodes>[],
-    readonly reason?: CodeableReference<EncounterReasonCodes>[],
-    readonly priority?: CodeableConcept<ActPriority>,
+    readonly appointmentType?: CodeableConcept<Hl7VSAppointmentReasonCodes>,
+    readonly reason?: CodeableReference<EncounterReasonCodesv5>[],
+    readonly reasonCode?:CodeableConcept<EncounterReasonCodesv4>[],
+    readonly reasonReference?: Reference<Condition | Procedure | Observation | ImmunizationRecommendation>[],
+    readonly priority?: CodeableConcept<ActPriority> | number,
     readonly description?: string,
     readonly replaces?: Reference<Appointment>[],
     readonly virtualService?: VirtualServiceDetail[],
@@ -66,11 +82,19 @@ type AppointmentSchema = {
     readonly slot?: Reference<Slot>[],
     readonly account?: Reference<Account>,
     readonly created?: DateTime,
+    readonly comment?: string,
     readonly cancellationDate?: DateTime,
     readonly note?: Annotation,
-    readonly patientInstruction?: CodeableReference<{}>
-    
-
+    readonly patientInstruction?: string | Binary | CodeableReference<{
+        readonly concept?: CodeableConcept<any>,
+        readonly reference?: Reference<DocumentReference | Communication>
+    }>
+    readonly basedOn?: Reference<ServiceRequest | CarePlan | DeviceRequest | MedicationRequest>[],
+    readonly subject?: Reference<Patient | Group>,
+    readonly recurrenceId?: PositiveInt,
+    readonly occurrenceChanged?: boolean,
+    readonly participant: Participant[],
+    readonly recurrenceTemplate?: 
 }
 
 class Appointment implements Aggregate, ResourceType {

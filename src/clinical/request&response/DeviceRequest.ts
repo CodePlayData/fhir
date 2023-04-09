@@ -1,4 +1,4 @@
-// @filename: Condition.ts
+// @filename: DeviceRequest.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,11 +17,13 @@
 
 */
 
-class Condition {
-    readonly resourceType = 'Condition';
+import { ResourceType } from "../../ResourceType.js";
+
+class DeviceRequest implements ResourceType {
+    readonly resourceType = 'DeviceRequest';
 
 }
 
 export {
-    Condition
+    DeviceRequest
 }

@@ -1,4 +1,4 @@
-// @filename: Binary.ts
+// @filename: MedicationRequest.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,17 +17,13 @@
 
 */
 
-import { Code } from "../generics/Code.js";
-import { Reference } from "../generics/Reference";
+import { ResourceType } from "../../ResourceType.js";
 
-class Binary {
-    constructor(
-        readonly contentType: Code<`${string}/${string}`>,
-        readonly securityContext?: Reference<any>,
-        readonly data?: Buffer | ArrayBuffer
-    ) {}
+class MedicationRequest implements ResourceType {
+    readonly resourceType = 'MedicationRequest';
+
 }
 
-export { 
-    Binary
+export {
+    MedicationRequest
 }

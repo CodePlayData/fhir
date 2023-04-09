@@ -1,4 +1,4 @@
-// @filename: Binary.ts
+// @filename: RecurrenceTemplate.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,17 +17,8 @@
 
 */
 
-import { Code } from "../generics/Code.js";
-import { Reference } from "../generics/Reference";
-
-class Binary {
+class RecurrenceTemplate {
     constructor(
-        readonly contentType: Code<`${string}/${string}`>,
-        readonly securityContext?: Reference<any>,
-        readonly data?: Buffer | ArrayBuffer
+        readonly timezone?:
     ) {}
-}
-
-export { 
-    Binary
 }
