@@ -19,7 +19,7 @@
 
 import { Aggregate } from "../Aggregate.js";
 import { ResourceType } from "../ResourceType.js";
-import { Identifier } from "../core/valuesObjects/Identifier.js";
+import { Identifier } from "../core/datatypes/Identifier.js";
 
 /**
  *  A formally or informally recognized grouping of people or organizations formed for the purpose of achieving some form of 

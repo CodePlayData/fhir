@@ -18,7 +18,7 @@
 */
 
 import { VirtualServiceType } from "../../values/VirtualServiceType.js";
-import { PositiveInt } from "../constructors/PositiveInt.js";
+import { PositiveInt } from "../primitives/PositiveInt.js";
 import { Code } from "../generics/Code.js";
 import { Coding } from "./Coding.js";
 

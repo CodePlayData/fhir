@@ -19,7 +19,7 @@
 
 import { Aggregate } from "../Aggregate.js";
 import { ResourceType } from "../ResourceType.js";
-import { Identifier } from "../core/valuesObjects/Identifier.js";
+import { Identifier } from "../core/datatypes/Identifier.js";
 
 /**
  *  A type of a manufactured item that is used in the provision of healthcare without being substantially changed through 

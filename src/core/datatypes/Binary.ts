@@ -1,4 +1,4 @@
-// @filename: Aggregate.ts
+// @filename: Binary.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,18 +17,17 @@
 
 */
 
-import { Identifier } from "./core/datatypes/Identifier.js";
+import { Code } from "../generics/Code.js";
+import { Reference } from "../generics/Reference";
 
-/**
- *  This interface identifies an DDD aggregate in this system. 
- *  
- *  Source: https://martinfowler.com/bliki/DDD_Aggregate.html.
- */
-interface Aggregate {
-    /** Must contain a Array of Identifier of the domain objects that composes this. */
-    readonly identifier?: Identifier[]
+class Binary {
+    constructor(
+        readonly contentType: Code<`${string}/${string}`>,
+        readonly securityContext?: Reference<any>,
+        readonly data?: Buffer
+    ) {}
 }
 
-export {
-    Aggregate
+export { 
+    Binary
 }

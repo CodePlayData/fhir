@@ -19,16 +19,16 @@
 
 import { Reference } from "../../../core/generics/Reference.js";
 import { CodeableConcept } from "../../../core/generics/CodeableConcept.js";
-import { CodeableReference } from "../../../core/valuesObjects/CodeableReference.js";
-import { Identifier } from "../../../core/valuesObjects/Identifier.js";
-import { Period } from "../../../core/valuesObjects/Period.js";
+import { CodeableReference } from "../../../core/datatypes/CodeableReference.js";
+import { Identifier } from "../../../core/datatypes/Identifier.js";
+import { Period } from "../../../core/datatypes/Period.js";
 import { Aggregate } from "../../../Aggregate.js";
 import { ResourceType } from "../../../ResourceType.js";
 import { ServiceCategory } from "../../../shared/ServiceCategory.js";
 import { HealthcareService } from "../../../shared/HealthcareService.js";
 import { ServiceType } from "../../../shared/ServiceType.js";
 import { PracticeSettingCodeValueSet } from "../../../shared/PracticeSettingCodeValueSet.js";
-import { Markdown } from "../../../core/constructors/Markdown.js";
+import { Markdown } from "../../../core/primitives/Markdown.js";
 import { Patient } from "../../../admin/Patient.js";
 import { Practitioner } from "../../../admin/Practitioner.js";
 import { PractitionerRole } from "../../../admin/PractitionerRole.js";

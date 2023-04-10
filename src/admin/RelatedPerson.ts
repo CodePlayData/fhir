@@ -19,7 +19,7 @@
 
 import { Aggregate } from "../Aggregate.js";
 import { ResourceType } from "../ResourceType.js";
-import { Identifier } from "../core/valuesObjects/Identifier.js";
+import { Identifier } from "../core/datatypes/Identifier.js";
 
 /**
  *  Information about a person that is involved in a patient's health or the care for a patient, but who is not the target 

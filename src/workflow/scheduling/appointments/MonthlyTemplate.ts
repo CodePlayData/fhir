@@ -1,4 +1,4 @@
-// @filename: Aggregate.ts
+// @filename: MonthlyTemplate.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,18 +17,19 @@
 
 */
 
-import { Identifier } from "./core/datatypes/Identifier.js";
+import { PositiveInt } from "../../../core/primitives/PositiveInt.js";
+import { DaysOfWeek } from "./DaysOfWeek.js";
+import { WeekOfMonth } from "./WeekOfMonth.js";
 
-/**
- *  This interface identifies an DDD aggregate in this system. 
- *  
- *  Source: https://martinfowler.com/bliki/DDD_Aggregate.html.
- */
-interface Aggregate {
-    /** Must contain a Array of Identifier of the domain objects that composes this. */
-    readonly identifier?: Identifier[]
+class MonthlyTemplate {
+    constructor(
+        readonly monthInterval: PositiveInt,
+        readonly dayOfMonth?: PositiveInt,
+        readonly nthWeekOfMonth?: WeekOfMonth,
+        readonly dayOfWeek?: DaysOfWeek
+    ) {}
 }
 
 export {
-    Aggregate
+    MonthlyTemplate
 }

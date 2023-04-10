@@ -12,7 +12,7 @@ import { RelatedPerson } from "../../../admin/RelatedPerson";
 import { Code } from "../../../core/generics/Code";
 import { CodeableConcept } from "../../../core/generics/CodeableConcept";
 import { Reference } from "../../../core/generics/Reference";
-import { Period } from "../../../core/valuesObjects/Period";
+import { Period } from "../../../core/datatypes/Period";
 import { ParticipationStatus } from "../../../values/ParticipationStatus";
 import { ParticipantType } from "./ParticipantType";
 

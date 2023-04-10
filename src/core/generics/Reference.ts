@@ -18,7 +18,7 @@
 */
 
 import { ResourceType } from "../../ResourceType.js";
-import { Identifier } from "../valuesObjects/Identifier.js";
+import { Identifier } from "../datatypes/Identifier.js";
 
 /**
  *  The FHIR structure that points to some Resource, usually by the identification.

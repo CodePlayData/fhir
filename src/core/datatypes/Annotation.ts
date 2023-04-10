@@ -22,8 +22,8 @@ import { Patient } from "../../admin/Patient.js";
 import { Practitioner } from "../../admin/Practitioner.js";
 import { PractitionerRole } from "../../admin/PractitionerRole";
 import { RelatedPerson } from "../../admin/RelatedPerson";
-import { DateTime } from "../constructors/DateTime.js";
-import { Markdown } from "../constructors/Markdown.js";
+import { DateTime } from "../primitives/DateTime.js";
+import { Markdown } from "../primitives/Markdown.js";
 import { Reference } from "../generics/Reference.js";
 
 class Annotation {

@@ -1,4 +1,4 @@
-// @filename: Aggregate.ts
+// @filename: WeekOfMonth.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,18 +17,13 @@
 
 */
 
-import { Identifier } from "./core/datatypes/Identifier.js";
-
-/**
- *  This interface identifies an DDD aggregate in this system. 
- *  
- *  Source: https://martinfowler.com/bliki/DDD_Aggregate.html.
- */
-interface Aggregate {
-    /** Must contain a Array of Identifier of the domain objects that composes this. */
-    readonly identifier?: Identifier[]
-}
+type WeekOfMonth =
+    { code: 'first', display: 'First', definition: 'First week of the month.' }     |
+    { code: 'second', display: 'Second', definition: 'Second week of the month.' }  |
+    { code: 'third', display: 'Third', definition: 'Third week of the month.' }     |
+    { code: 'fourth', display: 'Fourth', definition: 'Fourth week of the month.' }  |
+    { code: 'last', display: 'Last', definition: 'Last week of the month.' }
 
 export {
-    Aggregate
+    WeekOfMonth
 }

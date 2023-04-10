@@ -17,15 +17,15 @@
 
 */
 
-import { Observation } from "../../../clinicalSummary/diagnostics/Observation.js";
-import { ImmunizationRecommendation } from "../../../clinicalSummary/medications/ImmunizationRecommendation.js";
-import { Condition } from "../../../clinicalSummary/summary/Condition.js";
-import { Procedure } from "../../../clinicalSummary/summary/Procedure.js";
+import { Observation } from "../../../clinical/diagnostics/Observation.js";
+import { ImmunizationRecommendation } from "../../../clinical/medications/ImmunizationRecommendation.js";
+import { Condition } from "../../../clinical/summary/Condition.js";
+import { Procedure } from "../../../clinical/summary/Procedure.js";
 import { Code } from "../../../core/generics/Code.js";
 import { CodeableConcept } from "../../../core/generics/CodeableConcept.js";
 import { Reference } from "../../../core/generics/Reference.js";
-import { CodeableReference } from "../../../core/valuesObjects/CodeableReference.js";
-import { Coding, CodingSchema } from "../../../core/valuesObjects/Coding.js";
+import { CodeableReference } from "../../../core/datatypes/CodeableReference.js";
+import { Coding, CodingSchema } from "../../../core/datatypes/Coding.js";
 import { ValueSet } from "../../../values/ValueSet.js";
 
 type EncounterReasonCodesv5 = CodeableReference<{

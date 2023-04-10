@@ -32,18 +32,18 @@ import { Observation } from "../../../clinical/diagnostics/Observation.js";
 import { ImmunizationRecommendation } from "../../../clinical/medications/ImmunizationRecommendation.js";
 import { Condition } from "../../../clinical/summary/Condition.js";
 import { Procedure } from "../../../clinical/summary/Procedure.js";
-import { DateTime } from "../../../core/constructors/DateTime.js";
-import { PositiveInt } from "../../../core/constructors/PositiveInt.js";
+import { DateTime } from "../../../core/primitives/DateTime.js";
+import { PositiveInt } from "../../../core/primitives/PositiveInt.js";
 import { Code } from "../../../core/generics/Code.js";
 import { CodeableConcept } from "../../../core/generics/CodeableConcept.js";
 import { Instant } from "../../../core/generics/Instant.js";
 import { Reference } from "../../../core/generics/Reference.js";
-import { Annotation } from "../../../core/valuesObjects/Annotation.js";
-import { Binary } from "../../../core/valuesObjects/Binary.js";
-import { CodeableReference } from "../../../core/valuesObjects/CodeableReference.js";
-import { Identifier } from "../../../core/valuesObjects/Identifier.js";
-import { Period } from "../../../core/valuesObjects/Period.js";
-import { VirtualServiceDetail } from "../../../core/valuesObjects/VirtualServiceDetail.js";
+import { Annotation } from "../../../core/datatypes/Annotation.js";
+import { Binary } from "../../../core/datatypes/Binary.js";
+import { CodeableReference } from "../../../core/datatypes/CodeableReference.js";
+import { Identifier } from "../../../core/datatypes/Identifier.js";
+import { Period } from "../../../core/datatypes/Period.js";
+import { VirtualServiceDetail } from "../../../core/datatypes/VirtualServiceDetail.js";
 import { HealthcareService } from "../../../shared/HealthcareService.js";
 import { Hl7VSAppointmentReasonCodes } from "../../../shared/Hl7VSAppointmentReasonCodes.js";
 import { PracticeSettingCodeValueSet } from "../../../shared/PracticeSettingCodeValueSet.js";
@@ -55,6 +55,7 @@ import { ActPriority } from "./ActPriority.js";
 import { AppointmentCancellationReason } from "./AppointmentCancellationReason.js";
 import { EncounterReasonCodesv5, EncounterReasonCodesv4 } from "./EncounterReasonCodes.js";
 import { Participant } from "./Participant.js";
+import { RecurrenceTemplate } from "./RecurrenceTemplate.js";
 
 type AppointmentSchema = {
     readonly identifier?: Identifier[],
@@ -94,15 +95,83 @@ type AppointmentSchema = {
     readonly recurrenceId?: PositiveInt,
     readonly occurrenceChanged?: boolean,
     readonly participant: Participant[],
-    readonly recurrenceTemplate?: 
+    readonly recurrenceTemplate?: RecurrenceTemplate[]
 }
 
 class Appointment implements Aggregate, ResourceType {
     readonly resourceType = 'Appointment';
     readonly identifier;
+    readonly status;
+    readonly cancellationReason;
+    readonly class;
+    readonly serviceCategory;
+    readonly serviceType;
+    readonly specialty;
+    readonly appointmentType;
+    readonly reason;
+    readonly reasonCode;
+    readonly reasonReference;
+    readonly priority;
+    readonly description;
+    readonly replaces;
+    readonly virtualService;
+    readonly supportingInformation;
+    readonly previousAppointment;
+    readonly originatingAppointment;
+    readonly start;
+    readonly end;
+    readonly minutesDuration;
+    readonly requestedPeriod;
+    readonly slot;
+    readonly account;
+    readonly created;
+    readonly comment;
+    readonly cancellationDate;
+    readonly note;
+    readonly patientInstruction;
+    readonly basedOn;
+    readonly subject;
+    readonly recurrenceId;
+    readonly occurrenceChanged;
+    readonly participant;
+    readonly recurrenceTemplate;
 
     constructor(appointment: AppointmentSchema) {
         this.identifier = appointment?.identifier;
+        this.status = appointment?.status;
+        this.cancellationReason = appointment?.cancellationReason;
+        this.class = appointment?.class;
+        this.serviceCategory = appointment?.serviceCategory;
+        this.serviceType = appointment?.serviceType;
+        this.specialty = appointment?.specialty;
+        this.appointmentType = appointment?.appointmentType;
+        this.reason = appointment?.reason;
+        this.reasonCode = appointment?.reasonCode;
+        this.reasonReference = appointment?.reasonReference;
+        this.priority = appointment?.priority;
+        this.description = appointment?.description;
+        this.replaces = appointment?.replaces;
+        this.virtualService = appointment?.virtualService;
+        this.supportingInformation = appointment?.supportingInformation;
+        this.previousAppointment = appointment?.previousAppointment;
+        this.originatingAppointment = appointment?.originatingAppointment;
+        this.start = appointment?.start;
+        this.end = appointment?.end;
+        this.minutesDuration = appointment?.minutesDuration;
+        this.requestedPeriod = appointment?.requestedPeriod;
+        this.slot = appointment?.slot;
+        this.account = appointment?.account;
+        this.created = appointment?.created;
+        this.comment = appointment?.comment;
+        this.cancellationDate = appointment?.cancellationDate;
+        this.note = appointment?.note;
+        this.patientInstruction = appointment?.patientInstruction;
+        this.basedOn = appointment?.basedOn;
+        this.subject = appointment?.subject;
+        this.recurrenceId = appointment?.recurrenceId;
+        this.occurrenceChanged = appointment?.occurrenceChanged;
+        this.participant = appointment?.participant;
+        this.recurrenceTemplate = appointment?.recurrenceTemplate
     }
 }
 

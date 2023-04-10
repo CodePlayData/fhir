@@ -19,7 +19,7 @@
 
 import { Aggregate } from "../Aggregate.js";
 import { ResourceType } from "../ResourceType.js";
-import { Identifier } from "../core/valuesObjects/Identifier.js";
+import { Identifier } from "../core/datatypes/Identifier.js";
 
 class Account implements Aggregate, ResourceType {
     readonly resourceType = 'Account';

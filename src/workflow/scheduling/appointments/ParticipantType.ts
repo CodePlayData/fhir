@@ -19,7 +19,7 @@
 
 import { Code } from "../../../core/generics/Code";
 import { CodeableConcept } from "../../../core/generics/CodeableConcept";
-import { Coding } from "../../../core/valuesObjects/Coding";
+import { Coding } from "../../../core/datatypes/Coding";
 import { ParticipantType as ParticipantTypeValueSet } from "../../../values/ParticipantType.js";
 
 

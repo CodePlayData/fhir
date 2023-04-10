@@ -19,7 +19,7 @@
 
 import { Code } from "../../../core/generics/Code.js";
 import { CodeableConcept } from "../../../core/generics/CodeableConcept.js"
-import { Coding } from "../../../core/valuesObjects/Coding.js";
+import { Coding } from "../../../core/datatypes/Coding.js";
 import { AppointmentCancellationReason as AppointmentCancellationReasonValueSet } from "../../../values/AppointmentCancellationReason.js";
 
 type AppointmentCancellationReason = CodeableConcept<{

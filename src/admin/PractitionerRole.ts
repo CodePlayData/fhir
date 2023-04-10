@@ -19,7 +19,7 @@
 
 import { Aggregate } from "../Aggregate.js";
 import { ResourceType } from "../ResourceType.js";
-import { Identifier } from "../core/valuesObjects/Identifier.js";
+import { Identifier } from "../core/datatypes/Identifier.js";
 
 /**
  *  A specific set of Roles/Locations/specialties/services that a practitioner may perform at an organization for a period 

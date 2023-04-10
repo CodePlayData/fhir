@@ -1,4 +1,4 @@
-// @filename: Aggregate.ts
+// @filename: DaysOfWeek.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,18 +17,15 @@
 
 */
 
-import { Identifier } from "./core/datatypes/Identifier.js";
-
-/**
- *  This interface identifies an DDD aggregate in this system. 
- *  
- *  Source: https://martinfowler.com/bliki/DDD_Aggregate.html.
- */
-interface Aggregate {
-    /** Must contain a Array of Identifier of the domain objects that composes this. */
-    readonly identifier?: Identifier[]
-}
+type DaysOfWeek = 
+    { code: 'mon', display: 'Monday' }        |
+    { code: 'tue', display: 'Tuesday' }       |
+    { code: 'wed', display: 'Wednesday' }     |
+    { code: 'thu', display: 'Thursday' }      |
+    { code: 'fri', display: 'Friday' }        |
+    { code: 'sat', display: 'Saturday' }      |
+    { code: 'sun', display: 'Sunday' } 
 
 export {
-    Aggregate
+    DaysOfWeek
 }

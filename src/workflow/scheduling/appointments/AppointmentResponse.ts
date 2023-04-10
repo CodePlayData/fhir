@@ -19,12 +19,12 @@
 
 import { Aggregate } from "../../../Aggregate.js";
 import { ResourceType } from "../../../ResourceType.js";
-import { Markdown } from "../../../core/constructors/Markdown.js";
-import { PositiveInt } from "../../../core/constructors/PositiveInt.js";
+import { Markdown } from "../../../core/primitives/Markdown.js";
+import { PositiveInt } from "../../../core/primitives/PositiveInt.js";
 import { CodeableConcept } from "../../../core/generics/CodeableConcept.js";
 import { Instant } from "../../../core/generics/Instant.js";
 import { Reference } from "../../../core/generics/Reference.js";
-import { Identifier } from "../../../core/valuesObjects/Identifier.js";
+import { Identifier } from "../../../core/datatypes/Identifier.js";
 import { Appointment } from "./Appointment.js";
 import { Code } from "../../../core/generics/Code.js";
 import { Patient } from "../../../admin/Patient.js";

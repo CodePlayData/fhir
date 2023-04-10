@@ -20,11 +20,11 @@
 import { ResourceType } from "../../../ResourceType.js";
 import { Code } from "../../../core/generics/Code.js";
 import { CodeableConcept } from "../../../core/generics/CodeableConcept.js";
-import { CodeableReference } from "../../../core/valuesObjects/CodeableReference.js";
+import { CodeableReference } from "../../../core/datatypes/CodeableReference.js";
 import { Instant } from "../../../core/generics/Instant.js";
 import { Reference } from "../../../core/generics/Reference.js";
 import { Aggregate } from "../../../Aggregate.js";
-import { Identifier } from "../../../core/valuesObjects/Identifier.js";
+import { Identifier } from "../../../core/datatypes/Identifier.js";
 import { Schedule } from "./Schedule.js";
 import { SlotStatus } from "../../../values/SlotStatus.js";
 import { ServiceCategory } from "../../../shared/ServiceCategory.js";

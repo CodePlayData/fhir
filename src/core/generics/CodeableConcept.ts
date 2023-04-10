@@ -17,7 +17,7 @@
 
 */
 
-import { Coding, CodingSchema } from "../valuesObjects/Coding";
+import { Coding, CodingSchema } from "../datatypes/Coding.js";
 
 
 type CodeableConceptSchema = {

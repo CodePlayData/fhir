@@ -19,7 +19,7 @@
 
 import { CodeableConcept } from "../core/generics/CodeableConcept.js"
 import { Reference } from "../core/generics/Reference.js"
-import { CodeableReference } from "../core/valuesObjects/CodeableReference.js"
+import { CodeableReference } from "../core/datatypes/CodeableReference.js"
 import { HealthcareService as HealthcareServiceResource } from "../admin/HealthcareService.js";
 
 type HealthcareService = CodeableReference<{

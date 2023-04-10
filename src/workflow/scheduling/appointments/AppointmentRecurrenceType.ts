@@ -1,4 +1,4 @@
-// @filename: ActPriority.ts
+// @filename: RecurrenceType.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,23 +17,23 @@
 
 */
 
-import { Code } from "../../../core/generics/Code";
+import { Coding } from "../../../core/datatypes/Coding.js";
+import { Code } from "../../../core/generics/Code.js";
 import { CodeableConcept } from "../../../core/generics/CodeableConcept.js";
-import { Coding } from "../../../core/datatypes/Coding";
-import { AppointmentReasonCodes } from "../../../values/AppointmentReasonCodes";
+import { AppointmentRecurrenceType as AppointmentRecurrenceTypeValueSet } from "../../../values/AppointmentRecurrenceType.js";
 
 
-type ActPriority = CodeableConcept<{
+type AppointmentRecurrenceType = CodeableConcept<{
     readonly coding?: Coding<{
         readonly system?: URL;
         readonly version?: string;
-        readonly code?: Code<AppointmentReasonCodes['code']>;
-        readonly display?: AppointmentReasonCodes['display'];
+        readonly code?: Code<AppointmentRecurrenceTypeValueSet['code']>;
+        readonly display?: AppointmentRecurrenceTypeValueSet['display'];
         readonly userSelected?: boolean;
-    }>[] | undefined;
+    }>[];
     readonly text?: string | undefined;
 }>
 
 export {
-    ActPriority
+    AppointmentRecurrenceType
 }

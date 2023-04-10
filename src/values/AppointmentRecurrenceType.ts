@@ -1,4 +1,4 @@
-// @filename: Aggregate.ts
+// @filename: AppointmentRecurrenceType.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,18 +17,18 @@
 
 */
 
-import { Identifier } from "./core/datatypes/Identifier.js";
-
 /**
- *  This interface identifies an DDD aggregate in this system. 
- *  
- *  Source: https://martinfowler.com/bliki/DDD_Aggregate.html.
+ * 
+ *  The recurrence type of a recurring appointment.
+ * 
+ *  Source: http://hl7.org/fhir/ValueSet/appointment-recurrrence-type.
  */
-interface Aggregate {
-    /** Must contain a Array of Identifier of the domain objects that composes this. */
-    readonly identifier?: Identifier[]
-}
+type AppointmentRecurrenceType = 
+    { code: 'd', display: 'day', definition: 'day'} |
+    { code: 'wk', display: 'week', definition: 'week'} |
+    { code: 'mo', display: 'month', definition: "month - Normal practice is to use the 'mo' code as a calendar month when calculating the next occurrence." } |
+    { code: 'a', display: 'year', definition: 'year'}
 
 export {
-    Aggregate
+    AppointmentRecurrenceType
 }

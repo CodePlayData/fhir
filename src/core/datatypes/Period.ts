@@ -1,4 +1,4 @@
-// @filename: Aggregate.ts
+// @filename: Period.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,18 +17,24 @@
 
 */
 
-import { Identifier } from "./core/datatypes/Identifier.js";
+import { DateTime } from "../primitives/DateTime";
 
 /**
- *  This interface identifies an DDD aggregate in this system. 
- *  
- *  Source: https://martinfowler.com/bliki/DDD_Aggregate.html.
+ *  A time period defined by a start and end date/time. 
+ *  A period specifies a range of times. The context of use will 
+ *  specify whether the entire range applies (e.g. "the patient was 
+ *  an inpatient of the hospital for this time range") or one value 
+ *  from the period applies (e.g. "give to the patient between 2 and 4 pm on 24-Jun 2013").
+ * 
+ *  Source: https://build.fhir.org/datatypes.html#Period.
  */
-interface Aggregate {
-    /** Must contain a Array of Identifier of the domain objects that composes this. */
-    readonly identifier?: Identifier[]
+class Period {
+    constructor(
+        readonly start: DateTime,
+        readonly end: DateTime
+    ){};
 }
 
 export {
-    Aggregate
+    Period
 }

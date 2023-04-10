@@ -17,8 +17,28 @@
 
 */
 
+import { PositiveInt } from "../../../core/primitives/PositiveInt.js";
+import { IANATimezones } from "../../../values/IANATimezones.js";
+import { AppointmentRecurrenceType } from "./AppointmentRecurrenceType.js";
+import { MonthlyTemplate } from "./MonthlyTemplate.js";
+import { WeeklyTemplate } from "./WeeklyTemplate.js";
+import { YearlyTemplate } from "./YearlyTemplate.js";
+
 class RecurrenceTemplate {
     constructor(
-        readonly timezone?:
+        readonly recurrenceType: AppointmentRecurrenceType,
+        readonly timezone?: IANATimezones,
+        readonly lastOccurenceDate?: Date,
+        readonly occurrenceCount?: PositiveInt,
+        readonly occurrenceDate?: Date[],
+        readonly excludingDate?: Date[],
+        readonly excludingRecurrenceId?: PositiveInt[],
+        readonly weeklyTemplate?: WeeklyTemplate,
+        readonly monthlyTemplate?: MonthlyTemplate,
+        readonly yearlyTemplate?: YearlyTemplate
     ) {}
+}
+
+export {
+    RecurrenceTemplate
 }

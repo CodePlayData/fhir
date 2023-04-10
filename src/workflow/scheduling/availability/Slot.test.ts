@@ -20,10 +20,10 @@
 import test from "node:test";
 import assert from "node:assert";
 import { Slot } from "./Slot.js";
-import { Identifier } from "../../../core/valuesObjects/Identifier.js";
+import { Identifier } from "../../../core/datatypes/Identifier.js";
 import { CodeableConcept } from "../../../core/generics/CodeableConcept.js";
-import { Coding } from "../../../core/valuesObjects/Coding.js";
-import { CodeableReference, CodeableReferenceSchema } from "../../../core/valuesObjects/CodeableReference.js";
+import { Coding } from "../../../core/datatypes/Coding.js";
+import { CodeableReference, CodeableReferenceSchema } from "../../../core/datatypes/CodeableReference.js";
 import { Instant } from "../../../core/generics/Instant.js";
 import { Reference } from "../../../core/generics/Reference.js";
 import { Code } from "../../../core/generics/Code.js";

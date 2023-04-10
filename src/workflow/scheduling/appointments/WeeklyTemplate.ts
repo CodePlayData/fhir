@@ -1,4 +1,4 @@
-// @filename: Binary.ts
+// @filename: WeeklyTemplate.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,17 +17,21 @@
 
 */
 
-import { Code } from "../generics/Code.js";
-import { Reference } from "../generics/Reference";
+import { PositiveInt } from "../../../core/primitives/PositiveInt.js";
 
-class Binary {
+class WeeklyTemplate {
     constructor(
-        readonly contentType: Code<`${string}/${string}`>,
-        readonly securityContext?: Reference<any>,
-        readonly data?: Buffer | ArrayBuffer
-    ) {}
+        readonly monday: boolean,
+        readonly tuesday: boolean,
+        readonly wednesday: boolean,
+        readonly thursday: boolean,
+        readonly friday: boolean,
+        readonly saturday: boolean,
+        readonly sunday: boolean,
+        readonly weekInterval: PositiveInt
+    ){}
 }
 
-export { 
-    Binary
+export {
+    WeeklyTemplate
 }

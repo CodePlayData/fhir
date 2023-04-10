@@ -1,4 +1,6 @@
-// @filename: Period.ts
+// @filename: YearlyTemplate.ts
+
+import { PositiveInt } from "../../../core/primitives/PositiveInt";
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,24 +19,12 @@
 
 */
 
-import { DateTime } from "../constructors/DateTime";
-
-/**
- *  A time period defined by a start and end date/time. 
- *  A period specifies a range of times. The context of use will 
- *  specify whether the entire range applies (e.g. "the patient was 
- *  an inpatient of the hospital for this time range") or one value 
- *  from the period applies (e.g. "give to the patient between 2 and 4 pm on 24-Jun 2013").
- * 
- *  Source: https://build.fhir.org/datatypes.html#Period.
- */
-class Period {
+class YearlyTemplate {
     constructor(
-        readonly start: DateTime,
-        readonly end: DateTime
-    ){};
+        readonly yearInterval: PositiveInt
+    ) {}
 }
 
 export {
-    Period
+    YearlyTemplate
 }
