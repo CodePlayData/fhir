@@ -17,8 +17,8 @@
 
 */
 
-import { Observation } from "../../../clinical/diagnostics/Observation.js";
-import { ImmunizationRecommendation } from "../../../clinical/medications/ImmunizationRecommendation.js";
+import { Observation } from "../../../diagnostics/Observation.js";
+import { ImmunizationRecommendation } from "../../../medications/ImmunizationRecommendation.js";
 import { Condition } from "../../../clinical/summary/Condition.js";
 import { Procedure } from "../../../clinical/summary/Procedure.js";
 import { Code } from "../../../core/generics/Code.js";

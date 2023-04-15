@@ -17,7 +17,7 @@
 
 */
 
-import { ResourceType } from "../../ResourceType.js";
+import { ResourceType } from "../ResourceType.js";
 
 class MedicationRequest implements ResourceType {
     readonly resourceType = 'MedicationRequest';

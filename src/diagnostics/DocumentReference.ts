@@ -17,9 +17,9 @@
 
 */
 
-import { Aggregate } from "../../Aggregate.js";
-import { ResourceType } from "../../ResourceType.js";
-import { Identifier } from "../../core/datatypes/Identifier.js";
+import { Aggregate } from "../Aggregate.js";
+import { ResourceType } from "../ResourceType.js";
+import { Identifier } from "../core/datatypes/Identifier.js";
 
 
 class DocumentReference implements Aggregate, ResourceType {

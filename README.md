@@ -10,19 +10,17 @@ _Data sem atrito_
 
 </div>
 
-Trabalhar com dados em saúde (Medicina Digital) é um desafio grande, uma das premissas fundamentais desse tipo de dado é a posse e a interoperabilidade. A interoperabilidade é a possibilidade de um dado em saúde transitar entre sistemas/aplicações não necessariamente dos mesmos fornecedores a depender da consessão do paciente/cliente.
+Trabalhar com dados em saúde (Medicina/Saúde Digital) é um desafio grande. Uma das premissas fundamentais desse tipo de dado a interoperabilidade. A interoperabilidade é a possibilidade de um dado em saúde transitar entre sistemas/aplicações que não necessariamente estão na mesma infraestrutura. Alguns autores consideram a interoperabilidade como ponto de início para o desenvolvimento da área e que o esforço de implementação deve acontecer por um conjunto de professionais tanto da área da saúde como da tecnologia da informação¹. Com o advento da covid-19 muitos pesquisadores retomaram a discussão sobre a importância desse tema² e alguns países propuseram modelos de dados a serem aplicados na rotina de atendimento e pesquisa³-⁴.
 
-Alguns autores consideram a interoperabilidade como ponto de início para o desenvolvimento da área e que o esforço de implementação deve acontecer por um conjunto de professionais tanto da área da saúde como da tecnologia da informação¹. Com o advento da covid-19 muitos pesquisadores retomaram a discussão sobre a importância desse tema² e alguns países propuseram modelos de dados a serem aplicados na rotina de atendimento e pesquisa³-⁴. 
-
-O HL7 Fhir é um padrão de conformidade dos dados de saúde utilizado internacionalmente para interoperabilidade mencionada acima e tem ganhado adoção de muitos projetos em saúde⁵. Do ponto de vista prático ele se assemelha a uma [orientação a dados](https://blog.klipse.tech/dop/2022/06/22/principles-of-dop.html) aonde a lógica de aplicação é separada da persistência e camada de dados. Ainda que não seja muito comum em softwares atuais existem padrões comportamentais que já trabalham dessa forma, como no caso do [Data Access Object (DAO)](https://en.wikipedia.org/wiki/Data_access_object) que foi projetado justamente para essa aplicação. Esse tipo de comportamento é esperado e essencial para as regras de negócio em saúde.
+O HL7 Fhir é um padrão de conformidade dos dados de saúde utilizado internacionalmente para interoperabilidade mencionada acima e tem ganhado adoção de muitos projetos em saúde⁵. Do ponto de vista prático ele se assemelha a uma [orientação a dados](https://blog.klipse.tech/dop/2022/06/22/principles-of-dop.html) [figura 1] aonde a lógica de aplicação é separada da persistência e camada de dados. Ainda que não seja muito comum em softwares atuais existem padrões comportamentais que já trabalham dessa forma, como no caso do [Data Access Object (DAO)](https://en.wikipedia.org/wiki/Data_access_object) que foi projetado justamente para esse tipo de aplicação. **Esse comportamento é esperado e essencial para as regras de negócio em saúde.**
 
 <br>
 
-> A princípio os componentes serão "documentados" em português nos testes e em inglês no próprio código com JsDoc.
+![ Orientação a Dados - Fonte: https://blog.klipse.tech/dop/2022/06/22/principles-of-dop.html](https://blog.klipse.tech/uml/chapter00/do-principles-mind-map.png)
+<div align="center"> Figura 1 </div>
 
-<br>
 
-### Refs
+**Refs**
 
 ¹ Lehne M, Sass J, Essenwanger A, Schepers J, Thun S. Why digital medicine depends on interoperability. NPJ Digit Med. 2019 Aug 20;2:79. doi: 10.1038/s41746-019-0158-1. PMID: 31453374; PMCID: PMC6702215.
 
@@ -42,39 +40,50 @@ medRxiv 2022.05.12.22274089; doi: https://doi.org/10.1101/2022.05.12.22274089
 ## Justificativa
 A maior _lib_ e provavelmente o caso de uso mais bem sucedido até então é a [Hapi-FHIR](https://hapifhir.io/) com 18 anos de implementação em Java e atualmente na 6ª versão, ela fornece desde de uma implementação "baixo nível" para se trabalhar com os Recursos do HL7 FHIR até abstrações para serviços como as interfaces de um servidor FHIR por API.
 
-Para outras linguagens de programação é posssível procurar no repositório [Confluence](https://confluence.hl7.org/) as implementações open-source que já foram divulgadas. Enquanto algumas linguagens como .NET e Java possuem suas libs de referência, outras como Python e Javascript não as possuem, tendo que buscar em um número considerável de alternativas quais que melhor se encaixam na sua regra de negócio.
+Para outras linguagens de programação é posssível procurar no repositório [Confluence](https://confluence.hl7.org/) as implementações open-source que já foram divulgadas. Enquanto algumas linguagens como .NET e Java possuem suas _libs_ de referência, outras como Python e Javascript não as possuem, tendo que buscar em um número considerável de alternativas quais que melhor se encaixam na sua regra de negócio.
 
-A seguir iremos avaliar as opções que existem para Javascript e entender o motivo desse repositório existir.
+A seguir iremos avaliar as opções que existem para Javascript mas a existência desse repositório busca iniciar um processo de correção dessas desvantagens mencionadas a seguir.
+
+<br>
 
 ### Medplum
-**Fonte**: https://github.com/medplum/medplum.
-De longe essa a implementação mais bem sucedida em Javascript/Typescript. Implementa lógicas bem avançadas de autenticação SMART, agendamento de consultas, criação de Usuários (Practitioner, Patient e RelatedPerson) e de certa forma pode ser considerada padrão ouro (algo a ser atingido) ao se iniciar o desenvolvimento deste repositório.
 
-**Vantagens**: Os fluxos implementados funcionam, ainda que não estejam bem evidentes como separação de objetos de domínio, casos de uso e etc.
-
-**Desvantagens**: Implementa muitos ResourceTypes e DataTypes como interfaces, sem fazer isso de Types para Codes e não considera nenhum deles como Generics, que é uma base bem forte do desenvolvimento em FHIR.
+|   |   |
+|---|---|
+| **Fonte**: | https://github.com/medplum/medplum. |
+| **Descrição**:  | De longe essa a implementação mais bem sucedida em Javascript/Typescript. Implementa lógicas bem avançadas de autenticação SMART, agendamento de consultas, criação de Usuários (Practitioner, Patient e RelatedPerson) e de certa forma pode ser considerada padrão ouro (algo a ser atingido) nesse repositório.  |
+| **Vantagens**:  | Os fluxos implementados funcionam, ainda que não estejam bem evidentes como separação de objetos de domínio, casos de uso e etc.  |
+| **Desvantagens**:  | Implementa muitos ResourceTypes e DataTypes como interfaces, sem fazer uso de Types ou Generics, que é uma base bem forte do desenvolvimento em FHIR. |
 
 <br>
 
 ### @types/fhir
-**Fonte**: https://www.npmjs.com/package/@types/fhir
-Apenas implementa os tipos necessários para ser utilizado no HL7 FHIR.
+
+|  |  |
+|--|--|
+| **Fonte**:  | https://www.npmjs.com/package/@types/fhir |
+| **Desvantagens**: | Apenas implementa os tipos necessários para ser utilizado no HL7 FHIR. |
 
 <br>
 
 ### Fhir.js
-**Fonte**: https://github.com/FHIR/fhir.js
-A implementação em JS mais usada para HL7 FHIR, mas sem atualizações desde 2019 e não tem tipagem.
+
+|  |  |
+|--|--|
+|**Fonte**: | https://github.com/FHIR/fhir.js |
+| **Vantagens**: |  É A implementação em JS mais usada para HL7 FHIR. |
+| **Desvantagens**: | Sem atualizações desde 2019 e não tem tipagem. |
 
 <br>
 
 ### node-fhir-server-core
-**Fonte**: https://github.com/bluehalo/node-fhir-server-core
-Também uma implementação muito bem sucedida para as lógicas de backend se um servidor FHIR.
 
-**Vantagens**: Integração como o Node, Express e Mongo. 
-
-**Desvantagens**: Acoplamento de código e lógicas de arquitetura de software inexistentes.
+|  |  |
+|--|--|
+| **Fonte**: | https://github.com/bluehalo/node-fhir-server-core |
+| **Descrição**: | Também uma implementação muito bem sucedida para as lógicas de backend se um servidor FHIR. |
+| **Vantagens**: |  Integração como o Node, Express e Mongo. |
+| **Desvantagens**:  | Acoplamento de código e lógicas de arquitetura de software inexistentes. |
 
 <br>
 
@@ -82,20 +91,26 @@ Também uma implementação muito bem sucedida para as lógicas de backend se um
 
 <br>
 
-A orientação em dados junto com o Typescript permite que seja possível respeitar o que foi planejado por Yehonathan Sharvit de como as regras de separação devem ser respeitadas:
-
-![ Orientação a Dados - Fonte: https://blog.klipse.tech/dop/2022/06/22/principles-of-dop.html](https://blog.klipse.tech/uml/chapter00/do-principles-mind-map.png)
-
-Além de respeitar a essência dos tipos genéricos previstos no HL7 FHIR.
-
-<br>
-
 ## Implementação
 
-Essa lib não implementará lógicas de negócio. **Apenas disponibilizará os objetos e suas relações necessárias para se implementar regras de negócios para sua aplicação**.
+Essa lib não implementará lógicas de negócio. **Apenas disponibilizará os objetos e as relações necessárias para se implementar regras de negócios para sua aplicação**.
 
 A _initial realease_ desse repositório irá focar em implementar toda a estrutura necessária para implementar o primeiro _usecase_: **Agendamento de consultas**.
 
+Toda a documentação e os testes estarão em português enquanto a documentação interna dos arquivos (JsDoc) estará em inglês, muitas das vezes vindo direto das explicações disponíveis na especificação HL7 FHIR.
+
+<br>
+
+### Estrutura de Pastas
+
+Na _landing page_ da especificação vemos uma separação por níveis de implementação das regras dos Recursos que a princípio não devem ser todos implementados de uma vez sem levar em conta a lógica de sua aplicação.
+
+![FHIR Levels](./assets/fhir_folders.png)
+
+
+Para esse primeiro caso de uso as pastas dos níveis 3 (administration) e 4 (clinical, diagnostics, medications, workflow e financial) estarão identificadas no diretório raiz do projeto. Tudo o que não for ValueSet mas ainda precisar ser usado em Recursos desses níveis mencionados estarão dentro da pasta `core` seguindo uma classificação não necessariamente relacionada ao padrão FHIR. Os ValueSets também estarão disponíveis no diretório raiz dentro da pasta `values`. O que precisar ser compartilhados entre as pastas estará na pasta `shared`, enquanto as excessões dos sistema estarão na pasta `errors`.
+
+<br>
 
 ### A questão dos ValueSets
 
