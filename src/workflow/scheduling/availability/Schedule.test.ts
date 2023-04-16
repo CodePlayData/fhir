@@ -27,6 +27,8 @@ import { CodeableReference } from "../../../core/datatypes/CodeableReference.js"
 import { Coding } from "../../../core/datatypes/Coding.js";
 import { Code } from "../../../core/generics/Code.js";
 import { CodeableConcept } from "../../../core/generics/CodeableConcept.js";
+import { Period } from "../../../core/datatypes/Period.js";
+import { DateTime } from "../../../core/primitives/DateTime.js";
 
 describe('Testes de unidade da classe Schedule.', () => {
 
@@ -205,6 +207,57 @@ describe('Testes de unidade da classe Schedule.', () => {
     )
   });
 
-  
+  it('Deve instanciar um Schedule com um nome.', () => {
+    const schedule = new Schedule({
+      actor: new Reference<Practitioner>(new URL("https://practitioner.example.com")),
+      name: "Dr. Pedro Paulo - Cirurgião Dentista Clínico Geral e Saúde Coletiva"
+    })
 
+    assert.strictEqual(
+      JSON.stringify(schedule),
+      JSON.stringify({
+        "resourceType":"Schedule",
+        "name":"Dr. Pedro Paulo - Cirurgião Dentista Clínico Geral e Saúde Coletiva",
+        "actor":{
+          "reference":"https://practitioner.example.com/"
+        }
+      })
+    )
+  });
+
+  it('Deve instanciar um Schedule com horizonte de disponibilidade.', () => {
+    const schedule = new Schedule({
+      actor: new Reference<Practitioner>(new URL("https://practitioner.example.com")),
+      planningHorizon: new Period(
+        new DateTime("2019-10-30T10:45:31.449+05:30"),
+        new DateTime("2019-10-30T11:45:31.449+05:30"),
+      )
+    });
+
+    assert.strictEqual(
+      JSON.stringify(schedule),
+      JSON.stringify({
+        "resourceType":"Schedule",
+        "actor":{
+          "reference":"https://practitioner.example.com/"
+        },
+        "planningHorizon":{
+          "start":"2019-10-30T05:15:31.449Z",
+          "end":"2019-10-30T06:15:31.449Z"
+        }
+      })
+    )
+  });
+
+  it('Deve instanciar um Schedule com comentários.', () => {
+    const schedule = new Schedule({
+      actor: new Reference<Practitioner>(new URL("https://practitioner.example.com")),
+      comment: '**Teste**'
+    });
+
+    assert.strictEqual(
+      JSON.stringify(schedule),
+      JSON.stringify({"resourceType":"Schedule","actor":{"reference":"https://practitioner.example.com/"},"comment":"**Teste**"})
+    )
+  });
 });

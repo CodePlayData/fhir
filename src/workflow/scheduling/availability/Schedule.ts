@@ -38,18 +38,21 @@ import { Device } from "../../../admin/Device.js";
 import { HealthcareService as HealthcareServiceResource } from "../../../admin/HealthcareService";
 import { Location } from "../../../admin/Location.js";
 
-type ScheduleSchema = {
+type ScheduleSchemaR4B = {
     readonly identifier?: Identifier[],
     readonly active?: boolean,
     readonly serviceCategory?: CodeableConcept<ServiceCategory>,
     readonly serviceType?: CodeableReference<HealthcareService>[] | CodeableConcept<ServiceType>[],
     readonly specialty?: CodeableConcept<PracticeSettingCodeValueSet>[],
-    readonly name?: string,
     readonly actor: Reference<Patient | Practitioner | PractitionerRole | CareTeam | RelatedPerson | Device | HealthcareServiceResource | Location>,
     readonly planningHorizon?: Period,
     readonly comment?: Markdown
 }
 
+
+type ScheduleSchemaR5 = ScheduleSchemaR4B & {
+    readonly name?: string
+}
 /**
  *  A container for slots of time that may be available for booking appointments.
  * 
@@ -125,7 +128,7 @@ class Schedule implements Aggregate, ResourceType {
      * business rules will dictate whether overbooking is allowed, or whether the appointment may be given a higher 
      * precedence and allocated the overbooked slot.
      * 
-     * @param schedule @type { ScheduleSchema } - An object that contains:
+     * @param schedule @type { ScheduleSchemaR4B | ScheduleSchemaR5 } - An object that contains:
      *      1. **identifier** - External Ids for this item
      *      2. **active** - Whether this schedule is in active use
      *      3. **serviceCategory** - High-level category
@@ -137,16 +140,19 @@ class Schedule implements Aggregate, ResourceType {
      *      9. **comment** - Comments on availability
      * 
      */
-    constructor(schedule: ScheduleSchema) {
+    constructor(schedule: ScheduleSchemaR4B | ScheduleSchemaR5) {
         this.identifier = schedule?.identifier;
         this.active = schedule?.active;
         this.serviceCategory = schedule?.serviceCategory;
         this.serviceType = schedule?.serviceType;
         this.specialty = schedule?.specialty;
-        this.name = schedule?.name;
         this.actor = schedule?.actor;
         this.planningHorizon = schedule?.planningHorizon;
         this.comment = schedule?.comment;
+
+        if('name' in schedule) {
+            this.name = schedule.name;
+        }
     }
 }
 
