@@ -10,9 +10,9 @@ _Data sem atrito_
 
 </div>
 
-Trabalhar com dados em saúde (Medicina/Saúde Digital) é um desafio grande. Uma das premissas fundamentais desse tipo de dado a interoperabilidade. A interoperabilidade é a possibilidade de um dado em saúde transitar entre sistemas/aplicações que não necessariamente estão na mesma infraestrutura. Alguns autores consideram a interoperabilidade como ponto de início para o desenvolvimento da área e que o esforço de implementação deve acontecer por um conjunto de professionais tanto da área da saúde como da tecnologia da informação¹. Com o advento da covid-19 muitos pesquisadores retomaram a discussão sobre a importância desse tema² e alguns países propuseram modelos de dados a serem aplicados na rotina de atendimento e pesquisa³-⁴.
+Trabalhar com dados em saúde (Medicina/Saúde Digital) é um desafio grande. Uma das premissas fundamentais desse tipo de dado a interoperabilidade. A interoperabilidade é a possibilidade de um dado em saúde transitar entre sistemas/aplicações que não necessariamente estão na mesma infraestrutura. Alguns autores consideram a interoperabilidade como ponto de início para o desenvolvimento da área e que o esforço de implementação deve acontecer por um conjunto de profissionais tanto da área da saúde como da tecnologia da informação¹. Com o advento da covid-19 muitos pesquisadores retomaram a discussão sobre a importância desse tema² e alguns países propuseram modelos de dados a serem aplicados na rotina de atendimento e pesquisa³-⁴.
 
-O HL7 Fhir é um padrão de conformidade dos dados de saúde utilizado internacionalmente para interoperabilidade mencionada acima e tem ganhado adoção de muitos projetos em saúde⁵. Do ponto de vista prático ele se assemelha a uma [orientação a dados](https://blog.klipse.tech/dop/2022/06/22/principles-of-dop.html) [figura 1] aonde a lógica de aplicação é separada da persistência e camada de dados. Ainda que não seja muito comum em softwares atuais existem padrões comportamentais que já trabalham dessa forma, como no caso do [Data Access Object (DAO)](https://en.wikipedia.org/wiki/Data_access_object) que foi projetado justamente para esse tipo de aplicação. **Esse comportamento é esperado e essencial para as regras de negócio em saúde.**
+O HL7 FHIR é um padrão de conformidade dos dados de saúde utilizado internacionalmente para interoperabilidade e tem ganhado adoção de muitos projetos em saúde⁵. Do ponto de vista prático ele se assemelha a uma [orientação a dados](https://blog.klipse.tech/dop/2022/06/22/principles-of-dop.html) [figura 1] aonde a lógica de aplicação é separada da persistência e camada de dados. Ainda que não seja muito comum em softwares atuais existem padrões comportamentais que já trabalham dessa forma, como o [Data Access Object (DAO)](https://en.wikipedia.org/wiki/Data_access_object). **Esse comportamento é esperado e essencial para as regras de negócio em saúde.**
 
 <br>
 
@@ -42,7 +42,7 @@ A maior _lib_ e provavelmente o caso de uso mais bem sucedido até então é a [
 
 Para outras linguagens de programação é posssível procurar no repositório [Confluence](https://confluence.hl7.org/) as implementações open-source que já foram divulgadas. Enquanto algumas linguagens como .NET e Java possuem suas _libs_ de referência, outras como Python e Javascript não as possuem, tendo que buscar em um número considerável de alternativas quais que melhor se encaixam na sua regra de negócio.
 
-A seguir iremos avaliar as opções que existem para Javascript mas a existência desse repositório busca iniciar um processo de correção dessas desvantagens mencionadas a seguir.
+A seguir iremos avaliar as opções que existem para Javascript mas a existência desse repositório busca iniciar um processo de correção das desvantagens mencionadas a seguir.
 
 <br>
 
@@ -120,11 +120,11 @@ Os ValueSets são como se fossem os Enum no Typescript, eles definem opções es
 
 ![ValueSets](./assets/FHIR-ValueSets.png)
 
-Repare na última opção "SNOMED CT", nela ocorre um **conflito de licença**. A SNOMED CT é apenas pública para uso comercial em países membros, o que reduziria as opções de uso dessa lib (o próprio Brasil por exemplo não é um país membro.). **Para contonar essa questão os ValueSets que derivarem dessas opções deverão ser definidos pelo usuário, o indicação deles se dará por uma interface.**
+Repare na última opção "SNOMED CT", nela ocorre um **conflito de licença**. A SNOMED CT é apenas pública para uso comercial em países membros, o que reduziria as opções de uso dessa lib (o próprio Brasil por exemplo não é um país membro.). **Para contonar essa questão os ValueSets que derivarem dessas opções deverão ser definidos pelo usuário, a indicação deles se dará por uma interface.**
 
-No fluxo de atendimento de Agendamento um ValueSet que é SNOMED e pode ser substituído é o que o `EncounterReasonCodes.ts` que identifica o motivo que o paciente procurou aquele estabelecimento de saúde para agendameto daquela consulta. Atualmente o CID-11 já possui um capítulo, que não são diganósticos, mas são os motivos que levaram o paciente a procurar àquela consulta, nesse caso, esse CodeSystem pode ser utilizado no lugar do SNOMED.
+Por exemplo, no fluxo do Agendamento o ValueSet que identifica o motivo que levou o paciente a buscar aquela consulta (`EncounterReasonCodes.ts`) é um SNOMED-CT e pode ser substituído atualmente pelo capítulo do CID-11 que identifica a mesma coisa.
 
-Uma outra questão que surge com os ValueSets são os que existem e são muito extensos (>300 opções). Para esses também será definida uma interface e ficará a cargo do usuário implementar um jeito de fornecer esses objetos de valor.
+Vale também ressaltar que os ValueSets muito extensos (>300 opções) não estarão codados, apenas identificados por interface.
 
 > O único Value Set implementado como string direto sem a estrutura do { code, display e description } é o do ResourceType, que identifica o tipo de recurso utilizado.
 
