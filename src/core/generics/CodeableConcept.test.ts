@@ -17,11 +17,13 @@
 
 */
 
-import test from "node:test";
+import { describe, it } from "node:test";
 import assert from "node:assert";
 import { CodeableConcept } from "../generics/CodeableConcept.js";
 
-test('Deve instanciar um CodeableConcept.', () => {
-    const codeable = new CodeableConcept(undefined, 'Testando 1, 2, 3,...');
-    assert.strictEqual(codeable.text, 'Testando 1, 2, 3,...');
+describe('Testes de unidade classe CodeableConcept', () => {
+    it('Deve instanciar um CodeableConcept.', () => {
+        const codeable = new CodeableConcept(undefined, 'Testando 1, 2, 3,...');
+        assert.strictEqual(codeable.text, 'Testando 1, 2, 3,...');
+    });
 });

@@ -153,6 +153,7 @@ class Schedule implements Aggregate, ResourceType {
         if('name' in schedule) {
             this.name = schedule.name;
         }
+
     }
 }
 

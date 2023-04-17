@@ -19,7 +19,7 @@
 
 import { ResourceType } from "../ResourceType.js";
 
-class MedicationRequest implements ResourceType {
+abstract class MedicationRequest implements ResourceType {
     readonly resourceType = 'MedicationRequest';
 
 }

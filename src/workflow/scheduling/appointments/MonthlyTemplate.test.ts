@@ -1,4 +1,4 @@
-// @filename: Code.test.ts
+// @filename: MonthlyTemplate.test.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -19,11 +19,8 @@
 
 import { describe, it } from "node:test";
 import assert from "node:assert";
-import { Code } from "../generics/Code.js";
 
-describe('Testes de unidade cass Code.', () => {
-    it('Deve instanciar um Code.', () => {
-        const code = new Code("Z012");
-        assert.strictEqual(JSON.stringify(code), '"Z012"');
-    });
-});
+describe('Testes de unidade do MonthlyTemplate.', () => {
+    //TODO
+    it.todo('Deve instanciar um MonthlyTemplate com o conjunto mínimo de dados possíveis.', () => {});
+})

@@ -32,7 +32,7 @@ import { Identifier } from "../core/datatypes/Identifier.js";
  * 
  *  Source: https://www.hl7.org/fhir/group.html.
  */
-class Group implements Aggregate, ResourceType {
+abstract class Group implements Aggregate, ResourceType {
     readonly resourceType = 'Group';
     readonly identifier?: Identifier[]
 };

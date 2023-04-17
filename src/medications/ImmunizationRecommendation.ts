@@ -17,7 +17,7 @@
 
 */
 
-class ImmunizationRecommendation {
+abstract class ImmunizationRecommendation {
     readonly resourceType = 'ImmunizationRecommendation';
 }
 

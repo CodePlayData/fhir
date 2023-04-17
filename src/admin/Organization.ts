@@ -28,7 +28,7 @@ import { Identifier } from "../core/datatypes/Identifier.js";
  * 
  *  Source: https://www.hl7.org/fhir/organization.html.
  */
-class Organization implements Aggregate, ResourceType {
+abstract class Organization implements Aggregate, ResourceType {
     readonly resourceType = 'Organization';
     readonly identifier?: Identifier[]
 };

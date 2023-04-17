@@ -17,7 +17,7 @@
 
 */
 
-class Observation {
+abstract class Observation {
     readonly resourceType = 'Observation';
 }
 

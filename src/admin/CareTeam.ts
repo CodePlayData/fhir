@@ -44,7 +44,7 @@ import { Identifier } from "../core/datatypes/Identifier.js";
  *  
  */
 
-class CareTeam implements Aggregate, ResourceType {
+abstract class CareTeam implements Aggregate, ResourceType {
     readonly resourceType = 'CareTeam';
     readonly identifier?: Identifier[]
 };

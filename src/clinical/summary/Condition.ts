@@ -19,7 +19,7 @@
 
 import { ResourceType } from "../../ResourceType.js";
 
-class Condition implements ResourceType {
+abstract class Condition implements ResourceType {
     readonly resourceType = 'Condition';
 
 }

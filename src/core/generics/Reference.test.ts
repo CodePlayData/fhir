@@ -17,11 +17,13 @@
 
 */
 
-import test from "node:test";
+import { describe, it } from "node:test";
 import assert from "node:assert";
 import { Reference } from "../generics/Reference.js";
 
-test('Deve instanciar uma Reference.', () => {
-    const reference = new Reference<any>(undefined, 'Practitioner');
-    assert.strictEqual(reference.type, 'Practitioner');
+describe('Teste de unidade da classe Reference.', () => {
+    it('Deve instanciar uma Reference.', () => {
+        const reference = new Reference<any>(undefined, 'Practitioner');
+        assert.strictEqual(reference.type, 'Practitioner');
+    });
 });

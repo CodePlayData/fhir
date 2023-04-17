@@ -17,11 +17,13 @@
 
 */
 
-import test from "node:test";
+import { describe, it } from "node:test";
 import assert from "node:assert";
 import { Instant } from "./Instant.js";
 
-test('Deve instanciar um Instant.', () => {
-  const instant = new Instant('2015-02-07T13:28:17.239+02:00');
-  assert.strictEqual(JSON.stringify(instant), '"2015-02-07T13:28:17.239+02:00"');
-});
+describe('Testes de unidade classe Instant.', () => {
+  it('Deve instanciar um Instant.', () => {
+    const instant = new Instant('2015-02-07T13:28:17.239+02:00');
+    assert.strictEqual(JSON.stringify(instant), '"2015-02-07T13:28:17.239+02:00"');
+  });
+})

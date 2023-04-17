@@ -22,7 +22,7 @@ import { ResourceType } from "../ResourceType.js";
 import { Identifier } from "../core/datatypes/Identifier.js";
 
 
-class Communication implements Aggregate, ResourceType {
+abstract class Communication implements Aggregate, ResourceType {
     readonly resourceType = 'Communication';
     readonly identifier?: Identifier[]
 };

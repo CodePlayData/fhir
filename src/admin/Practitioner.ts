@@ -47,7 +47,7 @@ import { Identifier } from "../core/datatypes/Identifier.js";
  * 
  *  Source: https://www.hl7.org/fhir/practitioner.html.
  */
-class Practitioner implements Aggregate, ResourceType {
+abstract class Practitioner implements Aggregate, ResourceType {
     readonly resourceType = 'Practitioner';
     readonly identifier?: Identifier[]
 };

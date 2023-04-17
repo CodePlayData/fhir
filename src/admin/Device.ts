@@ -53,7 +53,7 @@ import { Identifier } from "../core/datatypes/Identifier.js";
  * 
  *  Source: https://www.hl7.org/fhir/device.html.
  */
-class Device implements Aggregate, ResourceType {
+abstract class Device implements Aggregate, ResourceType {
     readonly resourceType = 'Device';
     readonly identifier?: Identifier[]
 };

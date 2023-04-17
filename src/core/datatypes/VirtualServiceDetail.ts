@@ -25,7 +25,7 @@ import { Coding } from "./Coding.js";
 /**
  *  The VirtualServiceDetail structure defines details of a virtual communication capability, such as a web conference call.
  */
-class VirtualServiceDetail {
+abstract class VirtualServiceDetail {
     constructor(
         readonly channelType?: Coding<{
         readonly system?: URL,

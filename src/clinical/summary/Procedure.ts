@@ -17,7 +17,7 @@
 
 */
 
-class Procedure {
+abstract class Procedure {
     readonly resourceType = 'Procedure';
 }
 

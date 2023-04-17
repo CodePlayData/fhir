@@ -22,7 +22,7 @@ import { ResourceType } from "../ResourceType.js";
 import { Identifier } from "../core/datatypes/Identifier.js";
 
 
-class DocumentReference implements Aggregate, ResourceType {
+abstract class DocumentReference implements Aggregate, ResourceType {
     readonly resourceType = 'Account';
     readonly identifier?: Identifier[]
 }

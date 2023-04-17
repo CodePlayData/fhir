@@ -32,7 +32,7 @@ import { Identifier } from "../core/datatypes/Identifier.js";
  * 
  *  Source: https://www.hl7.org/fhir/patient.html.
  */
-class Patient implements Aggregate, ResourceType {
+abstract class Patient implements Aggregate, ResourceType {
     readonly resourceType = 'Patient';
     readonly identifier?: Identifier[]
 };

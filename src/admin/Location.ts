@@ -42,7 +42,7 @@ import { Identifier } from "../core/datatypes/Identifier.js";
  *  Source: https://www.hl7.org/fhir/location.html.
  *  
  */
-class Location implements Aggregate, ResourceType {
+abstract class Location implements Aggregate, ResourceType {
     readonly resourceType = 'Location';
     readonly identifier?: Identifier[]
 };

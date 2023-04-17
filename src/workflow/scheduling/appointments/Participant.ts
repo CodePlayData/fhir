@@ -1,21 +1,5 @@
 // @filename: Participant.ts
 
-import { CareTeam } from "../../../admin/CareTeam";
-import { Device } from "../../../admin/Device";
-import { Group } from "../../../admin/Group";
-import { HealthcareService } from "../../../admin/HealthcareService";
-import { Location } from "../../../admin/Location";
-import { Patient } from "../../../admin/Patient";
-import { Practitioner } from "../../../admin/Practitioner";
-import { PractitionerRole } from "../../../admin/PractitionerRole";
-import { RelatedPerson } from "../../../admin/RelatedPerson";
-import { Code } from "../../../core/generics/Code";
-import { CodeableConcept } from "../../../core/generics/CodeableConcept";
-import { Reference } from "../../../core/generics/Reference";
-import { Period } from "../../../core/datatypes/Period";
-import { ParticipationStatus } from "../../../values/ParticipationStatus";
-import { ParticipantType } from "./ParticipantType";
-
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
 
@@ -32,6 +16,22 @@ import { ParticipantType } from "./ParticipantType";
    limitations under the License.
 
 */
+
+import { CareTeam } from "../../../admin/CareTeam";
+import { Device } from "../../../admin/Device";
+import { Group } from "../../../admin/Group";
+import { HealthcareService } from "../../../admin/HealthcareService";
+import { Location } from "../../../admin/Location";
+import { Patient } from "../../../admin/Patient";
+import { Practitioner } from "../../../admin/Practitioner";
+import { PractitionerRole } from "../../../admin/PractitionerRole";
+import { RelatedPerson } from "../../../admin/RelatedPerson";
+import { Code } from "../../../core/generics/Code";
+import { CodeableConcept } from "../../../core/generics/CodeableConcept";
+import { Reference } from "../../../core/generics/Reference";
+import { Period } from "../../../core/datatypes/Period";
+import { ParticipationStatus } from "../../../values/ParticipationStatus";
+import { ParticipantType } from "./ParticipantType";
 
 class Participant {
     constructor(

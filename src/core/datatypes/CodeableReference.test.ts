@@ -17,7 +17,7 @@
 
 */
 
-import test from "node:test";
+import { describe, it } from "node:test";
 import assert from "node:assert";
 import { CodeableReference } from "./CodeableReference.js";
 import { CodeableConcept } from "../generics/CodeableConcept.js";
@@ -25,18 +25,26 @@ import { Coding } from "./Coding.js";
 import { Code } from "../generics/Code.js";
 import { Reference } from "../generics/Reference.js";
 
-test('Deve instanciar uma CodeableReference vazia.', () => {
-    const ref = new CodeableReference();
-    assert.strictEqual(ref.reference, undefined);
-});
 
-test('Deve instanciar uma CodeableReference completa.', () => {
-    const ref = new CodeableReference(
-        new CodeableConcept([
-                new Coding(undefined, '0.0.1', new Code('Z012'))],
-                'Testando 1, 2, 3,...'
-            ),
-            new Reference(undefined, 'Patient')
-        )
-    assert.strictEqual(ref.reference?.type, 'Patient');
+describe('Testes de unidade da classe CodeableReference.', () => {
+
+    it('Deve instanciar uma CodeableReference com o minimo de dados possivel.', () => {
+        const ref = new CodeableReference();
+        assert.strictEqual(ref.reference, undefined);
+    });
+
+    it.todo('Deve instanciar uma CodeableReference com o conceito.');
+
+    it.todo('Deve instanciar uma CodeableReference com a referência.');
+    
+    it('Deve instanciar uma CodeableReference completa.', () => {
+        const ref = new CodeableReference(
+            new CodeableConcept([
+                    new Coding(undefined, '0.0.1', new Code('Z012'))],
+                    'Testando 1, 2, 3,...'
+                ),
+                new Reference(undefined, 'Patient')
+            )
+        assert.strictEqual(ref.reference?.type, 'Patient');
+    });
 });

@@ -1,4 +1,4 @@
-// @filename: Code.test.ts
+// @filename: WeeklyTemplate.test.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -19,11 +19,8 @@
 
 import { describe, it } from "node:test";
 import assert from "node:assert";
-import { Code } from "../generics/Code.js";
 
-describe('Testes de unidade cass Code.', () => {
-    it('Deve instanciar um Code.', () => {
-        const code = new Code("Z012");
-        assert.strictEqual(JSON.stringify(code), '"Z012"');
-    });
+describe('Testes de unidade do WeeklyTemplate.', () => {
+    //TODO
+    it.todo('Deve instanciar um WeeklyTemplate com o conjunto minimo de dados possiveis.', () => {});
 });

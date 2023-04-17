@@ -17,16 +17,30 @@
 
 */
 
-import test from "node:test";
+import { describe, it } from "node:test";
 import assert from "node:assert";
 import { Coding } from "./Coding.js";
 
-test('Deve instanciar o Coding vazio', () => {
-    const coding = new Coding();
-    assert.strictEqual(coding.code, undefined);
+describe('Testes de unidade da classe Coding.', () => {
+    it('Deve instanciar o Coding com o minimo de dados possiveis.', () => {
+        const coding = new Coding();
+        assert.strictEqual(coding.code, undefined);
+    });
+
+    it.todo('Deve instanciar o Coding com a URL do sistema identificado.');
+
+    it('Deve instanciar o Coding com o codigo do sistema identificado.', () => {
+        const coding = new Coding(undefined, '111');
+        assert.strictEqual(coding.version, '111');
+    });
+
+    it.todo('Deve instanciar o Coding o conjunto de codigos.');
+
+    it.todo('Deve instanciar o Coding com a propriedade display.');
+
+    it.todo('Deve instanciar o Coding com a opcao UserSelected marcada');
+
+    it.todo('Deve instanciar um Coding completo.');
 });
 
-test('Deve instanciar o Coding com que parametros.', () => {
-    const coding = new Coding(undefined, '111');
-    assert.strictEqual(coding.version, '111');
-});
+

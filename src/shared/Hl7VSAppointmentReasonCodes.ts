@@ -1,10 +1,5 @@
 // @filename: Hl7VSAppointmentReasonCodes.ts
 
-import { Code } from "../core/generics/Code";
-import { CodeableConcept } from "../core/generics/CodeableConcept";
-import { Coding } from "../core/datatypes/Coding";
-import { AppointmentReasonCodes } from "../values/AppointmentReasonCodes";
-
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
 
@@ -21,6 +16,12 @@ import { AppointmentReasonCodes } from "../values/AppointmentReasonCodes";
    limitations under the License.
 
 */
+
+import { Code } from "../core/generics/Code";
+import { CodeableConcept } from "../core/generics/CodeableConcept";
+import { Coding } from "../core/datatypes/Coding";
+import { AppointmentReasonCodes } from "../values/AppointmentReasonCodes";
+
 
 type Hl7VSAppointmentReasonCodes = CodeableConcept<{
     readonly coding?: Coding<{

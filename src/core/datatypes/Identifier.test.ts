@@ -17,46 +17,50 @@
 
 */
 
-import test from "node:test";
+import { describe, it } from "node:test";
 import assert from "node:assert";
 import { Identifier } from "./Identifier.js";
 import { Code } from "../generics/Code.js";
 import { CodeableConcept } from "../generics/CodeableConcept.js";
 import { Coding } from "./Coding.js";
 
-test('Deve instanciar um Identifier vazio.', () => {
-    const id = new Identifier();
-    assert.strictEqual(id.use, undefined);
-});
 
-test('Deve instanciar um Identifier com o codigo de uso.', () => {
-    const id = new Identifier(new Code('usual'));
-    assert.strictEqual(JSON.stringify(id.use), '"usual"');
-});
+describe('Testes de unidade da classe Identifier.', () => {
 
-test('Deve instanciar um Identifier com o tipo.', () => {
-    const id = new Identifier(
-        undefined,
-        new CodeableConcept(
-            [
-                new Coding(
-                    undefined,
-                    undefined,
-                    new Code('DL')
-                )
-            ]
+    it('Deve instanciar um Identifier vazio.', () => {
+        const id = new Identifier();
+        assert.strictEqual(id.use, undefined);
+    });
+    
+    it('Deve instanciar um Identifier com o codigo de uso.', () => {
+        const id = new Identifier(new Code('usual'));
+        assert.strictEqual(JSON.stringify(id.use), '"usual"');
+    });
+    
+    it('Deve instanciar um Identifier com o tipo.', () => {
+        const id = new Identifier(
+            undefined,
+            new CodeableConcept(
+                [
+                    new Coding(
+                        undefined,
+                        undefined,
+                        new Code('DL')
+                    )
+                ]
+            )
         )
-    )
-    assert.strictEqual(JSON.stringify(id), '{"type":{"coding":[{"code":"DL"}]}}');
-});
-
-test('Deve instanciar um Identifier igual a um modelo pre-definido que contem system e value.', () => {
-    const id = new Identifier(undefined, undefined, 'urn:system', 'slot-0001');
-    assert.deepEqual(
-        JSON.stringify(id),
-        JSON.stringify({
-            "system": "urn:system",
-            "value": "slot-0001"
-        })
-    )
+        assert.strictEqual(JSON.stringify(id), '{"type":{"coding":[{"code":"DL"}]}}');
+    });
+    
+    it('Deve instanciar um Identifier igual a um modelo pre-definido que contem system e value.', () => {
+        const id = new Identifier(undefined, undefined, 'urn:system', 'slot-0001');
+        assert.deepEqual(
+            JSON.stringify(id),
+            JSON.stringify({
+                "system": "urn:system",
+                "value": "slot-0001"
+            })
+        )
+    });
 });

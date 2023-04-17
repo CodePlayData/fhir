@@ -37,7 +37,7 @@ import { Identifier } from "../core/datatypes/Identifier.js";
  *  Source: https://www.hl7.org/fhir/healthcareservice.html.
  *  
  */
-class HealthcareService implements Aggregate, ResourceType {
+abstract class HealthcareService implements Aggregate, ResourceType {
     readonly resourceType = 'HealthcareService';
     readonly identifier?: Identifier[]
 };

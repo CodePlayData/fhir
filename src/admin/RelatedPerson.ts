@@ -41,7 +41,7 @@ import { Identifier } from "../core/datatypes/Identifier.js";
  * 
  *  Source: https://www.hl7.org/fhir/relatedperson.html.
  */
-class RelatedPerson implements Aggregate, ResourceType {
+abstract class RelatedPerson implements Aggregate, ResourceType {
     readonly resourceType = 'RelatedPerson';
     readonly identifier?: Identifier[]
 };

@@ -38,7 +38,7 @@ import { Location } from "../../../admin/Location.js";
 import { AppointmentResponseStatus } from "../../../values/AppointmentResponseStatus.js";
 import { ParticipantType } from "./ParticipantType.js";
 
-type AppointmentReponseSchema = {
+type AppointmentReponseSchema5 = {
     readonly identifier?: Identifier[],
     readonly appointment: Reference<Appointment>,
     readonly proposedNewTime?: boolean,
@@ -51,6 +51,17 @@ type AppointmentReponseSchema = {
     readonly recurring?: boolean,
     readonly occurrencedate?: Date,
     readonly recurrenceId?: PositiveInt
+};
+
+type AppointmentReponseSchemaV4B = {
+    readonly identifier?: Identifier[],
+    readonly appointment: Reference<Appointment>,
+    readonly start?: Instant<string>,
+    readonly end?: Instant<string>,
+    readonly participantType?: CodeableConcept<ParticipantType>,
+    readonly actor?: Reference<Patient | Practitioner | PractitionerRole | RelatedPerson | Device | HealthcareService | Location>,
+    readonly participantStatus: Code<AppointmentResponseStatus['code']>,
+    readonly comment?: string
 };
 
 class AppointmentResponse implements Aggregate, ResourceType {
@@ -68,19 +79,26 @@ class AppointmentResponse implements Aggregate, ResourceType {
     readonly occurrencedate;
     readonly recurrenceId;
 
-    constructor(appointmentResponse: AppointmentReponseSchema) {
+    constructor(appointmentResponse: AppointmentReponseSchemaV4B | AppointmentReponseSchema5) {
         this.identifier = appointmentResponse?.identifier;
         this.appointment = appointmentResponse?.appointment;
-        this.proposedNewTime = appointmentResponse?.proposedNewTime;
         this.start = appointmentResponse?.start;
         this.end = appointmentResponse?.end;
         this.participantType = appointmentResponse?.participantType;
         this.actor = appointmentResponse?.actor;
         this.participantStatus = appointmentResponse?.participantStatus;
         this.comment = appointmentResponse?.comment;
-        this.recurring = appointmentResponse?.recurring;
-        this.occurrencedate = appointmentResponse?.occurrencedate;
-        this.recurrenceId = appointmentResponse?.recurrenceId
+        if(
+            'recurring' in appointmentResponse || 
+            'occurrencedate' in appointmentResponse || 
+            'recurrenceId' in appointmentResponse || 
+            'proposedNewTime' in  appointmentResponse
+            ) {
+            this.recurring = appointmentResponse?.recurring;
+            this.occurrencedate = appointmentResponse?.occurrencedate;
+            this.recurrenceId = appointmentResponse?.recurrenceId
+            this.proposedNewTime = appointmentResponse?.proposedNewTime;
+        }
     }
 }
 
