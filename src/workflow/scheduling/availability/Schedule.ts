@@ -53,6 +53,7 @@ type ScheduleSchemaR4B = {
 type ScheduleSchemaR5 = ScheduleSchemaR4B & {
     readonly name?: string
 }
+
 /**
  *  A container for slots of time that may be available for booking appointments.
  * 

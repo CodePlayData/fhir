@@ -28,9 +28,21 @@ import { Instant } from "../../../core/generics/Instant.js";
 import { Reference } from "../../../core/generics/Reference.js";
 import { Code } from "../../../core/generics/Code.js";
 
-describe('Testes de unidade da classe Slot.', () => {
+describe('Testes Unitários do Slot com...', () => {
     
-    it('Deve instanciar um Slot com o conjunto minimo de dados possiveis.', () => {
+    //TODO
+    it.todo('o horário de término anterior ao de início.', () => {});
+    
+    //TODO
+    it.todo('um status inexistente.', () => {});
+
+    //TODO
+    it.todo('uma referência que não é a um calendário.', () => {});
+
+    //TODO
+    it.todo('uma combinação trocada do tipo de serviço com o tipo de consulta.', () => {});
+
+    it('o mínimo de dados obrigatórios.', () => {
         const slot = new Slot(
             {
                 schedule: new Reference(new URL("https://schedule.example.com")),
@@ -41,7 +53,7 @@ describe('Testes de unidade da classe Slot.', () => {
         )
     });
 
-    it('Deve instanciar um Slot com pelo menos um identificador.', () => {
+    it('pelo menos um identificador.', () => {
         const slot = new Slot(
             {
                 schedule: new Reference(new URL("https://schedule.example.com")),
@@ -55,7 +67,7 @@ describe('Testes de unidade da classe Slot.', () => {
         assert.strictEqual(slot.identifier![0].system, 'urn:system');
     });
 
-    it('Deve instanciar um Slot com a identificacao da categoria do servico.', () => {
+    it('a categoria do serviço.', () => {
         const slot = new Slot(
             {
                 schedule: new Reference(new URL("https://schedule.example.com")),
@@ -80,7 +92,7 @@ describe('Testes de unidade da classe Slot.', () => {
         assert.strictEqual(serviceCategory[0].coding[0].display, "Adoption");
     });
 
-    it('Deve instanciar um Slot com a identificacao do tipo do servico (v4).', () => {
+    it('o tipo do serviço na versão R4B.', () => {
         const slot = new Slot(
             {
                 schedule: new Reference(new URL("https://schedule.example.com")),
@@ -106,7 +118,7 @@ describe('Testes de unidade da classe Slot.', () => {
         assert.strictEqual(code.coding![0].display, "Immunization");
     });
 
-    it('Deve instanciar um Slot com a identificacao do tipo de servico (v5).', () => {
+    it('o tipo de serviço na versão R5.', () => {
         const slot = new Slot(
             {
                 schedule: new Reference(new URL("https://schedule.example.com")),
@@ -134,7 +146,7 @@ describe('Testes de unidade da classe Slot.', () => {
         assert.strictEqual(code.concept?.coding![0].display, "Immunization");
     });
 
-    it('Deve instanciar um Slot com identificacao da especialidade.', () => {
+    it('a especialidade.', () => {
         const slot = new Slot(
             {
                 schedule: new Reference(new URL("https://schedule.example.com")),
@@ -159,7 +171,7 @@ describe('Testes de unidade da classe Slot.', () => {
         assert.strictEqual(specialty![0].coding![0].display, "Clinical immunology");
     });
 
-    it('Deve instanciar um Slot com identificacao do tipo de agendamento que ira gerar.', () => {
+    it('o tipo de agendamento.', () => {
         const slot = new Slot(
             {
                 schedule: new Reference(new URL("https://schedule.example.com")),
@@ -185,7 +197,7 @@ describe('Testes de unidade da classe Slot.', () => {
         assert.deepEqual(coding[0].code, new Code('WALKIN'));
     });
 
-    it('Deve instanciar um Slot com um status.', () => {
+    it('um status válido.', () => {
         const slot = new Slot(
             {
                 schedule: new Reference(new URL("https://schedule.example.com")),
@@ -197,7 +209,7 @@ describe('Testes de unidade da classe Slot.', () => {
         assert.deepEqual(slot.status, new Code('free'));
     });
 
-    it('Deve instanciar um Slot definindo um status de inicio e a um final.', () => {
+    it('um status, um horário de início e um de final válidos.', () => {
         const slot = new Slot(
             {
                 schedule: new Reference(new URL("https://schedule.example.com")),
@@ -209,7 +221,7 @@ describe('Testes de unidade da classe Slot.', () => {
         assert.strictEqual(JSON.stringify(slot.end), '"2019-10-30T11:15:31.450+05:30"');
     });
     
-    it('Deve instanciar um Slot com comentario.', () => {
+    it('um comentário.', () => {
         const slot = new Slot(
             {
                 schedule: new Reference(new URL("https://schedule.example.com")),
@@ -224,7 +236,7 @@ describe('Testes de unidade da classe Slot.', () => {
             "Assessments should be performed before requesting appointments in this slot.")
     });
     
-    it('Deve instanciar um Slot completo e valido com a referencia disponivel.', () => {
+    it('todos os dados completos.', () => {
         const slot = new Slot(
             {
                 schedule: new Reference(new URL("https://schedule.example.com")),
@@ -265,7 +277,8 @@ describe('Testes de unidade da classe Slot.', () => {
                         ]
                     )
                 ],
-                appointmentType: new CodeableConcept(
+                appointmentType:[ 
+                    new CodeableConcept(
                     [
                         new Coding(
                             new URL("http://hl7.org/fhir/v2/0276"),
@@ -274,7 +287,7 @@ describe('Testes de unidade da classe Slot.', () => {
                             "A previously unscheduled walk-in visit"
                         )
                     ]
-                ),
+                )],
                 status: new Code('free'),
                 start: new Instant("2019-10-30T10:45:31.449+05:30"),
                 end: new Instant("2019-10-30T11:15:31.450+05:30"),

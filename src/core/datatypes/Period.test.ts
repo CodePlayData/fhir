@@ -21,8 +21,15 @@ import { describe, it } from "node:test";
 import assert from "node:assert";
 import { Period } from "./Period.js";
 
-describe('Testes de unidade da class Period.', () => {
-    it('Deve instanciar um Period.', () => {
+describe('Testes Unitários do Period com...', () => {
+
+    //TODO
+    it.todo('uma das datas/horários inválidos.', () => {});
+
+    //TODO
+    it.todo('a data/horário de final anterior ao e início.', () => {});
+
+    it('os dados completos.', () => {
         const period = new Period(new Date('2023-02-05'), new Date('2025-02-05'));
         assert.deepEqual(period.start, new Date('2023-02-05'));
     });

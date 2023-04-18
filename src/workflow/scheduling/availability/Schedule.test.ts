@@ -30,9 +30,12 @@ import { CodeableConcept } from "../../../core/generics/CodeableConcept.js";
 import { Period } from "../../../core/datatypes/Period.js";
 import { DateTime } from "../../../core/primitives/DateTime.js";
 
-describe('Testes de unidade da classe Schedule.', () => {
+describe('Testes Unitários do Schedule com...', () => {
 
-  it('Deve instanciar o Schedule com o mínimo de dados obrigatórios.', () => {
+  //TODO
+  it.todo('o ator inválido.', () => {});
+
+  it('o mínimo de dados obrigatórios.', () => {
     const schedule = new Schedule({
       actor: new Reference<Practitioner>(new URL("https://practitioner.example.com"))
     })
@@ -48,7 +51,7 @@ describe('Testes de unidade da classe Schedule.', () => {
     );
   });
 
-  it('Deve instanciar o Schedule com pelo menos um identificador.', () => {
+  it('pelo menos um identificador.', () => {
     const schedule = new Schedule({
       actor: new Reference<Practitioner>(new URL("https://practitioner.example.com")),
       identifier: [ new Identifier(undefined, undefined, 'urn:system', 'schedule-001')]
@@ -71,7 +74,7 @@ describe('Testes de unidade da classe Schedule.', () => {
     )
   });
 
-  it('Deve instanciar o Schedule com a propriedade que identifica se esta ativo ou nao.', () => {
+  it('a propriedade que identifica se está ativo ou não.', () => {
     const schedule = new Schedule({
       actor: new Reference<Practitioner>(new URL("https://practitioner.example.com")),
       active: true
@@ -89,7 +92,7 @@ describe('Testes de unidade da classe Schedule.', () => {
     )
   });
 
-  it('Deve instanciar o Schedule com a categoria de servico.', () => {
+  it('a categoria de serviço.', () => {
     const schedule = new Schedule({
       actor: new Reference<Practitioner>(new URL("https://practitioner.example.com")),
       serviceCategory: new CodeableConcept(
@@ -125,7 +128,7 @@ describe('Testes de unidade da classe Schedule.', () => {
     )
   });
 
-  it('Deve instanciar o Schedule com o tipo de servico.', () => {
+  it('o tipo de serviço.', () => {
     const schedule = new Schedule({
       actor: new Reference<Practitioner>(new URL("https://practitioner.example.com")),
       serviceType: [
@@ -168,7 +171,7 @@ describe('Testes de unidade da classe Schedule.', () => {
     )
   });
 
-  it('Deve instanciar o Schedule com a especialidade identificada.', () => {
+  it('a especialidade identificada.', () => {
     const schedule = new Schedule({
       actor: new Reference<Practitioner>(new URL("https://practitioner.example.com")),
       specialty: [
@@ -207,7 +210,7 @@ describe('Testes de unidade da classe Schedule.', () => {
     )
   });
 
-  it('Deve instanciar um Schedule com um nome.', () => {
+  it('um nome.', () => {
     const schedule = new Schedule({
       actor: new Reference<Practitioner>(new URL("https://practitioner.example.com")),
       name: "Dr. Pedro Paulo - Cirurgião Dentista Clínico Geral e Saúde Coletiva"
@@ -225,7 +228,7 @@ describe('Testes de unidade da classe Schedule.', () => {
     )
   });
 
-  it('Deve instanciar um Schedule com horizonte de disponibilidade.', () => {
+  it('o horizonte de disponibilidade válido.', () => {
     const schedule = new Schedule({
       actor: new Reference<Practitioner>(new URL("https://practitioner.example.com")),
       planningHorizon: new Period(
@@ -249,7 +252,7 @@ describe('Testes de unidade da classe Schedule.', () => {
     )
   });
 
-  it('Deve instanciar um Schedule com comentários.', () => {
+  it('comentários.', () => {
     const schedule = new Schedule({
       actor: new Reference<Practitioner>(new URL("https://practitioner.example.com")),
       comment: '**Teste**'
@@ -260,4 +263,6 @@ describe('Testes de unidade da classe Schedule.', () => {
       JSON.stringify({"resourceType":"Schedule","actor":{"reference":"https://practitioner.example.com/"},"comment":"**Teste**"})
     )
   });
+
 });
+

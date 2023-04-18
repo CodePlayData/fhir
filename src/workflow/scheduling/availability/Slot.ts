@@ -33,14 +33,11 @@ import { ServiceType } from "../../../shared/ServiceType.js";
 import { PracticeSettingCodeValueSet } from "../../../shared/PracticeSettingCodeValueSet.js";
 import { Hl7VSAppointmentReasonCodes } from "../../../shared/Hl7VSAppointmentReasonCodes.js";
 
-type SlotSchema = {
+
+type SlotBase = {
     readonly identifier?: Identifier[],
     readonly serviceCategory?: CodeableConcept<ServiceCategory>[],
-    // v5 update
-    readonly serviceType?: CodeableReference<HealthcareService>[] | CodeableConcept<ServiceType>[],
     readonly specialty?: CodeableConcept<PracticeSettingCodeValueSet>[],
-    // v5 update
-    readonly appointmentType?: CodeableConcept<Hl7VSAppointmentReasonCodes> | CodeableConcept<Hl7VSAppointmentReasonCodes>[],
     readonly schedule: Reference<Schedule>,
     readonly status: Code<SlotStatus['code']>,
     readonly start: Instant<string>,
@@ -48,6 +45,18 @@ type SlotSchema = {
     readonly overbooked?: boolean,
     readonly comment?: string
 }
+
+type SlotSchemaR5 = SlotBase & {
+    readonly serviceType?: CodeableConcept<ServiceType>[],
+    readonly appointmentType?: CodeableConcept<Hl7VSAppointmentReasonCodes>[],
+
+}
+
+type SlotSchemaR4B = SlotBase & {
+    readonly serviceType?: CodeableReference<HealthcareService>[],
+    readonly appointmentType?: CodeableConcept<Hl7VSAppointmentReasonCodes>,
+}
+
 
 /**
  *  A slot of time on a schedule that may be available for booking appointments.
@@ -107,7 +116,7 @@ class Slot implements Aggregate, ResourceType {
      * However, in some medical scheduling scenarios, determining which resources are required for an appointment 
      * is very complex, and options other than using schedule+slot may be a better solution.
      * 
-     * @param slot @type { SlotSchema } - An object that contains:
+     * @param slot @type { SlotSchemaR4B | SlotSchemaR5 } - An object that contains:
      *      1. **identifier** -	External Ids for this item
      *      2. **serviceCategory** - A broad categorization of the service that is to be performed during this appointment
      *      3. **serviceType** - The type of appointments that can be booked into this slot (ideally this would be an identifiable service - which is at a location, rather than the location itself). If provided then this overrides the value provided on the Schedule resource
@@ -121,7 +130,7 @@ class Slot implements Aggregate, ResourceType {
      *      11. **comment** - Comments on the slot to describe any extended information. Such as custom constraints on the slot
      * 
      */
-    constructor(slot: SlotSchema) {
+    constructor(slot: SlotSchemaR4B | SlotSchemaR5) {
         this.identifier = slot?.identifier;
         this.serviceCategory = slot?.serviceCategory;
         this.serviceType = slot?.serviceType;
@@ -138,5 +147,7 @@ class Slot implements Aggregate, ResourceType {
 
 export {
     Slot,
-    SlotSchema
+    SlotBase,
+    SlotSchemaR4B,
+    SlotSchemaR5
 }
