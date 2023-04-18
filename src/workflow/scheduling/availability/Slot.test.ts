@@ -37,6 +37,15 @@ describe('Testes Unitários do Slot com...', () => {
     it.todo('um status inexistente.', () => {});
 
     //TODO
+    it.todo('pelo menos uma especialidade inexistente.', () => {});
+
+    //TODO
+    it.todo('pelo menos uma categoria de serviço inexistente.', () => {});
+
+    //TODO
+    it.todo('pelo menos um identificador inválido', () => {})
+
+    //TODO
     it.todo('uma referência que não é a um calendário.', () => {});
 
     //TODO

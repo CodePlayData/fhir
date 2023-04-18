@@ -159,5 +159,7 @@ class Schedule implements Aggregate, ResourceType {
 }
 
 export {
-    Schedule
+    Schedule,
+    ScheduleSchemaR4B,
+    ScheduleSchemaR5
 }

@@ -38,29 +38,26 @@ import { Location } from "../../../admin/Location.js";
 import { AppointmentResponseStatus } from "../../../values/AppointmentResponseStatus.js";
 import { ParticipantType } from "./ParticipantType.js";
 
-type AppointmentReponseSchema5 = {
+type AppointmentResponseSchemaBase = {
     readonly identifier?: Identifier[],
     readonly appointment: Reference<Appointment>,
-    readonly proposedNewTime?: boolean,
     readonly start?: Instant<string>,
     readonly end?: Instant<string>,
-    readonly participantType?: CodeableConcept<ParticipantType>,
-    readonly actor?: Reference<Patient | Group | Practitioner | PractitionerRole | RelatedPerson | Device | HealthcareService | Location>,
     readonly participantStatus: Code<AppointmentResponseStatus['code']>,
+    readonly participantType?: CodeableConcept<ParticipantType>,
+}
+
+type AppointmentReponseSchemaR5 = AppointmentResponseSchemaBase & {
+    readonly proposedNewTime?: boolean,
+    readonly actor?: Reference<Patient | Group | Practitioner | PractitionerRole | RelatedPerson | Device | HealthcareService | Location>,
     readonly comment?: Markdown,
     readonly recurring?: boolean,
     readonly occurrencedate?: Date,
     readonly recurrenceId?: PositiveInt
 };
 
-type AppointmentReponseSchemaV4B = {
-    readonly identifier?: Identifier[],
-    readonly appointment: Reference<Appointment>,
-    readonly start?: Instant<string>,
-    readonly end?: Instant<string>,
-    readonly participantType?: CodeableConcept<ParticipantType>,
+type AppointmentReponseSchemaR4B = AppointmentResponseSchemaBase & {
     readonly actor?: Reference<Patient | Practitioner | PractitionerRole | RelatedPerson | Device | HealthcareService | Location>,
-    readonly participantStatus: Code<AppointmentResponseStatus['code']>,
     readonly comment?: string
 };
 

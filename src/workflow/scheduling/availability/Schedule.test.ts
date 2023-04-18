@@ -33,7 +33,25 @@ import { DateTime } from "../../../core/primitives/DateTime.js";
 describe('Testes Unitários do Schedule com...', () => {
 
   //TODO
-  it.todo('o ator inválido.', () => {});
+  it.todo('pelo menos um identificador inválido.', () => {});
+
+  //TODO
+  it.todo('uma categoria de serviço inexistente.', () => {});
+
+  //TODO
+  it.todo('pelo menos um tipo de serviço inexistente.', () => {});
+
+  //TODO
+  it.todo('pelo menos uma especialidade inexistente.', () => {});
+
+  //TODO
+  it.todo('a referência ao ator inválido.', () => {});
+
+  //TODO
+  it.todo('um horizonte de planejamento inválido.', () => {});
+
+  //TODO
+  it.todo('comentários inválidos.', () => {});
 
   it('o mínimo de dados obrigatórios.', () => {
     const schedule = new Schedule({
