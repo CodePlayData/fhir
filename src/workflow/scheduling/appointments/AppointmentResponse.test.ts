@@ -20,7 +20,34 @@
 import { describe, it } from "node:test";
 import assert from "node:assert";
 
-describe('Testes de unidade da classe AppointmentResponse.', () => {
+describe('Testes Unitários da AppointmentReponse com...', () => {
+
     //TODO
-    it.todo('Deve instanciar a AppointmentResponse com o mínimo de dados obrigatórios.', () => {});
+    it.todo('pelo menos um identificador inválido.', () => {});
+
+    //TODO
+    it.todo('a referência ao agendamento inválida.', () => {});
+
+    //TODO
+    it.todo('o horário de término anterior ao de início.', () => {});
+
+    //TODO
+    it.todo('um status do participante inexistente.', () => {});
+
+    //TODO
+    it.todo('um tipo de participante inexistente.', () => {});
+
+    //TODO
+    it.todo('comentários inválidos.', () => {});
+
+    //TODO
+    it.todo('a referência ao ator inválida.', () => {});
+
+    //TODO
+    it.todo('o mínimo de dados obrigatórios.', () => {});
+
+    //TODO
+    it.todo('pelo menos um identificador.', () => {});
+
+    //testar todas as outras propriedades...
 });

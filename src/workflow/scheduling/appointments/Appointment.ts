@@ -57,36 +57,48 @@ import { EncounterReasonCodesv5, EncounterReasonCodesv4 } from "./EncounterReaso
 import { Participant } from "./Participant.js";
 import { RecurrenceTemplate } from "./RecurrenceTemplate.js";
 
-type AppointmentSchema = {
+type AppointmentSchemaBase = {
     readonly identifier?: Identifier[],
     readonly status: Code<AppointmentStatus['code']>,
     readonly cancellationReason?: CodeableConcept<AppointmentCancellationReason>,
-    readonly class?: CodeableConcept<any>[],
-    readonly serviceCategory?: CodeableConcept<ServiceCategory>[]
-    readonly serviceType?: CodeableReference<HealthcareService>[] | CodeableConcept<ServiceType>[],
+    readonly serviceCategory?: CodeableConcept<ServiceCategory>[],
     readonly specialty?: CodeableConcept<PracticeSettingCodeValueSet>[],
     readonly appointmentType?: CodeableConcept<Hl7VSAppointmentReasonCodes>,
-    readonly reason?: CodeableReference<EncounterReasonCodesv5>[],
-    readonly reasonCode?:CodeableConcept<EncounterReasonCodesv4>[],
-    readonly reasonReference?: Reference<Condition | Procedure | Observation | ImmunizationRecommendation>[],
-    readonly priority?: CodeableConcept<ActPriority> | number,
     readonly description?: string,
-    readonly replaces?: Reference<Appointment>[],
-    readonly virtualService?: VirtualServiceDetail[],
     readonly supportingInformation?: Reference<any>[],
-    readonly previousAppointment?: Reference<Appointment>,
-    readonly originatingAppointment?: Reference<Appointment>,
     readonly start?: Instant<string>,
     readonly end?: Instant<string>,
     readonly minutesDuration?: PositiveInt,
-    readonly requestedPeriod?: Period[],
     readonly slot?: Reference<Slot>[],
-    readonly account?: Reference<Account>,
+    readonly requestedPeriod?: Period[],
+    readonly participant: Participant[],
+}
+
+type AppointmentSchemaR4B = AppointmentSchemaBase & {
+    readonly serviceType?: CodeableConcept<ServiceType>[],
+    readonly reasonCode?:CodeableConcept<EncounterReasonCodesv4>[],
+    readonly reasonReference?: Reference<Condition | Procedure | Observation | ImmunizationRecommendation>[],
+    readonly priority?: number,
     readonly created?: DateTime,
     readonly comment?: string,
+    readonly patientInstruction?: string
+    readonly basedOn?: Reference<ServiceRequest>[],
+}
+
+type AppointmentSchemaR5 = AppointmentSchemaBase & {
+    readonly class?: CodeableConcept<any>[],
+    readonly serviceType?: CodeableReference<HealthcareService>[] | CodeableConcept<ServiceType>[],
+    readonly reason?: CodeableReference<EncounterReasonCodesv5>[],
+    readonly priority?: CodeableConcept<ActPriority>,
+    readonly replaces?: Reference<Appointment>[],
+    readonly virtualService?: VirtualServiceDetail[],
+    readonly previousAppointment?: Reference<Appointment>,
+    readonly originatingAppointment?: Reference<Appointment>,
+    readonly account?: Reference<Account>,
+    readonly created?: DateTime,
     readonly cancellationDate?: DateTime,
     readonly note?: Annotation,
-    readonly patientInstruction?: string | Binary | CodeableReference<{
+    readonly patientInstruction?: Binary | CodeableReference<{
         readonly concept?: CodeableConcept<any>,
         readonly reference?: Reference<DocumentReference | Communication>
     }>
@@ -94,7 +106,6 @@ type AppointmentSchema = {
     readonly subject?: Reference<Patient | Group>,
     readonly recurrenceId?: PositiveInt,
     readonly occurrenceChanged?: boolean,
-    readonly participant: Participant[],
     readonly recurrenceTemplate?: RecurrenceTemplate[]
 }
 
@@ -136,7 +147,7 @@ class Appointment implements Aggregate, ResourceType {
     readonly participant;
     readonly recurrenceTemplate;
 
-    constructor(appointment: AppointmentSchema) {
+    constructor(appointment: AppointmentSchemaR4B | AppointmentSchemaR5) {
         this.identifier = appointment?.identifier;
         this.status = appointment?.status;
         this.cancellationReason = appointment?.cancellationReason;
