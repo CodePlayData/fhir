@@ -153,6 +153,52 @@ class Appointment implements Aggregate, ResourceType {
     readonly recurrenceTemplate;
 
     /**
+     *  Appointment resources are used to provide information about a planned meeting that may be in the future or past. The resource only
+     *  describes a single meeting, a series of repeating visits would require multiple appointment resources to be created for each instance. 
+     *  Examples include a scheduled surgery, a follow-up for a clinical visit, a scheduled conference call between clinicians to discuss a case 
+     *  (where the patient is a subject, but not a participant), the reservation of a piece of diagnostic equipment for a particular use, etc. 
+     *  The visit scheduled by an appointment may be in person or remote (by phone, video conference, etc.) All that matters is that the time and 
+     *  usage of one or more individuals, locations and/or pieces of equipment is being fully or partially reserved for a designated period of 
+     *  time.        
+     *  This definition takes the concepts of appointments in a clinical setting and also extends them to be relevant in the community healthcare
+     *  space, and to ease exposure to other appointment / calendar standards widely used outside of healthcare.
+     * 
+     *  The basic workflow to create an appointment is:
+     *  a. **Discovery/Addressing**
+     *     Before an appointment can be made, the address/endpoint details of the resource that we want to schedule an appointment with must be
+     *     determined. This is often based on the healthcare service type and any formatting information which indicates how to make the request. 
+     *     This is typically handled via the Schedule resource.
+     *  b. **Checking Availability on the Schedule (optional)**
+     *     This optional step permits the checking of any existing available times (Slot resources associated with a selected Schedule) that can 
+     *     be booked against. Just because a time is indicated as available doesn't guarantee that an appointment can be made. The booking system 
+     *     that is going to process the request may make other qualifying decisions to determine if the appointment can be made, such as 
+     *     permissions, assessments, availability of other resources, etc. This step is optional, as the creation of the appointment is never a
+     *     guaranteed action. But by performing this availability check, you can increase the chances of making a successful booking.
+     *  c. **Making the Appointment Request**
+     *    When an appointment is required, a requester creates new Appointment resource with the Appointment.status="proposed".
+     *    All included participants (optional or mandatory) should have the status="needs-action" to allow filtering and displaying
+     *    appointments to user-participants for accepting or rejecting new and updated requests. Based on internal system business rules, certain
+     *    statuses may be automatically updated, for example: "reject because the requested participant is on vacation" or "this type of user is 
+     *    not allowed to request those specific appointments".
+     *  d. **Replying to the request**
+     *     The reply process is simply performed by the person/system handling the requests, updating the participant statuses on the 
+     *     appointment as needed. If there are multiple systems involved, then these will create AppointmentResponse entries with the desired
+     *     statuses. Once all participants have their participation status created/updated (and the main system marking the appointment 
+     *     participant records with the AppointmentResponse statuses) then the overall status of the Appointment is updated.
+     *  e. **Checking the overall status (Requester)**
+     *     The requester (organizer) of the appointment checks for the overall status of the appointment (and appointment responses, where 
+     *     applicable) using FHIR pub-sub techniques.
+     *     Where the participant statuses indicate that a re-scheduling is required, then the process may start again, with other systems
+     *     replying to a new set of times.
+     *  f. **Waitlisting the Appointment (optional)**
+     *      This optional step permits creating a waitlisted appointment. This could occur if an appointment needs to be booked into a time that 
+     *      is not ideal for the patient due to lack of available time slots. In this workflow, there would be two appointments, the booked 
+     *      appointment in the time slot that is currently available, and the waitlisted appointment with a requestedPeriod spanning the time 
+     *      that the patient would prefer if new slots become available.
+     *      If new time slots become available during the requestedPeriod, the scheduling system, or staff at the scheduling organization, can 
+     *      notify the patient that a new time slot is available. If the patient chooses, the waitlisted appointment would then be booked into 
+     *      that specific slot, and the previously booked appointment would be canceled. The specific business process for notifying patients of 
+     *      new availability is not specified, and is up to the implementing system to determine.
      * 
      * @param appointment @type { AppointmentSchemaR4B | AppointmentSchemaR5 } - An object that contains:
      *      1. **identifier** - This records identifiers associated with this appointment concern that are defined by business 
@@ -174,46 +220,67 @@ class Appointment implements Aggregate, ResourceType {
      *                      This can be coded, or as specified using information from another resource. When the patient 
      *                      arrives and the encounter begins it may be used as the admission diagnosis. The indication will 
      *                      typically be a Condition (with other resources referenced in the evidence.detail), or a Procedure.
-     *      10. **priority** - The priority of the appointment. Can be used to make informed decisions if needing to re-prioritize 
+     *      10. **reasonCode** - The coded reason that this appointment is being scheduled. This is more clinical than administrative.
+     *      11. **reasonReference** - Reason the appointment has been scheduled to take place, as specified using information from another
+     *                                resource. When the patient arrives and the encounter begins it may be used as the admission diagnosis. The 
+     *                                indication will typically be a Condition (with other resources referenced in the evidence.detail), or 
+     *                                a Procedure.
+     *      12. **priority** - The priority of the appointment. Can be used to make informed decisions if needing to re-prioritize 
      *                         appointments. (The iCal Standard specifies 0 as undefined, 1 as highest, 9 as lowest priority).
-     *      11. **description** - The brief description of the appointment as would be shown on a subject line in a meeting request, 
+     *      13. **description** - The brief description of the appointment as would be shown on a subject line in a meeting request, 
      *                            or appointment list. Detailed or expanded information should be put in the note field.
-     *      12. **replaces** - Appointment replaced by this Appointment in cases where there is a cancellation, the details of the 
+     *      14. **replaces** - Appointment replaced by this Appointment in cases where there is a cancellation, the details of the 
      *                         cancellation can be found in the cancellationReason property (on the referenced resource).
-     *      13. **virtualService** - Connection details of a virtual service (e.g. conference call).
+     *      15. **virtualService** - Connection details of a virtual service (e.g. conference call).
      *                               There are two types of virtual meetings that often exist:
      *                               a.    a persistent, virtual meeting room that can only be used for a single purpose at a time,
      *                               b.    and a dynamic virtual meeting room that is generated on demand for a specific purpose.
      *                                     Implementers may consider using Location.virtualService for persistent meeting rooms.
      *                               If each participant would have a different meeting link, an extension using the 
      *                               VirtualServiceContactDetail can be applied to the Appointment.participant BackboneElement.
-     *      14. **supportingInformation** - Additional information to support the appointment provided when making the appointment.
-     *      15. **previousAppointment** - The previous appointment in a series of related appointments. This property is intended 
+     *      16. **supportingInformation** - Additional information to support the appointment provided when making the appointment.
+     *      17. **previousAppointment** - The previous appointment in a series of related appointments. This property is intended 
      *                                    for use when representing a series of related appointments. For example, in a nuclear 
      *                                    medicine procedure, where there is an appointment for the injection of the isotopes, 
      *                                    and then a subsequent appointment for the scan, the scan appointment would refer to 
      *                                    the injection appointment via Appointment.previousAppointment. For representing recurring 
      *                                    appointments, see the guidance on recurring vs. series appointments.
-     *      16. **originatingAppointment** - The originating appointment in a recurring set of related appointments. This property 
+     *      18. **originatingAppointment** - The originating appointment in a recurring set of related appointments. This property 
      *                                       is intended for use when representing a recurring set of related appointments.
      *                                       For example, a patient undergoing physical therapy may have a recurring appointment 
      *                                       every Tuesday and Thursday. Each occurrence of the set will refer to the originating 
      *                                       appointment, which contains the recurring template information. For representing 
      *                                       appointment series, see the guidance on recurring vs. series appointments.
-     *      17. **start** - Date/Time that the appointment is to take place.
-     *      18. **end** - Date/Time that the appointment is to conclude.
-     *      19. **minutesDuration** - Number of minutes that the appointment is to take. This can be less than the duration between 
+     *      19. **start** - Date/Time that the appointment is to take place.
+     *      20. **end** - Date/Time that the appointment is to conclude.
+     *      21. **minutesDuration** - Number of minutes that the appointment is to take. This can be less than the duration between 
      *                                the start and end times. For example, where the actual time of appointment is only an estimate 
      *                                or if a 30 minute appointment is being requested, but any time would work. Also, if there is, 
      *                                for example, a planned 15 minute break in the middle of a long appointment, the duration may 
      *                                be 15 minutes less than the difference between the start and end.
-     *      20. **requestedPeriod** - A set of date ranges (potentially including times) that the appointment is preferred to be scheduled within. 
+     *      22. **requestedPeriod** - A set of date ranges (potentially including times) that the appointment is preferred to be scheduled 
+     *                                within. 
      *                                The duration (usually in minutes) could also be provided to indicate the length of the appointment to fill 
      *                                and populate the start/end times for the actual allocated time. However, in other situations the duration 
      *                                may be calculated by the scheduling system.
-     *      21. **slot** - The slots from the participants' schedules that will be filled by the appointment.
-     *      22. **account** - The set of accounts that is expected to be used for billing the activities that result from this Appointment.
-     *      23. **created** - 
+     *      23. **slot** - The slots from the participants' schedules that will be filled by the appointment.
+     *      24. **account** - The set of accounts that is expected to be used for billing the activities that result from this Appointment.
+     *      25. **created** - The date that this appointment was initially created. This could be different to the meta.lastModified value 
+     *                        on the initial entry, as this could have been before the resource was created on the FHIR server, and should 
+     *                        remain unchanged over the lifespan of the appointment.
+     *      26. **comment** - Additional comments about the appointment.
+     *      27. **cancellationDate** - The date/time describing when the appointment was cancelled.
+     *      28. **note** - Additional notes/comments about the appointment.
+     *      29. **patientInstruction** - While Appointment.note contains information for internal use, Appointment.patientInstructions is used 
+     *                                   to capture patient facing information about the Appointment (e.g. please bring your referral or fast
+     *                                   from 8pm night before).
+     *      30. **basedOn** - The request this appointment is allocated to assess (e.g. incoming referral or procedure request).
+     *      31. **subject** - The patient or group associated with the appointment, if they are to be present (usually) then they should also 
+     *                        be included in the participant backbone element.
+     *      32. **recurrenceId** - The sequence number that identifies a specific appointment in a recurring pattern.
+     *      33. **occurrenceChanged** - This appointment varies from the recurring pattern.
+     *      34. **participant** - List of participants involved in the appointment.
+     *      35. **recurrenceTemplate** - The details of the recurrence pattern or template that is used to generate recurring appointments.
      */
     constructor(appointment: AppointmentSchemaR4B | AppointmentSchemaR5) {
         this.identifier = appointment?.identifier;
