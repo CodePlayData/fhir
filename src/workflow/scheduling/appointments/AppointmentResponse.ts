@@ -36,7 +36,7 @@ import { Device } from "../../../admin/Device.js";
 import { HealthcareService } from "../../../admin/HealthcareService.js";
 import { Location } from "../../../admin/Location.js";
 import { AppointmentResponseStatus } from "../../../values/AppointmentResponseStatus.js";
-import { ParticipantType } from "./ParticipantType.js";
+import { ParticipantType } from "./types/ParticipantType.js";
 
 type AppointmentResponseSchemaBase = {
     readonly identifier?: Identifier[],
