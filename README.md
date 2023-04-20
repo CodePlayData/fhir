@@ -131,6 +131,59 @@ Vale também ressaltar que os ValueSets muito extensos (>300 opções) não esta
 
 <br>
 
+## Como Usar
+
+Para o paradigma funcional evite instaciar as classes fora do escopo das funções. Procure utilizar HighOrderFunctions passando outras funções como parâmetros de modo que elas se tornem ações necessárias no escopo da função superior para a conclusão do seu caso de uso. 
+```typescript
+
+import { ScheduleSchemaR4B, Schedule, Slot, SlotSchema, Reference } from 'codeplaydata/fhir';
+
+function createSchedule(scheduleData: ScheduleSchemaR4B, /*bussiness logic*/ action: (i: Schedule) => any, params: any) {
+    //...
+    // bussiness logic
+    const schedule = new Schedule(scheduleData);
+    //...
+    //bussiness logic
+    let result = action.apply(schedule, params);
+    return {
+        schedule,
+        result
+    }
+}
+
+function setScheduleSlots(schedule: Schedule, slotsData: SlotsSchemas[]) {
+    let slots: Slot[] = [];
+    slots.map((i: SlotSchema) => {
+        let slot = new Slot(i);
+        // bind the slots to one schedule
+        slot.schedule = new Reference(schedule);
+        slots.push(new Slot(i))
+    })
+    return [...slots]
+}
+
+createSchedule(
+    {<scheduleSchema>},
+    setScheduleSlots,
+    [<slotsSchemas>]
+)
+
+```
+
+Para a orientação a objetos extenda as classes dos recursos FHIR HL7 fornecidas definindo sua regra de negócio.
+
+```typescript
+import { Schedule as ScheduleBase } from 'codeplaydata/fhir';
+
+class Schedule extends ScheduleBase {
+    renew() {}
+    revoke() {}
+    //...
+}
+
+```
+<br>
+
 ## Licenças
 
  FHIR® is the registered trademark of HL7 and is used with the permission of HL7. Use of the FHIR trademark does not constitute endorsement of this product by HL7.
@@ -140,6 +193,7 @@ Vale também ressaltar que os ValueSets muito extensos (>300 opções) não esta
 ---
 
 <br>
+
    Copyright 2023 Pedro Paulo Teixeira dos Santos
 
    Licensed under the Apache License, Version 2.0 (the "License");
