@@ -1,4 +1,4 @@
-// @filename: index.ts
+// @filename: index.js
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos

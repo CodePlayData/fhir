@@ -1,4 +1,4 @@
-//@filename: Resource.ts
+//@filename: Resource.js
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos

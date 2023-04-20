@@ -1,4 +1,4 @@
-// @filename: Extension.ts
+// @filename: Extension.js
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,7 +17,7 @@
 
 */
 
-import { DataType } from "./DataType.ts";
+import { DataType } from "./DataType.js";
 
 interface Extension extends DataType {
     url: URL,
