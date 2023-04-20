@@ -26,24 +26,26 @@ import { InvalidInstanteDate } from "../../errors/InvalidInstanteDate.js";
  * 
  *  Source: https://build.fhir.org/datatypes.html#instant.
  */
-class Instant<T extends String> {
-    constructor(private readonly _date: T) {
-        this._validateDate(_date.toString());
+
+import { PrimitiveType } from "./PrimitiveType.ts";
+
+class Instant extends Date implements PrimitiveType {
+    constructor();
+    constructor(value: number | string);
+    new(year: number, monthIndex: number, date?: number, hours?: number, minutes?: number, seconds?: number, ms?: number) {
+        super(...arguments)
     }
 
-    private _validateDate(dateString: string) {
-        const regex = new RegExp("^([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|[1-9]000)-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])T([01][0-9]|2[0-3]):[0-5][0-9]:([0-5][0-9]|60)(\\.[0-9]+)?(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))");
-        if(!regex.test(dateString)) {
-            throw new InvalidInstanteDate();
-        }
+    valueOf(): string {
+        return new Date(super.valueOf()).toISOString()
     }
 
-    toJSON() {
-        return this._date
+    toString(): string {
+        return this.valueOf()
     }
 
-    toString() {
-        return this.toJSON();
+    toJSON(): string {
+        return `${this.toString()}`
     }
 }
 

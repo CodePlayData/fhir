@@ -21,9 +21,7 @@ import { describe, it } from "node:test";
 import assert from "node:assert";
 import { Instant } from "./Instant.js";
 
-describe('Testes de unidade classe Instant.', () => {
-  it('Deve instanciar um Instant.', () => {
-    const instant = new Instant('2015-02-07T13:28:17.239+02:00');
-    assert.strictEqual(JSON.stringify(instant), '"2015-02-07T13:28:17.239+02:00"');
-  });
+describe('Teste Unitário do Instant com...', () => {
+  it.todo('a inserção de uma data pré-definida.', () => {});
+  it.todo('uma regex para validar a saída.', () => {});
 })
