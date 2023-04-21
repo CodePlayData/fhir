@@ -1,4 +1,4 @@
-// @filename: Aggregate.js
+// @filename: BackboneType.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,18 +17,15 @@
 
 */
 
-import { Identifier } from "./core/datatypes/Identifier.js";
+import { DataType } from "./DataType.js";
+import { Extension } from "./Extension.js";
 
-/**
- *  This interface identifies an DDD aggregate in this system. 
- *  
- *  Source: https://martinfowler.com/bliki/DDD_Aggregate.html.
- */
-interface Aggregate {
-    /** Must contain a Array of Identifier of the domain objects that composes this. */
-    readonly identifier?: Identifier[]
+abstract class BackboneType extends DataType {
+    constructor(readonly modifierExtension?: Extension<any>[]) {
+        super();
+    }
 }
 
 export {
-    Aggregate
+    BackboneType
 }

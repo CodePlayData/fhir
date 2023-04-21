@@ -1,4 +1,4 @@
-//Id.js
+// @filename: Id.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,11 +17,13 @@
 
 */
 
-class Id extends String implements PrimitiveType {
+import { PrimitiveType } from "../PrimitiveType.js";
+import { InvalidIdLength } from "../errors/InvalidIdLength.js";
 
+class Id extends String implements PrimitiveType {
     constructor(thing: any) {
         if(String(thing).length > 64) {
-            throw new Error('The Id must have max length of 64 characters.')
+            throw new InvalidIdLength();
         }
         super(thing);
     }
@@ -29,7 +31,6 @@ class Id extends String implements PrimitiveType {
     toJSON() {
         return `${this.valueOf()}`
     }
-
 }
 
 export {

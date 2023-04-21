@@ -1,4 +1,4 @@
-//@filename: Resource.js
+// @filename: DomainResource.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,10 +17,20 @@
 
 */
 
-import { Base } from "./Base.js";
+import { Extension } from "./Extension";
+import { Resource } from "./Resource.js";
 
-abstract class Resource extends Base {
+abstract class DomainResource extends Resource {
     constructor(
-        readonly
-    )
+      readonly text?: any,
+      readonly contained?: Resource[],
+      readonly extension?: Extension<any>[],
+      readonly modifierExtension?: Extension<any>[]
+    ){
+      super();
+    }
+}
+
+export {
+  DomainResource
 }

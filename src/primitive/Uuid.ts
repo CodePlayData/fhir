@@ -1,4 +1,4 @@
-// @filename: Value.js
+//@filename: Uuid.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,8 +17,19 @@
 
 */
 
-class Value<T>{};
+import { InvalidUuid } from "../errors/InvalidUuid.js";
+import { Uri } from "./Uri.js";
+
+class Uuid extends Uri {
+    constructor(str: string) {
+        const regex = new RegExp(`urn:uuid:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}`);
+        if(!regex.test(str)) {
+            throw new InvalidUuid();
+        }
+        super(str);
+    }
+}
 
 export {
-    Value
+    Uuid
 }

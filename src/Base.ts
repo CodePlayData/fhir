@@ -1,4 +1,4 @@
-// @filename: ResourceType.js
+// @filename: Base.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,21 +17,8 @@
 
 */
 
-import { ResourceTypeValueSet } from "./values/ResourceTypeValueSet";
-
-/**
- *  This identifier a FHIR HL7 Resource. 
- * 
- *  Source: https://www.hl7.org/fhir/valueset-resource-types.html.
- */
-interface ResourceType {
-    readonly resourceType: ResourceTypeValueSet;
-    readonly id?: string,
-    readonly meta?: {
-        [key: string]: any;
-    }
-}
+abstract class Base {};
 
 export {
-    ResourceType
+    Base
 }

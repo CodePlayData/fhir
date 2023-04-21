@@ -1,4 +1,4 @@
-// @filename: index.js
+// @filename: Element.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -16,3 +16,15 @@
    limitations under the License.
 
 */
+
+import { Base } from "./Base.js";
+import { Extension } from "./Extension.js";
+
+interface FhirElement extends Base {
+    readonly id?: string
+    readonly extension?: Extension<any>[]
+}
+
+export {
+    FhirElement
+}

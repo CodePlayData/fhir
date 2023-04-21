@@ -1,4 +1,4 @@
-// @filename: Extension.js
+// @filename: DataType.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,13 +17,10 @@
 
 */
 
-import { DataType } from "./DataType.js";
+import { FhirElement } from "./Element.js";
 
-interface Extension extends DataType {
-    url: URL,
-    value: Value<any>
-}
+abstract class DataType implements FhirElement {};
 
 export {
-    Extension
+    DataType
 }
