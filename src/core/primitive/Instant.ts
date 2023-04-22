@@ -17,8 +17,6 @@
 
 */
 
-import { InvalidInstanteDate } from "../../errors/InvalidInstanteDate.js";
-
 /**
  *  This FHIR HL7 primitive type refers to an instant in time in the format 
  *  YYYY-MM-DDThh:mm:ss.sss+zz:zz (e.g. 2015-02-07T13:28:17.239+02:00 or 2017-01-01T00:00:00Z). 
@@ -27,25 +25,33 @@ import { InvalidInstanteDate } from "../../errors/InvalidInstanteDate.js";
  *  Source: https://build.fhir.org/datatypes.html#instant.
  */
 
-import { PrimitiveType } from "./PrimitiveType.ts";
+import { PrimitiveType } from "../PrimitiveType.js";
 
 class Instant implements PrimitiveType {
-    private _date: Date;
-    constructor();
-    constructor(input: number | string);
-    constructor(year: number, monthIndex: number, date?: number, hours?: number, minutes?: number, seconds?: number, ms?: number) {
-    }
+    
+    constructor(private readonly _date: Date) {};
 
+    static fromString = (str: string) => new Instant(new Date(str));
+    static fromDate = (date: Date) => new Instant(new Date(date));
+    static fromStruct = (
+        year: number, 
+        monthIndex: number, 
+        day: number, 
+        hours: number, 
+        minutes: number, 
+        seconds: number, 
+        milliseconds: number 
+        ) => new Instant(new Date(year, monthIndex, day, hours, minutes, seconds, milliseconds));
+    
+    valueOf() {
+        return this._date.toISOString()
+    };
 
-    valueOf(): string {
-        return new Date(super.valueOf()).toISOString()
-    }
-
-    toString(): string {
+    toString() {
         return this.valueOf()
     }
 
-    toJSON(): string {
+    toJSON() {
         return `${this.toString()}`
     }
 }

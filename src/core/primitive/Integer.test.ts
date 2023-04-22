@@ -1,4 +1,4 @@
-// @filename: Oid.ts
+// @filename: Interger.test.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,19 +17,24 @@
 
 */
 
-import { InvalidOid } from "../errors/InvalidOid.js";
-import { Uri } from "./Uri.js";
+import { describe, it } from "node:test";
+import { strictEqual, throws } from "node:assert";
+import { Integer } from "./Integer.js";
 
-class Oid extends Uri {
-    constructor(str: string) {
-        const regex = new RegExp(`urn:oid:[0-2](\.(0|[1-9][0-9]*))+`);
-        if(!regex.test(str)) {
-            throw new InvalidOid();
-        }
-        super(str);
-    }
-}
+describe('Teste Unitário do Integer com...', () => {
+  
+  it('um número válido.', () => {
+    const integer = new Integer(5);
+    strictEqual(integer.valueOf(), 5)
+  });
 
-export {
-    Oid
-}
+  it('um número inválido.', () => {
+    throws(
+        () => {
+            new Integer(5.5)
+        },
+        Error,
+        'This is not a valid integer.'
+    )
+  });
+});

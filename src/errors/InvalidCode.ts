@@ -1,4 +1,4 @@
-// @filename: Canonical.ts
+// @filename: InvalidCode.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,19 +17,12 @@
 
 */
 
-import { InvalidCanonicalUrl } from "../errors/InvalidCanonicalUrl.js";
-import { Uri } from "./Uri.js";
-
-class Canonical extends Uri {
-    constructor(str: string) {
-        if(!str.includes('|')) {
-            throw new InvalidCanonicalUrl();
-        }
-        str = str.replaceAll('|', '&version=')
-        super(str);
+class InvalidCode extends Error {
+    constructor() {
+        super('This is not a valid Code. Try not insert trailing spaces.');
     }
 }
 
 export {
-    Canonical
+    InvalidCode
 }

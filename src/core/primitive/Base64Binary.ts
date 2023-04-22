@@ -1,4 +1,4 @@
-//@filename: Uuid.ts
+// @filename:Base64Binary.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,19 +17,27 @@
 
 */
 
-import { InvalidUuid } from "../errors/InvalidUuid.js";
-import { Uri } from "./Uri.js";
+import { PrimitiveType } from "../PrimitiveType.js";
 
-class Uuid extends Uri {
-    constructor(str: string) {
-        const regex = new RegExp(`urn:uuid:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}`);
-        if(!regex.test(str)) {
-            throw new InvalidUuid();
-        }
-        super(str);
+class Base64Binary implements PrimitiveType {
+    _buffer
+    constructor(readonly src: string) {
+        this._buffer = Buffer.from(src);
+    }
+
+    valueOf() {
+        return this._buffer.toString('base64')
+    };
+
+    toString() {
+        return this.valueOf()
+    }
+
+    toJSON() {
+        return `${this.toString()}`
     }
 }
 
 export {
-    Uuid
+    Base64Binary
 }

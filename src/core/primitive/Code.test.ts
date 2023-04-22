@@ -1,4 +1,4 @@
-// @filename: Id.ts
+// @filename: Code.test.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,22 +17,23 @@
 
 */
 
-import { PrimitiveType } from "../PrimitiveType.js";
-import { InvalidIdLength } from "../errors/InvalidIdLength.js";
+import { describe, it } from "node:test";
+import { strictEqual, throws } from "node:assert";
+import { Code } from "./Code.js";
 
-class Id extends String implements PrimitiveType {
-    constructor(thing: any) {
-        if(String(thing).length > 64) {
-            throw new InvalidIdLength();
-        }
-        super(thing);
-    }
+describe('Testes Unitários do Code com...', () => {
+    it('um código válido.', () => {
+        const code = new Code('Z012');
+        strictEqual(code.valueOf(), 'Z012');
+    });
 
-    toJSON() {
-        return `${this.valueOf()}`
-    }
-}
-
-export {
-    Id
-}
+    it('um código inválido', () => {
+        throws(
+            () => {
+                new Code("  ")
+            },
+            Error,
+            'This is not a valid Code. Try not insert trailing spaces.'
+        )
+    });
+});
