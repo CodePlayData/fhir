@@ -1,4 +1,4 @@
-// @filename: IANATimezones.ts
+// @filename: Oid.test.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,10 +17,23 @@
 
 */
 
-const timezones = [...Intl.Collator.supportedLocalesOf('timeZone')] as const;
+import { describe, it } from "node:test";
+import { strictEqual, throws } from "node:assert";
+import { Oid } from "./Oid.js";
 
-type IANATimezones = typeof timezones[number];
+describe('Testes Unitários do Oid com...', () => {
+    it('um oid válido', () => {
+        const uri = new Oid("urn:oid:1.2.3.4.5");
+        strictEqual(uri.protocol, 'urn:')
+    });
 
-export {
-    IANATimezones
-}
+    it('um uuid inválido', () => {
+        throws(
+            () => {
+                new Oid("urn:uid")
+            },
+            Error,
+            'This is an invalid oid. Remenber to begins with `urn:oid:`.'
+        )
+    });
+});

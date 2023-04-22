@@ -1,4 +1,4 @@
-// @filename: IANATimezones.ts
+// @filename: UnsignedInt.test.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,10 +17,24 @@
 
 */
 
-const timezones = [...Intl.Collator.supportedLocalesOf('timeZone')] as const;
+import { describe, it } from "node:test";
+import { strictEqual, throws } from "node:assert";
+import { UnsignedInt } from "./UnsignedInt.js";
 
-type IANATimezones = typeof timezones[number];
+describe('Teste Unitário do UnsignedInt com...', () => {
+  
+  it('um número válido.', () => {
+    const positiveInteger = new UnsignedInt(0);
+    strictEqual(positiveInteger.valueOf(), 0)
+  });
 
-export {
-    IANATimezones
-}
+  it('um número inválido.', () => {
+    throws(
+        () => {
+            new UnsignedInt(-1)
+        },
+        Error,
+        'You can not set a UnsignedInt less than 0.'
+    )
+  });
+});

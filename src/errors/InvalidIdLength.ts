@@ -1,4 +1,4 @@
-// @filename: IANATimezones.ts
+//@filename: InvalidIdLength.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,10 +17,12 @@
 
 */
 
-const timezones = [...Intl.Collator.supportedLocalesOf('timeZone')] as const;
-
-type IANATimezones = typeof timezones[number];
+class InvalidIdLength extends Error {
+    constructor() {
+        super('The Id must have max length of 64 characters.');
+    }
+}
 
 export {
-    IANATimezones
+    InvalidIdLength
 }

@@ -1,4 +1,4 @@
-// @filename: IANATimezones.ts
+// @filename: Id.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,10 +17,22 @@
 
 */
 
-const timezones = [...Intl.Collator.supportedLocalesOf('timeZone')] as const;
+import { PrimitiveType } from "../PrimitiveType.js";
+import { InvalidIdLength } from "../../errors/InvalidIdLength.js";
 
-type IANATimezones = typeof timezones[number];
+class Id extends String implements PrimitiveType {
+    constructor(thing: any) {
+        if(String(thing).length > 64) {
+            throw new InvalidIdLength();
+        }
+        super(thing);
+    }
+
+    toJSON() {
+        return `${this.valueOf()}`
+    }
+}
 
 export {
-    IANATimezones
+    Id
 }

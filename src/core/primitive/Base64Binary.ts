@@ -1,4 +1,4 @@
-// @filename: IANATimezones.ts
+// @filename:Base64Binary.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,10 +17,27 @@
 
 */
 
-const timezones = [...Intl.Collator.supportedLocalesOf('timeZone')] as const;
+import { PrimitiveType } from "../PrimitiveType.js";
 
-type IANATimezones = typeof timezones[number];
+class Base64Binary implements PrimitiveType {
+    _buffer
+    constructor(readonly src: string) {
+        this._buffer = Buffer.from(src);
+    }
+
+    valueOf() {
+        return this._buffer.toString('base64')
+    };
+
+    toString() {
+        return this.valueOf()
+    }
+
+    toJSON() {
+        return `${this.toString()}`
+    }
+}
 
 export {
-    IANATimezones
+    Base64Binary
 }

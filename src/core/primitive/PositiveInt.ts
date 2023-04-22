@@ -1,4 +1,4 @@
-// @filename: IANATimezones.ts
+// @filename: PositiveInt.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,10 +17,18 @@
 
 */
 
-const timezones = [...Intl.Collator.supportedLocalesOf('timeZone')] as const;
+import { PositiveIntLessThanOne } from "../../errors/PositiveIntLessThanOne.js";
+import { Integer } from "./Integer.js";
 
-type IANATimezones = typeof timezones[number];
+class PositiveInt extends Integer {
+    constructor(value: number) {
+        if(value < 1 ) {
+            throw new PositiveIntLessThanOne();
+        }
+        super(value);
+    }
+}
 
 export {
-    IANATimezones
+    PositiveInt
 }

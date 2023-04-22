@@ -1,4 +1,4 @@
-// @filename: IANATimezones.ts
+// @filename: InvalidCanonicalUrl.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,10 +17,12 @@
 
 */
 
-const timezones = [...Intl.Collator.supportedLocalesOf('timeZone')] as const;
-
-type IANATimezones = typeof timezones[number];
+class InvalidCanonicalUrl extends Error {
+    constructor() {
+        super('A canonical URL must include a pipe(|).');
+    }
+}
 
 export {
-    IANATimezones
+    InvalidCanonicalUrl
 }

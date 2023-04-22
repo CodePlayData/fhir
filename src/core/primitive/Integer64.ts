@@ -1,4 +1,4 @@
-// @filename: IANATimezones.ts
+// @filename: Integer64.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,10 +17,18 @@
 
 */
 
-const timezones = [...Intl.Collator.supportedLocalesOf('timeZone')] as const;
+import { InvalidInterger64 } from "../../errors/InvalidInterger64.js";
+import { Integer } from "./Integer.js";
 
-type IANATimezones = typeof timezones[number];
+class Integer64 extends Integer {
+    constructor(value: number) {
+        if(!Number.isSafeInteger(value)) {
+            throw new InvalidInterger64();
+        }
+        super(value);
+    }
+};
 
 export {
-    IANATimezones
+    Integer64
 }

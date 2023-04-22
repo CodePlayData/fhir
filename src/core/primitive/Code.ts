@@ -1,4 +1,4 @@
-// @filename: IANATimezones.ts
+// @filename: Code.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,10 +17,18 @@
 
 */
 
-const timezones = [...Intl.Collator.supportedLocalesOf('timeZone')] as const;
+import { InvalidCode } from "../../errors/InvalidCode.js";
 
-type IANATimezones = typeof timezones[number];
+class Code extends String {
+    constructor(str: string) {
+        
+        if([...str][0] === ' ' || str.includes('  ') || str.includes('  ')) {
+            throw new InvalidCode();
+        }
+        super(str);
+    }
+}
 
 export {
-    IANATimezones
+    Code
 }

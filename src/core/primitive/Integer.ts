@@ -1,4 +1,4 @@
-// @filename: IANATimezones.ts
+// @filename: Integer.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,10 +17,18 @@
 
 */
 
-const timezones = [...Intl.Collator.supportedLocalesOf('timeZone')] as const;
+import { InvalidInteger } from "../../errors/InvalidInteger.js";
+import { PrimitiveType } from "../PrimitiveType.js";
 
-type IANATimezones = typeof timezones[number];
+class Integer extends Number implements PrimitiveType {
+    constructor(value: number) {
+        if(!Number.isInteger(value)) {
+            throw new InvalidInteger();
+        }
+        super(value)
+    }
+}
 
 export {
-    IANATimezones
+    Integer
 }

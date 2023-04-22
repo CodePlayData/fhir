@@ -1,4 +1,4 @@
-// @filename: IANATimezones.ts
+// @filename: Base64Binary.test.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,10 +17,13 @@
 
 */
 
-const timezones = [...Intl.Collator.supportedLocalesOf('timeZone')] as const;
+import { describe, it } from "node:test";
+import { strictEqual } from "node:assert";
+import { Base64Binary } from "./Base64Binary.js";
 
-type IANATimezones = typeof timezones[number];
-
-export {
-    IANATimezones
-}
+describe('Teste Unitário do Base64Binary com...', () => {
+  it('a inserção de uma String pré-definida.', () => {
+    const base64string = new Base64Binary('This is a string message in Base64 code');
+    strictEqual(base64string.valueOf(), 'VGhpcyBpcyBhIHN0cmluZyBtZXNzYWdlIGluIEJhc2U2NCBjb2Rl')
+  });
+})

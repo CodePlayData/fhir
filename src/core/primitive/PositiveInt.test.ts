@@ -1,4 +1,4 @@
-// @filename: IANATimezones.ts
+// @filename: PositiveInt.test.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,10 +17,24 @@
 
 */
 
-const timezones = [...Intl.Collator.supportedLocalesOf('timeZone')] as const;
+import { describe, it } from "node:test";
+import { strictEqual, throws } from "node:assert";
+import { PositiveInt } from "./PositiveInt.js";
 
-type IANATimezones = typeof timezones[number];
+describe('Teste Unitário do PositiveInt com...', () => {
+  
+  it('um número válido.', () => {
+    const positiveInteger = new PositiveInt(5);
+    strictEqual(positiveInteger.valueOf(), 5)
+  });
 
-export {
-    IANATimezones
-}
+  it('um número inválido.', () => {
+    throws(
+        () => {
+            new PositiveInt(0)
+        },
+        Error,
+        'You can not set a PositiveInt less than 1.'
+    )
+  });
+});

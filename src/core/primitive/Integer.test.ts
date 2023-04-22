@@ -1,4 +1,4 @@
-// @filename: IANATimezones.ts
+// @filename: Interger.test.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,10 +17,24 @@
 
 */
 
-const timezones = [...Intl.Collator.supportedLocalesOf('timeZone')] as const;
+import { describe, it } from "node:test";
+import { strictEqual, throws } from "node:assert";
+import { Integer } from "./Integer.js";
 
-type IANATimezones = typeof timezones[number];
+describe('Teste Unitário do Integer com...', () => {
+  
+  it('um número válido.', () => {
+    const integer = new Integer(5);
+    strictEqual(integer.valueOf(), 5)
+  });
 
-export {
-    IANATimezones
-}
+  it('um número inválido.', () => {
+    throws(
+        () => {
+            new Integer(5.5)
+        },
+        Error,
+        'This is not a valid integer.'
+    )
+  });
+});

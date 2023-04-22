@@ -1,4 +1,4 @@
-// @filename: IANATimezones.ts
+// @filename: MetadataResource.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,10 +17,20 @@
 
 */
 
-const timezones = [...Intl.Collator.supportedLocalesOf('timeZone')] as const;
+import { CanonicalResource } from "./CanonicalResource.js";
 
-type IANATimezones = typeof timezones[number];
+interface MetadataResource extends CanonicalResource {
+    readonly approvalDate?: any
+    readonly lastReviewDate?: any
+    readonly effectivePeriod?: any
+    readonly topic?: any
+    readonly author?: any
+    readonly editor?: any
+    readonly reviewer?: any
+    readonly endorser?: any
+    readonly relatedArtifact?: any
+}
 
 export {
-    IANATimezones
+    MetadataResource
 }

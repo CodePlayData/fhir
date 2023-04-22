@@ -1,4 +1,4 @@
-// @filename: IANATimezones.ts
+// @filename: UnsignedInt.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,10 +17,18 @@
 
 */
 
-const timezones = [...Intl.Collator.supportedLocalesOf('timeZone')] as const;
+import { UnsignedIntLessThanZero } from "../../errors/UnsignedIntLessThanZero.js";
+import { Integer } from "./Integer.js";
 
-type IANATimezones = typeof timezones[number];
+class UnsignedInt extends Integer {
+    constructor(value: number) {
+        if(value < 0 ) {
+            throw new UnsignedIntLessThanZero();
+        }
+        super(value);
+    }
+}
 
 export {
-    IANATimezones
+    UnsignedInt
 }

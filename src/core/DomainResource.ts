@@ -1,4 +1,4 @@
-// @filename: IANATimezones.ts
+// @filename: DomainResource.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,10 +17,20 @@
 
 */
 
-const timezones = [...Intl.Collator.supportedLocalesOf('timeZone')] as const;
+import { Extension } from "./Extension";
+import { Resource } from "./Resource.js";
 
-type IANATimezones = typeof timezones[number];
+abstract class DomainResource extends Resource {
+    constructor(
+      readonly text?: any,
+      readonly contained?: Resource[],
+      readonly extension?: Extension<any>[],
+      readonly modifierExtension?: Extension<any>[]
+    ){
+      super();
+    }
+}
 
 export {
-    IANATimezones
+  DomainResource
 }

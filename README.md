@@ -122,7 +122,7 @@ Os ValueSets são como se fossem os Enum no Typescript, eles definem opções es
 
 Repare na última opção "SNOMED CT", nela ocorre um **conflito de licença**. A SNOMED CT é apenas pública para uso comercial em países membros, o que reduziria as opções de uso dessa lib (o próprio Brasil por exemplo não é um país membro.). **Para contonar essa questão os ValueSets que derivarem dessas opções deverão ser definidos pelo usuário, a indicação deles se dará por uma interface.**
 
-Por exemplo, no fluxo do Agendamento o ValueSet que identifica o motivo que levou o paciente a buscar aquela consulta (`EncounterReasonCodes.ts`) é um SNOMED-CT e pode ser substituído atualmente pelo capítulo do CID-11 que identifica a mesma coisa.
+Por exemplo, no fluxo do Agendamento o ValueSet que identifica o motivo que levou o paciente a buscar aquela consulta (`EncounterReasonCodes.js`) é um SNOMED-CT e pode ser substituído atualmente pelo capítulo do CID-11 que identifica a mesma coisa.
 
 Vale também ressaltar que os ValueSets muito extensos (>300 opções) não estarão codados, apenas identificados por interface.
 

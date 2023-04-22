@@ -1,4 +1,4 @@
-// @filename: IANATimezones.ts
+// @filename: InvalidUuid.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,10 +17,12 @@
 
 */
 
-const timezones = [...Intl.Collator.supportedLocalesOf('timeZone')] as const;
-
-type IANATimezones = typeof timezones[number];
+class InvalidUuid extends Error {
+    constructor() {
+        super('This is an invalid uuid. Remenber to begins with `urn:uuid:`.');
+    }
+}
 
 export {
-    IANATimezones
+    InvalidUuid
 }

@@ -1,4 +1,4 @@
-// @filename: IANATimezones.ts
+// @filename: Instant.test.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,10 +17,20 @@
 
 */
 
-const timezones = [...Intl.Collator.supportedLocalesOf('timeZone')] as const;
+import { describe, it } from "node:test";
+import { strictEqual } from "node:assert";
+import { Instant } from "./Instant.js";
 
-type IANATimezones = typeof timezones[number];
+describe('Teste Unitário do Instant com...', () => {
+  
+  it('a inserção de uma String de data pré-definida.', () => {
+    const instant = Instant.fromString('December 17, 1995 03:24:00');
+    strictEqual(instant.valueOf(), '1995-12-17T05:24:00.000Z')
+  });
 
-export {
-    IANATimezones
-}
+  // TODO
+  it.todo('a inserção de um objecto Data.');
+
+  //TODO
+  it.todo('uma estrutura chamada nos parâmetros.');
+})

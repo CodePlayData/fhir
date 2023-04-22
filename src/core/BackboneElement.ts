@@ -1,4 +1,4 @@
-// @filename: IANATimezones.ts
+// @filename: BackboneElement.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,10 +17,13 @@
 
 */
 
-const timezones = [...Intl.Collator.supportedLocalesOf('timeZone')] as const;
+import { FhirElement } from "./Element.js";
+import { Extension } from "./Extension.js";
 
-type IANATimezones = typeof timezones[number];
+interface BackboneElement extends FhirElement {
+    readonly modifierExtension?: Extension<any>[]
+}
 
 export {
-    IANATimezones
+    BackboneElement
 }

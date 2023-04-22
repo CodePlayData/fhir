@@ -1,4 +1,4 @@
-// @filename: IANATimezones.ts
+//@filename: UnsignedIntLessThanZero.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,10 +17,12 @@
 
 */
 
-const timezones = [...Intl.Collator.supportedLocalesOf('timeZone')] as const;
-
-type IANATimezones = typeof timezones[number];
+class UnsignedIntLessThanZero extends Error {
+    constructor() {
+        super('You can not set a UnsignedInt less than 0.');
+    }
+}
 
 export {
-    IANATimezones
+    UnsignedIntLessThanZero
 }

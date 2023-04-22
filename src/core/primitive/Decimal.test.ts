@@ -1,4 +1,4 @@
-// @filename: IANATimezones.ts
+// @filename: Decimal.test.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,10 +17,24 @@
 
 */
 
-const timezones = [...Intl.Collator.supportedLocalesOf('timeZone')] as const;
+import { describe, it } from "node:test";
+import { strictEqual, throws } from "node:assert";
+import { Decimal } from "./Decimal.js";
 
-type IANATimezones = typeof timezones[number];
+describe('Teste Unitário do Decimal com...', () => {
+  
+  it('um número válido.', () => {
+    const decimal = new Decimal(2.1);
+    strictEqual(decimal.valueOf(), 2.1)
+  });
 
-export {
-    IANATimezones
-}
+  it('um número inválido.', () => {
+    throws(
+        () => {
+            new Decimal(5)
+        },
+        Error,
+        'This is not a valid decimal.'
+    )
+  });
+});

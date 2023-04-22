@@ -1,4 +1,4 @@
-// @filename: IANATimezones.ts
+//@filename: Extension.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,10 +17,15 @@
 
 */
 
-const timezones = [...Intl.Collator.supportedLocalesOf('timeZone')] as const;
+import { DataType } from "./DataType.js";
+import { Uri } from "./primitive/Uri.js";
 
-type IANATimezones = typeof timezones[number];
+class Extension<T extends any> extends DataType {
+    constructor(readonly url: Uri, readonly value?: T){
+        super();
+    }
+}
 
 export {
-    IANATimezones
+    Extension
 }

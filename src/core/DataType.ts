@@ -1,4 +1,4 @@
-// @filename: IANATimezones.ts
+// @filename: DataType.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,10 +17,10 @@
 
 */
 
-const timezones = [...Intl.Collator.supportedLocalesOf('timeZone')] as const;
+import { FhirElement } from "./Element.js";
 
-type IANATimezones = typeof timezones[number];
+abstract class DataType implements FhirElement {};
 
 export {
-    IANATimezones
+    DataType
 }
