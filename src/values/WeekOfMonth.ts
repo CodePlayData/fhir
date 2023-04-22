@@ -1,4 +1,4 @@
-//@filename: Extension.ts
+// @filename: WeekOfMonth.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,15 +17,13 @@
 
 */
 
-import { DataType } from "./DataType.js";
-import { Uri } from "./primitives/Uri.js";
-
-class Extension<T extends any> extends DataType {
-    constructor(readonly url: Uri, readonly value?: T){
-        super();
-    }
-}
+type WeekOfMonth =
+    { code: 'first', display: 'First', definition: 'First week of the month.' }     |
+    { code: 'second', display: 'Second', definition: 'Second week of the month.' }  |
+    { code: 'third', display: 'Third', definition: 'Third week of the month.' }     |
+    { code: 'fourth', display: 'Fourth', definition: 'Fourth week of the month.' }  |
+    { code: 'last', display: 'Last', definition: 'Last week of the month.' }
 
 export {
-    Extension
+    WeekOfMonth
 }

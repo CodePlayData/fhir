@@ -1,4 +1,4 @@
-//@filename: Extension.ts
+// @filename: CarePlan.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,15 +17,12 @@
 
 */
 
-import { DataType } from "./DataType.js";
-import { Uri } from "./primitives/Uri.js";
+import { ResourceType } from "../../ResourceType.js";
 
-class Extension<T extends any> extends DataType {
-    constructor(readonly url: Uri, readonly value?: T){
-        super();
-    }
+class CarePlan implements ResourceType {
+    readonly resourceType = 'CarePlan';
 }
 
 export {
-    Extension
+    CarePlan
 }

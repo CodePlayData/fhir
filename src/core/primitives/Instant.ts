@@ -44,7 +44,10 @@ class Instant implements PrimitiveType {
         ) => new Instant(new Date(year, monthIndex, day, hours, minutes, seconds, milliseconds));
     
     valueOf() {
-        return this._date.toISOString()
+        const iso = this._date.toISOString().replace('Z', '');
+        let timezone = this._date.toString().split('GMT')[1].slice(0,5)
+        timezone = timezone.slice(0,3) + ':' + timezone.slice(3);
+        return `${iso}${timezone}`
     };
 
     toString() {

@@ -1,4 +1,4 @@
-//@filename: Extension.ts
+// @filename: ResourceType.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,15 +17,21 @@
 
 */
 
-import { DataType } from "./DataType.js";
-import { Uri } from "./primitives/Uri.js";
+import { ResourceTypeValueSet } from "./values/ResourceTypeValueSet";
 
-class Extension<T extends any> extends DataType {
-    constructor(readonly url: Uri, readonly value?: T){
-        super();
+/**
+ *  This identifier a FHIR HL7 Resource. 
+ * 
+ *  Source: https://www.hl7.org/fhir/valueset-resource-types.html.
+ */
+interface ResourceType {
+    readonly resourceType: ResourceTypeValueSet;
+    readonly id?: string,
+    readonly meta?: {
+        [key: string]: any;
     }
 }
 
 export {
-    Extension
+    ResourceType
 }

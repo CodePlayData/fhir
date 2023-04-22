@@ -17,7 +17,7 @@
 
 */
 
-import { Uri } from "./primitive/Uri.js"
+import { Uri } from "./primitives/Uri.js"
 
 interface CanonicalResource {
     readonly url?: Uri

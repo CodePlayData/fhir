@@ -1,4 +1,4 @@
-//@filename: Extension.ts
+// @filename: MedicationRequest.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,15 +17,13 @@
 
 */
 
-import { DataType } from "./DataType.js";
-import { Uri } from "./primitives/Uri.js";
+import { ResourceType } from "../ResourceType.js";
 
-class Extension<T extends any> extends DataType {
-    constructor(readonly url: Uri, readonly value?: T){
-        super();
-    }
+abstract class MedicationRequest implements ResourceType {
+    readonly resourceType = 'MedicationRequest';
+
 }
 
 export {
-    Extension
+    MedicationRequest
 }

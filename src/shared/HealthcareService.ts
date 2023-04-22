@@ -1,4 +1,4 @@
-//@filename: Extension.ts
+// @filename: HealthcareService.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,15 +17,16 @@
 
 */
 
-import { DataType } from "./DataType.js";
-import { Uri } from "./primitives/Uri.js";
+import { CodeableConcept } from "../core/generics/CodeableConcept.js"
+import { Reference } from "../core/generics/Reference.js"
+import { CodeableReference } from "../core/datatypes/CodeableReference.js"
+import { HealthcareService as HealthcareServiceResource } from "../admin/HealthcareService.js";
 
-class Extension<T extends any> extends DataType {
-    constructor(readonly url: Uri, readonly value?: T){
-        super();
-    }
-}
+type HealthcareService = CodeableReference<{
+    readonly concept?: CodeableConcept<any>,
+    readonly reference?: Reference<HealthcareServiceResource>
+}>
 
 export {
-    Extension
+    HealthcareService
 }

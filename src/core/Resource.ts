@@ -18,7 +18,7 @@
 */
 
 import { Base } from "./Base.js";
-import { Id } from "./primitive/Id.js";
+import { Id } from "./primitives/Id.js";
 
 abstract class Resource extends Base {
     constructor(

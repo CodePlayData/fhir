@@ -1,4 +1,4 @@
-//@filename: Extension.ts
+// @filename: YearlyTemplate.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,15 +17,14 @@
 
 */
 
-import { DataType } from "./DataType.js";
-import { Uri } from "./primitives/Uri.js";
+import { PositiveInt } from "../../../../core/primitives/PositiveInt.js";
 
-class Extension<T extends any> extends DataType {
-    constructor(readonly url: Uri, readonly value?: T){
-        super();
-    }
+class YearlyTemplate {
+    constructor(
+        readonly yearInterval: PositiveInt
+    ) {}
 }
 
 export {
-    Extension
+    YearlyTemplate
 }

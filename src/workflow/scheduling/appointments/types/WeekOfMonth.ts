@@ -1,4 +1,4 @@
-//@filename: Extension.ts
+// @filename: WeekOfMonth.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,15 +17,18 @@
 
 */
 
-import { DataType } from "./DataType.js";
-import { Uri } from "./primitives/Uri.js";
+import { Coding } from "../../../../core/datatypes/Coding.js";
+import { Code } from "../../../../core/primitives/Code.js";
+import { WeekOfMonth as WeekOfMonthValueSet } from "../../../../values/WeekOfMonth.js";
 
-class Extension<T extends any> extends DataType {
-    constructor(readonly url: Uri, readonly value?: T){
-        super();
-    }
-}
+type WeekOfMonth = Coding<{
+    readonly system?: URL;
+    readonly version?: string;
+    readonly code?: Code<WeekOfMonthValueSet['code']>;
+    readonly display?: WeekOfMonthValueSet['display'];
+    readonly userSelected?: boolean;
+}>
 
 export {
-    Extension
+    WeekOfMonth
 }

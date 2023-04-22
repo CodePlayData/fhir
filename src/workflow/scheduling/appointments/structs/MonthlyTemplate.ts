@@ -1,4 +1,4 @@
-//@filename: Extension.ts
+// @filename: MonthlyTemplate.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,15 +17,20 @@
 
 */
 
-import { DataType } from "./DataType.js";
-import { Uri } from "./primitives/Uri.js";
 
-class Extension<T extends any> extends DataType {
-    constructor(readonly url: Uri, readonly value?: T){
-        super();
-    }
+import { PositiveInt } from "../../../../core/primitives/PositiveInt.js";
+import { DaysOfWeek } from "../types/DaysOfWeek.js";
+import { WeekOfMonth } from "../types/WeekOfMonth.js";
+
+class MonthlyTemplate {
+    constructor(
+        readonly monthInterval: PositiveInt,
+        readonly dayOfMonth?: PositiveInt,
+        readonly nthWeekOfMonth?: WeekOfMonth,
+        readonly dayOfWeek?: DaysOfWeek
+    ) {}
 }
 
 export {
-    Extension
+    MonthlyTemplate
 }

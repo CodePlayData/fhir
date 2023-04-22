@@ -1,4 +1,4 @@
-//@filename: Extension.ts
+// @filename: Code.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,15 +17,18 @@
 
 */
 
-import { DataType } from "./DataType.js";
-import { Uri } from "./primitives/Uri.js";
+import { InvalidCode } from "../../errors/InvalidCode.js";
 
-class Extension<T extends any> extends DataType {
-    constructor(readonly url: Uri, readonly value?: T){
-        super();
+class Code<T extends string> extends String {
+    constructor(str: T) {
+        
+        if([...str][0] === ' ' || str.includes('  ') || str.includes('  ')) {
+            throw new InvalidCode();
+        }
+        super(str);
     }
 }
 
 export {
-    Extension
+    Code
 }

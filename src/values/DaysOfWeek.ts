@@ -1,4 +1,4 @@
-//@filename: Extension.ts
+// @filename: DaysOfWeek.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,15 +17,15 @@
 
 */
 
-import { DataType } from "./DataType.js";
-import { Uri } from "./primitives/Uri.js";
-
-class Extension<T extends any> extends DataType {
-    constructor(readonly url: Uri, readonly value?: T){
-        super();
-    }
-}
+type DaysOfWeek = 
+    { code: 'mon', display: 'Monday' }        |
+    { code: 'tue', display: 'Tuesday' }       |
+    { code: 'wed', display: 'Wednesday' }     |
+    { code: 'thu', display: 'Thursday' }      |
+    { code: 'fri', display: 'Friday' }        |
+    { code: 'sat', display: 'Saturday' }      |
+    { code: 'sun', display: 'Sunday' } 
 
 export {
-    Extension
+    DaysOfWeek
 }

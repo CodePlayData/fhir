@@ -1,4 +1,4 @@
-//@filename: Extension.ts
+// @filename: index.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -16,16 +16,3 @@
    limitations under the License.
 
 */
-
-import { DataType } from "./DataType.js";
-import { Uri } from "./primitives/Uri.js";
-
-class Extension<T extends any> extends DataType {
-    constructor(readonly url: Uri, readonly value?: T){
-        super();
-    }
-}
-
-export {
-    Extension
-}

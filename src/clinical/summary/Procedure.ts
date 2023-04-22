@@ -1,4 +1,4 @@
-//@filename: Extension.ts
+// @filename: Procedure.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,15 +17,10 @@
 
 */
 
-import { DataType } from "./DataType.js";
-import { Uri } from "./primitives/Uri.js";
-
-class Extension<T extends any> extends DataType {
-    constructor(readonly url: Uri, readonly value?: T){
-        super();
-    }
+abstract class Procedure {
+    readonly resourceType = 'Procedure';
 }
 
 export {
-    Extension
+    Procedure
 }

@@ -1,4 +1,4 @@
-// @filename: Instant.test.ts
+// @filename: Binary.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,20 +17,18 @@
 
 */
 
-import { describe, it } from "node:test";
-import { strictEqual } from "node:assert";
-import { Instant } from "./Instant.js";
 
-describe('Teste Unitário do Instant com...', () => {
-  
-  it('a inserção de uma String de data pré-definida.', () => {
-    const instant = Instant.fromString('December 17, 1995 03:24:00');
-    strictEqual(instant.valueOf(), '1995-12-17T05:24:00.000Z')
-  });
+import { Reference } from "../generics/Reference.js";
+import { Code } from "../primitives/Code.js";
 
-  // TODO
-  it.todo('a inserção de um objecto Data.');
+class Binary {
+    constructor(
+        readonly contentType: Code<`${string}/${string}`>,
+        readonly securityContext?: Reference<any>,
+        readonly data?: Buffer
+    ) {}
+}
 
-  //TODO
-  it.todo('uma estrutura chamada nos parâmetros.');
-})
+export { 
+    Binary
+}

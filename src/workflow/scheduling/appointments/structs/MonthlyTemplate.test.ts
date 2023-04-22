@@ -1,4 +1,4 @@
-//@filename: Extension.ts
+// @filename: MonthlyTemplate.test.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,15 +17,10 @@
 
 */
 
-import { DataType } from "./DataType.js";
-import { Uri } from "./primitives/Uri.js";
+import { describe, it } from "node:test";
+import assert from "node:assert";
 
-class Extension<T extends any> extends DataType {
-    constructor(readonly url: Uri, readonly value?: T){
-        super();
-    }
-}
-
-export {
-    Extension
-}
+describe('Testes de unidade do MonthlyTemplate.', () => {
+    //TODO
+    it.todo('Deve instanciar um MonthlyTemplate com o conjunto mínimo de dados possíveis.', () => {});
+})

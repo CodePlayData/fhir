@@ -1,4 +1,4 @@
-//@filename: Extension.ts
+// @filename: CodeableConcept.test.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,15 +17,13 @@
 
 */
 
-import { DataType } from "./DataType.js";
-import { Uri } from "./primitives/Uri.js";
+import { describe, it } from "node:test";
+import assert from "node:assert";
+import { CodeableConcept } from "../generics/CodeableConcept.js";
 
-class Extension<T extends any> extends DataType {
-    constructor(readonly url: Uri, readonly value?: T){
-        super();
-    }
-}
-
-export {
-    Extension
-}
+describe('Testes de unidade classe CodeableConcept', () => {
+    it('Deve instanciar um CodeableConcept.', () => {
+        const codeable = new CodeableConcept(undefined, 'Testando 1, 2, 3,...');
+        assert.strictEqual(codeable.text, 'Testando 1, 2, 3,...');
+    });
+});

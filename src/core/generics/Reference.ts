@@ -1,4 +1,4 @@
-//@filename: Extension.ts
+// @filename: Reference.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,15 +17,23 @@
 
 */
 
-import { DataType } from "./DataType.js";
-import { Uri } from "./primitives/Uri.js";
+import { ResourceType } from "../../ResourceType.js";
+import { Identifier } from "../datatypes/Identifier.js";
 
-class Extension<T extends any> extends DataType {
-    constructor(readonly url: Uri, readonly value?: T){
-        super();
-    }
+/**
+ *  The FHIR structure that points to some Resource, usually by the identification.
+ * 
+ *  Source: https://www.hl7.org/fhir/references.html#Reference.
+ */
+class Reference <T extends ResourceType> {
+    constructor(
+        readonly reference?: URL,
+        readonly type?: T['resourceType'],
+        readonly identifier?: Identifier,
+        readonly display?: string
+    ){};
 }
 
-export {
-    Extension
+export { 
+    Reference
 }

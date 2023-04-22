@@ -1,4 +1,4 @@
-//@filename: Extension.ts
+// @filename: AppointmentRecurrenceType.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,15 +17,18 @@
 
 */
 
-import { DataType } from "./DataType.js";
-import { Uri } from "./primitives/Uri.js";
-
-class Extension<T extends any> extends DataType {
-    constructor(readonly url: Uri, readonly value?: T){
-        super();
-    }
-}
+/**
+ * 
+ *  The recurrence type of a recurring appointment.
+ * 
+ *  Source: http://hl7.org/fhir/ValueSet/appointment-recurrrence-type.
+ */
+type AppointmentRecurrenceType = 
+    { code: 'd', display: 'day', definition: 'day'} |
+    { code: 'wk', display: 'week', definition: 'week'} |
+    { code: 'mo', display: 'month', definition: "month - Normal practice is to use the 'mo' code as a calendar month when calculating the next occurrence." } |
+    { code: 'a', display: 'year', definition: 'year'}
 
 export {
-    Extension
+    AppointmentRecurrenceType
 }

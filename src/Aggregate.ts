@@ -1,4 +1,4 @@
-//@filename: Extension.ts
+// @filename: Aggregate.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,15 +17,18 @@
 
 */
 
-import { DataType } from "./DataType.js";
-import { Uri } from "./primitives/Uri.js";
+import { Identifier } from "./core/datatypes/Identifier.js";
 
-class Extension<T extends any> extends DataType {
-    constructor(readonly url: Uri, readonly value?: T){
-        super();
-    }
+/**
+ *  This interface identifies an DDD aggregate in this system. 
+ *  
+ *  Source: https://martinfowler.com/bliki/DDD_Aggregate.html.
+ */
+interface Aggregate {
+    /** Must contain a Array of Identifier of the domain objects that composes this. */
+    readonly identifier?: Identifier[]
 }
 
 export {
-    Extension
+    Aggregate
 }

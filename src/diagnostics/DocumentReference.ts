@@ -1,4 +1,4 @@
-//@filename: Extension.ts
+// @filename: DocumentReference.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,15 +17,16 @@
 
 */
 
-import { DataType } from "./DataType.js";
-import { Uri } from "./primitives/Uri.js";
+import { Aggregate } from "../Aggregate.js";
+import { ResourceType } from "../ResourceType.js";
+import { Identifier } from "../core/datatypes/Identifier.js";
 
-class Extension<T extends any> extends DataType {
-    constructor(readonly url: Uri, readonly value?: T){
-        super();
-    }
+
+abstract class DocumentReference implements Aggregate, ResourceType {
+    readonly resourceType = 'Account';
+    readonly identifier?: Identifier[]
 }
 
 export {
-    Extension
+    DocumentReference
 }

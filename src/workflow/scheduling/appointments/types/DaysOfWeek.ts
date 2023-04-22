@@ -1,4 +1,4 @@
-// @filename: Code.ts
+// @filename: DaysOfWeek.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,18 +17,18 @@
 
 */
 
-import { InvalidCode } from "../../errors/InvalidCode.js";
+import { Coding } from "../../../../core/datatypes/Coding.js";
+import { Code } from "../../../../core/primitives/Code.js";
+import { DaysOfWeek as DaysOfWeekValueSet } from "../../../../values/DaysOfWeek.js";
 
-class Code extends String {
-    constructor(str: string) {
-        
-        if([...str][0] === ' ' || str.includes('  ') || str.includes('  ')) {
-            throw new InvalidCode();
-        }
-        super(str);
-    }
-}
+type DaysOfWeek = Coding<{
+    readonly system?: URL;
+    readonly version?: string;
+    readonly code?: Code<DaysOfWeekValueSet['code']>;
+    readonly display?: DaysOfWeekValueSet['display'];
+    readonly userSelected?: boolean;
+}>
 
 export {
-    Code
+    DaysOfWeek
 }

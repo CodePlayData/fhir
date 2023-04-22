@@ -1,4 +1,4 @@
-//@filename: Extension.ts
+// @filename: WeeklyTemplate.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,15 +17,21 @@
 
 */
 
-import { DataType } from "./DataType.js";
-import { Uri } from "./primitives/Uri.js";
+import { PositiveInt } from "../../../../core/primitives/PositiveInt.js";
 
-class Extension<T extends any> extends DataType {
-    constructor(readonly url: Uri, readonly value?: T){
-        super();
-    }
+class WeeklyTemplate {
+    constructor(
+        readonly monday: boolean,
+        readonly tuesday: boolean,
+        readonly wednesday: boolean,
+        readonly thursday: boolean,
+        readonly friday: boolean,
+        readonly saturday: boolean,
+        readonly sunday: boolean,
+        readonly weekInterval: PositiveInt
+    ){}
 }
 
 export {
-    Extension
+    WeeklyTemplate
 }
