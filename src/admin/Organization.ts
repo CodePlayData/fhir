@@ -17,7 +17,6 @@
 
 */
 
-import { Aggregate } from "../Aggregate.js";
 import { Resource } from "../core/Resource.js";
 import { Identifier } from "../core/general/Identifier.js";
 
@@ -28,7 +27,7 @@ import { Identifier } from "../core/general/Identifier.js";
  * 
  *  Source: https://www.hl7.org/fhir/organization.html.
  */
-abstract class Organization implements Aggregate, Resource {
+abstract class Organization implements Resource {
     readonly resourceType = 'Organization';
     readonly identifier?: Identifier[]
 };

@@ -61,5 +61,6 @@ type IdentifierTypeCodes = CodeableConcept<{
 }>
 
 export {
-    Identifier
+    Identifier,
+    IdentifierTypeCodes
 }

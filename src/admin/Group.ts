@@ -17,7 +17,6 @@
 
 */
 
-import { Aggregate } from "../Aggregate.js";
 import { Resource } from "../core/Resource.js";
 import { Identifier } from "../core/general/Identifier.js";
 
@@ -32,7 +31,7 @@ import { Identifier } from "../core/general/Identifier.js";
  * 
  *  Source: https://www.hl7.org/fhir/group.html.
  */
-abstract class Group implements Aggregate, Resource {
+abstract class Group implements Resource {
     readonly resourceType = 'Group';
     readonly identifier?: Identifier[]
 };

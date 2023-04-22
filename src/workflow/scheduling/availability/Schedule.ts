@@ -17,7 +17,6 @@
 
 */
 
-import { Aggregate } from "../../../Aggregate.js";
 import { ServiceCategory } from "../../../shared/ServiceCategory.js";
 import { HealthcareService } from "../../../shared/HealthcareService.js";
 import { ServiceType } from "../../../shared/ServiceType.js";
@@ -59,7 +58,7 @@ type ScheduleSchemaR5 = ScheduleSchemaR4B & {
  * 
  *  Source: http://hl7.org/fhir/R5/schedule.html.
  */
-class Schedule implements Aggregate, Resource {
+class Schedule implements Resource {
     readonly resourceType = 'Schedule';
     readonly identifier;
     readonly active;

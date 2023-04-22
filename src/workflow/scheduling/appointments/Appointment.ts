@@ -17,7 +17,6 @@
 
 */
 
-import { Aggregate } from "../../../Aggregate.js";
 import { Account } from "../../../admin/Account.js";
 import { Communication } from "../../../admin/Communication.js";
 import { Group } from "../../../admin/Group.js";
@@ -114,7 +113,7 @@ type AppointmentSchemaR5 = AppointmentSchemaBase & {
  * 
  *  Source: http://hl7.org/fhir/R5/appointment.html.
  */
-class Appointment implements Aggregate, Resource {
+class Appointment implements Resource {
     readonly resourceType = 'Appointment';
     readonly identifier;
     readonly status;
@@ -346,5 +345,8 @@ class Appointment implements Aggregate, Resource {
 }
 
 export {
-    Appointment
+    Appointment,
+    AppointmentSchemaBase,
+    AppointmentSchemaR4B,
+    AppointmentSchemaR5
 }

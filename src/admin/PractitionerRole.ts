@@ -17,7 +17,6 @@
 
 */
 
-import { Aggregate } from "../Aggregate.js";
 import { Resource } from "../core/Resource.js";
 import { Identifier } from "../core/general/Identifier.js";
 
@@ -56,7 +55,7 @@ import { Identifier } from "../core/general/Identifier.js";
  * 
  *  Souce: https://www.hl7.org/fhir/practitionerrole.html.
  */
-abstract class PractitionerRole implements Aggregate, Resource {
+abstract class PractitionerRole implements Resource {
     readonly resourceType = 'PractitionerRole';
     readonly identifier?: Identifier[]
 };

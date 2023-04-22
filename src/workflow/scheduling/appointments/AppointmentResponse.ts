@@ -17,7 +17,6 @@
 
 */
 
-import { Aggregate } from "../../../Aggregate.js";
 import { Appointment } from "./Appointment.js";
 import { Patient } from "../../../admin/Patient.js";
 import { Group } from "../../../admin/Group.js";
@@ -66,7 +65,7 @@ type AppointmentReponseSchemaR4B = AppointmentResponseSchemaBase & {
  * 
  *  Source: https://www.hl7.org/fhir/appointmentresponse.html.
  */
-class AppointmentResponse implements Aggregate, Resource {
+class AppointmentResponse implements Resource {
     readonly resourceType = 'AppointmentResponse';
     readonly identifier;
     readonly appointment;
@@ -167,5 +166,8 @@ class AppointmentResponse implements Aggregate, Resource {
 }
 
 export {
-    AppointmentResponse
+    AppointmentResponse,
+    AppointmentResponseSchemaBase,
+    AppointmentReponseSchemaR4B,
+    AppointmentReponseSchemaR5
 }

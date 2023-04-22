@@ -17,12 +17,11 @@
 
 */
 
-import { Aggregate } from "../Aggregate.js";
 import { Resource } from "../core/Resource.js";
 import { Identifier } from "../core/general/Identifier.js";
 
 
-abstract class DocumentReference implements Aggregate, Resource {
+abstract class DocumentReference implements Resource {
     readonly resourceType = 'Account';
     readonly identifier?: Identifier[]
 }

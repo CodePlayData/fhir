@@ -17,7 +17,6 @@
 
 */
 
-import { Aggregate } from "../Aggregate.js";
 import { Resource } from "../core/Resource.js";
 import { Identifier } from "../core/general/Identifier.js";
 
@@ -44,7 +43,7 @@ import { Identifier } from "../core/general/Identifier.js";
  *  
  */
 
-abstract class CareTeam implements Aggregate, Resource {
+abstract class CareTeam implements Resource {
     readonly resourceType = 'CareTeam';
     readonly identifier?: Identifier[]
 };

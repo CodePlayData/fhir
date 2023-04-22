@@ -17,7 +17,6 @@
 
 */
 
-import { Aggregate } from "../Aggregate.js";
 import { Resource } from "../core/Resource.js";
 import { Identifier } from "../core/general/Identifier.js";
 
@@ -53,7 +52,7 @@ import { Identifier } from "../core/general/Identifier.js";
  * 
  *  Source: https://www.hl7.org/fhir/device.html.
  */
-abstract class Device implements Aggregate, Resource {
+abstract class Device implements Resource {
     readonly resourceType = 'Device';
     readonly identifier?: Identifier[]
 };

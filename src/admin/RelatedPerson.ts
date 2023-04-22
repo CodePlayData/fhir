@@ -17,7 +17,6 @@
 
 */
 
-import { Aggregate } from "../Aggregate.js";
 import { Resource } from "../core/Resource.js";
 import { Identifier } from "../core/general/Identifier.js";
 
@@ -41,7 +40,7 @@ import { Identifier } from "../core/general/Identifier.js";
  * 
  *  Source: https://www.hl7.org/fhir/relatedperson.html.
  */
-abstract class RelatedPerson implements Aggregate, Resource {
+abstract class RelatedPerson implements Resource {
     readonly resourceType = 'RelatedPerson';
     readonly identifier?: Identifier[]
 };

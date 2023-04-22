@@ -17,7 +17,6 @@
 
 */
 
-import { Aggregate } from "../Aggregate.js";
 import { Resource } from "../core/Resource.js";
 import { Identifier } from "../core/general/Identifier.js";
 
@@ -42,7 +41,7 @@ import { Identifier } from "../core/general/Identifier.js";
  *  Source: https://www.hl7.org/fhir/location.html.
  *  
  */
-abstract class Location implements Aggregate, Resource {
+abstract class Location implements Resource {
     readonly resourceType = 'Location';
     readonly identifier?: Identifier[]
 };

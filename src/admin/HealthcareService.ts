@@ -17,7 +17,6 @@
 
 */
 
-import { Aggregate } from "../Aggregate.js";
 import { Resource } from "../core/Resource.js";
 import { Identifier } from "../core/general/Identifier.js";
 
@@ -37,7 +36,7 @@ import { Identifier } from "../core/general/Identifier.js";
  *  Source: https://www.hl7.org/fhir/healthcareservice.html.
  *  
  */
-abstract class HealthcareService implements Aggregate, Resource {
+abstract class HealthcareService implements Resource {
     readonly resourceType = 'HealthcareService';
     readonly identifier?: Identifier[]
 };

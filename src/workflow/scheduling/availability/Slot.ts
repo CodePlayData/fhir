@@ -17,7 +17,6 @@
 
 */
 
-import { Aggregate } from "../../../Aggregate.js";
 import { Schedule } from "./Schedule.js";
 import { SlotStatus } from "../../../values/SlotStatus.js";
 import { ServiceCategory } from "../../../shared/ServiceCategory.js";
@@ -63,7 +62,7 @@ type SlotSchemaR4B = SlotBase & {
  * 
  *  Source: http://hl7.org/fhir/slot.html.
  */
-class Slot implements Aggregate, Resource {
+class Slot implements Resource {
     readonly resourceType = 'Slot';
     readonly identifier;
     readonly serviceCategory;
