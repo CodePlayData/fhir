@@ -155,7 +155,7 @@ export { PracticeSettingCodeValueSet as PracticeSettingCodeValueSetType } from '
 export { ServiceCategory as ServiceCategoryType } from './shared/ServiceCategory.js';
 export { ServiceType } from './shared/ServiceType.js';
 
-export { ActPriority } from './values/ActPriority.js';
+export { ActPriority as ActPriorityValue } from './values/ActPriority.js';
 export { AppointmentCancellationReason } from './values/AppointmentCancellationReason.js';
 export { AppointmentReasonCodes } from './values/AppointmentReasonCodes.js';
 export { AppointmentRecurrenceType } from './values/AppointmentRecurrenceType.js';
@@ -179,5 +179,16 @@ export { WeekOfMonth } from "./values/WeekOfMonth.js";
 export { Appointment, AppointmentSchemaBase, AppointmentSchemaR4B, AppointmentSchemaR5 } from './workflow/scheduling/appointments/Appointment.js';
 export { AppointmentResponse, AppointmentReponseSchemaR4B, AppointmentResponseSchemaBase, AppointmentReponseSchemaR5 } from './workflow/scheduling/appointments/AppointmentResponse.js';
 export { MonthlyTemplate } from './workflow/scheduling/appointments/structs/MonthlyTemplate.js';
-export { Participant } from './workflow/scheduling/appointments/structs/Participant.js'
-//parei aqui
+export { Participant } from './workflow/scheduling/appointments/structs/Participant.js';
+export { RecurrenceTemplate } from './workflow/scheduling/appointments/structs/RecurrenceTemplate.js';
+export { WeeklyTemplate } from './workflow/scheduling/appointments/structs/WeeklyTemplate.js';
+export { YearlyTemplate } from './workflow/scheduling/appointments/structs/YearlyTemplate.js';
+export { ActPriority } from './workflow/scheduling/appointments/types/ActPriority.js';
+export { AppointmentCancellationReason as AppointmentCancellationReasonType } from './workflow/scheduling/appointments/types/AppointmentCancellationReason.js';
+export { AppointmentRecurrenceType as AppointmentRecurrenceTypes} from './workflow/scheduling/appointments/types/AppointmentRecurrenceType.js';
+export { DaysOfWeek as DaysOfWeekType } from './workflow/scheduling/appointments/types/DaysOfWeek.js';
+export { EncounterReasonCodesv4, EncounterReasonCodesv5 } from './workflow/scheduling/appointments/types/EncounterReasonCodes.js';
+export { ParticipantType as ParticipantTypes } from './workflow/scheduling/appointments/types/ParticipantType.js';
+export { WeekOfMonth as WeekOfMonthType } from './workflow/scheduling/appointments/types/WeekOfMonth.js';
+export { Schedule, ScheduleSchemaR4B, ScheduleSchemaR5 } from './workflow/scheduling/availability/Schedule.js';
+export { Slot, SlotBase, SlotSchemaR4B, SlotSchemaR5 } from './workflow/scheduling/availability/Slot.js';
