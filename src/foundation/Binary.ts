@@ -1,4 +1,4 @@
-// @filename: ResourceType.ts
+// @filename: Binary.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,21 +17,17 @@
 
 */
 
-import { ResourceTypeValueSet } from "./values/ResourceTypeValueSet";
+import { Code } from "../core/primitives/Code.js";
+import { Reference } from "../core/special/Reference.js";
 
-/**
- *  This identifier a FHIR HL7 Resource. 
- * 
- *  Source: https://www.hl7.org/fhir/valueset-resource-types.html.
- */
-interface ResourceType {
-    readonly resourceType: ResourceTypeValueSet;
-    readonly id?: string,
-    readonly meta?: {
-        [key: string]: any;
-    }
+class Binary {
+    constructor(
+        readonly contentType: Code<`${string}/${string}`>,
+        readonly securityContext?: Reference<any>,
+        readonly data?: Buffer
+    ) {}
 }
 
-export {
-    ResourceType
+export { 
+    Binary
 }

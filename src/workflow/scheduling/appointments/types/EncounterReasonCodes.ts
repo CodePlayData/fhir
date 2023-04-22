@@ -19,11 +19,11 @@
 
 import { Condition } from "../../../../clinical/summary/Condition.js";
 import { Procedure } from "../../../../clinical/summary/Procedure.js";
-import { CodeableReference } from "../../../../core/datatypes/CodeableReference.js";
-import { Coding } from "../../../../core/datatypes/Coding.js";
-import { CodeableConcept } from "../../../../core/generics/CodeableConcept.js";
-import { Reference } from "../../../../core/generics/Reference.js";
+import { CodeableConcept } from "../../../../core/general/CodeableConcept.js";
+import { Coding } from "../../../../core/general/Coding.js";
 import { Code } from "../../../../core/primitives/Code.js";
+import { CodeableReference } from "../../../../core/special/CodeableReference.js";
+import { Reference } from "../../../../core/special/Reference.js";
 import { Observation } from "../../../../diagnostics/Observation.js";
 import { ImmunizationRecommendation } from "../../../../medications/ImmunizationRecommendation.js";
 import { ValueSet } from "../../../../values/ValueSet.js";

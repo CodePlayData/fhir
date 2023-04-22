@@ -17,13 +17,7 @@
 
 */
 
-import { Reference } from "../../../core/generics/Reference.js";
-import { CodeableConcept } from "../../../core/generics/CodeableConcept.js";
-import { CodeableReference } from "../../../core/datatypes/CodeableReference.js";
-import { Identifier } from "../../../core/datatypes/Identifier.js";
-import { Period } from "../../../core/datatypes/Period.js";
 import { Aggregate } from "../../../Aggregate.js";
-import { ResourceType } from "../../../ResourceType.js";
 import { ServiceCategory } from "../../../shared/ServiceCategory.js";
 import { HealthcareService } from "../../../shared/HealthcareService.js";
 import { ServiceType } from "../../../shared/ServiceType.js";
@@ -37,6 +31,12 @@ import { RelatedPerson } from "../../../admin/RelatedPerson.js";
 import { Device } from "../../../admin/Device.js";
 import { HealthcareService as HealthcareServiceResource } from "../../../admin/HealthcareService";
 import { Location } from "../../../admin/Location.js";
+import { CodeableConcept } from "../../../core/general/CodeableConcept.js";
+import { Identifier } from "../../../core/general/Identifier.js";
+import { Period } from "../../../core/general/Period.js";
+import { CodeableReference } from "../../../core/special/CodeableReference.js";
+import { Reference } from "../../../core/special/Reference.js";
+import { Resource } from "../../../core/Resource.js";
 
 type ScheduleSchemaR4B = {
     readonly identifier?: Identifier[],
@@ -59,7 +59,7 @@ type ScheduleSchemaR5 = ScheduleSchemaR4B & {
  * 
  *  Source: http://hl7.org/fhir/R5/schedule.html.
  */
-class Schedule implements Aggregate, ResourceType {
+class Schedule implements Aggregate, Resource {
     readonly resourceType = 'Schedule';
     readonly identifier;
     readonly active;

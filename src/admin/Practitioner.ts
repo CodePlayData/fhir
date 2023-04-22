@@ -18,8 +18,8 @@
 */
 
 import { Aggregate } from "../Aggregate.js";
-import { ResourceType } from "../ResourceType.js";
-import { Identifier } from "../core/datatypes/Identifier.js";
+import { Resource } from "../core/Resource.js";
+import { Identifier } from "../core/general/Identifier.js";
 
 /**
  *  A person who is directly or indirectly involved in the provisioning of healthcare or related services.
@@ -47,7 +47,7 @@ import { Identifier } from "../core/datatypes/Identifier.js";
  * 
  *  Source: https://www.hl7.org/fhir/practitioner.html.
  */
-abstract class Practitioner implements Aggregate, ResourceType {
+abstract class Practitioner implements Aggregate, Resource {
     readonly resourceType = 'Practitioner';
     readonly identifier?: Identifier[]
 };

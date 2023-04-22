@@ -18,8 +18,8 @@
 */
 
 import { Aggregate } from "../Aggregate.js";
-import { ResourceType } from "../ResourceType.js";
-import { Identifier } from "../core/datatypes/Identifier.js";
+import { Resource } from "../core/Resource.js";
+import { Identifier } from "../core/general/Identifier.js";
 
 /**
  *  A specific set of Roles/Locations/specialties/services that a practitioner may perform at an organization for a period 
@@ -56,7 +56,7 @@ import { Identifier } from "../core/datatypes/Identifier.js";
  * 
  *  Souce: https://www.hl7.org/fhir/practitionerrole.html.
  */
-abstract class PractitionerRole implements Aggregate, ResourceType {
+abstract class PractitionerRole implements Aggregate, Resource {
     readonly resourceType = 'PractitionerRole';
     readonly identifier?: Identifier[]
 };

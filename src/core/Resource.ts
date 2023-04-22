@@ -17,18 +17,16 @@
 
 */
 
+import { ResourceTypeValueSet } from "../values/ResourceTypeValueSet.js";
 import { Base } from "./Base.js";
 import { Id } from "./primitives/Id.js";
 
-abstract class Resource extends Base {
-    constructor(
-        readonly id?: Id,
-        readonly meta?: any,
-        readonly implicitRules?: URL,
-        readonly language?: any
-    ){
-        super();
-    }
+interface Resource extends Base {
+    readonly resourceType: ResourceTypeValueSet,
+    readonly id?: Id,
+    readonly meta?: any,
+    readonly implicitRules?: URL,
+    readonly language?: any
 }
 
 export {

@@ -17,18 +17,18 @@
 
 */
 
-import { Extension } from "./Extension";
+import { ResourceTypeValueSet } from "../values/ResourceTypeValueSet.js";
+import { Extension } from "./Extension.js";
 import { Resource } from "./Resource.js";
 
-abstract class DomainResource extends Resource {
-    constructor(
-      readonly text?: any,
-      readonly contained?: Resource[],
-      readonly extension?: Extension<any>[],
-      readonly modifierExtension?: Extension<any>[]
-    ){
-      super();
-    }
+abstract class DomainResource implements Resource {
+  constructor(
+    readonly text?: any,
+    readonly contained?: Resource[],
+    readonly extension?: Extension<any>[],
+    readonly modifierExtension?: Extension<any>[]
+  ){}
+  resourceType!: ResourceTypeValueSet;
 }
 
 export {

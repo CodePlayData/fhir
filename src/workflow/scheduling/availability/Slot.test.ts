@@ -20,13 +20,13 @@
 import { describe, it } from "node:test";
 import assert from "node:assert";
 import { Slot } from "./Slot.js";
-import { Identifier } from "../../../core/datatypes/Identifier.js";
-import { CodeableConcept } from "../../../core/generics/CodeableConcept.js";
-import { Coding } from "../../../core/datatypes/Coding.js";
-import { CodeableReference, CodeableReferenceSchema } from "../../../core/datatypes/CodeableReference.js";
-import { Reference } from "../../../core/generics/Reference.js";
 import { Code } from "../../../core/primitives/Code.js";
 import { Instant } from "../../../core/primitives/Instant.js";
+import { CodeableConcept } from "../../../core/general/CodeableConcept.js";
+import { Coding } from "../../../core/general/Coding.js";
+import { Identifier } from "../../../core/general/Identifier.js";
+import { CodeableReference, CodeableReferenceSchema } from "../../../core/special/CodeableReference.js";
+import { Reference } from "../../../core/special/Reference.js";
 
 describe('Testes Unitários do Slot com...', () => {
     

@@ -1,4 +1,4 @@
-// @filename: CodeableConcept.test.ts
+// @filename: Reference.test.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -19,11 +19,11 @@
 
 import { describe, it } from "node:test";
 import assert from "node:assert";
-import { CodeableConcept } from "../generics/CodeableConcept.js";
+import { Reference } from "./Reference.js";
 
-describe('Testes de unidade classe CodeableConcept', () => {
-    it('Deve instanciar um CodeableConcept.', () => {
-        const codeable = new CodeableConcept(undefined, 'Testando 1, 2, 3,...');
-        assert.strictEqual(codeable.text, 'Testando 1, 2, 3,...');
+describe('Teste de unidade da classe Reference.', () => {
+    it('Deve instanciar uma Reference.', () => {
+        const reference = new Reference<any>(undefined, 'Practitioner');
+        assert.strictEqual(reference.type, 'Practitioner');
     });
 });

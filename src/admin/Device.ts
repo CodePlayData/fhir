@@ -18,8 +18,8 @@
 */
 
 import { Aggregate } from "../Aggregate.js";
-import { ResourceType } from "../ResourceType.js";
-import { Identifier } from "../core/datatypes/Identifier.js";
+import { Resource } from "../core/Resource.js";
+import { Identifier } from "../core/general/Identifier.js";
 
 /**
  *  A type of a manufactured item that is used in the provision of healthcare without being substantially changed through 
@@ -53,7 +53,7 @@ import { Identifier } from "../core/datatypes/Identifier.js";
  * 
  *  Source: https://www.hl7.org/fhir/device.html.
  */
-abstract class Device implements Aggregate, ResourceType {
+abstract class Device implements Aggregate, Resource {
     readonly resourceType = 'Device';
     readonly identifier?: Identifier[]
 };

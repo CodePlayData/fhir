@@ -18,9 +18,9 @@
 */
 
 import { VirtualServiceType } from "../../values/VirtualServiceType.js";
+import { Coding } from "../general/Coding.js";
 import { Code } from "../primitives/Code.js";
 import { PositiveInt } from "../primitives/PositiveInt.js";
-import { Coding } from "./Coding.js";
 
 /**
  *  The VirtualServiceDetail structure defines details of a virtual communication capability, such as a web conference call.

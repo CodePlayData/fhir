@@ -17,7 +17,7 @@
 
 */
 
-import { Coding } from "../../../../core/datatypes/Coding.js";
+import { Coding } from "../../../../core/general/Coding.js";
 import { Code } from "../../../../core/primitives/Code.js";
 import { WeekOfMonth as WeekOfMonthValueSet } from "../../../../values/WeekOfMonth.js";
 

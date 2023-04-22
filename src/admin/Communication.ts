@@ -18,11 +18,11 @@
 */
 
 import { Aggregate } from "../Aggregate.js";
-import { ResourceType } from "../ResourceType.js";
-import { Identifier } from "../core/datatypes/Identifier.js";
+import { Resource } from "../core/Resource.js";
+import { Identifier } from "../core/general/Identifier.js";
 
 
-abstract class Communication implements Aggregate, ResourceType {
+abstract class Communication implements Aggregate, Resource {
     readonly resourceType = 'Communication';
     readonly identifier?: Identifier[]
 };

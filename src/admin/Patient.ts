@@ -18,8 +18,8 @@
 */
 
 import { Aggregate } from "../Aggregate.js";
-import { ResourceType } from "../ResourceType.js";
-import { Identifier } from "../core/datatypes/Identifier.js";
+import { Resource } from "../core/Resource.js";
+import { Identifier } from "../core/general/Identifier.js";
 
 /**
  *  Demographics and other administrative information about an individual or animal receiving care or other health-related 
@@ -32,7 +32,7 @@ import { Identifier } from "../core/datatypes/Identifier.js";
  * 
  *  Source: https://www.hl7.org/fhir/patient.html.
  */
-abstract class Patient implements Aggregate, ResourceType {
+abstract class Patient implements Aggregate, Resource {
     readonly resourceType = 'Patient';
     readonly identifier?: Identifier[]
 };

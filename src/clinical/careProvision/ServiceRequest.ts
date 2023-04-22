@@ -17,9 +17,9 @@
 
 */
 
-import { ResourceType } from "../../ResourceType.js";
+import { Resource } from "../../core/Resource.js";
 
-class ServiceRequest implements ResourceType {
+class ServiceRequest implements Resource {
     readonly resourceType = 'ServiceRequest';
 }
 

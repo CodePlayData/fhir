@@ -18,13 +18,13 @@
 */
 
 import { IdentifierUse } from "../../values/IdentifierUse.js";
-import { CodeableConcept } from "../generics/CodeableConcept.js";
 import { Period } from "./Period.js";
-import { Reference } from "../generics/Reference.js";
 import { Coding } from "./Coding.js";
 import { IdentifierType as IdentifierTypeValueSet } from "../../values/IdentifierType.js";
 import { Organization } from "../../admin/Organization.js";
 import { Code } from "../primitives/Code.js";
+import { Reference } from "../special/Reference.js";
+import { CodeableConcept } from "./CodeableConcept.js";
 
 /**
  *  A string, typically numeric or alphanumeric, that is associated with a single object or entity 

@@ -18,8 +18,8 @@
 */
 
 import { Aggregate } from "../Aggregate.js";
-import { ResourceType } from "../ResourceType.js";
-import { Identifier } from "../core/datatypes/Identifier.js";
+import { Resource } from "../core/Resource.js";
+import { Identifier } from "../core/general/Identifier.js";
 
 /**
  *  A formally or informally recognized grouping of people or organizations formed for the purpose of achieving some form of 
@@ -28,7 +28,7 @@ import { Identifier } from "../core/datatypes/Identifier.js";
  * 
  *  Source: https://www.hl7.org/fhir/organization.html.
  */
-abstract class Organization implements Aggregate, ResourceType {
+abstract class Organization implements Aggregate, Resource {
     readonly resourceType = 'Organization';
     readonly identifier?: Identifier[]
 };

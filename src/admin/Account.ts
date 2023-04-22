@@ -18,10 +18,10 @@
 */
 
 import { Aggregate } from "../Aggregate.js";
-import { ResourceType } from "../ResourceType.js";
-import { Identifier } from "../core/datatypes/Identifier.js";
+import { Resource } from "../core/Resource.js";
+import { Identifier } from "../core/general/Identifier.js";
 
-abstract class Account implements Aggregate, ResourceType {
+abstract class Account implements Aggregate, Resource {
     readonly resourceType = 'Account';
     readonly identifier?: Identifier[]
 };

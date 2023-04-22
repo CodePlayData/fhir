@@ -17,7 +17,7 @@
 
 */
 
-import { Identifier } from "./core/datatypes/Identifier.js";
+import { Identifier } from "./core/general/Identifier.js"
 
 /**
  *  This interface identifies an DDD aggregate in this system. 

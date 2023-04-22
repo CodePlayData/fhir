@@ -17,8 +17,8 @@
 
 */
 
-import { CodeableConcept } from "../generics/CodeableConcept";
-import { Reference } from "../generics/Reference.js";
+import { CodeableConcept } from "../general/CodeableConcept.js"
+import { Reference } from "./Reference.js"
 
 type CodeableReferenceSchema = {
     readonly concept?: CodeableConcept<any>,

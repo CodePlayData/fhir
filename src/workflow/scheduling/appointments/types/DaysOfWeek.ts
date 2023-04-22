@@ -17,7 +17,7 @@
 
 */
 
-import { Coding } from "../../../../core/datatypes/Coding.js";
+import { Coding } from "../../../../core/general/Coding.js";
 import { Code } from "../../../../core/primitives/Code.js";
 import { DaysOfWeek as DaysOfWeekValueSet } from "../../../../values/DaysOfWeek.js";
 

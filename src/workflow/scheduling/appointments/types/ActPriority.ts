@@ -17,10 +17,10 @@
 
 */
 
+import { CodeableConcept } from "../../../../core/general/CodeableConcept.js";
+import { Coding } from "../../../../core/general/Coding.js";
 import { Code } from "../../../../core/primitives/Code.js";
-import { CodeableConcept } from "../../../../core/generics/CodeableConcept.js";
 import { AppointmentReasonCodes } from "../../../../values/AppointmentReasonCodes.js";
-import { Coding } from "../../../../core/datatypes/Coding.js";
 
 
 type ActPriority = CodeableConcept<{

@@ -18,8 +18,8 @@
 */
 
 import { Aggregate } from "../Aggregate.js";
-import { ResourceType } from "../ResourceType.js";
-import { Identifier } from "../core/datatypes/Identifier.js";
+import { Resource } from "../core/Resource.js";
+import { Identifier } from "../core/general/Identifier.js";
 
 /**
  *  The details of a healthcare service available at a location.
@@ -37,7 +37,7 @@ import { Identifier } from "../core/datatypes/Identifier.js";
  *  Source: https://www.hl7.org/fhir/healthcareservice.html.
  *  
  */
-abstract class HealthcareService implements Aggregate, ResourceType {
+abstract class HealthcareService implements Aggregate, Resource {
     readonly resourceType = 'HealthcareService';
     readonly identifier?: Identifier[]
 };

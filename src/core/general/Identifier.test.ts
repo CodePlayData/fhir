@@ -20,9 +20,9 @@
 import { describe, it } from "node:test";
 import assert from "node:assert";
 import { Identifier } from "./Identifier.js";
-import { CodeableConcept } from "../generics/CodeableConcept.js";
 import { Coding } from "./Coding.js";
 import { Code } from "../primitives/Code.js";
+import { CodeableConcept } from "./CodeableConcept.js";
 
 
 describe('Testes de unidade da classe Identifier.', () => {

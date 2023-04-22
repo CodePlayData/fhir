@@ -18,7 +18,6 @@
 */
 
 import { Aggregate } from "../../../Aggregate.js";
-import { ResourceType } from "../../../ResourceType.js";
 import { Account } from "../../../admin/Account.js";
 import { Communication } from "../../../admin/Communication.js";
 import { Group } from "../../../admin/Group.js";
@@ -32,14 +31,7 @@ import { Observation } from "../../../diagnostics/Observation.js";
 import { ImmunizationRecommendation } from "../../../medications/ImmunizationRecommendation.js";
 import { Condition } from "../../../clinical/summary/Condition.js";
 import { Procedure } from "../../../clinical/summary/Procedure.js";
-import { CodeableConcept } from "../../../core/generics/CodeableConcept.js";
-import { Reference } from "../../../core/generics/Reference.js";
-import { Annotation } from "../../../core/datatypes/Annotation.js";
-import { Binary } from "../../../core/datatypes/Binary.js";
-import { CodeableReference } from "../../../core/datatypes/CodeableReference.js";
-import { Identifier } from "../../../core/datatypes/Identifier.js";
-import { Period } from "../../../core/datatypes/Period.js";
-import { VirtualServiceDetail } from "../../../core/datatypes/VirtualServiceDetail.js";
+import { VirtualServiceDetail } from "../../../core/metadata/VirtualServiceDetail.js";
 import { HealthcareService } from "../../../shared/HealthcareService.js";
 import { Hl7VSAppointmentReasonCodes } from "../../../shared/Hl7VSAppointmentReasonCodes.js";
 import { PracticeSettingCodeValueSet } from "../../../shared/PracticeSettingCodeValueSet.js";
@@ -56,6 +48,14 @@ import { Code } from "../../../core/primitives/Code.js";
 import { DateTime } from "../../../core/primitives/DateTime.js";
 import { Instant } from "../../../core/primitives/Instant.js";
 import { PositiveInt } from "../../../core/primitives/PositiveInt.js";
+import { Annotation } from "../../../core/general/Annotation.js";
+import { CodeableConcept } from "../../../core/general/CodeableConcept.js";
+import { Identifier } from "../../../core/general/Identifier.js";
+import { Period } from "../../../core/general/Period.js";
+import { CodeableReference } from "../../../core/special/CodeableReference.js";
+import { Reference } from "../../../core/special/Reference.js";
+import { Binary } from "../../../foundation/Binary.js";
+import { Resource } from "../../../core/Resource.js";
 
 type AppointmentSchemaBase = {
     readonly identifier?: Identifier[],
@@ -114,7 +114,7 @@ type AppointmentSchemaR5 = AppointmentSchemaBase & {
  * 
  *  Source: http://hl7.org/fhir/R5/appointment.html.
  */
-class Appointment implements Aggregate, ResourceType {
+class Appointment implements Aggregate, Resource {
     readonly resourceType = 'Appointment';
     readonly identifier;
     readonly status;

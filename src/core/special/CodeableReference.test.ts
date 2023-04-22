@@ -20,10 +20,10 @@
 import { describe, it } from "node:test";
 import assert from "node:assert";
 import { CodeableReference } from "./CodeableReference.js";
-import { CodeableConcept } from "../generics/CodeableConcept.js";
-import { Coding } from "./Coding.js";
-import { Reference } from "../generics/Reference.js";
 import { Code } from "../primitives/Code.js";
+import { CodeableConcept } from "../general/CodeableConcept.js";
+import { Coding } from "../general/Coding.js";
+import { Reference } from "./Reference.js";
 
 
 describe('Testes de unidade da classe CodeableReference.', () => {

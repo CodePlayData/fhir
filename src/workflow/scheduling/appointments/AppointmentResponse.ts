@@ -18,10 +18,6 @@
 */
 
 import { Aggregate } from "../../../Aggregate.js";
-import { ResourceType } from "../../../ResourceType.js";
-import { CodeableConcept } from "../../../core/generics/CodeableConcept.js";
-import { Reference } from "../../../core/generics/Reference.js";
-import { Identifier } from "../../../core/datatypes/Identifier.js";
 import { Appointment } from "./Appointment.js";
 import { Patient } from "../../../admin/Patient.js";
 import { Group } from "../../../admin/Group.js";
@@ -37,6 +33,10 @@ import { Code } from "../../../core/primitives/Code.js";
 import { Instant } from "../../../core/primitives/Instant.js";
 import { Markdown } from "../../../core/primitives/Markdown.js";
 import { PositiveInt } from "../../../core/primitives/PositiveInt.js";
+import { CodeableConcept } from "../../../core/general/CodeableConcept.js";
+import { Identifier } from "../../../core/general/Identifier.js";
+import { Reference } from "../../../core/special/Reference.js";
+import { Resource } from "../../../core/Resource.js";
 
 type AppointmentResponseSchemaBase = {
     readonly identifier?: Identifier[],
@@ -66,7 +66,7 @@ type AppointmentReponseSchemaR4B = AppointmentResponseSchemaBase & {
  * 
  *  Source: https://www.hl7.org/fhir/appointmentresponse.html.
  */
-class AppointmentResponse implements Aggregate, ResourceType {
+class AppointmentResponse implements Aggregate, Resource {
     readonly resourceType = 'AppointmentResponse';
     readonly identifier;
     readonly appointment;

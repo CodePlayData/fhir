@@ -17,8 +17,8 @@
 
 */
 
-import { Coding } from "../../../../core/datatypes/Coding.js";
-import { CodeableConcept } from "../../../../core/generics/CodeableConcept.js";
+import { CodeableConcept } from "../../../../core/general/CodeableConcept.js";
+import { Coding } from "../../../../core/general/Coding.js";
 import { Code } from "../../../../core/primitives/Code.js";
 import { ParticipantType as ParticipantTypeValueSet } from "../../../../values/ParticipantType.js";
 

@@ -18,8 +18,8 @@
 */
 
 import { Aggregate } from "../Aggregate.js";
-import { ResourceType } from "../ResourceType.js";
-import { Identifier } from "../core/datatypes/Identifier.js";
+import { Resource } from "../core/Resource.js";
+import { Identifier } from "../core/general/Identifier.js";
 
 /**
  *  Information about a person that is involved in a patient's health or the care for a patient, but who is not the target 
@@ -41,7 +41,7 @@ import { Identifier } from "../core/datatypes/Identifier.js";
  * 
  *  Source: https://www.hl7.org/fhir/relatedperson.html.
  */
-abstract class RelatedPerson implements Aggregate, ResourceType {
+abstract class RelatedPerson implements Aggregate, Resource {
     readonly resourceType = 'RelatedPerson';
     readonly identifier?: Identifier[]
 };

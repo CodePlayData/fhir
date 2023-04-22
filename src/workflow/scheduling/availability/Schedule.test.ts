@@ -21,14 +21,14 @@ import { describe, it } from "node:test";
 import assert from "node:assert";
 import { Practitioner } from "../../../admin/Practitioner.js";
 import { Schedule } from "./Schedule.js";
-import { Reference } from "../../../core/generics/Reference.js";
-import { Identifier } from "../../../core/datatypes/Identifier.js";
-import { CodeableReference } from "../../../core/datatypes/CodeableReference.js";
-import { Coding } from "../../../core/datatypes/Coding.js";
-import { CodeableConcept } from "../../../core/generics/CodeableConcept.js";
-import { Period } from "../../../core/datatypes/Period.js";
 import { Code } from "../../../core/primitives/Code.js";
 import { DateTime } from "../../../core/primitives/DateTime.js";
+import { CodeableConcept } from "../../../core/general/CodeableConcept.js";
+import { Coding } from "../../../core/general/Coding.js";
+import { Identifier } from "../../../core/general/Identifier.js";
+import { Period } from "../../../core/general/Period.js";
+import { CodeableReference } from "../../../core/special/CodeableReference.js";
+import { Reference } from "../../../core/special/Reference.js";
 
 describe('Testes Unitários do Schedule com...', () => {
 

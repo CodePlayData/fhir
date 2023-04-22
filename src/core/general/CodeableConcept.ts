@@ -17,8 +17,7 @@
 
 */
 
-import { Coding, CodingSchema } from "../datatypes/Coding.js";
-
+import { Coding, CodingSchema } from "./Coding.js"
 
 type CodeableConceptSchema = {
     readonly coding?: Coding<CodingSchema>[],

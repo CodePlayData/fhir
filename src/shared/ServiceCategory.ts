@@ -17,10 +17,10 @@
 
 */
 
-import { CodeableConcept } from "../core/generics/CodeableConcept.js";
-import { Coding } from "../core/datatypes/Coding.js";
 import { ServiceCategory as ServiceCategoryValueSet } from "../values/ServiceCategory.js";
 import { Code } from "../core/primitives/Code.js";
+import { CodeableConcept } from "../core/general/CodeableConcept.js";
+import { Coding } from "../core/general/Coding.js";
 
 type ServiceCategory = CodeableConcept<{
     readonly coding?: Coding<{

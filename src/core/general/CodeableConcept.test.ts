@@ -1,4 +1,4 @@
-// @filename: Reference.ts
+// @filename: CodeableConcept.test.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,23 +17,13 @@
 
 */
 
-import { ResourceType } from "../../ResourceType.js";
-import { Identifier } from "../datatypes/Identifier.js";
+import { describe, it } from "node:test";
+import assert from "node:assert";
+import { CodeableConcept } from "./CodeableConcept.js";
 
-/**
- *  The FHIR structure that points to some Resource, usually by the identification.
- * 
- *  Source: https://www.hl7.org/fhir/references.html#Reference.
- */
-class Reference <T extends ResourceType> {
-    constructor(
-        readonly reference?: URL,
-        readonly type?: T['resourceType'],
-        readonly identifier?: Identifier,
-        readonly display?: string
-    ){};
-}
-
-export { 
-    Reference
-}
+describe('Testes de unidade classe CodeableConcept', () => {
+    it('Deve instanciar um CodeableConcept.', () => {
+        const codeable = new CodeableConcept(undefined, 'Testando 1, 2, 3,...');
+        assert.strictEqual(codeable.text, 'Testando 1, 2, 3,...');
+    });
+});

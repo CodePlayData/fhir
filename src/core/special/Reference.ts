@@ -1,4 +1,4 @@
-// @filename: Binary.ts
+// @filename: Reference.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,18 +17,23 @@
 
 */
 
+import { Resource } from "../Resource.js";
+import { Identifier } from "../general/Identifier.js";
 
-import { Reference } from "../generics/Reference.js";
-import { Code } from "../primitives/Code.js";
-
-class Binary {
+/**
+ *  The FHIR structure that points to some Resource, usually by the identification.
+ * 
+ *  Source: https://www.hl7.org/fhir/references.html#Reference.
+ */
+class Reference <T extends Resource> {
     constructor(
-        readonly contentType: Code<`${string}/${string}`>,
-        readonly securityContext?: Reference<any>,
-        readonly data?: Buffer
-    ) {}
+        readonly reference?: URL,
+        readonly type?: T['resourceType'],
+        readonly identifier?: Identifier,
+        readonly display?: string
+    ){};
 }
 
 export { 
-    Binary
+    Reference
 }

@@ -17,9 +17,9 @@
 
 */
 
-import { ResourceType } from "../../ResourceType.js";
+import { Resource } from "../../core/Resource.js";
 
-abstract class DeviceRequest implements ResourceType {
+abstract class DeviceRequest implements Resource {
     readonly resourceType = 'DeviceRequest';
 
 }

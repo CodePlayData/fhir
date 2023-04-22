@@ -18,8 +18,8 @@
 */
 
 import { Aggregate } from "../Aggregate.js";
-import { ResourceType } from "../ResourceType.js";
-import { Identifier } from "../core/datatypes/Identifier.js";
+import { Resource } from "../core/Resource.js";
+import { Identifier } from "../core/general/Identifier.js";
 
 /**
  *  Represents a defined collection of entities that may be discussed or acted upon collectively but which are not expected to 
@@ -32,7 +32,7 @@ import { Identifier } from "../core/datatypes/Identifier.js";
  * 
  *  Source: https://www.hl7.org/fhir/group.html.
  */
-abstract class Group implements Aggregate, ResourceType {
+abstract class Group implements Aggregate, Resource {
     readonly resourceType = 'Group';
     readonly identifier?: Identifier[]
 };

@@ -17,12 +17,7 @@
 
 */
 
-import { ResourceType } from "../../../ResourceType.js";
-import { CodeableConcept } from "../../../core/generics/CodeableConcept.js";
-import { CodeableReference } from "../../../core/datatypes/CodeableReference.js";
-import { Reference } from "../../../core/generics/Reference.js";
 import { Aggregate } from "../../../Aggregate.js";
-import { Identifier } from "../../../core/datatypes/Identifier.js";
 import { Schedule } from "./Schedule.js";
 import { SlotStatus } from "../../../values/SlotStatus.js";
 import { ServiceCategory } from "../../../shared/ServiceCategory.js";
@@ -32,6 +27,11 @@ import { PracticeSettingCodeValueSet } from "../../../shared/PracticeSettingCode
 import { Hl7VSAppointmentReasonCodes } from "../../../shared/Hl7VSAppointmentReasonCodes.js";
 import { Code } from "../../../core/primitives/Code.js";
 import { Instant } from "../../../core/primitives/Instant.js";
+import { CodeableConcept } from "../../../core/general/CodeableConcept.js";
+import { Identifier } from "../../../core/general/Identifier.js";
+import { CodeableReference } from "../../../core/special/CodeableReference.js";
+import { Reference } from "../../../core/special/Reference.js";
+import { Resource } from "../../../core/Resource.js";
 
 
 type SlotBase = {
@@ -63,7 +63,7 @@ type SlotSchemaR4B = SlotBase & {
  * 
  *  Source: http://hl7.org/fhir/slot.html.
  */
-class Slot implements Aggregate, ResourceType {
+class Slot implements Aggregate, Resource {
     readonly resourceType = 'Slot';
     readonly identifier;
     readonly serviceCategory;
