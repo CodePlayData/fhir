@@ -2,7 +2,7 @@
 
 # Fhir (HL7)
 
-![fire_logo](./assets/fire_avatar_white.png)
+![fire_logo](./assets/fire_avatar_black.png)
 
 _Data sem atrito_
 
