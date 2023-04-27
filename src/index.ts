@@ -27,6 +27,7 @@ import { InvalidOid } from './errors/InvalidOid.js';
 import { InvalidUuid } from './errors/InvalidUuid.js';
 import { PositiveIntLessThanOne } from './errors/PositiveIntLessThanOne.js';
 import { UnsignedIntLessThanZero } from './errors/UnsignedIntLessThanZero.js';
+import { PostalCodeIsRequired } from './errors/PostalCodeIsRequired.js';
 
 const Error = {
   InvalidCanonicalUrl,
@@ -38,7 +39,8 @@ const Error = {
   InvalidOid,
   InvalidUuid,
   PositiveIntLessThanOne,
-  UnsignedIntLessThanZero
+  UnsignedIntLessThanZero,
+  PostalCodeIsRequired
 };
 
 import { Account } from './admin/Account.js';
@@ -145,6 +147,7 @@ export { Time } from './core/primitives/Time.js';
 export { UnsignedInt } from './core/primitives/UnsignedInt.js';
 export { Uri } from './core/primitives/Uri.js';
 export { Uuid } from './core/primitives/Uuid.js';
+export { Address } from './core/general/Address.js';
 
 export { CodeableReference, CodeableReferenceSchema } from './core/special/CodeableReference.js';
 export { Reference } from './core/special/Reference.js';
@@ -192,3 +195,7 @@ export { ParticipantType as ParticipantTypes } from './workflow/scheduling/appoi
 export { WeekOfMonth as WeekOfMonthType } from './workflow/scheduling/appointments/types/WeekOfMonth.js';
 export { Schedule, ScheduleSchemaR4B, ScheduleSchemaR5 } from './workflow/scheduling/availability/Schedule.js';
 export { Slot, SlotBase, SlotSchemaR4B, SlotSchemaR5 } from './workflow/scheduling/availability/Slot.js';
+
+// Quando outros recursos se completarem esses abaixo devem ser reposicionados no export.
+
+export { Position } from './admin/struct/Position.js';

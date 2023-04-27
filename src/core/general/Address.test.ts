@@ -1,4 +1,4 @@
-// @filename: Annotation.test.ts
+// @filename: Address.test.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -18,9 +18,22 @@
 */
 
 import { describe, it } from "node:test";
-import assert from "node:assert";
+import { throws, deepEqual } from "node:assert";
+import { Address } from "./Address.js";
 
-describe('Testes de unidade da class Annotation...', () => {
-    //TODO
-    it.todo('Deve instanciar uma Annotation com o minimo de dados possiveis.');
+describe('Testes de unidade da class Address...', () => {
+    it('um endereço postal sem o código postal', () => {
+        throws(
+            () => {
+                new Address(undefined, 'postal')
+            },
+            Error,
+            'A postal address must contain a postal code.'
+          );
+    });
+
+    it('vazio', () => {
+        const address = new Address();
+        deepEqual(address, new Address());
+    })
 });

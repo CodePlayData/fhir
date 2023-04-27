@@ -1,4 +1,6 @@
-// @filename: Annotation.test.ts
+// @filename: Position.ts
+
+import { Decimal } from "../../core/primitives/Decimal";
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,10 +19,14 @@
 
 */
 
-import { describe, it } from "node:test";
-import assert from "node:assert";
+class Position {
+    constructor(
+        readonly longitude: Decimal,
+        readonly latitude: Decimal,
+        readonly altitude?: Decimal
+    ){}
+}
 
-describe('Testes de unidade da class Annotation...', () => {
-    //TODO
-    it.todo('Deve instanciar uma Annotation com o minimo de dados possiveis.');
-});
+export {
+    Position
+}

@@ -1,4 +1,4 @@
-// @filename: Annotation.test.ts
+//@filename: AddressType.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,10 +17,17 @@
 
 */
 
-import { describe, it } from "node:test";
-import assert from "node:assert";
+/**
+ * 
+ *  The type of an address (physical / postal).
+ * 
+ *  Source: https://hl7.org/fhir/valueset-address-type.html.
+ */
+type AddressType = 
+    { code: 'postal', display: 'Postal', definition: 'Mailing addresses - PO Boxes and care-of addresses.' }  |
+    { code: 'physical', display: 'Physical', definition: 'A physical address that can be visited.'}           |
+    { code: 'both', display: 'Both', definition: 'An address that is both physical and postal.' }
 
-describe('Testes de unidade da class Annotation...', () => {
-    //TODO
-    it.todo('Deve instanciar uma Annotation com o minimo de dados possiveis.');
-});
+export {
+    AddressType
+}

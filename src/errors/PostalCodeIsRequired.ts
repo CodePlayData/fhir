@@ -1,4 +1,4 @@
-// @filename: Annotation.test.ts
+//@filename: PostalCodeIsRequired.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,10 +17,12 @@
 
 */
 
-import { describe, it } from "node:test";
-import assert from "node:assert";
+class PostalCodeIsRequired extends Error {
+    constructor() {
+        super('A postal address must contain a postal code.');
+    }
+}
 
-describe('Testes de unidade da class Annotation...', () => {
-    //TODO
-    it.todo('Deve instanciar uma Annotation com o minimo de dados possiveis.');
-});
+export {
+    PostalCodeIsRequired
+}
