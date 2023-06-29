@@ -81,9 +81,9 @@ A seguir iremos avaliar as opções que existem para Javascript mas a existênci
 |  |  |
 |--|--|
 | **Fonte**: | https://github.com/bluehalo/node-fhir-server-core |
-| **Descrição**: | Também uma implementação muito bem sucedida para as lógicas de backend se um servidor FHIR. |
+| **Descrição**: | Também uma implementação muito bem sucedida para as lógicas de backend de um servidor FHIR. |
 | **Vantagens**: |  Integração como o Node, Express e Mongo. |
-| **Desvantagens**:  | Acoplamento de código e lógicas de arquitetura de software inexistentes. |
+| **Desvantagens**:  | Acoplamento de código e lógicas de design de software inexistentes. |
 
 <br>
 
