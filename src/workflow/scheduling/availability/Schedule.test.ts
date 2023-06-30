@@ -55,23 +55,29 @@ describe('Testes Unitários do Schedule com...', () => {
 
   it('o mínimo de dados obrigatórios.', () => {
     const schedule = new Schedule({
-      actor: new Reference<Practitioner>(new URL("https://practitioner.example.com"))
+      actor: [
+        new Reference<Practitioner>(new URL("https://practitioner.example.com"))
+      ]
     })
 
     assert.strictEqual(
       JSON.stringify(schedule), 
       JSON.stringify({
         "resourceType":"Schedule",
-        "actor": {
-          "reference":"https://practitioner.example.com/"
-        }
+        "actor": [
+          {
+            "reference":"https://practitioner.example.com/"
+          }
+        ]
       })
     );
   });
 
   it('pelo menos um identificador.', () => {
     const schedule = new Schedule({
-      actor: new Reference<Practitioner>(new URL("https://practitioner.example.com")),
+      actor: [
+        new Reference<Practitioner>(new URL("https://practitioner.example.com"))
+      ],
       identifier: [ new Identifier(undefined, undefined, 'urn:system', 'schedule-001')]
     });
 
@@ -85,16 +91,20 @@ describe('Testes Unitários do Schedule com...', () => {
             "value":"schedule-001"
           }
         ],
-        "actor":{
-          "reference":"https://practitioner.example.com/"
-        }
+        "actor": [
+          {
+            "reference":"https://practitioner.example.com/"
+          }
+        ]
       })
     )
   });
 
   it('a propriedade que identifica se está ativo ou não.', () => {
     const schedule = new Schedule({
-      actor: new Reference<Practitioner>(new URL("https://practitioner.example.com")),
+      actor: [
+        new Reference<Practitioner>(new URL("https://practitioner.example.com"))
+      ],
       active: true
     });
 
@@ -103,16 +113,20 @@ describe('Testes Unitários do Schedule com...', () => {
       JSON.stringify({
         "resourceType":"Schedule",
         "active":true,
-        "actor":{
-          "reference":"https://practitioner.example.com/"
-        }
+        "actor":[
+          {
+            "reference":"https://practitioner.example.com/"
+          }
+        ]
       })
     )
   });
 
   it('a categoria de serviço.', () => {
     const schedule = new Schedule({
-      actor: new Reference<Practitioner>(new URL("https://practitioner.example.com")),
+      actor: [
+        new Reference<Practitioner>(new URL("https://practitioner.example.com"))
+      ],
       serviceCategory: new CodeableConcept(
         [
             new Coding(
@@ -139,16 +153,20 @@ describe('Testes Unitários do Schedule com...', () => {
               }
             ]
           },
-          "actor":{
-            "reference":"https://practitioner.example.com/"
-          }
+          "actor": [
+            {
+              "reference":"https://practitioner.example.com/"
+            }
+          ]
         })
     )
   });
 
   it('o tipo de serviço.', () => {
     const schedule = new Schedule({
-      actor: new Reference<Practitioner>(new URL("https://practitioner.example.com")),
+      actor: [
+        new Reference<Practitioner>(new URL("https://practitioner.example.com"))
+      ],
       serviceType: [
         new CodeableReference(
           new CodeableConcept(
@@ -182,16 +200,20 @@ describe('Testes Unitários do Schedule com...', () => {
             }
           }
         ],
-        "actor":{
-          "reference":"https://practitioner.example.com/"
-        }
+        "actor":[
+          {
+            "reference":"https://practitioner.example.com/"
+          }
+        ]
       })
     )
   });
 
   it('a especialidade identificada.', () => {
     const schedule = new Schedule({
-      actor: new Reference<Practitioner>(new URL("https://practitioner.example.com")),
+      actor: [
+        new Reference<Practitioner>(new URL("https://practitioner.example.com"))
+      ],
       specialty: [
         new CodeableConcept(
             [
@@ -221,16 +243,20 @@ describe('Testes Unitários do Schedule com...', () => {
             ]
           }
         ],
-        "actor":{
-          "reference":"https://practitioner.example.com/"
-        }
+        "actor":[
+          {
+            "reference":"https://practitioner.example.com/"
+          }
+        ]
       })
     )
   });
 
   it('um nome.', () => {
     const schedule = new Schedule({
-      actor: new Reference<Practitioner>(new URL("https://practitioner.example.com")),
+      actor: [
+        new Reference<Practitioner>(new URL("https://practitioner.example.com"))
+      ],
       name: "Dr. Pedro Paulo - Cirurgião Dentista Clínico Geral e Saúde Coletiva"
     })
 
@@ -239,16 +265,20 @@ describe('Testes Unitários do Schedule com...', () => {
       JSON.stringify({
         "resourceType":"Schedule",
         "name":"Dr. Pedro Paulo - Cirurgião Dentista Clínico Geral e Saúde Coletiva",
-        "actor":{
-          "reference":"https://practitioner.example.com/"
-        }
+        "actor":[
+          {
+            "reference":"https://practitioner.example.com/"
+          }
+        ]
       })
     )
   });
 
   it('o horizonte de disponibilidade válido.', () => {
     const schedule = new Schedule({
-      actor: new Reference<Practitioner>(new URL("https://practitioner.example.com")),
+      actor: [
+        new Reference<Practitioner>(new URL("https://practitioner.example.com"))
+      ],
       planningHorizon: new Period(
         new DateTime("2019-10-30T10:45:31.449+05:30"),
         new DateTime("2019-10-30T11:45:31.449+05:30"),
@@ -259,9 +289,11 @@ describe('Testes Unitários do Schedule com...', () => {
       JSON.stringify(schedule),
       JSON.stringify({
         "resourceType":"Schedule",
-        "actor":{
-          "reference":"https://practitioner.example.com/"
-        },
+        "actor":[
+          {
+            "reference":"https://practitioner.example.com/"
+          }
+        ],
         "planningHorizon":{
           "start":"2019-10-30T05:15:31.449Z",
           "end":"2019-10-30T06:15:31.449Z"
@@ -272,13 +304,15 @@ describe('Testes Unitários do Schedule com...', () => {
 
   it('comentários.', () => {
     const schedule = new Schedule({
-      actor: new Reference<Practitioner>(new URL("https://practitioner.example.com")),
+      actor: [
+        new Reference<Practitioner>(new URL("https://practitioner.example.com"))
+      ],
       comment: '**Teste**'
     });
 
     assert.strictEqual(
       JSON.stringify(schedule),
-      JSON.stringify({"resourceType":"Schedule","actor":{"reference":"https://practitioner.example.com/"},"comment":"**Teste**"})
+      JSON.stringify({"resourceType":"Schedule","actor":[{"reference":"https://practitioner.example.com/"}],"comment":"**Teste**"})
     )
   });
 

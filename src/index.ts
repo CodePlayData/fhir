@@ -195,7 +195,5 @@ export { ParticipantType as ParticipantTypes } from './workflow/scheduling/appoi
 export { WeekOfMonth as WeekOfMonthType } from './workflow/scheduling/appointments/types/WeekOfMonth.js';
 export { Schedule, ScheduleSchemaR4B, ScheduleSchemaR5 } from './workflow/scheduling/availability/Schedule.js';
 export { Slot, SlotBase, SlotSchemaR4B, SlotSchemaR5 } from './workflow/scheduling/availability/Slot.js';
-
-// Quando outros recursos se completarem esses abaixo devem ser reposicionados no export.
-
 export { Position } from './admin/struct/Position.js';
+

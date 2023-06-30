@@ -43,7 +43,8 @@ type ScheduleSchemaR4B = {
     readonly serviceCategory?: CodeableConcept<ServiceCategory>,
     readonly serviceType?: CodeableReference<HealthcareService>[] | CodeableConcept<ServiceType>[],
     readonly specialty?: CodeableConcept<PracticeSettingCodeValueSet>[],
-    readonly actor: Reference<Patient | Practitioner | PractitionerRole | CareTeam | RelatedPerson | Device | HealthcareServiceResource | Location>,
+    // TODO: tem que trocar pra Array.
+    readonly actor: Reference<Patient | Practitioner | PractitionerRole | CareTeam | RelatedPerson | Device | HealthcareServiceResource | Location>[],
     readonly planningHorizon?: Period,
     readonly comment?: Markdown
 }
