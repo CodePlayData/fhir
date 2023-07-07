@@ -17,100 +17,44 @@
 
 */
 
-import { InvalidCanonicalUrl } from './errors/InvalidCanonicalUrl.js';
-import { InvalidCode } from './errors/InvalidCode.js';
-import { InvalidDecimal } from './errors/InvalidDecimal.js';
-import { InvalidIdLength } from './errors/InvalidIdLength.js';
-import { InvalidInteger } from './errors/InvalidInteger.js';
-import { InvalidInterger64 } from './errors/InvalidInterger64.js';
-import { InvalidOid } from './errors/InvalidOid.js';
-import { InvalidUuid } from './errors/InvalidUuid.js';
-import { PositiveIntLessThanOne } from './errors/PositiveIntLessThanOne.js';
-import { UnsignedIntLessThanZero } from './errors/UnsignedIntLessThanZero.js';
-import { PostalCodeIsRequired } from './errors/PostalCodeIsRequired.js';
-
-const Error = {
-  InvalidCanonicalUrl,
-  InvalidCode,
-  InvalidDecimal,
-  InvalidIdLength,
-  InvalidInteger,
-  InvalidInterger64,
-  InvalidOid,
-  InvalidUuid,
-  PositiveIntLessThanOne,
-  UnsignedIntLessThanZero,
-  PostalCodeIsRequired
-};
-
-import { Account } from './admin/Account.js';
-import { CareTeam } from './admin/CareTeam.js';
-import { Communication } from './admin/Communication.js';
-import { Device } from './admin/Device.js';
-import { Group } from './admin/Group.js';
-import { HealthcareService } from './admin/HealthcareService.js';
-import { Location } from './admin/Location.js';
-import { Organization } from './admin/Organization.js';
-import { Patient } from './admin/Patient.js';
-import { Practitioner } from './admin/Practitioner.js';
-import { PractitionerRole } from './admin/PractitionerRole.js';
-import { RelatedPerson } from './admin/RelatedPerson.js';
-
-const Admin = {
-  Account,
-  CareTeam,
-  Communication,
-  Device,
-  Group,
-  HealthcareService,
-  Location,
-  Organization,
-  Patient,
-  Practitioner,
-  PractitionerRole,
-  RelatedPerson
-};
-
-import { CarePlan } from './clinical/careProvision/CarePlan.js';
-import { ServiceRequest } from './clinical/careProvision/ServiceRequest.js';
-import { DeviceRequest } from './clinical/request&response/DeviceRequest.js';
-import { Condition } from './clinical/summary/Condition.js';
-import { Procedure } from './clinical/summary/Procedure.js';
-
-const Clinical = {
-  CarePlan,
-  ServiceRequest,
-  DeviceRequest,
-  Condition,
-  Procedure
-};
-
-import { DocumentReference } from './diagnostics/DocumentReference.js';
-import { Observation } from './diagnostics/Observation.js';
-
-const Diagnostics = {
-  DocumentReference,
-  Observation
-};
-
-import { ImmunizationRecommendation } from './medications/ImmunizationRecommendation.js';
-import { MedicationRequest } from './medications/MedicationRequest.js';
-
-const Medications = {
-  ImmunizationRecommendation,
-  MedicationRequest
-};
-
-export { 
-  Error,
-  Admin,
-  Clinical,
-  Diagnostics,
-  Medications
-}
-
+// Erros
+export { InvalidCanonicalUrl } from './errors/InvalidCanonicalUrl.js';
+export { InvalidCode } from './errors/InvalidCode.js';
+export { InvalidDecimal } from './errors/InvalidDecimal.js';
+export { InvalidIdLength } from './errors/InvalidIdLength.js';
+export { InvalidInteger } from './errors/InvalidInteger.js';
+export { InvalidInterger64 } from './errors/InvalidInterger64.js';
+export { InvalidOid } from './errors/InvalidOid.js';
+export { InvalidUuid } from './errors/InvalidUuid.js';
+export { PositiveIntLessThanOne } from './errors/PositiveIntLessThanOne.js';
+export { UnsignedIntLessThanZero } from './errors/UnsignedIntLessThanZero.js';
+export { PostalCodeIsRequired } from './errors/PostalCodeIsRequired.js';
+// Admin
+export { Account } from './admin/Account.js';
+export { CareTeam } from './admin/CareTeam.js';
+export { Communication } from './admin/Communication.js';
+export { Device } from './admin/Device.js';
+export { Group } from './admin/Group.js';
+export { HealthcareService } from './admin/HealthcareService.js';
+export { Location } from './admin/Location.js';
+export { Organization } from './admin/Organization.js';
+export { Patient } from './admin/Patient.js';
+export { Practitioner } from './admin/Practitioner.js';
+export { PractitionerRole } from './admin/PractitionerRole.js';
+export { RelatedPerson } from './admin/RelatedPerson.js';
+// Clinical
+export { CarePlan } from './clinical/careProvision/CarePlan.js';
+export { ServiceRequest } from './clinical/careProvision/ServiceRequest.js';
+export { DeviceRequest } from './clinical/request&response/DeviceRequest.js';
+export { Condition } from './clinical/summary/Condition.js';
+export { Procedure } from './clinical/summary/Procedure.js';
+// Diagnostics
+export { DocumentReference } from './diagnostics/DocumentReference.js';
+export { Observation } from './diagnostics/Observation.js';
+// Medications
+export { ImmunizationRecommendation } from './medications/ImmunizationRecommendation.js';
+export { MedicationRequest } from './medications/MedicationRequest.js';
 export { Binary } from './foundation/Binary.js';
-
 export { BackboneElement } from './core/BackboneElement.js';
 export { BackboneType } from './core/BackboneType.js';
 export { Base } from './core/Base.js';
@@ -122,15 +66,12 @@ export { Extension } from './core/Extension.js';
 export { MetadataResource } from './core/MetadataResource.js';
 export { PrimitiveType } from './core/PrimitiveType.js';
 export { Resource } from './core/Resource.js';
-
 export { Annotation } from './core/general/Annotation.js';
 export { CodeableConcept, CodeableConceptSchema} from './core/general/CodeableConcept.js';
 export { Coding, CodingSchema } from './core/general/Coding.js';
 export { Identifier, IdentifierTypeCodes } from './core/general/Identifier.js';
 export { Period } from './core/general/Period.js';
-
 export { VirtualServiceDetail } from './core/metadata/VirtualServiceDetail.js'
-
 export { Base64Binary } from './core/primitives/Base64Binary.js';
 export { Canonical } from './core/primitives/Canonical.js';
 export { Code } from './core/primitives/Code.js';
@@ -148,16 +89,12 @@ export { UnsignedInt } from './core/primitives/UnsignedInt.js';
 export { Uri } from './core/primitives/Uri.js';
 export { Uuid } from './core/primitives/Uuid.js';
 export { Address } from './core/general/Address.js';
-
 export { CodeableReference, CodeableReferenceSchema } from './core/special/CodeableReference.js';
 export { Reference } from './core/special/Reference.js';
-
-export { HealthcareService } from './shared/HealthcareService.js';
 export { Hl7VSAppointmentReasonCodes } from './shared/Hl7VSAppointmentReasonCodes.js';
 export { PracticeSettingCodeValueSet as PracticeSettingCodeValueSetType } from './shared/PracticeSettingCodeValueSet.js';
 export { ServiceCategory as ServiceCategoryType } from './shared/ServiceCategory.js';
 export { ServiceType } from './shared/ServiceType.js';
-
 export { ActPriority as ActPriorityValue } from './values/ActPriority.js';
 export { AppointmentCancellationReason } from './values/AppointmentCancellationReason.js';
 export { AppointmentReasonCodes } from './values/AppointmentReasonCodes.js';
@@ -178,7 +115,6 @@ export { SlotStatus } from "./values/SlotStatus.js";
 export { ValueSet } from "./values/ValueSet.js";
 export { VirtualServiceType } from "./values/VirtualServiceType.js";
 export { WeekOfMonth } from "./values/WeekOfMonth.js";
-
 export { Appointment, AppointmentSchemaBase, AppointmentSchemaR4B, AppointmentSchemaR5 } from './workflow/scheduling/appointments/Appointment.js';
 export { AppointmentResponse, AppointmentReponseSchemaR4B, AppointmentResponseSchemaBase, AppointmentReponseSchemaR5 } from './workflow/scheduling/appointments/AppointmentResponse.js';
 export { MonthlyTemplate } from './workflow/scheduling/appointments/structs/MonthlyTemplate.js';
