@@ -1,4 +1,4 @@
-// @filename: Quantity.test.ts
+// @filename: CommumUCUMCodesForDuration.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,7 +17,18 @@
 
 */
 
-import { describe, it } from "node:test";
-import assert from "node:assert";
+import { ValueSet } from "./ValueSet.js";
 
-describe('Testes Unitários do Quantity com...', () => {});
+type CommumUCUMCodesForDuration = ValueSet & 
+    { code: 'ms', display: 'milliseconds' }       |
+    { code: 's', display: 'seconds' }             |
+    { code: 'min', display: 'minutes' }           |
+    { code: 'h', display: 'hours' }               |
+    { code: 'd', display: 'days' }                |
+    { code: 'wk', display: 'weeks' }              |
+    { code: 'mo', display: 'months' }             |
+    { code: 'a', display: 'years' }
+
+export {
+    CommumUCUMCodesForDuration
+}

@@ -18,6 +18,7 @@
 */
 
 import { QuantityComparator } from "../../values/QuantityComparator.js";
+import { ValueSet } from "../../values/ValueSet.js";
 import { DataType } from "../DataType.js";
 import { Code } from "../primitives/Code.js";
 import { Decimal } from "../primitives/Decimal.js";
@@ -30,16 +31,22 @@ import { Uri } from "../primitives/Uri.js";
  *  Source: https://www.hl7.org/fhir/datatypes.html#quantity.
  * 
  */
-class Quantity<T extends string> extends DataType {
-    
+abstract class Quantity<T extends ValueSet> extends DataType {
+    readonly code!: Code<T['code']>;
+    readonly comparator!: Code<QuantityComparator['code']>;
+    readonly system!: Uri;
+
     constructor(
-        readonly value?: Decimal,
-        readonly comparator: Code<QuantityComparator['code']> = '=',
-        readonly unit?: string,
-        readonly system?: Uri,
-        readonly code?: Code<T>
+        readonly value: Decimal,
+        readonly unit: T['display'],
+        system: string,
+        code: T['code'],
+        comparator: QuantityComparator['code'] | '=' = '='
     ) {
         super();
+        this.code = new Code(code);
+        this.comparator = new Code(comparator);
+        this.system = new URL(system);
     }
 
 }

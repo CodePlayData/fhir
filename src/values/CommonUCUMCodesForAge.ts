@@ -1,4 +1,4 @@
-// @filename: Address.test.ts
+// @filename: CommumUCUMCodesForAge.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,25 +17,16 @@
 
 */
 
-import { describe, it } from "node:test";
-import { throws, deepEqual } from "node:assert";
-import { Address } from "./Address.js";
+import { ValueSet } from "./ValueSet.js";
 
-describe('Testes de unidade da class Address...', () => {
-    
-    it('um endereço postal sem o código postal', () => {
-        throws(
-            () => {
-                new Address(undefined, 'postal')
-            },
-            Error,
-            'A postal address must contain a postal code.'
-          );
-    });
+type CommumUCUMCodesForAge = ValueSet & 
+    { code: 'min', display: 'minutes' } |
+    { code: 'h', display: 'hours' }     |
+    { code: 'd', display: 'days' }      |
+    { code: 'wk', display: 'weeks' }    |
+    { code: 'mo', display: 'months' }   |
+    { code: 'a', display: 'years' }
 
-    it('vazio', () => {
-        const address = new Address();
-        deepEqual(address, new Address());
-    });
-
-});
+export {
+    CommumUCUMCodesForAge
+}

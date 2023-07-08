@@ -1,4 +1,4 @@
-// @filename: Address.test.ts
+// @filename: Distance.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,25 +17,22 @@
 
 */
 
-import { describe, it } from "node:test";
-import { throws, deepEqual } from "node:assert";
-import { Address } from "./Address.js";
+import { CommumUCUMCodesForDistance } from "../../values/CommonUCUMCodesForDistance.js";
+import { QuantityComparator } from "../../values/QuantityComparator.js";
+import { Quantity } from "./Quantity.js";
 
-describe('Testes de unidade da class Address...', () => {
-    
-    it('um endereço postal sem o código postal', () => {
-        throws(
-            () => {
-                new Address(undefined, 'postal')
-            },
-            Error,
-            'A postal address must contain a postal code.'
-          );
-    });
+class Distance extends Quantity<CommumUCUMCodesForDistance> {
 
-    it('vazio', () => {
-        const address = new Address();
-        deepEqual(address, new Address());
-    });
+    constructor(
+        value: number,
+        unit: CommumUCUMCodesForDistance,
+        comparator?: QuantityComparator['code']
+    ) {
+        super(value, unit['display'], 'http://unitsofmeasure.org', unit['code'], comparator);
+    }
 
-});
+}
+
+export {
+    Distance
+}

@@ -1,4 +1,4 @@
-// @filename: Address.test.ts
+// @filename: Age.test.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -20,22 +20,13 @@
 import { describe, it } from "node:test";
 import { throws, deepEqual } from "node:assert";
 import { Address } from "./Address.js";
+import { Age } from "./Age.js";
+import { Decimal } from "../primitives/Decimal.js";
+import { Code } from "../primitives/Code.js";
 
-describe('Testes de unidade da class Address...', () => {
+describe('Testes de unidade da class Age...', () => {
     
-    it('um endereço postal sem o código postal', () => {
-        throws(
-            () => {
-                new Address(undefined, 'postal')
-            },
-            Error,
-            'A postal address must contain a postal code.'
-          );
-    });
-
-    it('vazio', () => {
-        const address = new Address();
-        deepEqual(address, new Address());
+    it('com o mínimo possível.', () => {
     });
 
 });

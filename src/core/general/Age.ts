@@ -1,4 +1,4 @@
-// @filename: Duration.ts
+// @filename: Age.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,21 +17,27 @@
 
 */
 
-import { CommumUCUMCodesForDuration } from "../../values/CommumUCUMCodesForDuration.js";
+import { CommumUCUMCodesForAge } from "../../values/CommonUCUMCodesForAge.js";
 import { QuantityComparator } from "../../values/QuantityComparator.js";
 import { Quantity } from "./Quantity.js";
 
-class Duration extends Quantity<CommumUCUMCodesForDuration> {
+/**
+ *  The age as a durantion of timelife.
+ * 
+ *  Source: https://www.hl7.org/fhir/datatypes.html#Age.
+ */
+class Age extends Quantity<CommumUCUMCodesForAge> {
 
     constructor(
         value: number,
-        unit: CommumUCUMCodesForDuration,
+        unit: CommumUCUMCodesForAge,
         comparator?: QuantityComparator['code']
     ) {
         super(value, unit['display'], 'http://unitsofmeasure.org', unit['code'], comparator);
     }
 
 }
+
 export {
-    Duration
+    Age
 }
