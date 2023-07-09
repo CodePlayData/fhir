@@ -32,7 +32,7 @@ abstract class VirtualServiceDetail {
         readonly version?: string,
         readonly display?: string,
         readonly userSelected?: boolean
-        readonly code: Code<VirtualServiceType['code']>
+        readonly code: Code<VirtualServiceType['compose']['include'][0]['concept']['code']>
         }>,
         readonly address?: any,
         readonly additionalInfo?: URL,

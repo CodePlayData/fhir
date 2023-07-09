@@ -27,8 +27,8 @@ type ParticipantType = CodeableConcept<{
     readonly coding?: Coding<{
         readonly system?: URL;
         readonly version?: string;
-        readonly code?: Code<ParticipantTypeValueSet['code']>;
-        readonly display?: ParticipantTypeValueSet['display'];
+        readonly code?: Code<ParticipantTypeValueSet['compose']['include'][0]['concept']['code']>;
+        readonly display?: ParticipantTypeValueSet['compose']['include'][0]['concept']['display'];
         readonly userSelected?: boolean;
     }>[] | undefined;
     readonly text?: string | undefined;

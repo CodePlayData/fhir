@@ -34,7 +34,7 @@ import { Reference } from "../../../../core/special/Reference.js";
 
 class Participant {
     constructor(
-        readonly status: Code<ParticipationStatus['code']>,
+        readonly status: Code<ParticipationStatus['compose']['include'][0]['concept']['code']>,
         readonly type?: CodeableConcept<ParticipantType>[],
         readonly period?: Period,
         readonly actor?: Reference<Patient | Group | Practitioner | PractitionerRole | CareTeam | RelatedPerson | Device | HealthcareService | Location>,

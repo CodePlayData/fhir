@@ -24,8 +24,8 @@ import { DaysOfWeek as DaysOfWeekValueSet } from "../../../../values/DaysOfWeek.
 type DaysOfWeek = Coding<{
     readonly system?: URL;
     readonly version?: string;
-    readonly code?: Code<DaysOfWeekValueSet['code']>;
-    readonly display?: DaysOfWeekValueSet['display'];
+    readonly code?: Code<DaysOfWeekValueSet['compose']['include'][0]['concept']['code']>;
+    readonly display?: DaysOfWeekValueSet['compose']['include'][0]['concept']['display'];
     readonly userSelected?: boolean;
 }>
 

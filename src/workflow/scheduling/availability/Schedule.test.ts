@@ -188,7 +188,7 @@ describe('Testes Unitários do Schedule com...', () => {
     const practitioner = { } as Practitioner;
     const schedule = new Schedule({
       actor: [practitioner],
-      specialty: [{ code: '394539006', display: 'Pediatric surgery' }]
+      specialty: []
     });
 
     assert.strictEqual(

@@ -34,8 +34,8 @@ type EncounterReasonCodesv5 = CodeableReference<{
             readonly system?: URL;
             readonly version?: string;
             // Débito Técnico: Deve incluir um ValeuSet dos códigos do CID-11 para razões de procurar atendimento.
-            readonly code?: Code<ValueSet['code']>;
-            readonly display?: ValueSet['display'];
+            readonly code?: Code<ValueSet['compose']['include'][0]['concept']['code']>;
+            readonly display?: ValueSet['compose']['include'][0]['concept']['display'];
             readonly userSelected?: boolean;
         }>[] | undefined;
         readonly text?: string;
@@ -47,8 +47,8 @@ type EncounterReasonCodesv4 = CodeableConcept<{
     readonly coding?: Coding<{
         readonly system?: URL;
         readonly version?: string;
-        readonly code?: Code<ValueSet['code']>;
-        readonly display?: ValueSet['display'];
+        readonly code?: Code<ValueSet['compose']['include'][0]['concept']['code']>;
+        readonly display?: ValueSet['compose']['include'][0]['concept']['display'];
         readonly userSelected?: boolean;
     }>[],
     readonly text?: string

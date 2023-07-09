@@ -26,8 +26,8 @@ type PracticeSettingCodeValueSet = CodeableConcept<{
     readonly coding?: Coding<{
         readonly system?: URL;
         readonly version?: string;
-        readonly code?: Code<PracticeSettingCode['code']>;
-        readonly display?: PracticeSettingCode['display'];
+        readonly code?: Code<PracticeSettingCode['compose']['include'][0]['concept']['code']>;
+        readonly display?: PracticeSettingCode['compose']['include'][0]['concept']['display'];
         readonly userSelected?: boolean;
     }>[] | undefined;
     readonly text?: string | undefined;

@@ -42,7 +42,7 @@ type AppointmentResponseSchemaBase = {
     readonly appointment: Reference<Appointment>,
     readonly start?: Instant,
     readonly end?: Instant,
-    readonly participantStatus: Code<AppointmentResponseStatus['code']>,
+    readonly participantStatus: Code<AppointmentResponseStatus['compose']['include'][0]['concept']['code']>,
     readonly participantType?: CodeableConcept<ParticipantType>,
 }
 

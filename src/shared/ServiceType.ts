@@ -26,8 +26,8 @@ type ServiceType = CodeableConcept<{
     readonly coding?: Coding<{
         readonly system?: URL;
         readonly version?: string;
-        readonly code?: Code<ServiceTypeValueSet['code']>;
-        readonly display?: ServiceTypeValueSet['display'];
+        readonly code?: Code<ServiceTypeValueSet['compose']['include'][0]['concept']['code']>;
+        readonly display?: ServiceTypeValueSet['compose']['include'][0]['concept']['display'];
         readonly userSelected?: boolean;
     }>[] | undefined;
     readonly text?: string;

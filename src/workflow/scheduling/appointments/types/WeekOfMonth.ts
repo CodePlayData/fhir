@@ -24,8 +24,8 @@ import { WeekOfMonth as WeekOfMonthValueSet } from "../../../../values/WeekOfMon
 type WeekOfMonth = Coding<{
     readonly system?: URL;
     readonly version?: string;
-    readonly code?: Code<WeekOfMonthValueSet['code']>;
-    readonly display?: WeekOfMonthValueSet['display'];
+    readonly code?: Code<WeekOfMonthValueSet['compose']['include'][0]['concept']['code']>;
+    readonly display?: WeekOfMonthValueSet['compose']['include'][0]['concept']['display'];
     readonly userSelected?: boolean;
 }>
 

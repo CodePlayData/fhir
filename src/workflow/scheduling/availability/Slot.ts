@@ -38,7 +38,7 @@ type SlotBase = {
     readonly serviceCategory?: CodeableConcept<ServiceCategory>[],
     readonly specialty?: CodeableConcept<PracticeSettingCodeValueSet>[],
     readonly schedule: Reference<Schedule>,
-    readonly status: Code<SlotStatus['code']>,
+    readonly status: Code<SlotStatus['compose']['include'][0]['concept']['code']>,
     readonly start: Instant,
     readonly end: Instant,
     readonly overbooked?: boolean,

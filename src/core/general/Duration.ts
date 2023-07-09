@@ -26,7 +26,7 @@ class Duration extends Quantity<CommumUCUMCodesForDuration> {
     constructor(
         value: number,
         unit: CommumUCUMCodesForDuration,
-        comparator?: QuantityComparator['code']
+        comparator?: QuantityComparator['compose']['include'][0]['concept']['code']
     ) {
         super(
             value,

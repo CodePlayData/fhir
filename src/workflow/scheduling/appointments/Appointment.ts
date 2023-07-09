@@ -58,7 +58,7 @@ import { Resource } from "../../../core/Resource.js";
 
 type AppointmentSchemaBase = {
     readonly identifier?: Identifier[],
-    readonly status: Code<AppointmentStatus['code']>,
+    readonly status: Code<AppointmentStatus['compose']['include'][0]['concept']['code']>,
     readonly cancellationReason?: CodeableConcept<AppointmentCancellationReason>,
     readonly serviceCategory?: CodeableConcept<ServiceCategory>[],
     readonly specialty?: CodeableConcept<PracticeSettingCodeValueSet>[],

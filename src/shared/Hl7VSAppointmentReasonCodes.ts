@@ -27,8 +27,8 @@ type Hl7VSAppointmentReasonCodes = CodeableConcept<{
     readonly coding?: Coding<{
         readonly system?: URL;
         readonly version?: string;
-        readonly code?: Code<AppointmentReasonCodes['code']>;
-        readonly display?: AppointmentReasonCodes['display'];
+        readonly code?: Code<AppointmentReasonCodes['compose']['include'][0]['concept']['code']>;
+        readonly display?: AppointmentReasonCodes['compose']['include'][0]['concept']['display'];
         readonly userSelected?: boolean;
     }>[] | undefined;
     readonly text?: string | undefined;

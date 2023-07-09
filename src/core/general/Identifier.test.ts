@@ -33,22 +33,20 @@ describe('Testes de unidade da classe Identifier.', () => {
     });
     
     it('Deve instanciar um Identifier com o codigo de uso.', () => {
-        const id = new Identifier(new Code('usual'));
+        const id = new Identifier('usual');
         assert.strictEqual(JSON.stringify(id.use), '"usual"');
     });
     
     it('Deve instanciar um Identifier com o tipo.', () => {
         const id = new Identifier(
             undefined,
-            new CodeableConcept(
-                [
-                    new Coding(
-                        undefined,
-                        undefined,
-                        new Code('DL')
-                    )
-                ]
-            )
+            {
+                system: 'http://hl7.org/fhir/ValueSet/identifier-type',
+                version: '5.0.0',
+                code: 'UDI',
+                display: 'Accession ID',
+                userSelected: true
+            }
         )
         assert.strictEqual(JSON.stringify(id), '{"type":{"coding":[{"code":"DL"}]}}');
     });

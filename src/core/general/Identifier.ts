@@ -20,11 +20,12 @@
 import { IdentifierUse } from "../../values/IdentifierUse.js";
 import { Period } from "./Period.js";
 import { Coding } from "./Coding.js";
-import { IdentifierType as IdentifierTypeValueSet } from "../../values/IdentifierType.js";
+import { IdentifierType } from "../../values/IdentifierType.js";
 import { Organization } from "../../admin/Organization.js";
 import { Code } from "../primitives/Code.js";
 import { Reference } from "../special/Reference.js";
 import { CodeableConcept } from "./CodeableConcept.js";
+import { ValueSet } from "../../values/ValueSet.js";
 
 /**
  *  A string, typically numeric or alphanumeric, that is associated with a single object or entity 
@@ -34,26 +35,55 @@ import { CodeableConcept } from "./CodeableConcept.js";
  *  
  *  Source: https://build.fhir.org/datatypes.html#Identifier.
  */
-class Identifier {
+class Identifier<
+    IdentifierUseVS extends ValueSet = IdentifierUse,
+    IdentifierTypeVS extends ValueSet = IdentifierType
+> {
+    readonly use?: Code<string>;
+    readonly type?: CodeableConcept<IdentifierTypeCodes>;
+    readonly system?: URL | `${string}:${string}`;
+    readonly period?: Period;
+    readonly assigner?: Reference<Organization>;
+
     constructor(
-        readonly use?: Code<IdentifierUse['code']>,
-        readonly type?: CodeableConcept<IdentifierTypeCodes>,
-        readonly system?: URL | `${string}:${string}`,
+        use?: IdentifierUseVS['compose']['include']['0']['concept']['code'],
+        type?: {
+            system: IdentifierTypeVS['compose']['include']['0']['system'],
+            version: IdentifierTypeVS['version'],
+            code: IdentifierTypeVS['compose']['include']['0']['concept']['code'],
+            display?: IdentifierTypeVS['compose']['include']['0']['concept']['display'],
+            userSelected: boolean
+        },
+        system?: IdentifierUseVS['compose']['include']['0']['system'] | `${string}:${string}`,
         readonly value?: string,
-        readonly period?: Period,
-        readonly assigner?: Reference<Organization>
+        period?: {
+            start: Date,
+            end: Date
+        },
+        assigner?: Organization
     ){
-        if(typeof(use) === 'string') {
-            this.use = new Code(use);
-        }
+        this.use = use ? new Code(use) : undefined;
+        this.type = type ? new CodeableConcept([
+            new Coding(
+                new URL(type.system.toString()),
+                type.version.toString(),
+                new Code(type.code),
+                type.display?.toString(),
+                true
+            )
+        ]) : undefined;
+        this.period = period ? new Period(period.start, period.end) : undefined;
+        this.assigner = assigner ? new Reference(undefined, 'Organization', assigner.identifier ? assigner.identifier[0] : undefined) : undefined;
+        this.system = system ? new URL(system) : undefined;
+        
     };
 }
 
 type IdentifierTypeCodes = CodeableConcept<{
-        readonly coding?: Coding<{
+    readonly coding?: Coding<{
         readonly system?: URL;
         readonly version?: string;
-        readonly code?: Code<IdentifierTypeValueSet['code']>;
+        readonly code?: Code<IdentifierType['compose']['include']['0']['concept']['code']>;
         readonly display?: string;
         readonly userSelected?: boolean;
     }>[] | undefined;

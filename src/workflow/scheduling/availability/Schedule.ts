@@ -152,11 +152,7 @@ class Schedule implements Resource {
             return new CodeableConcept(
                 [
                     new Coding(
-                        new URL("http://hl7.org/fhir/ValueSet/c80-practice-codes"),
-                        '6.0.0',
-                        new Code(i.code),
-                        i.display,
-                        true
+                        
                     )
                 ]
             )

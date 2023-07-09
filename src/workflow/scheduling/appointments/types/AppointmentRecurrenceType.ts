@@ -27,8 +27,8 @@ type AppointmentRecurrenceType = CodeableConcept<{
     readonly coding?: Coding<{
         readonly system?: URL;
         readonly version?: string;
-        readonly code?: Code<AppointmentRecurrenceTypeValueSet['code']>;
-        readonly display?: AppointmentRecurrenceTypeValueSet['display'];
+        readonly code?: Code<AppointmentRecurrenceTypeValueSet['compose']['include'][0]['concept']['code']>;
+        readonly display?: AppointmentRecurrenceTypeValueSet['compose']['include'][0]['concept']['display'];
         readonly userSelected?: boolean;
     }>[];
     readonly text?: string | undefined;

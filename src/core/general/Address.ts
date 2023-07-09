@@ -20,14 +20,23 @@
 import { PostalCodeIsRequired } from "../../errors/PostalCodeIsRequired.js";
 import { AddressType } from "../../values/AddressType.js";
 import { AddressUse } from "../../values/AddressUse.js";
+import { ValueSet } from "../../values/ValueSet.js";
 import { DataType } from "../DataType.js";
 import { Code } from "../primitives/Code.js";
 import { Period } from "./Period.js";
 
-class Address extends DataType {
+class Address<
+    AddressUseVS extends ValueSet = AddressUse, 
+    AddressTypeVS extends ValueSet = AddressType
+> extends DataType {
+    
+    readonly use?: Code<string>;
+    readonly type?: Code<string>;
+    readonly period?: Period;
+
     constructor(
-        readonly use?: Code<AddressUse['code']>,
-        readonly type?: Code<AddressType['code']>,
+        use?: AddressUseVS['compose']['include']['0']['concept']['code'],
+        type?: AddressTypeVS['compose']['include']['0']['concept']['code'],
         readonly text?: string,
         readonly line?: string[],
         readonly city?: string,
@@ -35,9 +44,16 @@ class Address extends DataType {
         readonly state?: string,
         readonly postalCode?: string,
         readonly country?: string,
-        readonly period?: Period
+        period?: {
+            start: Date,
+            end: Date
+        }
     ) {
         super();
+        this.use = use ? new Code(use) : undefined;
+        this.type = type ? new Code(type) : undefined;
+        this.period = period ? new Period(period.start, period.end) : undefined;
+
         if(this.type === 'postal' && !this.postalCode) {
             throw new PostalCodeIsRequired();
         }

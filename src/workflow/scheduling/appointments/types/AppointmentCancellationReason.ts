@@ -26,8 +26,8 @@ type AppointmentCancellationReason = CodeableConcept<{
     readonly coding?: Coding<{
         readonly system?: URL;
         readonly version?: string;
-        readonly code?: Code<AppointmentCancellationReasonValueSet['code']>;
-        readonly display?: AppointmentCancellationReasonValueSet['display'];
+        readonly code?: Code<AppointmentCancellationReasonValueSet['compose']['include'][0]['concept']['code']>;
+        readonly display?: AppointmentCancellationReasonValueSet['compose']['include'][0]['concept']['display'];
         readonly userSelected?: boolean;
     }>[] | undefined;
     readonly text?: string;

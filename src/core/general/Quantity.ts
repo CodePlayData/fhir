@@ -33,7 +33,7 @@ import { Uri } from "../primitives/Uri.js";
  */
 abstract class Quantity<T extends ValueSet> extends DataType {
     readonly code!: Code<T['compose']['include'][0]['concept']['code']>;
-    readonly comparator!: Code<QuantityComparator['code']>;
+    readonly comparator!: Code<QuantityComparator['compose']['include'][0]['concept']['code']>;
     readonly system!: Uri;
 
     constructor(
@@ -41,7 +41,7 @@ abstract class Quantity<T extends ValueSet> extends DataType {
         readonly unit: T['compose']['include'][0]['concept']['display'],
         system: T['compose']['include'][0]['system'],
         code: T['compose']['include'][0]['concept']['code'],
-        comparator: QuantityComparator['code'] | '=' = '='
+        comparator: QuantityComparator['compose']['include'][0]['concept']['code'] | '=' = '='
     ) {
         super();
         this.code = new Code(code);
