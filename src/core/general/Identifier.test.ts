@@ -55,12 +55,22 @@ describe('Testes de unidade da classe Identifier.', () => {
     });
     
     it('Deve instanciar um Identifier igual a um modelo pre-definido que contem system e value.', () => {
-        const id = new Identifier(undefined, {
-            system: 'urn:system',
-            code: 'slot-0001'
-        });
+        type customValueSet = {
+            version: '0.1.0',
+            compose: {
+                include: [
+                    {
+                        system: 'urn:system',
+                        concept: 
+                            { code: 'slot-0001', display: 'Slot-1' }
+                    }
+                ]
+            }
+        }
+        const id = new Identifier<any, customValueSet>(undefined, undefined, 'urn:system', 'slot-0001');
         assert.deepEqual(
             JSON.stringify(id),
-            '{"type":{"coding":[{"system":"urn:system","code":"slot-0001","userSelected":true}]}}'        )
+            '{"value":"slot-0001","system":"urn:system"}'
+        )
     });
 });

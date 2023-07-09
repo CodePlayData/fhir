@@ -48,13 +48,13 @@ class Identifier<
     constructor(
         use?: IdentifierUseVS['compose']['include']['0']['concept']['code'],
         type?: {
-            system?: IdentifierTypeVS['compose']['include']['0']['system'] | `${string}:${string}`,
+            system?: IdentifierTypeVS['compose']['include']['0']['system'],
             version?: IdentifierTypeVS['version'],
-            code?: IdentifierTypeVS['compose']['include']['0']['concept']['code'] | string,
+            code?: IdentifierTypeVS['compose']['include']['0']['concept']['code'],
             display?: IdentifierTypeVS['compose']['include']['0']['concept']['display'],
             userSelected?: boolean
         },
-        system?: IdentifierUseVS['compose']['include']['0']['system'] | `${string}:${string}`,
+        system?: IdentifierUseVS['compose']['include']['0']['system'],
         readonly value?: string,
         period?: {
             start: Date,

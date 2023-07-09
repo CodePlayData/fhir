@@ -21,13 +21,14 @@ import { PracticeSettingCodeValueSet as PracticeSettingCode } from "../values/Pr
 import { Code } from "../core/primitives/Code.js";
 import { CodeableConcept } from "../core/general/CodeableConcept.js";
 import { Coding } from "../core/general/Coding.js";
+import { ValueSet } from "../values/ValueSet.js";
 
-type PracticeSettingCodeValueSet = CodeableConcept<{
+type PracticeSettingCodeValueSet<T extends ValueSet = PracticeSettingCode> = CodeableConcept<{
     readonly coding?: Coding<{
         readonly system?: URL;
         readonly version?: string;
-        readonly code?: Code<PracticeSettingCode['compose']['include'][0]['concept']['code']>;
-        readonly display?: PracticeSettingCode['compose']['include'][0]['concept']['display'];
+        readonly code?: Code<T['compose']['include'][0]['concept']['code']>;
+        readonly display?: T['compose']['include'][0]['concept']['display'];
         readonly userSelected?: boolean;
     }>[] | undefined;
     readonly text?: string | undefined;

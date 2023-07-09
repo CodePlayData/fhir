@@ -69,24 +69,27 @@ describe('Testes Unitários do Schedule com...', () => {
   });
 
   it('pelo menos um identificador.', () => {
+    type customValueSet = {
+            version: '0.1.0',
+            compose: {
+                include: [
+                    {
+                        system: 'urn:system',
+                        concept: 
+                            { code: 'slot-0001', display: 'Slot-1' }
+                    }
+              ]
+        }
+    }
     const practitioner = { } as Practitioner;
     const schedule = new Schedule({
       actor: [practitioner],
-      identifier: [ new Identifier(undefined, undefined, 'urn:system', 'schedule-001') ]
+      identifier: [ new Identifier<any, customValueSet>(undefined, undefined, 'urn:system', 'schedule-001') ]
     });
 
     assert.strictEqual(
       JSON.stringify(schedule),
-      JSON.stringify({
-        "resourceType":"Schedule",
-        "identifier":[
-          {
-            "system":"urn:system",
-            "value":"schedule-001"
-          }
-        ],
-        "actor": [{}]
-      })
+      '{"resourceType":"Schedule","identifier":[{"value":"schedule-001","system":"urn:system"}],"actor":[{}]}'
     )
   });
 
@@ -188,28 +191,20 @@ describe('Testes Unitários do Schedule com...', () => {
     const practitioner = { } as Practitioner;
     const schedule = new Schedule({
       actor: [practitioner],
-      specialty: []
+      specialty: [
+          {
+            system: 'http://hl7.org/fhir/ValueSet/c80-practice-codes',
+            version: '5.0.0',
+            code: '394539006',
+            display: 'Pediatric surgery',
+            useSelected: true
+          }
+      ]
     });
 
     assert.strictEqual(
       JSON.stringify(schedule),
-      JSON.stringify({
-        "resourceType":"Schedule",
-        "specialty":[
-          {
-            "coding":[
-              {
-                "system":"http://hl7.org/fhir/ValueSet/c80-practice-codes",
-                "version": "6.0.0",
-                "code":"394539006",
-                "display":"Pediatric surgery",
-                "userSelected":true
-              }
-            ]
-          }
-        ],
-        "actor":[{}]
-      })
+      '{"resourceType":"Schedule","specialty":[{"coding":[{"system":"http://hl7.org/fhir/ValueSet/c80-practice-codes","version":"5.0.0","code":"394539006","display":"Pediatric surgery","userSelected":true}]}],"actor":[{}]}'
     )
   });
 

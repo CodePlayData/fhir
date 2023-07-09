@@ -63,17 +63,31 @@ describe('Testes Unitários do Slot com...', () => {
     });
 
     it('pelo menos um identificador.', () => {
+        type customValueSet = {
+            version: '0.1.0',
+            compose: {
+                include: [
+                    {
+                        system: 'urn:system',
+                        concept: 
+                            { code: 'slot-0001', display: 'Slot-1' }
+                    }
+                ]
+            }
+        }
+        
         const slot = new Slot(
             {
                 schedule: new Reference(new URL("https://schedule.example.com")),
                 identifier: [ 
-                    new Identifier(undefined, undefined, 'urn:system', 'slot-001')
+                    new Identifier<any, customValueSet>(undefined, undefined, 'urn:system', 'slot-001')
                 ],
                 start: new Instant(new Date("2019-10-30T10:45:31.449+05:30")),
                 end: new Instant(new Date("2019-10-30T11:15:31.450+05:30")),
                 status: new Code('free')
             });
-        assert.strictEqual(slot.identifier![0].system, 'urn:system');
+        const system = slot.identifier ? slot.identifier[0].system?.toString() : '';
+        assert.strictEqual(system, 'urn:system');
     });
 
     it('a categoria do serviço.', () => {
@@ -246,10 +260,22 @@ describe('Testes Unitários do Slot com...', () => {
     });
     
     it('todos os dados completos.', () => {
+        type customValueSet = {
+            version: '0.1.0',
+            compose: {
+                include: [
+                    {
+                        system: 'urn:system',
+                        concept: 
+                            { code: 'slot-0001', display: 'Slot-1' }
+                    }
+                ]
+            }
+        }
         const slot = new Slot(
             {
                 schedule: new Reference(new URL("https://schedule.example.com")),
-                identifier: [ new Identifier(undefined, undefined, 'urn:system', 'slot-0001')],
+                identifier: [ new Identifier<any, customValueSet>(undefined, undefined, 'urn:system', 'slot-0001')],
                 serviceCategory: [
                     new CodeableConcept(
                         [
@@ -306,66 +332,7 @@ describe('Testes Unitários do Slot com...', () => {
     
         assert.strictEqual(
             JSON.stringify(slot),
-            JSON.stringify({
-                "resourceType":"Slot",
-                "identifier":[
-                    {
-                        "system":"urn:system",
-                        "value":"slot-0001"
-                    }
-                ],
-                "serviceCategory":[
-                    {
-                        "coding":[
-                            {
-                                "system":"http://terminology.hl7.org/CodeSystem/service-category",
-                                "code":"17",
-                                "display":"General Practice"
-                            }
-                        ]
-                    }
-                ],
-                "serviceType":[
-                    {
-                        "coding":[
-                            {
-                                "system":"http://terminology.hl7.org/CodeSystem/service-type",
-                                "code":"57",
-                                "display":"Immunization"
-                            }
-                        ]
-                    }
-                ],
-                "specialty":[
-                    {
-                        "coding":[
-                            {
-                                "system":"http://snomed.info/sct",
-                                "code":"408480009",
-                                "display":"Clinical immunology"
-                            }
-                        ]
-                    }
-                ],
-                "appointmentType":[
-                    {
-                        "coding":[
-                            {
-                                "system":"http://hl7.org/fhir/v2/0276",
-                                "code":"WALKIN",
-                                "display":"A previously unscheduled walk-in visit"
-                            }
-                        ]
-                    }
-                ],
-                "schedule":{
-                    "reference":"https://schedule.example.com/"
-                },
-                "status":"free",
-                "start":"2019-10-30T05:15:31.449-03:00",
-                "end":"2019-10-30T05:45:31.450-03:00",
-                "comment":"Assessments should be performed before requesting appointments in this slot."
-            })
+            '{"resourceType":"Slot","identifier":[{"value":"slot-0001","system":"urn:system"}],"serviceCategory":[{"coding":[{"system":"http://terminology.hl7.org/CodeSystem/service-category","code":"17","display":"General Practice"}]}],"serviceType":[{"coding":[{"system":"http://terminology.hl7.org/CodeSystem/service-type","code":"57","display":"Immunization"}]}],"specialty":[{"coding":[{"system":"http://snomed.info/sct","code":"408480009","display":"Clinical immunology"}]}],"appointmentType":[{"coding":[{"system":"http://hl7.org/fhir/v2/0276","code":"WALKIN","display":"A previously unscheduled walk-in visit"}]}],"schedule":{"reference":"https://schedule.example.com/"},"status":"free","start":"2019-10-30T05:15:31.449-03:00","end":"2019-10-30T05:45:31.450-03:00","comment":"Assessments should be performed before requesting appointments in this slot."}'
         );
     });
 });

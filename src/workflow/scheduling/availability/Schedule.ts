@@ -39,13 +39,20 @@ import { Reference } from "../../../core/special/Reference.js";
 import { Resource } from "../../../core/Resource.js";
 import { Coding } from "../../../core/general/Coding.js";
 import { Code } from "../../../core/primitives/Code.js";
+import { ValueSet } from "../../../values/ValueSet.js";
 
 type ScheduleSchemaR4B = {
     readonly identifier?: Identifier[],
     readonly active?: boolean,
     readonly serviceCategory?: CodeableConcept<ServiceCategory>,
     readonly serviceType?: CodeableReference<HealthcareService>[] | CodeableConcept<ServiceType>[],
-    readonly specialty?: PracticeSettingCodeValueSet[],
+    readonly specialty?: {
+        system?: PracticeSettingCodeValueSet['compose']['include']['0']['system'],
+        version?: PracticeSettingCodeValueSet['version'],
+        code?: PracticeSettingCodeValueSet['compose']['include']['0']['concept']['code'],
+        display?: PracticeSettingCodeValueSet['compose']['include']['0']['concept']['display'],
+        useSelected?: boolean
+    }[],
     readonly actor: Array<Patient | Practitioner | PractitionerRole | CareTeam | RelatedPerson | Device | HealthcareServiceResource | Location>,
     readonly planningHorizon?: { start: Date, end: Date },
     readonly comment?: string
@@ -61,13 +68,16 @@ type ScheduleSchemaR5 = ScheduleSchemaR4B & {
  * 
  *  Source: http://hl7.org/fhir/R5/schedule.html.
  */
-class Schedule implements Resource {
+class Schedule<
+    SpecialtyVS extends ValueSet = PracticeSettingCodeValueSet
+> implements Resource {
+
     readonly resourceType = 'Schedule';
     readonly identifier;
     readonly active;
     readonly serviceCategory;
     readonly serviceType;
-    readonly specialty?: CodeableConcept<PracticeSettingCode>[];
+    readonly specialty?: CodeableConcept<PracticeSettingCode<SpecialtyVS>>[];
     readonly name?: string;
     readonly actor!: Reference<Patient | Practitioner | PractitionerRole | CareTeam | RelatedPerson | Device | HealthcareServiceResource | Location>[]
     readonly planningHorizon?: Period;
@@ -152,7 +162,11 @@ class Schedule implements Resource {
             return new CodeableConcept(
                 [
                     new Coding(
-                        
+                        i.system ? new URL(i.system) : undefined,
+                        i.version,
+                        i.code ? new Code(i.code) : undefined,
+                        i.display,
+                        true
                     )
                 ]
             )
