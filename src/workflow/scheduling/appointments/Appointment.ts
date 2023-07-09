@@ -53,7 +53,7 @@ import { Identifier } from "../../../core/general/Identifier.js";
 import { Period } from "../../../core/general/Period.js";
 import { CodeableReference } from "../../../core/special/CodeableReference.js";
 import { Reference } from "../../../core/special/Reference.js";
-import { Binary } from "../../../foundation/Binary.js";
+import { Binary } from "../../../foundation/other/Binary.js";
 import { Resource } from "../../../core/Resource.js";
 
 type AppointmentSchemaBase = {

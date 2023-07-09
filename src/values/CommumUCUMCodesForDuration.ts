@@ -17,17 +17,30 @@
 
 */
 
+import { Override } from "../shared/Override.js";
 import { ValueSet } from "./ValueSet.js";
 
-type CommumUCUMCodesForDuration = ValueSet & 
-    { code: 'ms', display: 'milliseconds' }       |
-    { code: 's', display: 'seconds' }             |
-    { code: 'min', display: 'minutes' }           |
-    { code: 'h', display: 'hours' }               |
-    { code: 'd', display: 'days' }                |
-    { code: 'wk', display: 'weeks' }              |
-    { code: 'mo', display: 'months' }             |
-    { code: 'a', display: 'years' }
+type CommumUCUMCodesForDurationType = {
+    version: '5.0.0',
+    compose: {
+        include: [
+            {
+                system: 'http://hl7.org/fhir/ValueSet/duration-units',
+                concept: 
+                    { code: 'ms', display: 'milliseconds'   }  |
+                    { code: 's', display: 'seconds'         }  |
+                    { code: 'min', display: 'minutes'       }  |
+                    { code: 'h', display: 'hours'           }  |
+                    { code: 'd', display: 'days'            }  |
+                    { code: 'wk', display: 'weeks'          }  |
+                    { code: 'mo', display: 'months'         }  |
+                    { code: 'a', display: 'years'           }
+            }
+        ]
+    }
+};
+
+type CommumUCUMCodesForDuration = Override<ValueSet, CommumUCUMCodesForDurationType>;
 
 export {
     CommumUCUMCodesForDuration

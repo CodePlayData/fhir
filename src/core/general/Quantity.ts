@@ -32,15 +32,15 @@ import { Uri } from "../primitives/Uri.js";
  * 
  */
 abstract class Quantity<T extends ValueSet> extends DataType {
-    readonly code!: Code<T['code']>;
+    readonly code!: Code<T['compose']['include'][0]['concept']['code']>;
     readonly comparator!: Code<QuantityComparator['code']>;
     readonly system!: Uri;
 
     constructor(
         readonly value: Decimal,
-        readonly unit: T['display'],
-        system: string,
-        code: T['code'],
+        readonly unit: T['compose']['include'][0]['concept']['display'],
+        system: T['compose']['include'][0]['system'],
+        code: T['compose']['include'][0]['concept']['code'],
         comparator: QuantityComparator['code'] | '=' = '='
     ) {
         super();

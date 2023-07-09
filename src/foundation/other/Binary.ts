@@ -17,8 +17,8 @@
 
 */
 
-import { Code } from "../core/primitives/Code.js";
-import { Reference } from "../core/special/Reference.js";
+import { Code } from "../../core/primitives/Code.js";
+import { Reference } from "../../core/special/Reference.js";
 
 class Binary {
     constructor(

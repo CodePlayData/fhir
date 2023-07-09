@@ -54,7 +54,7 @@ export { Observation } from './diagnostics/Observation.js';
 // Medications
 export { ImmunizationRecommendation } from './medications/ImmunizationRecommendation.js';
 export { MedicationRequest } from './medications/MedicationRequest.js';
-export { Binary } from './foundation/Binary.js';
+export { Binary } from './foundation/other/Binary.js';
 export { BackboneElement } from './core/BackboneElement.js';
 export { BackboneType } from './core/BackboneType.js';
 export { Base } from './core/Base.js';

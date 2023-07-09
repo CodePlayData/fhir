@@ -33,7 +33,13 @@ class Age extends Quantity<CommumUCUMCodesForAge> {
         unit: CommumUCUMCodesForAge,
         comparator?: QuantityComparator['code']
     ) {
-        super(value, unit['display'], 'http://unitsofmeasure.org', unit['code'], comparator);
+        super(
+            value,
+            unit['compose']['include'][0]['concept']['display'], 
+            unit['compose']['include'][0]['system'], 
+            unit['compose']['include'][0]['concept']['code'], 
+            comparator
+        );
     }
 
 }

@@ -17,14 +17,27 @@
 
 */
 
+import { Override } from "../shared/Override.js";
 import { ValueSet } from "./ValueSet.js";
 
-type CommumUCUMCodesForDistance = ValueSet & 
-    { code: 'nm', display: 'nanometers' }       |
-    { code: 'um', display: 'micrometers' }      |
-    { code: 'mm', display: 'millimeters' }      |
-    { code: 'm', display: 'meters' }            |
-    { code: 'km', display: 'kilometers' }
+type CommonUCUMCodesForDistanceType = {
+    version: '5.0.0',
+    compose: {
+        include: [
+            {
+                system: 'http://hl7.org/fhir/ValueSet/distance-units',
+                concept: 
+                    { code: 'nm', display: 'nanometers'   }      |
+                    { code: 'um', display: 'micrometers'  }      |
+                    { code: 'mm', display: 'millimeters'  }      |
+                    { code: 'm', display: 'meters'        }      |
+                    { code: 'km', display: 'kilometers'   }
+            }
+        ]
+    }
+}
+
+type CommumUCUMCodesForDistance = Override<ValueSet, CommonUCUMCodesForDistanceType>;
 
 export {
     CommumUCUMCodesForDistance

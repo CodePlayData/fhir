@@ -18,9 +18,19 @@
 */
 
 interface ValueSet {
-    code: string,
-    display?: string,
-    definition?: string
+    version: string,
+    compose: {
+        include: [
+            {
+                system: string,
+                concept: {
+                    code: string,
+                    display?: string,
+                    definition?: string
+                }
+            }
+        ]
+    }
 }
 
 export {

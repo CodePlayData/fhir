@@ -17,15 +17,28 @@
 
 */
 
+import { Override } from "../shared/Override.js";
 import { ValueSet } from "./ValueSet.js";
 
-type CommumUCUMCodesForAge = ValueSet & 
-    { code: 'min', display: 'minutes' } |
-    { code: 'h', display: 'hours' }     |
-    { code: 'd', display: 'days' }      |
-    { code: 'wk', display: 'weeks' }    |
-    { code: 'mo', display: 'months' }   |
-    { code: 'a', display: 'years' }
+type CommonUCUMCodesForAgeType = {
+    version: '5.0.0',
+    compose: {
+        include: [
+            {
+                system: 'http://hl7.org/fhir/ValueSet/age-units',
+                concept: 
+                    { code: 'min', display: 'minutes' } |
+                    { code: 'h', display: 'hours'     } |
+                    { code: 'd', display: 'days'      } |
+                    { code: 'wk', display: 'weeks'    } |
+                    { code: 'mo', display: 'months'   } |
+                    { code: 'a', display: 'years'     }
+            }
+        ]
+    }
+}
+
+type CommumUCUMCodesForAge = Override<ValueSet, CommonUCUMCodesForAgeType>
 
 export {
     CommumUCUMCodesForAge
