@@ -48,17 +48,19 @@ describe('Testes de unidade da classe Identifier.', () => {
                 userSelected: true
             }
         )
-        assert.strictEqual(JSON.stringify(id), '{"type":{"coding":[{"code":"DL"}]}}');
+        assert.strictEqual(
+            JSON.stringify(id), 
+            '{"type":{"coding":[{"system":"http://hl7.org/fhir/ValueSet/identifier-type","version":"5.0.0","code":"UDI","display":"Accession ID","userSelected":true}]}}'
+        );
     });
     
     it('Deve instanciar um Identifier igual a um modelo pre-definido que contem system e value.', () => {
-        const id = new Identifier(undefined, undefined, 'urn:system', 'slot-0001');
+        const id = new Identifier(undefined, {
+            system: 'urn:system',
+            code: 'slot-0001'
+        });
         assert.deepEqual(
             JSON.stringify(id),
-            JSON.stringify({
-                "system": "urn:system",
-                "value": "slot-0001"
-            })
-        )
+            '{"type":{"coding":[{"system":"urn:system","code":"slot-0001","userSelected":true}]}}'        )
     });
 });

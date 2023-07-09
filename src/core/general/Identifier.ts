@@ -48,11 +48,11 @@ class Identifier<
     constructor(
         use?: IdentifierUseVS['compose']['include']['0']['concept']['code'],
         type?: {
-            system: IdentifierTypeVS['compose']['include']['0']['system'],
-            version: IdentifierTypeVS['version'],
-            code: IdentifierTypeVS['compose']['include']['0']['concept']['code'],
+            system?: IdentifierTypeVS['compose']['include']['0']['system'] | `${string}:${string}`,
+            version?: IdentifierTypeVS['version'],
+            code?: IdentifierTypeVS['compose']['include']['0']['concept']['code'] | string,
             display?: IdentifierTypeVS['compose']['include']['0']['concept']['display'],
-            userSelected: boolean
+            userSelected?: boolean
         },
         system?: IdentifierUseVS['compose']['include']['0']['system'] | `${string}:${string}`,
         readonly value?: string,
@@ -65,9 +65,9 @@ class Identifier<
         this.use = use ? new Code(use) : undefined;
         this.type = type ? new CodeableConcept([
             new Coding(
-                new URL(type.system.toString()),
-                type.version.toString(),
-                new Code(type.code),
+                type.system ? new URL(type.system.toString()) : undefined,
+                type.version ? type.version.toString() : undefined,
+                type.code ? new Code(type.code): undefined,
                 type.display?.toString(),
                 true
             )

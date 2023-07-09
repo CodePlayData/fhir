@@ -30,8 +30,8 @@ class Address<
     AddressTypeVS extends ValueSet = AddressType
 > extends DataType {
     
-    readonly use?: Code<string>;
-    readonly type?: Code<string>;
+    readonly use?: Code<AddressUseVS['compose']['include']['0']['concept']['code']>;
+    readonly type?: Code<AddressTypeVS['compose']['include']['0']['concept']['code']>;
     readonly period?: Period;
 
     constructor(
@@ -54,7 +54,7 @@ class Address<
         this.type = type ? new Code(type) : undefined;
         this.period = period ? new Period(period.start, period.end) : undefined;
 
-        if(this.type === 'postal' && !this.postalCode) {
+        if(type === 'postal' && !this.postalCode) {
             throw new PostalCodeIsRequired();
         }
     }
