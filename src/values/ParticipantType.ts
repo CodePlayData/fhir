@@ -17,24 +17,35 @@
 
 */
 
+import { Override } from "../shared/Override.js"
 import { ValueSet } from "./ValueSet.js"
 
+type ParticipantTypeType = {
+    version: '5.0.0',
+    compose: {
+        include: [
+            {
+                system: 'http://hl7.org/fhir/ValueSet/encounter-participant-type',
+                concept:
+                    { code: 'ADM', display: 'admitter', definition?: 'The practitioner who is responsible for admitting a patient to a patient encounter.'                                                                 } |
+                    { code: 'ATND', display: 'attender', definition?: "The practitioner that has responsibility for overseeing a patient's care during a patient encounter."                                               } |
+                    { code: 'CALLBCK', display: 'callback contact', definition?: 'A person or organization who should be contacted for follow-up questions about the act in place of the author.'                          } |
+                    { code: 'CON', display: 'consultant', definition?: 'An advisor participating in the service by performing evaluations and making recommendations.'                                                     } |
+                    { code: 'DIS', display: 'discharger', definition?: 'The practitioner who is responsible for the discharge of a patient from a patient encounter.'                                                      } |
+                    { code: 'ESC', display: 'escort', definition?: 'Only with Transportation services. A person who escorts the patient.'                                                                                  } |
+                    { code: 'REF', display: 'referrer', definition?: 'A person having referred the subject of the service to the performer (referring physician). Typically, a referring physician will receive a report.' } |
+                    { code: 'translator', display: 'Translator', definition?: 'A translator who is facilitating communication with the patient during the encounter.'                                                      } |
+                    { code: 'emergency', display: 'Emergency', definition?: 'A person to be contacted in case of an emergency during the encounter.'                                                                       }
+            }
+        ]
+    }
+}
 /**
  *  This value set defines a set of codes that can be used to indicate how an individual participates in an encounter.
  * 
  *  Source: http://hl7.org/fhir/ValueSet/encounter-participant-type.
  */
-type ParticipantType = ValueSet &
-    { code: 'ADM', display: 'admitter', definition: 'The practitioner who is responsible for admitting a patient to a patient encounter.' } |
-    { code: 'ATND', display: 'attender', definition: "The practitioner that has responsibility for overseeing a patient's care during a patient encounter." } |
-    { code: 'CALLBCK', display: 'callback contact', definition: 'A person or organization who should be contacted for follow-up questions about the act in place of the author.' } |
-    { code: 'CON', display: 'consultant', definition: 'An advisor participating in the service by performing evaluations and making recommendations.' } |
-    { code: 'DIS', display: 'discharger', definition: 'The practitioner who is responsible for the discharge of a patient from a patient encounter.' } |
-    { code: 'ESC', display: 'escort', definition: 'Only with Transportation services. A person who escorts the patient.' } |
-    { code: 'REF', display: 'referrer', definition: 'A person having referred the subject of the service to the performer (referring physician). Typically, a referring physician will receive a report.' } |
-    { code: 'translator', display: 'Translator', definition: 'A translator who is facilitating communication with the patient during the encounter.' } |
-    { code: 'emergency', display: 'Emergency', definition: 'A person to be contacted in case of an emergency during the encounter.' }
-
+type ParticipantType = Override<ValueSet, ParticipantTypeType>;
 
 export {
     ParticipantType

@@ -17,15 +17,30 @@
 
 */
 
-type DaysOfWeek = 
-    { code: 'mon', display: 'Monday' }        |
-    { code: 'tue', display: 'Tuesday' }       |
-    { code: 'wed', display: 'Wednesday' }     |
-    { code: 'thu', display: 'Thursday' }      |
-    { code: 'fri', display: 'Friday' }        |
-    { code: 'sat', display: 'Saturday' }      |
-    { code: 'sun', display: 'Sunday' } 
+import { Override } from "../shared/Override";
+import { ValueSet } from "./ValueSet";
 
+type DaysOfWeekType = {
+    version: '5.0.0',
+    compose: {
+        include: [
+            {
+                system: 'http://hl7.org/fhir/ValueSet/days-of-week',
+                concept: 
+                    { code: 'mon', display: 'Monday'    } |
+                    { code: 'tue', display: 'Tuesday'   } |
+                    { code: 'wed', display: 'Wednesday' } |
+                    { code: 'thu', display: 'Thursday'  } |
+                    { code: 'fri', display: 'Friday'    } |
+                    { code: 'sat', display: 'Saturday'  } |
+                    { code: 'sun', display: 'Sunday'    } 
+            }
+        ]
+    }
+};
+
+type DaysOfWeek = Override<ValueSet, DaysOfWeekType>;
+    
 export {
     DaysOfWeek
 }

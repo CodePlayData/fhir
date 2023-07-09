@@ -1,5 +1,8 @@
 //@filename: AddressType.ts
 
+import { Override } from "../shared/Override";
+import { ValueSet } from "./ValueSet";
+
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
 
@@ -17,16 +20,29 @@
 
 */
 
+type AddressTypeType = {
+    version: '5.0.0',
+    compose: {
+        include: [
+            {
+                system: 'http://hl7.org/fhir/ValueSet/address-type',
+                concept: 
+                    { code: 'postal', display: 'Postal', definition?: 'Mailing addresses - PO Boxes and care-of addresses.' }  |
+                    { code: 'physical', display: 'Physical', definition?: 'A physical address that can be visited.'         }  |
+                    { code: 'both', display: 'Both', definition?: 'An address that is both physical and postal.'            }
+            }
+        ]
+    }
+}
+
 /**
  * 
  *  The type of an address (physical / postal).
  * 
  *  Source: https://hl7.org/fhir/valueset-address-type.html.
  */
-type AddressType = 
-    { code: 'postal', display: 'Postal', definition: 'Mailing addresses - PO Boxes and care-of addresses.' }  |
-    { code: 'physical', display: 'Physical', definition: 'A physical address that can be visited.'}           |
-    { code: 'both', display: 'Both', definition: 'An address that is both physical and postal.' }
+type AddressType = Override<ValueSet, AddressTypeType>;
+    
 
 export {
     AddressType

@@ -17,19 +17,31 @@
 
 */
 
+import { Override } from "../shared/Override.js"
 import { ValueSet } from "./ValueSet.js"
 
+type SlotStatusType = {
+    version: '5.0.0',
+    compose: {
+        include: [
+            {
+                system: 'http://hl7.org/fhir/ValueSet/slotstatus',
+                concept: 
+                    { code: 'busy', display: 'Busy', definition?: 'Indicates that the time interval is busy because one or more events have been scheduled for that interval.' } |
+                    { code: 'free', display: 'Free', definition?: 'Indicates that the time interval is free for scheduling.' } |
+                    { code: 'busy-unavailabe', display: 'Busy (Unavailable)', definition?: 'Indicates that the time interval is busy and that the interval cannot be scheduled.' } |
+                    { code: 'busy-tentative', display: 'Busy (Tentative)', definition?: 'Indicates that the time interval is busy because one or more events have been tentatively scheduled for that interval.' } |
+                    { code: 'entered-in-error', display: 'Entered in error', definition?: "This instance should not have been part of this patient's medical record." }
+            }
+        ]
+    }
+}
 /**
  *  The free/busy status of the slot.
  * 
  *  Source: http://hl7.org/fhir/ValueSet/slotstatus.
  */
-type SlotStatus = ValueSet &
-    { code: 'busy', display: 'Busy', definition: 'Indicates that the time interval is busy because one or more events have been scheduled for that interval.' } |
-    { code: 'free', display: 'Free', definition: 'Indicates that the time interval is free for scheduling.' } |
-    { code: 'busy-unavailabe', display: 'Busy (Unavailable)', definition: 'Indicates that the time interval is busy and that the interval cannot be scheduled.' } |
-    { code: 'busy-tentative', display: 'Busy (Tentative)', definition: 'Indicates that the time interval is busy because one or more events have been tentatively scheduled for that interval.' } |
-    { code: 'entered-in-error', display: 'Entered in error', definition: "This instance should not have been part of this patient's medical record." }
+type SlotStatus = Override<ValueSet, SlotStatusType>;
 
 export {
     SlotStatus

@@ -17,12 +17,27 @@
 
 */
 
-type WeekOfMonth =
-    { code: 'first', display: 'First', definition: 'First week of the month.' }     |
-    { code: 'second', display: 'Second', definition: 'Second week of the month.' }  |
-    { code: 'third', display: 'Third', definition: 'Third week of the month.' }     |
-    { code: 'fourth', display: 'Fourth', definition: 'Fourth week of the month.' }  |
-    { code: 'last', display: 'Last', definition: 'Last week of the month.' }
+import { Override } from "../shared/Override.js";
+import { ValueSet } from "./ValueSet.js";
+
+type WeekOfMonthType = {
+    version: '5.0.0',
+    compose: {
+        include: [
+            {
+                system: 'http://hl7.org/fhir/ValueSet/week-of-month',
+                concept: 
+                    { code: 'first', display: 'First', definition?: 'First week of the month.' }     |
+                    { code: 'second', display: 'Second', definition?: 'Second week of the month.' }  |
+                    { code: 'third', display: 'Third', definition?: 'Third week of the month.' }     |
+                    { code: 'fourth', display: 'Fourth', definition?: 'Fourth week of the month.' }  |
+                    { code: 'last', display: 'Last', definition?: 'Last week of the month.' }
+            }
+        ]
+    }
+}
+
+type WeekOfMonth = Override<ValueSet, WeekOfMonthType>;
 
 export {
     WeekOfMonth

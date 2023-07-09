@@ -17,15 +17,29 @@
 
 */
 
+import { Override } from "../shared/Override.js";
+import { ValueSet } from "./ValueSet.js";
+
+type VirtualServiceTypeType = {
+    version: '5.0.0',
+    compose: {
+        include: [
+            {
+                system: 'http://hl7.org/fhir/ValueSet/virtual-service-type',
+                concept: 
+                    { code: 'zoom', display: 'Zoom web conferencing', definition?: 'the amount is the base price used for calculating the total price before applying surcharges, discount or taxes.' } |
+                    { code: 'ms-teams', display: 'Microsoft Teams', definition?: 'Microsoft Teams web conferencing meeting' } |
+                    { code: 'whatsapp', display: 'WhatsApp conference call', definition?: 'A conference call using the WhatsApp conference call service' }
+            }
+        ]
+    }
+}
 /**
  *  Example codes for possible virtual service connection types.
  * 
  *  Source: http://hl7.org/fhir/ValueSet/virtual-service-type
  */
-type VirtualServiceType = 
-    { code: 'zoom', display: 'Zoom web conferencing', definition: 'the amount is the base price used for calculating the total price before applying surcharges, discount or taxes.' } |
-    { code: 'ms-teams', display: 'Microsoft Teams', definition: 'Microsoft Teams web conferencing meeting' } |
-    { code: 'whatsapp', display: 'WhatsApp conference call', definition: 'A conference call using the WhatsApp conference call service' }
+type VirtualServiceType = Override<ValueSet, VirtualServiceTypeType>;
 
 export {
     VirtualServiceType

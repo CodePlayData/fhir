@@ -1,5 +1,8 @@
 //@filename: AddressUse.ts
 
+import { Override } from "../shared/Override";
+import { ValueSet } from "./ValueSet";
+
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
 
@@ -17,18 +20,29 @@
 
 */
 
+type AddressUseType = {
+    version: '5.0.0',
+    compose: {
+        include: [
+            {
+                system: 'http://hl7.org/fhir/ValueSet/address-use',
+                concept: 
+                    { code: 'home', display: 'Home', definition?: 'A communication address at a home.'                                                          } |
+                    { code: 'work', display: 'Work', definition?: 'An office address. First choice for business related contacts during business hours.'        } |
+                    { code: 'temp', display: 'Temporary', definition?: 'A temporary address. The period can provide more detailed information.'                 } |
+                    { code: 'old', display: 'Old / Incorrect', definition?: 'This address is no longer in use (or was never correct but retained for records).' } |
+                    { code: 'billing', display: 'Billing', definition?: 'An address to be used to send bills, invoices, receipts etc.'                          }
+            }
+        ]
+    }
+}
 /**
  * 
  *  The use of an address.
  * 
- *  Source: https://hl7.org/fhir/valueset-address-use.html
+ *  Source: https://hl7.org/fhir/valueset-address-use.html.
  */
-type AddressUse = 
-    { code: 'home', display: 'Home', definition: 'A communication address at a home.' }                                                          |
-    { code: 'work', display: 'Work', definition: 'An office address. First choice for business related contacts during business hours.' }        |
-    { code: 'temp', display: 'Temporary', definition: 'A temporary address. The period can provide more detailed information.' }                 |
-    { code: 'old', display: 'Old / Incorrect', definition: 'This address is no longer in use (or was never correct but retained for records).' } |
-    { code: 'billing', display: 'Billing', definition: 'An address to be used to send bills, invoices, receipts etc.' }
+type AddressUse = Override<ValueSet, AddressUseType>;
 
 export {
     AddressUse

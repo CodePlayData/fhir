@@ -1,5 +1,8 @@
 // @filename: AppointmentRecurrenceType.ts
 
+import { Override } from "../shared/Override";
+import { ValueSet } from "./ValueSet";
+
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
 
@@ -17,18 +20,29 @@
 
 */
 
+type AppointmentRecurrenceTypeType = {
+    version: '5.0.0',
+    compose: {
+        include: [
+            {
+                system: 'http://hl7.org/fhir/ValueSet/appointment-recurrrence-type',
+                concept: 
+                    { code: 'd', display: 'day', definition?: 'day'                                                                                                          } |
+                    { code: 'wk', display: 'week', definition?: 'week'                                                                                                       } |
+                    { code: 'mo', display: 'month', definition?: "month - Normal practice is to use the 'mo' code as a calendar month when calculating the next occurrence." } |
+                    { code: 'a', display: 'year', definition?: 'year'                                                                                                        }
+            }
+        ]
+    }
+}
 /**
  * 
  *  The recurrence type of a recurring appointment.
  * 
  *  Source: http://hl7.org/fhir/ValueSet/appointment-recurrrence-type.
  */
-type AppointmentRecurrenceType = 
-    { code: 'd', display: 'day', definition: 'day'} |
-    { code: 'wk', display: 'week', definition: 'week'} |
-    { code: 'mo', display: 'month', definition: "month - Normal practice is to use the 'mo' code as a calendar month when calculating the next occurrence." } |
-    { code: 'a', display: 'year', definition: 'year'}
-
+type AppointmentRecurrenceType = Override<ValueSet, AppointmentRecurrenceTypeType>;
+    
 export {
     AppointmentRecurrenceType
 }

@@ -17,17 +17,32 @@
 
 */
 
+import { Override } from "../shared/Override.js";
+import { ValueSet } from "./ValueSet.js";
+
+
+type ParticipationStatusType = {
+    version: '5.0.0',
+    compose: {
+        include: [
+            {
+                system: 'http://hl7.org/fhir/ValueSet/participationstatus',
+                concept: 
+                    { code: 'accepted', display: 'Accepted', definition: 'The participant has accepted the appointment.' } |
+                    { code: 'declined', display: 'Declined', definition: 'The participant has declined the appointment and will not participate in the appointment.' } |
+                    { code: 'tentative', display: 'Tentative', definition: 'The participant has tentatively accepted the appointment. This could be automatically created by a system and requires further processing before it can be accepted. There is no commitment that attendance will occur.' } |
+                    { code: 'needs-action', display: 'Needs Action', definition: 'The participant needs to indicate if they accept the appointment by changing this status to one of the other statuses.' } 
+            }
+        ]
+    }
+}
 /**
  * 
  *  The Participation status of an appointment. 
  * 
  *  Source: http://hl7.org/fhir/ValueSet/participationstatus
  */
-type ParticipationStatus = 
-    { code: 'accepted', display: 'Accepted', definition: 'The participant has accepted the appointment.' } |
-    { code: 'declined', display: 'Declined', definition: 'The participant has declined the appointment and will not participate in the appointment.' } |
-    { code: 'tentative', display: 'Tentative', definition: 'The participant has tentatively accepted the appointment. This could be automatically created by a system and requires further processing before it can be accepted. There is no commitment that attendance will occur.' } |
-    { code: 'needs-action', display: 'Needs Action', definition: 'The participant needs to indicate if they accept the appointment by changing this status to one of the other statuses.' }
+type ParticipationStatus = Override<ValueSet, ParticipationStatusType>;
 
 export { 
     ParticipationStatus
