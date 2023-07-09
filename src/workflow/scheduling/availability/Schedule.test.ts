@@ -54,31 +54,25 @@ describe('Testes Unitários do Schedule com...', () => {
   it.todo('comentários inválidos.', () => {});
 
   it('o mínimo de dados obrigatórios.', () => {
+    const practitioner = { } as Practitioner;
     const schedule = new Schedule({
-      actor: [
-        new Reference<Practitioner>(new URL("https://practitioner.example.com"))
-      ]
+      actor: [ practitioner ]
     })
 
     assert.strictEqual(
       JSON.stringify(schedule), 
       JSON.stringify({
         "resourceType":"Schedule",
-        "actor": [
-          {
-            "reference":"https://practitioner.example.com/"
-          }
-        ]
+        "actor": [{}]
       })
     );
   });
 
   it('pelo menos um identificador.', () => {
+    const practitioner = { } as Practitioner;
     const schedule = new Schedule({
-      actor: [
-        new Reference<Practitioner>(new URL("https://practitioner.example.com"))
-      ],
-      identifier: [ new Identifier(undefined, undefined, 'urn:system', 'schedule-001')]
+      actor: [practitioner],
+      identifier: [ new Identifier(undefined, undefined, 'urn:system', 'schedule-001') ]
     });
 
     assert.strictEqual(
@@ -91,20 +85,15 @@ describe('Testes Unitários do Schedule com...', () => {
             "value":"schedule-001"
           }
         ],
-        "actor": [
-          {
-            "reference":"https://practitioner.example.com/"
-          }
-        ]
+        "actor": [{}]
       })
     )
   });
 
   it('a propriedade que identifica se está ativo ou não.', () => {
+    const practitioner = { } as Practitioner;
     const schedule = new Schedule({
-      actor: [
-        new Reference<Practitioner>(new URL("https://practitioner.example.com"))
-      ],
+      actor: [practitioner],
       active: true
     });
 
@@ -113,20 +102,15 @@ describe('Testes Unitários do Schedule com...', () => {
       JSON.stringify({
         "resourceType":"Schedule",
         "active":true,
-        "actor":[
-          {
-            "reference":"https://practitioner.example.com/"
-          }
-        ]
+        "actor":[{}]
       })
     )
   });
 
   it('a categoria de serviço.', () => {
+    const practitioner = { } as Practitioner;
     const schedule = new Schedule({
-      actor: [
-        new Reference<Practitioner>(new URL("https://practitioner.example.com"))
-      ],
+      actor: [practitioner],
       serviceCategory: new CodeableConcept(
         [
             new Coding(
@@ -153,20 +137,15 @@ describe('Testes Unitários do Schedule com...', () => {
               }
             ]
           },
-          "actor": [
-            {
-              "reference":"https://practitioner.example.com/"
-            }
-          ]
+          "actor": [{}]
         })
     )
   });
 
   it('o tipo de serviço.', () => {
+    const practitioner = { } as Practitioner;
     const schedule = new Schedule({
-      actor: [
-        new Reference<Practitioner>(new URL("https://practitioner.example.com"))
-      ],
+      actor: [practitioner],
       serviceType: [
         new CodeableReference(
           new CodeableConcept(
@@ -200,32 +179,16 @@ describe('Testes Unitários do Schedule com...', () => {
             }
           }
         ],
-        "actor":[
-          {
-            "reference":"https://practitioner.example.com/"
-          }
-        ]
+        "actor":[{}]
       })
     )
   });
 
   it('a especialidade identificada.', () => {
+    const practitioner = { } as Practitioner;
     const schedule = new Schedule({
-      actor: [
-        new Reference<Practitioner>(new URL("https://practitioner.example.com"))
-      ],
-      specialty: [
-        new CodeableConcept(
-            [
-                new Coding(
-                    new URL("http://snomed.info/sct"),
-                    undefined,
-                    new Code("408480009"),
-                    "Clinical immunology"
-                )
-            ]
-        )
-      ]
+      actor: [practitioner],
+      specialty: [{ code: '394539006', display: 'Pediatric surgery' }]
     });
 
     assert.strictEqual(
@@ -236,27 +199,24 @@ describe('Testes Unitários do Schedule com...', () => {
           {
             "coding":[
               {
-                "system":"http://snomed.info/sct",
-                "code":"408480009",
-                "display":"Clinical immunology"
+                "system":"http://hl7.org/fhir/ValueSet/c80-practice-codes",
+                "version": "6.0.0",
+                "code":"394539006",
+                "display":"Pediatric surgery",
+                "userSelected":true
               }
             ]
           }
         ],
-        "actor":[
-          {
-            "reference":"https://practitioner.example.com/"
-          }
-        ]
+        "actor":[{}]
       })
     )
   });
 
   it('um nome.', () => {
+    const practitioner = { } as Practitioner;
     const schedule = new Schedule({
-      actor: [
-        new Reference<Practitioner>(new URL("https://practitioner.example.com"))
-      ],
+      actor: [practitioner],
       name: "Dr. Pedro Paulo - Cirurgião Dentista Clínico Geral e Saúde Coletiva"
     })
 
@@ -265,20 +225,15 @@ describe('Testes Unitários do Schedule com...', () => {
       JSON.stringify({
         "resourceType":"Schedule",
         "name":"Dr. Pedro Paulo - Cirurgião Dentista Clínico Geral e Saúde Coletiva",
-        "actor":[
-          {
-            "reference":"https://practitioner.example.com/"
-          }
-        ]
+        "actor":[{}]
       })
     )
   });
 
   it('o horizonte de disponibilidade válido.', () => {
+    const practitioner = { } as Practitioner;
     const schedule = new Schedule({
-      actor: [
-        new Reference<Practitioner>(new URL("https://practitioner.example.com"))
-      ],
+      actor: [practitioner],
       planningHorizon: new Period(
         new DateTime("2019-10-30T10:45:31.449+05:30"),
         new DateTime("2019-10-30T11:45:31.449+05:30"),
@@ -289,11 +244,7 @@ describe('Testes Unitários do Schedule com...', () => {
       JSON.stringify(schedule),
       JSON.stringify({
         "resourceType":"Schedule",
-        "actor":[
-          {
-            "reference":"https://practitioner.example.com/"
-          }
-        ],
+        "actor":[{}],
         "planningHorizon":{
           "start":"2019-10-30T05:15:31.449Z",
           "end":"2019-10-30T06:15:31.449Z"
@@ -303,16 +254,15 @@ describe('Testes Unitários do Schedule com...', () => {
   });
 
   it('comentários.', () => {
+    const practitioner = { } as Practitioner;
     const schedule = new Schedule({
-      actor: [
-        new Reference<Practitioner>(new URL("https://practitioner.example.com"))
-      ],
+      actor: [practitioner],
       comment: '**Teste**'
     });
 
     assert.strictEqual(
       JSON.stringify(schedule),
-      JSON.stringify({"resourceType":"Schedule","actor":[{"reference":"https://practitioner.example.com/"}],"comment":"**Teste**"})
+      JSON.stringify({"resourceType":"Schedule","actor":[{}],"comment":"**Teste**"})
     )
   });
 

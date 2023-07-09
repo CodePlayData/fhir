@@ -71,6 +71,10 @@ export { CodeableConcept, CodeableConceptSchema} from './core/general/CodeableCo
 export { Coding, CodingSchema } from './core/general/Coding.js';
 export { Identifier, IdentifierTypeCodes } from './core/general/Identifier.js';
 export { Period } from './core/general/Period.js';
+export { Age } from './core/general/Age.js';
+export { Distance } from './core/general/Distance.js';
+export { Duration } from './core/general/Duration.js';
+export { Quantity } from './core/general/Quantity.js';
 export { VirtualServiceDetail } from './core/metadata/VirtualServiceDetail.js'
 export { Base64Binary } from './core/primitives/Base64Binary.js';
 export { Canonical } from './core/primitives/Canonical.js';
@@ -115,6 +119,9 @@ export { SlotStatus } from "./values/SlotStatus.js";
 export { ValueSet } from "./values/ValueSet.js";
 export { VirtualServiceType } from "./values/VirtualServiceType.js";
 export { WeekOfMonth } from "./values/WeekOfMonth.js";
+export { CommumUCUMCodesForAge } from "./values/CommonUCUMCodesForAge.js";
+export { CommumUCUMCodesForDistance } from "./values/CommonUCUMCodesForDistance.js";
+export { CommumUCUMCodesForDuration } from "./values/CommumUCUMCodesForDuration.js";
 export { Appointment, AppointmentSchemaBase, AppointmentSchemaR4B, AppointmentSchemaR5 } from './workflow/scheduling/appointments/Appointment.js';
 export { AppointmentResponse, AppointmentReponseSchemaR4B, AppointmentResponseSchemaBase, AppointmentReponseSchemaR5 } from './workflow/scheduling/appointments/AppointmentResponse.js';
 export { MonthlyTemplate } from './workflow/scheduling/appointments/structs/MonthlyTemplate.js';
