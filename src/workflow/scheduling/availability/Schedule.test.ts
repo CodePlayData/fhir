@@ -114,16 +114,13 @@ describe('Testes Unitários do Schedule com...', () => {
     const practitioner = { } as Practitioner;
     const schedule = new Schedule({
       actor: [practitioner],
-      serviceCategory: new CodeableConcept(
-        [
-            new Coding(
-                new URL("http://terminology.hl7.org/CodeSystem/service-category"),
-                undefined,
-                new Code("1"),
-                "Adoption"
-            )
-        ]
-      )
+      serviceCategory: {
+          system: 'http://terminology.hl7.org/CodeSystem/service-category',
+          version: '0.1.0',
+          code: '1',
+          display: 'Adoption',
+          useSelected: true
+      }
     });
 
     assert.strictEqual(
@@ -135,8 +132,10 @@ describe('Testes Unitários do Schedule com...', () => {
             "coding":[
               {
                 "system":"http://terminology.hl7.org/CodeSystem/service-category",
+                "version": '0.1.0',
                 "code":"1",
-                "display":"Adoption"
+                "display":"Adoption",
+                "userSelected": true
               }
             ]
           },
@@ -150,41 +149,22 @@ describe('Testes Unitários do Schedule com...', () => {
     const schedule = new Schedule({
       actor: [practitioner],
       serviceType: [
-        new CodeableReference(
-          new CodeableConcept(
-            [
-              new Coding(
-                new URL("http://terminology.hl7.org/CodeSystem/service-type"),
-                undefined,
-                new Code("57"),
-                "Immunization"
-              )
-            ]
-          )
-        )
+          {
+              concept: {
+                  system: 'http://terminology.hl7.org/CodeSystem/service-type',
+                  version: '0.1.0',
+                  code: '57',
+                  display: 'Immunization',
+                  useSelected: true
+              }
+          }
       ]
     })
 
     assert.strictEqual(
       JSON.stringify(schedule),
-      JSON.stringify({
-        "resourceType":"Schedule",
-        "serviceType":[
-          {
-            "concept":{
-              "coding":[
-                {
-                  "system":"http://terminology.hl7.org/CodeSystem/service-type",
-                  "code":"57",
-                  "display":"Immunization"
-                }
-              ]
-            }
-          }
-        ],
-        "actor":[{}]
-      })
-    )
+      '{"resourceType":"Schedule","serviceType":[{"concept":{"coding":[{"system":"http://terminology.hl7.org/CodeSystem/service-type","version":"0.1.0","code":"57","display":"Immunization","userSelected":true}]},"reference":{"type":"HealthcareService"}}],"actor":[{}]}'
+    );
   });
 
   it('a especialidade identificada.', () => {

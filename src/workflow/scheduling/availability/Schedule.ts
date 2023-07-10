@@ -17,9 +17,6 @@
 
 */
 
-import { ServiceCategory } from "../../../shared/ServiceCategory.js";
-import { HealthcareService } from "../../../shared/HealthcareService.js";
-import { ServiceType } from "../../../shared/ServiceType.js";
 import { PracticeSettingCodeValueSet as PracticeSettingCode } from "../../../shared/PracticeSettingCodeValueSet.js";
 import { PracticeSettingCodeValueSet } from "../../../values/PracticeSettingCodeValueSet.js";
 import { Markdown } from "../../../core/primitives/Markdown.js";
@@ -32,36 +29,22 @@ import { Device } from "../../../admin/Device.js";
 import { HealthcareService as HealthcareServiceResource } from "../../../admin/HealthcareService";
 import { Location } from "../../../admin/Location.js";
 import { CodeableConcept } from "../../../core/general/CodeableConcept.js";
-import { Identifier } from "../../../core/general/Identifier.js";
 import { Period } from "../../../core/general/Period.js";
-import { CodeableReference } from "../../../core/special/CodeableReference.js";
 import { Reference } from "../../../core/special/Reference.js";
 import { Resource } from "../../../core/Resource.js";
 import { Coding } from "../../../core/general/Coding.js";
 import { Code } from "../../../core/primitives/Code.js";
 import { ValueSet } from "../../../values/ValueSet.js";
-
-type ScheduleSchemaR4B = {
-    readonly identifier?: Identifier[],
-    readonly active?: boolean,
-    readonly serviceCategory?: CodeableConcept<ServiceCategory>,
-    readonly serviceType?: CodeableReference<HealthcareService>[] | CodeableConcept<ServiceType>[],
-    readonly specialty?: {
-        system?: PracticeSettingCodeValueSet['compose']['include']['0']['system'],
-        version?: PracticeSettingCodeValueSet['version'],
-        code?: PracticeSettingCodeValueSet['compose']['include']['0']['concept']['code'],
-        display?: PracticeSettingCodeValueSet['compose']['include']['0']['concept']['display'],
-        useSelected?: boolean
-    }[],
-    readonly actor: Array<Patient | Practitioner | PractitionerRole | CareTeam | RelatedPerson | Device | HealthcareServiceResource | Location>,
-    readonly planningHorizon?: { start: Date, end: Date },
-    readonly comment?: string
-}
-
-
-type ScheduleSchemaR5 = ScheduleSchemaR4B & {
-    readonly name?: string
-}
+import { ScheduleSchemaR4B, ScheduleSchemaR5 } from "./types/ScheduleSchema.js";
+import { CodeableReference } from "../../../core/special/CodeableReference.js";
+import { ServiceType as ServiceTypeValueSet } from "../../../values/ServiceType.js";
+import { HealthcareService } from "../../../shared/HealthcareService.js";
+import { ServiceType } from "../../../shared/ServiceType.js";
+import { ServiceCategory } from "../../../shared/ServiceCategory.js";
+import { ServiceCategory as ServiceCategoryValueSet } from "../../../values/ServiceCategory.js";
+import { Identifier } from "../../../core/general/Identifier.js";
+import { IdentifierUse } from "../../../values/IdentifierUse.js";
+import { IdentifierType } from "../../../values/IdentifierType.js";
 
 /**
  *  A container for slots of time that may be available for booking appointments.
@@ -69,15 +52,18 @@ type ScheduleSchemaR5 = ScheduleSchemaR4B & {
  *  Source: http://hl7.org/fhir/R5/schedule.html.
  */
 class Schedule<
-    SpecialtyVS extends ValueSet = PracticeSettingCodeValueSet
+    T extends ValueSet = IdentifierType,
+    K extends ValueSet = ServiceCategoryValueSet,
+    V extends ValueSet = ServiceTypeValueSet,
+    S extends ValueSet = PracticeSettingCodeValueSet
 > implements Resource {
 
     readonly resourceType = 'Schedule';
-    readonly identifier;
+    readonly identifier?: Identifier<IdentifierUse, T>[];
     readonly active;
-    readonly serviceCategory;
-    readonly serviceType;
-    readonly specialty?: CodeableConcept<PracticeSettingCode<SpecialtyVS>>[];
+    readonly serviceCategory?: CodeableConcept<ServiceCategory<K>>;
+    readonly serviceType?: CodeableReference<HealthcareService<ServiceType<V>>>[];
+    readonly specialty?: CodeableConcept<PracticeSettingCode<S>>[];
     readonly name?: string;
     readonly actor!: Reference<Patient | Practitioner | PractitionerRole | CareTeam | RelatedPerson | Device | HealthcareServiceResource | Location>[]
     readonly planningHorizon?: Period;
@@ -156,8 +142,31 @@ class Schedule<
     constructor(schedule: ScheduleSchemaR4B | ScheduleSchemaR5) {
         this.identifier = schedule?.identifier;
         this.active = schedule?.active;
-        this.serviceCategory = schedule?.serviceCategory;
-        this.serviceType = schedule?.serviceType;
+        this.serviceCategory = schedule?.serviceCategory ? new CodeableConcept([
+                new Coding(
+                    schedule.serviceCategory.system ? new URL(schedule.serviceCategory.system) : undefined,
+                    schedule.serviceCategory.version,
+                    schedule.serviceCategory.code ? new Code(schedule.serviceCategory.code) : undefined,
+                    schedule.serviceCategory.display,
+                    schedule.serviceCategory.useSelected
+                )
+        ]) : undefined;
+        this.serviceType = schedule?.serviceType ? schedule?.serviceType.map((i) => {
+            return new CodeableReference(
+                new CodeableConcept(
+                    [
+                        new Coding(
+                            i.concept.system ? new URL(i.concept.system) : undefined,
+                            i.concept.version,
+                            i.concept.code ? new Code(i.concept.code) : undefined,
+                            i.concept.display,
+                            true
+                        )
+                    ]     
+                ),
+                new Reference<HealthcareServiceResource>(undefined, 'HealthcareService', i.reference?.identifier ? i.reference.identifier[0] : undefined)
+            )
+        }) : undefined;
         this.specialty = schedule?.specialty ? schedule?.specialty.map((i) => {
             return new CodeableConcept(
                 [

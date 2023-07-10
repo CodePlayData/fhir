@@ -18,12 +18,12 @@
 */
 
 import { HealthcareService as HealthcareServiceResource } from "../admin/HealthcareService.js";
-import { CodeableConcept } from "../core/general/CodeableConcept.js";
+import { CodeableConcept, CodeableConceptSchema } from "../core/general/CodeableConcept.js";
 import { CodeableReference } from "../core/special/CodeableReference.js";
 import { Reference } from "../core/special/Reference.js";
 
-type HealthcareService = CodeableReference<{
-    readonly concept?: CodeableConcept<any>,
+type HealthcareService<Concept extends CodeableConceptSchema = CodeableConceptSchema> = CodeableReference<{
+    readonly concept?: CodeableConcept<Concept>,
     readonly reference?: Reference<HealthcareServiceResource>
 }>
 

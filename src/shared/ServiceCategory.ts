@@ -21,13 +21,14 @@ import { ServiceCategory as ServiceCategoryValueSet } from "../values/ServiceCat
 import { Code } from "../core/primitives/Code.js";
 import { CodeableConcept } from "../core/general/CodeableConcept.js";
 import { Coding } from "../core/general/Coding.js";
+import { ValueSet } from "../values/ValueSet.js";
 
-type ServiceCategory = CodeableConcept<{
+type ServiceCategory<T extends ValueSet = ServiceCategoryValueSet> = CodeableConcept<{
     readonly coding?: Coding<{
         readonly system?: URL;
         readonly version?: string;
-        readonly code?: Code<ServiceCategoryValueSet['compose']['include'][0]['concept']['code']>;
-        readonly display?: ServiceCategoryValueSet['compose']['include'][0]['concept']['display'];
+        readonly code?: Code<T['compose']['include'][0]['concept']['code']>;
+        readonly display?: T['compose']['include'][0]['concept']['display'];
         readonly userSelected?: boolean;
     }>[] | undefined;
     readonly text?: string;
