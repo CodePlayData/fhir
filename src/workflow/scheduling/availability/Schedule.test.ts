@@ -21,14 +21,7 @@ import { describe, it } from "node:test";
 import assert from "node:assert";
 import { Practitioner } from "../../../admin/Practitioner.js";
 import { Schedule } from "./Schedule.js";
-import { Code } from "../../../core/primitives/Code.js";
-import { DateTime } from "../../../core/primitives/DateTime.js";
-import { CodeableConcept } from "../../../core/general/CodeableConcept.js";
-import { Coding } from "../../../core/general/Coding.js";
 import { Identifier } from "../../../core/general/Identifier.js";
-import { Period } from "../../../core/general/Period.js";
-import { CodeableReference } from "../../../core/special/CodeableReference.js";
-import { Reference } from "../../../core/special/Reference.js";
 
 describe('Testes Unitários do Schedule com...', () => {
 
@@ -209,10 +202,10 @@ describe('Testes Unitários do Schedule com...', () => {
     const practitioner = { } as Practitioner;
     const schedule = new Schedule({
       actor: [practitioner],
-      planningHorizon: new Period(
-        new DateTime("2019-10-30T10:45:31.449+05:30"),
-        new DateTime("2019-10-30T11:45:31.449+05:30"),
-      )
+      planningHorizon: {
+        start: new Date("2019-10-30T10:45:31.449+05:30"),
+        end: new Date("2019-10-30T11:45:31.449+05:30"),
+      }
     });
 
     assert.strictEqual(
@@ -240,6 +233,5 @@ describe('Testes Unitários do Schedule com...', () => {
       JSON.stringify({"resourceType":"Schedule","actor":[{}],"comment":"**Teste**"})
     )
   });
-
 });
 
