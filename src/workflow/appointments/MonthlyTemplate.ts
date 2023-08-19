@@ -18,7 +18,7 @@
 */
 
 
-import { PositiveInt } from "../../core/primitives/PositiveInt.js";
+import { PositiveInt } from "../../data/primitives/PositiveInt.js";
 import { DaysOfWeek } from "./DaysOfWeek.js";
 import { WeekOfMonth } from "./WeekOfMonth.js";
 

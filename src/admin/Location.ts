@@ -17,8 +17,8 @@
 
 */
 
-import { Resource } from "../core/Resource.js";
-import { Identifier } from "../core/general/Identifier.js";
+import { Resource } from "../data/Resource.js";
+import { Identifier } from "../data/general/Identifier.js";
 
 /**
  *  Details and position information for a place where services are provided and resources and 

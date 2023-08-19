@@ -18,7 +18,6 @@
 */
 
 import { describe, it } from "node:test";
-import assert from "node:assert";
 
 describe('Testes de unidade do RecurrenceTemplate.', () => {
     //TODO

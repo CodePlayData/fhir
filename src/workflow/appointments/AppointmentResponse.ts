@@ -28,14 +28,14 @@ import { HealthcareService } from "../../admin/HealthcareService.js";
 import { Location } from "../../admin/Location.js";
 import { AppointmentResponseStatus } from "../../values/AppointmentResponseStatus.js";
 import { ParticipantType } from "./ParticipantType.js";
-import { Code } from "../../core/primitives/Code.js";
-import { Instant } from "../../core/primitives/Instant.js";
-import { Markdown } from "../../core/primitives/Markdown.js";
-import { PositiveInt } from "../../core/primitives/PositiveInt.js";
-import { CodeableConcept } from "../../core/general/CodeableConcept.js";
-import { Identifier } from "../../core/general/Identifier.js";
-import { Reference } from "../../core/special/Reference.js";
-import { Resource } from "../../core/Resource.js";
+import { Code } from "../../data/primitives/Code.js";
+import { Instant } from "../../data/primitives/Instant.js";
+import { Markdown } from "../../data/primitives/Markdown.js";
+import { PositiveInt } from "../../data/primitives/PositiveInt.js";
+import { CodeableConcept } from "../../data/general/CodeableConcept.js";
+import { Identifier } from "../../data/general/Identifier.js";
+import { Reference } from "../../data/special/Reference.js";
+import { Resource } from "../../data/Resource.js";
 
 type AppointmentResponseSchemaBase = {
     readonly identifier?: Identifier[],

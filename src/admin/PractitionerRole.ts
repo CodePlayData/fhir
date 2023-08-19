@@ -17,8 +17,8 @@
 
 */
 
-import { Resource } from "../core/Resource.js";
-import { Identifier } from "../core/general/Identifier.js";
+import { Resource } from "../data/Resource.js";
+import { Identifier } from "../data/general/Identifier.js";
 
 /**
  *  A specific set of Roles/Locations/specialties/services that a practitioner may perform at an organization for a period 

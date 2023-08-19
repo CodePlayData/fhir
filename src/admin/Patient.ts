@@ -17,8 +17,8 @@
 
 */
 
-import { Resource } from "../core/Resource.js";
-import { Identifier } from "../core/general/Identifier.js";
+import { Resource } from "../data/Resource.js";
+import { Identifier } from "../data/general/Identifier.js";
 
 /**
  *  Demographics and other administrative information about an individual or animal receiving care or other health-related 

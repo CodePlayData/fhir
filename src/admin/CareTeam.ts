@@ -17,8 +17,8 @@
 
 */
 
-import { Resource } from "../core/Resource.js";
-import { Identifier } from "../core/general/Identifier.js";
+import { Resource } from "../data/Resource.js";
+import { Identifier } from "../data/general/Identifier.js";
 
 /**
  *  The Care Team includes all the people and organizations who plan to participate in the coordination and delivery of care.

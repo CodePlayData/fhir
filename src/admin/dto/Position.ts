@@ -1,6 +1,6 @@
 // @filename: Position.ts
 
-import { Decimal } from "../../core/primitives/Decimal";
+import { Decimal } from "../../data/primitives/Decimal";
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos

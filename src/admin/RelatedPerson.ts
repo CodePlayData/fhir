@@ -17,8 +17,8 @@
 
 */
 
-import { Resource } from "../core/Resource.js";
-import { Identifier } from "../core/general/Identifier.js";
+import { Resource } from "../data/Resource.js";
+import { Identifier } from "../data/general/Identifier.js";
 
 /**
  *  Information about a person that is involved in a patient's health or the care for a patient, but who is not the target 

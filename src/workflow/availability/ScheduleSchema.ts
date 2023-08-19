@@ -17,7 +17,7 @@
 
 */
 
-import { Identifier } from "../../core/general/Identifier.js";
+import { Identifier } from "../../data/general/Identifier.js";
 import { PracticeSettingCodeValueSet } from "../../values/PracticeSettingCodeValueSet.js";
 import { Patient } from "../../admin/Patient.js";
 import { Practitioner } from "../../admin/Practitioner.js";

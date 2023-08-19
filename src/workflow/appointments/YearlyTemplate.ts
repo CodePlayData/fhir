@@ -17,7 +17,7 @@
 
 */
 
-import { PositiveInt } from "../../core/primitives/PositiveInt.js";
+import { PositiveInt } from "../../data/primitives/PositiveInt.js";
 
 class YearlyTemplate {
     constructor(

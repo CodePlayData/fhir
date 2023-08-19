@@ -24,13 +24,13 @@ import { Patient } from "../../admin/Patient.js";
 import { CarePlan } from "../../clinical/careProvision/CarePlan.js";
 import { ServiceRequest } from "../../clinical/careProvision/ServiceRequest.js";
 import { MedicationRequest } from "../../medications/MedicationRequest.js";
-import { DeviceRequest } from "../../clinical/request&response/DeviceRequest.js";
+import { DeviceRequest } from "../../clinical/requestAndResponse/DeviceRequest.js";
 import { DocumentReference } from "../../diagnostics/DocumentReference.js";
 import { Observation } from "../../diagnostics/Observation.js";
 import { ImmunizationRecommendation } from "../../medications/ImmunizationRecommendation.js";
 import { Condition } from "../../clinical/summary/Condition.js";
 import { Procedure } from "../../clinical/summary/Procedure.js";
-import { VirtualServiceDetail } from "../../core/metadata/VirtualServiceDetail.js";
+import { VirtualServiceDetail } from "../../data/metadata/VirtualServiceDetail.js";
 import { HealthcareService } from "../../shared/HealthcareService.js";
 import { Hl7VSAppointmentReasonCodes } from "../../shared/Hl7VSAppointmentReasonCodes.js";
 import { PracticeSettingCodeValueSet } from "../../shared/PracticeSettingCodeValueSet.js";
@@ -43,18 +43,18 @@ import { AppointmentCancellationReason } from "./AppointmentCancellationReason.j
 import { EncounterReasonCodesv5, EncounterReasonCodesv4 } from "./EncounterReasonCodes.js";
 import { Participant } from "./Participant.js";
 import { RecurrenceTemplate } from "./RecurrenceTemplate.js";
-import { Code } from "../../core/primitives/Code.js";
-import { DateTime } from "../../core/primitives/DateTime.js";
-import { Instant } from "../../core/primitives/Instant.js";
-import { PositiveInt } from "../../core/primitives/PositiveInt.js";
-import { Annotation } from "../../core/general/Annotation.js";
-import { CodeableConcept } from "../../core/general/CodeableConcept.js";
-import { Identifier } from "../../core/general/Identifier.js";
-import { Period } from "../../core/general/Period.js";
-import { CodeableReference } from "../../core/special/CodeableReference.js";
-import { Reference } from "../../core/special/Reference.js";
+import { Code } from "../../data/primitives/Code.js";
+import { DateTime } from "../../data/primitives/DateTime.js";
+import { Instant } from "../../data/primitives/Instant.js";
+import { PositiveInt } from "../../data/primitives/PositiveInt.js";
+import { Annotation } from "../../data/general/Annotation.js";
+import { CodeableConcept } from "../../data/general/CodeableConcept.js";
+import { Identifier } from "../../data/general/Identifier.js";
+import { Period } from "../../data/general/Period.js";
+import { CodeableReference } from "../../data/special/CodeableReference.js";
+import { Reference } from "../../data/special/Reference.js";
 import { Binary } from "../../foundation/other/Binary.js";
-import { Resource } from "../../core/Resource.js";
+import { Resource } from "../../data/Resource.js";
 
 type AppointmentSchemaBase = {
     readonly identifier?: Identifier[],

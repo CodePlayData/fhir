@@ -17,7 +17,7 @@
 
 */
 
-import { Resource } from "../../core/Resource.js";
+import { Resource } from "../../data/Resource.js";
 
 class CarePlan implements Resource {
     readonly resourceType = 'CarePlan';

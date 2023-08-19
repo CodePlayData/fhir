@@ -17,7 +17,7 @@
 
 */
 
-import { Resource } from "../../core/Resource.js";
+import { Resource } from "../../data/Resource.js";
 
 abstract class Condition implements Resource {
     readonly resourceType = 'Condition';

@@ -18,9 +18,9 @@
 */
 
 import { ServiceCategory as ServiceCategoryValueSet } from "../values/ServiceCategory.js";
-import { Code } from "../core/primitives/Code.js";
-import { CodeableConcept } from "../core/general/CodeableConcept.js";
-import { Coding } from "../core/general/Coding.js";
+import { Code } from "../data/primitives/Code.js";
+import { CodeableConcept } from "../data/general/CodeableConcept.js";
+import { Coding } from "../data/general/Coding.js";
 import { ValueSet } from "../values/ValueSet.js";
 
 type ServiceCategory<T extends ValueSet = ServiceCategoryValueSet> = CodeableConcept<{

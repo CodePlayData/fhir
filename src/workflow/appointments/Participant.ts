@@ -25,12 +25,12 @@ import { Patient } from "../../admin/Patient.js";
 import { Practitioner } from "../../admin/Practitioner.js";
 import { PractitionerRole } from "../../admin/PractitionerRole.js";
 import { RelatedPerson } from "../../admin/RelatedPerson.js";
-import { Code } from "../../core/primitives/Code.js";
+import { Code } from "../../data/primitives/Code.js";
 import { ParticipationStatus } from "../../values/ParticipationStatus.js";
 import { ParticipantType } from "./ParticipantType.js";
-import { CodeableConcept } from "../../core/general/CodeableConcept.js";
-import { Period } from "../../core/general/Period.js";
-import { Reference } from "../../core/special/Reference.js";
+import { CodeableConcept } from "../../data/general/CodeableConcept.js";
+import { Period } from "../../data/general/Period.js";
+import { Reference } from "../../data/special/Reference.js";
 
 class Participant {
     constructor(
