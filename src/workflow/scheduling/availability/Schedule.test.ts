@@ -103,7 +103,7 @@ describe('Testes Unitários do Schedule com...', () => {
     )
   });
 
-  it('a categoria de serviço.', () => {
+  it('a categoria de serviço completa.', async (context) => {
     const practitioner = { } as Practitioner;
     const schedule = new Schedule({
       actor: [practitioner],
@@ -129,6 +129,32 @@ describe('Testes Unitários do Schedule com...', () => {
                 "code":"1",
                 "display":"Adoption",
                 "userSelected": true
+              }
+            ]
+          },
+          "actor": [{}]
+        })
+    )
+  });
+
+  it('a categoria de serviço parcial.', () => {
+    const practitioner = { } as Practitioner;
+    const schedule = new Schedule({
+      actor: [practitioner],
+      serviceCategory: {
+          display: 'Adoption',
+      }
+    });
+
+    assert.strictEqual(
+      JSON.stringify(schedule),
+      JSON.stringify(
+        {
+          "resourceType":"Schedule",
+          "serviceCategory":{
+            "coding":[
+              {
+                "display":"Adoption",
               }
             ]
           },
