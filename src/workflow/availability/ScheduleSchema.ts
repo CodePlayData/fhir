@@ -17,19 +17,19 @@
 
 */
 
-import { Identifier } from "../../../../core/general/Identifier.js";
-import { PracticeSettingCodeValueSet } from "../../../../values/PracticeSettingCodeValueSet.js";
-import { Patient } from "../../../../admin/Patient.js";
-import { Practitioner } from "../../../../admin/Practitioner.js";
-import { PractitionerRole } from "../../../../admin/PractitionerRole.js";
-import { CareTeam } from "../../../../admin/CareTeam.js";
-import { RelatedPerson } from "../../../../admin/RelatedPerson.js";
-import { Device } from "../../../../admin/Device.js";
-import { HealthcareService as HealthcareServiceResource } from "../../../../admin/HealthcareService";
-import { Location } from "../../../../admin/Location.js";
-import { ServiceType as ServiceTypeValueSet } from "../../../../values/ServiceType.js";
-import { ServiceCategory as ServiceCategoryValueSet } from "../../../../values/ServiceCategory.js";
-import { ValueSet } from "../../../../values/ValueSet.js";
+import { Identifier } from "../../core/general/Identifier.js";
+import { PracticeSettingCodeValueSet } from "../../values/PracticeSettingCodeValueSet.js";
+import { Patient } from "../../admin/Patient.js";
+import { Practitioner } from "../../admin/Practitioner.js";
+import { PractitionerRole } from "../../admin/PractitionerRole.js";
+import { CareTeam } from "../../admin/CareTeam.js";
+import { RelatedPerson } from "../../admin/RelatedPerson.js";
+import { Device } from "../../admin/Device.js";
+import { HealthcareService as HealthcareServiceResource } from "../../admin/HealthcareService";
+import { Location } from "../../admin/Location.js";
+import { ServiceType as ServiceTypeValueSet } from "../../values/ServiceType.js";
+import { ServiceCategory as ServiceCategoryValueSet } from "../../values/ServiceCategory.js";
+import { ValueSet } from "../../values/ValueSet.js";
 
 
 type ScheduleSchemaR4B<

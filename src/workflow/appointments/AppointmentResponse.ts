@@ -18,24 +18,24 @@
 */
 
 import { Appointment } from "./Appointment.js";
-import { Patient } from "../../../admin/Patient.js";
-import { Group } from "../../../admin/Group.js";
-import { Practitioner } from "../../../admin/Practitioner.js";
-import { PractitionerRole } from "../../../admin/PractitionerRole.js";
-import { RelatedPerson } from "../../../admin/RelatedPerson.js";
-import { Device } from "../../../admin/Device.js";
-import { HealthcareService } from "../../../admin/HealthcareService.js";
-import { Location } from "../../../admin/Location.js";
-import { AppointmentResponseStatus } from "../../../values/AppointmentResponseStatus.js";
-import { ParticipantType } from "./types/ParticipantType.js";
-import { Code } from "../../../core/primitives/Code.js";
-import { Instant } from "../../../core/primitives/Instant.js";
-import { Markdown } from "../../../core/primitives/Markdown.js";
-import { PositiveInt } from "../../../core/primitives/PositiveInt.js";
-import { CodeableConcept } from "../../../core/general/CodeableConcept.js";
-import { Identifier } from "../../../core/general/Identifier.js";
-import { Reference } from "../../../core/special/Reference.js";
-import { Resource } from "../../../core/Resource.js";
+import { Patient } from "../../admin/Patient.js";
+import { Group } from "../../admin/Group.js";
+import { Practitioner } from "../../admin/Practitioner.js";
+import { PractitionerRole } from "../../admin/PractitionerRole.js";
+import { RelatedPerson } from "../../admin/RelatedPerson.js";
+import { Device } from "../../admin/Device.js";
+import { HealthcareService } from "../../admin/HealthcareService.js";
+import { Location } from "../../admin/Location.js";
+import { AppointmentResponseStatus } from "../../values/AppointmentResponseStatus.js";
+import { ParticipantType } from "./ParticipantType.js";
+import { Code } from "../../core/primitives/Code.js";
+import { Instant } from "../../core/primitives/Instant.js";
+import { Markdown } from "../../core/primitives/Markdown.js";
+import { PositiveInt } from "../../core/primitives/PositiveInt.js";
+import { CodeableConcept } from "../../core/general/CodeableConcept.js";
+import { Identifier } from "../../core/general/Identifier.js";
+import { Reference } from "../../core/special/Reference.js";
+import { Resource } from "../../core/Resource.js";
 
 type AppointmentResponseSchemaBase = {
     readonly identifier?: Identifier[],

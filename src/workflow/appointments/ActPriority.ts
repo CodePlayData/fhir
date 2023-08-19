@@ -1,4 +1,4 @@
-// @filename: ParticipantType.ts
+// @filename: ActPriority.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,23 +17,23 @@
 
 */
 
-import { CodeableConcept } from "../../../../core/general/CodeableConcept.js";
-import { Coding } from "../../../../core/general/Coding.js";
-import { Code } from "../../../../core/primitives/Code.js";
-import { ParticipantType as ParticipantTypeValueSet } from "../../../../values/ParticipantType.js";
+import { CodeableConcept } from "../../core/general/CodeableConcept.js";
+import { Coding } from "../../core/general/Coding.js";
+import { Code } from "../../core/primitives/Code.js";
+import { AppointmentReasonCodes } from "../../values/AppointmentReasonCodes.js";
 
 
-type ParticipantType = CodeableConcept<{
+type ActPriority = CodeableConcept<{
     readonly coding?: Coding<{
         readonly system?: URL;
         readonly version?: string;
-        readonly code?: Code<ParticipantTypeValueSet['compose']['include'][0]['concept']['code']>;
-        readonly display?: ParticipantTypeValueSet['compose']['include'][0]['concept']['display'];
+        readonly code?: Code<AppointmentReasonCodes['compose']['include'][0]['concept']['code']>;
+        readonly display?: AppointmentReasonCodes['compose']['include'][0]['concept']['display'];
         readonly userSelected?: boolean;
     }>[] | undefined;
     readonly text?: string | undefined;
-}>;
+}>
 
 export {
-    ParticipantType
+    ActPriority
 }

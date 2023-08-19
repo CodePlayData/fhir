@@ -1,4 +1,4 @@
-// @filename: DaysOfWeek.ts
+// @filename: WeeklyTemplate.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,18 +17,21 @@
 
 */
 
-import { Coding } from "../../../../core/general/Coding.js";
-import { Code } from "../../../../core/primitives/Code.js";
-import { DaysOfWeek as DaysOfWeekValueSet } from "../../../../values/DaysOfWeek.js";
+import { PositiveInt } from "../../core/primitives/PositiveInt.js";
 
-type DaysOfWeek = Coding<{
-    readonly system?: URL;
-    readonly version?: string;
-    readonly code?: Code<DaysOfWeekValueSet['compose']['include'][0]['concept']['code']>;
-    readonly display?: DaysOfWeekValueSet['compose']['include'][0]['concept']['display'];
-    readonly userSelected?: boolean;
-}>
+class WeeklyTemplate {
+    constructor(
+        readonly monday: boolean,
+        readonly tuesday: boolean,
+        readonly wednesday: boolean,
+        readonly thursday: boolean,
+        readonly friday: boolean,
+        readonly saturday: boolean,
+        readonly sunday: boolean,
+        readonly weekInterval: PositiveInt
+    ){}
+}
 
 export {
-    DaysOfWeek
+    WeeklyTemplate
 }

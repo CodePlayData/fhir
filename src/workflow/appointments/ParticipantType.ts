@@ -1,4 +1,4 @@
-// @filename: AppointmentCancellationReason.ts
+// @filename: ParticipantType.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,22 +17,23 @@
 
 */
 
-import { AppointmentCancellationReason as AppointmentCancellationReasonValueSet } from "../../../../values/AppointmentCancellationReason.js";
-import { Code } from "../../../../core/primitives/Code.js";
-import { CodeableConcept } from "../../../../core/general/CodeableConcept.js";
-import { Coding } from "../../../../core/general/Coding.js";
+import { CodeableConcept } from "../../core/general/CodeableConcept.js";
+import { Coding } from "../../core/general/Coding.js";
+import { Code } from "../../core/primitives/Code.js";
+import { ParticipantType as ParticipantTypeValueSet } from "../../values/ParticipantType.js";
 
-type AppointmentCancellationReason = CodeableConcept<{
+
+type ParticipantType = CodeableConcept<{
     readonly coding?: Coding<{
         readonly system?: URL;
         readonly version?: string;
-        readonly code?: Code<AppointmentCancellationReasonValueSet['compose']['include'][0]['concept']['code']>;
-        readonly display?: AppointmentCancellationReasonValueSet['compose']['include'][0]['concept']['display'];
+        readonly code?: Code<ParticipantTypeValueSet['compose']['include'][0]['concept']['code']>;
+        readonly display?: ParticipantTypeValueSet['compose']['include'][0]['concept']['display'];
         readonly userSelected?: boolean;
     }>[] | undefined;
-    readonly text?: string;
-}>
+    readonly text?: string | undefined;
+}>;
 
 export {
-    AppointmentCancellationReason
+    ParticipantType
 }

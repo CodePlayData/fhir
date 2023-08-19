@@ -17,10 +17,10 @@
 
 */
 
-import { CodeableConcept } from "../../../../core/general/CodeableConcept.js";
-import { Coding } from "../../../../core/general/Coding.js";
-import { Code } from "../../../../core/primitives/Code.js";
-import { AppointmentRecurrenceType as AppointmentRecurrenceTypeValueSet } from "../../../../values/AppointmentRecurrenceType.js";
+import { CodeableConcept } from "../../core/general/CodeableConcept.js";
+import { Coding } from "../../core/general/Coding.js";
+import { Code } from "../../core/primitives/Code.js";
+import { AppointmentRecurrenceType as AppointmentRecurrenceTypeValueSet } from "../../values/AppointmentRecurrenceType.js";
 
 
 type AppointmentRecurrenceType = CodeableConcept<{

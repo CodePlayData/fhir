@@ -18,19 +18,19 @@
 */
 
 import { Schedule } from "./Schedule.js";
-import { SlotStatus } from "../../../values/SlotStatus.js";
-import { ServiceCategory } from "../../../shared/ServiceCategory.js";
-import { HealthcareService } from "../../../shared/HealthcareService.js";
-import { ServiceType } from "../../../shared/ServiceType.js";
-import { PracticeSettingCodeValueSet } from "../../../shared/PracticeSettingCodeValueSet.js";
-import { Hl7VSAppointmentReasonCodes } from "../../../shared/Hl7VSAppointmentReasonCodes.js";
-import { Code } from "../../../core/primitives/Code.js";
-import { Instant } from "../../../core/primitives/Instant.js";
-import { CodeableConcept } from "../../../core/general/CodeableConcept.js";
-import { Identifier } from "../../../core/general/Identifier.js";
-import { CodeableReference } from "../../../core/special/CodeableReference.js";
-import { Reference } from "../../../core/special/Reference.js";
-import { Resource } from "../../../core/Resource.js";
+import { SlotStatus } from "../../values/SlotStatus.js";
+import { ServiceCategory } from "../../shared/ServiceCategory.js";
+import { HealthcareService } from "../../shared/HealthcareService.js";
+import { ServiceType } from "../../shared/ServiceType.js";
+import { PracticeSettingCodeValueSet } from "../../shared/PracticeSettingCodeValueSet.js";
+import { Hl7VSAppointmentReasonCodes } from "../../shared/Hl7VSAppointmentReasonCodes.js";
+import { Code } from "../../core/primitives/Code.js";
+import { Instant } from "../../core/primitives/Instant.js";
+import { CodeableConcept } from "../../core/general/CodeableConcept.js";
+import { Identifier } from "../../core/general/Identifier.js";
+import { CodeableReference } from "../../core/special/CodeableReference.js";
+import { Reference } from "../../core/special/Reference.js";
+import { Resource } from "../../core/Resource.js";
 
 
 type SlotBase = {

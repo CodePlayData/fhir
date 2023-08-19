@@ -19,9 +19,9 @@
 
 import { describe, it } from "node:test";
 import assert from "node:assert";
-import { Practitioner } from "../../../admin/Practitioner.js";
+import { Practitioner } from "../../admin/Practitioner.js";
 import { Schedule } from "./Schedule.js";
-import { Identifier } from "../../../core/general/Identifier.js";
+import { Identifier } from "../../core/general/Identifier.js";
 
 describe('Testes Unitários do Schedule com...', () => {
 

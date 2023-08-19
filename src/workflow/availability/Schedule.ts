@@ -17,34 +17,34 @@
 
 */
 
-import { PracticeSettingCodeValueSet as PracticeSettingCode } from "../../../shared/PracticeSettingCodeValueSet.js";
-import { PracticeSettingCodeValueSet } from "../../../values/PracticeSettingCodeValueSet.js";
-import { Markdown } from "../../../core/primitives/Markdown.js";
-import { Patient } from "../../../admin/Patient.js";
-import { Practitioner } from "../../../admin/Practitioner.js";
-import { PractitionerRole } from "../../../admin/PractitionerRole.js";
-import { CareTeam } from "../../../admin/CareTeam.js";
-import { RelatedPerson } from "../../../admin/RelatedPerson.js";
-import { Device } from "../../../admin/Device.js";
-import { HealthcareService as HealthcareServiceResource } from "../../../admin/HealthcareService";
-import { Location } from "../../../admin/Location.js";
-import { CodeableConcept } from "../../../core/general/CodeableConcept.js";
-import { Period } from "../../../core/general/Period.js";
-import { Reference } from "../../../core/special/Reference.js";
-import { Resource } from "../../../core/Resource.js";
-import { Coding } from "../../../core/general/Coding.js";
-import { Code } from "../../../core/primitives/Code.js";
-import { ValueSet } from "../../../values/ValueSet.js";
-import { ScheduleSchemaR4B, ScheduleSchemaR5 } from "./types/ScheduleSchema.js";
-import { CodeableReference } from "../../../core/special/CodeableReference.js";
-import { ServiceType as ServiceTypeValueSet } from "../../../values/ServiceType.js";
-import { HealthcareService } from "../../../shared/HealthcareService.js";
-import { ServiceType } from "../../../shared/ServiceType.js";
-import { ServiceCategory } from "../../../shared/ServiceCategory.js";
-import { ServiceCategory as ServiceCategoryValueSet } from "../../../values/ServiceCategory.js";
-import { Identifier } from "../../../core/general/Identifier.js";
-import { IdentifierUse } from "../../../values/IdentifierUse.js";
-import { IdentifierType } from "../../../values/IdentifierType.js";
+import { PracticeSettingCodeValueSet as PracticeSettingCode } from "../../shared/PracticeSettingCodeValueSet.js";
+import { PracticeSettingCodeValueSet } from "../../values/PracticeSettingCodeValueSet.js";
+import { Markdown } from "../../core/primitives/Markdown.js";
+import { Patient } from "../../admin/Patient.js";
+import { Practitioner } from "../../admin/Practitioner.js";
+import { PractitionerRole } from "../../admin/PractitionerRole.js";
+import { CareTeam } from "../../admin/CareTeam.js";
+import { RelatedPerson } from "../../admin/RelatedPerson.js";
+import { Device } from "../../admin/Device.js";
+import { HealthcareService as HealthcareServiceResource } from "../../admin/HealthcareService";
+import { Location } from "../../admin/Location.js";
+import { CodeableConcept } from "../../core/general/CodeableConcept.js";
+import { Period } from "../../core/general/Period.js";
+import { Reference } from "../../core/special/Reference.js";
+import { Resource } from "../../core/Resource.js";
+import { Coding } from "../../core/general/Coding.js";
+import { Code } from "../../core/primitives/Code.js";
+import { ValueSet } from "../../values/ValueSet.js";
+import { ScheduleSchemaR4B, ScheduleSchemaR5 } from "./ScheduleSchema.js";
+import { CodeableReference } from "../../core/special/CodeableReference.js";
+import { ServiceType as ServiceTypeValueSet } from "../../values/ServiceType.js";
+import { HealthcareService } from "../../shared/HealthcareService.js";
+import { ServiceType } from "../../shared/ServiceType.js";
+import { ServiceCategory } from "../../shared/ServiceCategory.js";
+import { ServiceCategory as ServiceCategoryValueSet } from "../../values/ServiceCategory.js";
+import { Identifier } from "../../core/general/Identifier.js";
+import { IdentifierUse } from "../../values/IdentifierUse.js";
+import { IdentifierType } from "../../values/IdentifierType.js";
 
 /**
  *  A container for slots of time that may be available for booking appointments.

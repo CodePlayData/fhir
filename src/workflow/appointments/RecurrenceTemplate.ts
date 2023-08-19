@@ -17,9 +17,9 @@
 
 */
 
-import { PositiveInt } from "../../../../core/primitives/PositiveInt.js";
-import { IANATimezones } from "../../../../values/IANATimezones.js";
-import { AppointmentRecurrenceType } from "../types/AppointmentRecurrenceType.js";
+import { PositiveInt } from "../../core/primitives/PositiveInt.js";
+import { IANATimezones } from "../../values/IANATimezones.js";
+import { AppointmentRecurrenceType } from "./AppointmentRecurrenceType.js";
 import { MonthlyTemplate } from "./MonthlyTemplate.js";
 import { WeeklyTemplate } from "./WeeklyTemplate.js";
 import { YearlyTemplate } from "./YearlyTemplate.js";

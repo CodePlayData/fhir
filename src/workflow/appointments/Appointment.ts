@@ -17,44 +17,44 @@
 
 */
 
-import { Account } from "../../../admin/Account.js";
-import { Communication } from "../../../admin/Communication.js";
-import { Group } from "../../../admin/Group.js";
-import { Patient } from "../../../admin/Patient.js";
-import { CarePlan } from "../../../clinical/careProvision/CarePlan.js";
-import { ServiceRequest } from "../../../clinical/careProvision/ServiceRequest.js";
-import { MedicationRequest } from "../../../medications/MedicationRequest.js";
-import { DeviceRequest } from "../../../clinical/request&response/DeviceRequest.js";
-import { DocumentReference } from "../../../diagnostics/DocumentReference.js";
-import { Observation } from "../../../diagnostics/Observation.js";
-import { ImmunizationRecommendation } from "../../../medications/ImmunizationRecommendation.js";
-import { Condition } from "../../../clinical/summary/Condition.js";
-import { Procedure } from "../../../clinical/summary/Procedure.js";
-import { VirtualServiceDetail } from "../../../core/metadata/VirtualServiceDetail.js";
-import { HealthcareService } from "../../../shared/HealthcareService.js";
-import { Hl7VSAppointmentReasonCodes } from "../../../shared/Hl7VSAppointmentReasonCodes.js";
-import { PracticeSettingCodeValueSet } from "../../../shared/PracticeSettingCodeValueSet.js";
-import { ServiceCategory } from "../../../shared/ServiceCategory.js";
-import { ServiceType } from "../../../shared/ServiceType.js";
-import { AppointmentStatus } from "../../../values/AppointmentStatus.js";
+import { Account } from "../../admin/Account.js";
+import { Communication } from "../../admin/Communication.js";
+import { Group } from "../../admin/Group.js";
+import { Patient } from "../../admin/Patient.js";
+import { CarePlan } from "../../clinical/careProvision/CarePlan.js";
+import { ServiceRequest } from "../../clinical/careProvision/ServiceRequest.js";
+import { MedicationRequest } from "../../medications/MedicationRequest.js";
+import { DeviceRequest } from "../../clinical/request&response/DeviceRequest.js";
+import { DocumentReference } from "../../diagnostics/DocumentReference.js";
+import { Observation } from "../../diagnostics/Observation.js";
+import { ImmunizationRecommendation } from "../../medications/ImmunizationRecommendation.js";
+import { Condition } from "../../clinical/summary/Condition.js";
+import { Procedure } from "../../clinical/summary/Procedure.js";
+import { VirtualServiceDetail } from "../../core/metadata/VirtualServiceDetail.js";
+import { HealthcareService } from "../../shared/HealthcareService.js";
+import { Hl7VSAppointmentReasonCodes } from "../../shared/Hl7VSAppointmentReasonCodes.js";
+import { PracticeSettingCodeValueSet } from "../../shared/PracticeSettingCodeValueSet.js";
+import { ServiceCategory } from "../../shared/ServiceCategory.js";
+import { ServiceType } from "../../shared/ServiceType.js";
+import { AppointmentStatus } from "../../values/AppointmentStatus.js";
 import { Slot } from "../availability/Slot.js";
-import { ActPriority } from "./types/ActPriority.js";
-import { AppointmentCancellationReason } from "./types/AppointmentCancellationReason.js";
-import { EncounterReasonCodesv5, EncounterReasonCodesv4 } from "./types/EncounterReasonCodes.js";
-import { Participant } from "./structs/Participant.js";
-import { RecurrenceTemplate } from "./structs/RecurrenceTemplate.js";
-import { Code } from "../../../core/primitives/Code.js";
-import { DateTime } from "../../../core/primitives/DateTime.js";
-import { Instant } from "../../../core/primitives/Instant.js";
-import { PositiveInt } from "../../../core/primitives/PositiveInt.js";
-import { Annotation } from "../../../core/general/Annotation.js";
-import { CodeableConcept } from "../../../core/general/CodeableConcept.js";
-import { Identifier } from "../../../core/general/Identifier.js";
-import { Period } from "../../../core/general/Period.js";
-import { CodeableReference } from "../../../core/special/CodeableReference.js";
-import { Reference } from "../../../core/special/Reference.js";
-import { Binary } from "../../../foundation/other/Binary.js";
-import { Resource } from "../../../core/Resource.js";
+import { ActPriority } from "./ActPriority.js";
+import { AppointmentCancellationReason } from "./AppointmentCancellationReason.js";
+import { EncounterReasonCodesv5, EncounterReasonCodesv4 } from "./EncounterReasonCodes.js";
+import { Participant } from "./Participant.js";
+import { RecurrenceTemplate } from "./RecurrenceTemplate.js";
+import { Code } from "../../core/primitives/Code.js";
+import { DateTime } from "../../core/primitives/DateTime.js";
+import { Instant } from "../../core/primitives/Instant.js";
+import { PositiveInt } from "../../core/primitives/PositiveInt.js";
+import { Annotation } from "../../core/general/Annotation.js";
+import { CodeableConcept } from "../../core/general/CodeableConcept.js";
+import { Identifier } from "../../core/general/Identifier.js";
+import { Period } from "../../core/general/Period.js";
+import { CodeableReference } from "../../core/special/CodeableReference.js";
+import { Reference } from "../../core/special/Reference.js";
+import { Binary } from "../../foundation/other/Binary.js";
+import { Resource } from "../../core/Resource.js";
 
 type AppointmentSchemaBase = {
     readonly identifier?: Identifier[],
@@ -302,8 +302,7 @@ class Appointment implements Resource {
         this.basedOn = appointment?.basedOn;
         this.participant = appointment?.participant;
 
-        if(
-            'recurrenceTemplate' in appointment      ||
+        if( 'recurrenceTemplate' in appointment      ||
             'class' in appointment                   ||
             'subject' in appointment                 ||
             'recurrenceId' in appointment            ||
@@ -316,7 +315,7 @@ class Appointment implements Resource {
             'previousAppointment' in appointment     ||
             'originatingAppointment' in appointment  ||
             'reason' in appointment
-            ) {
+        ) {
             this.recurrenceTemplate = appointment?.recurrenceTemplate;
             this.class = appointment?.class;
             this.subject = appointment?.subject;

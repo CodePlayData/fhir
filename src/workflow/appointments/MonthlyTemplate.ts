@@ -1,4 +1,4 @@
-// @filename: WeeklyTemplate.ts
+// @filename: MonthlyTemplate.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,21 +17,20 @@
 
 */
 
-import { PositiveInt } from "../../../../core/primitives/PositiveInt.js";
 
-class WeeklyTemplate {
+import { PositiveInt } from "../../core/primitives/PositiveInt.js";
+import { DaysOfWeek } from "./DaysOfWeek.js";
+import { WeekOfMonth } from "./WeekOfMonth.js";
+
+class MonthlyTemplate {
     constructor(
-        readonly monday: boolean,
-        readonly tuesday: boolean,
-        readonly wednesday: boolean,
-        readonly thursday: boolean,
-        readonly friday: boolean,
-        readonly saturday: boolean,
-        readonly sunday: boolean,
-        readonly weekInterval: PositiveInt
-    ){}
+        readonly monthInterval: PositiveInt,
+        readonly dayOfMonth?: PositiveInt,
+        readonly nthWeekOfMonth?: WeekOfMonth,
+        readonly dayOfWeek?: DaysOfWeek
+    ) {}
 }
 
 export {
-    WeeklyTemplate
+    MonthlyTemplate
 }
