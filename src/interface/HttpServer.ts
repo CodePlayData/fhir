@@ -1,4 +1,4 @@
-//@filename: APIController.ts
+//@filename: HttpServer.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,7 +17,4 @@
 
 */
 
-/** A princípio esse controller não sabe aonde vai persistir mas recebe um repository
- *  para persistência, um httpServer e todos os seus componentes para interfacear com
- *  a rede.
- */
+export { HttpServer } from "@codeplaydata/adapters";

@@ -1,4 +1,4 @@
-// @filename: ScheduleController.ts
+//@filename: HttpServer.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -16,3 +16,5 @@
    limitations under the License.
 
 */
+
+import { HttpServer } from "@codeplaydata/adapters";

@@ -50,7 +50,7 @@ describe('Testes Unitários do Schedule com...', () => {
     const practitioner = { } as Practitioner;
     const schedule = new Schedule({
       actor: [ practitioner ]
-    })
+    });
 
     assert.strictEqual(
       JSON.stringify(schedule), 

@@ -1,4 +1,4 @@
-//@filename: main.ts
+//@filename: api.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,10 +17,11 @@
 
 */
 
-/**
- * 
- * A estrutura é parecida com essa aqui: 
- * 
- * https://github.com/rodrigobranas/cccat12_4/blob/e99fa8a69f01864059583651eec96e2b762427e5/backend/ride/src/infra/cli/NodeInputOutput.ts
- * 
- */
+import { Schedule } from "./core";
+import { ApiFhirController } from "./interface/Controller";
+import { http } from "@codeplaydata/adapters";
+
+const server = http.server.express.server().app;
+const controller = new ApiFhirController<Schedule>(server);
+
+server.listen(3000);

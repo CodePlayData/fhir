@@ -1,4 +1,4 @@
-//@filename: ScheduleDatabaseController.ts
+//@filename: Controller.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,3 +17,16 @@
 
 */
 
+import { Resource } from "../core";
+import { HttpServer } from "./HttpServer.js";
+
+class ApiFhirController<FhirResource extends Resource> {
+
+    constructor(readonly httpServer: HttpServer) {
+    }
+
+}
+
+export {
+    ApiFhirController
+}
