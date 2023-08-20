@@ -17,3 +17,10 @@
 
 */
 
+/**
+ * 
+ * A estrutura é parecida com essa aqui: 
+ * 
+ * https://github.com/rodrigobranas/cccat12_4/blob/e99fa8a69f01864059583651eec96e2b762427e5/backend/ride/src/infra/cli/NodeInputOutput.ts
+ * 
+ */

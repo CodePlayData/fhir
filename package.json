@@ -25,6 +25,7 @@
     },
     "homepage": "https://github.com/codeplaydata/fhir#readme",
     "devDependencies": {
+        "@codeplaydata/adapters": "^0.7.1",
         "@types/node": "^18.11.9",
         "typescript": "^4.7.4"
     }
