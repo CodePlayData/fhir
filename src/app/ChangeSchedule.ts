@@ -1,4 +1,4 @@
-// @filename: OpenSchedule.ts
+// @filename: ChangeSchedule.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -21,17 +21,18 @@ import { ScheduleRepository } from "./ScheduleRepository";
 import { Schedule, ScheduleSchemaR5 } from "../core/workflow/availability/Schedule.js";
 import { UseCase } from "./UseCase";
 
-type ScheduleInput = ScheduleSchemaR5 & {};
+type ScheduleNewData = ScheduleSchemaR5 & {};
+type ScheduleUpdatedConfirmation = {};
 
-export class OpenSchedule implements UseCase<Schedule, ScheduleInput> {
+export class ChangeSchedule implements UseCase<Schedule, ScheduleNewData, ScheduleUpdatedConfirmation> {
     resource!: Schedule
 
     constructor(readonly repository: ScheduleRepository) {
     }
 
-    exec(input: ScheduleInput) {
-        this.resource = new Schedule(input);
-        this.repository.saveSchedule(this.resource);
+    exec(input: ScheduleNewData) {
+        //this.resource = new Schedule(input);
+        //this.repository.saveSchedule(this.resource);
         return {}
     }
 }

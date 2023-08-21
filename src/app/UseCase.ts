@@ -1,4 +1,4 @@
-//@filename: HttpServer.ts
+// @filename: UseCase.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,4 +17,9 @@
 
 */
 
-//https://bazaglia.com/clean-architecture-with-typescript-ddd-onion/
+import { Resource } from "../core/data/Resource.js";
+
+export interface UseCase<R extends Resource, I, O extends any = void> {
+    resource: R
+    exec(input: I): O
+}

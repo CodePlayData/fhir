@@ -17,16 +17,14 @@
 
 */
 
-import { Resource } from "../core";
-import { HttpServer } from "./HttpServer.js";
+export interface Controller {
+    read?(): any
+    vread?(): any
+    update?(): any
+    patch?(): any
+    delete?(): any
 
-class ApiFhirController<FhirResource extends Resource> {
-
-    constructor(readonly httpServer: HttpServer) {
-    }
-
-}
-
-export {
-    ApiFhirController
+    create?(): any
+    search?(): any
+    history?(): any
 }

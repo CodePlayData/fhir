@@ -18,7 +18,7 @@
 */
 
 import { Schedule } from "./core";
-import { ApiFhirController } from "./interface/Controller";
+import { ApiFhirController } from "./interface/ScheduleController";
 import { http } from "@codeplaydata/adapters";
 
 const server = http.server.express.server().app;

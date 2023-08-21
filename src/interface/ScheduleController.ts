@@ -1,4 +1,4 @@
-//@filename: HttpServer.ts
+//@filename: Controller.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,4 +17,4 @@
 
 */
 
-//https://bazaglia.com/clean-architecture-with-typescript-ddd-onion/
+export class ScheduleController{}

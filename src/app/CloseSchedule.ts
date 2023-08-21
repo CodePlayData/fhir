@@ -1,4 +1,4 @@
-//@filename: HttpServer.ts
+// @filename: CloseSchedule.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,4 +17,21 @@
 
 */
 
-//https://bazaglia.com/clean-architecture-with-typescript-ddd-onion/
+import { ScheduleRepository } from "./ScheduleRepository";
+import { Schedule, ScheduleSchemaR5 } from "../core/workflow/availability/Schedule.js";
+import { UseCase } from "./UseCase";
+
+type ScheduleId = {};
+
+export class CloseSchedule implements UseCase<Schedule, ScheduleId> {
+    resource!: Schedule
+
+    constructor(readonly repository: ScheduleRepository) {
+    }
+
+    exec(input: ScheduleId) {
+        //this.resource = new Schedule(input);
+        //this.repository.saveSchedule(this.resource);
+        return {}
+    }
+}
