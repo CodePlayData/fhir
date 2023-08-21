@@ -1,4 +1,4 @@
-//@filename: api.ts
+// @filename: ScheduleNewEndIsBeforePriorEnd.ts
 
 /*
  * Copyright 2023 Pedro Paulo Teixeira dos Santos
@@ -17,11 +17,12 @@
 
 */
 
-import { Schedule } from "./core";
-import { ApiFhirController } from "./interface/ScheduleController";
-import { http } from "@codeplaydata/adapters";
+class ScheduleNewEndIsBeforePriorEnd extends Error {
+    constructor(){
+        super('The new Schedule ending cannot be set to before the prior ending.')
+    }
+}
 
-const server = http.server.express.server().app;
-const controller = new ApiFhirController<Schedule>(server);
-
-server.listen(3000);
+export {
+    ScheduleNewEndIsBeforePriorEnd
+}
