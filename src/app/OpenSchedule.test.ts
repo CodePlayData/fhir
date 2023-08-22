@@ -17,10 +17,16 @@
 
 */
 
-import { describe, it } from "node:test";
+import { describe, before, it } from "node:test";
 
 describe('Teste do OpenSchedule com...', () => {
     
+    let scheduleRepo;
+    
+    before(() => {
+
+    })
+
     it('um input válido.', () => {
 
     });

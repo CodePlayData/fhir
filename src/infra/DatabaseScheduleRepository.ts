@@ -17,8 +17,25 @@
 
 */
 
-interface ScheduleRepository {
-    open(): any,
-    change(): any,
-    close(): any
+import { Schedule } from "../core/index.js";
+import { MongoDB, MongoDBCollection, MongoDBServer } from "@codeplaydata/adapters";
+
+
+class DatabaseScheduleRepository {
+    
+    constructor() {
+
+    }
+    
+    saveSchedule(schedule: Schedule) {
+
+    }
+
+    updateSchedule(id: { [key: string]: string }, data: { [key: string]: any}) {
+
+    }
+
+    deactiveSchedule(id: { [key: string]: string}) {
+
+    }
 }

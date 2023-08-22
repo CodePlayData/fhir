@@ -41,6 +41,6 @@ export class OpenSchedule implements UseCase<Schedule, ScheduleInput> {
     exec(input: ScheduleInput) {
         this.resource = new Schedule(input.actors, input.period, input.options);
         this.repository.saveSchedule(this.resource);
-        return {}
+        return
     }
 }
