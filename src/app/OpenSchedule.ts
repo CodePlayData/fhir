@@ -18,10 +18,19 @@
 */
 
 import { ScheduleRepository } from "./ScheduleRepository";
-import { Schedule, ScheduleSchemaR5 } from "../core/workflow/availability/Schedule.js";
+import { Schedule } from "../domain/availability/Schedule.js";
 import { UseCase } from "./UseCase";
+import { Bookable } from "../domain/availability/Bookable.js";
+import { ScheduleOptions } from "../domain/availability/ScheduleOptions.js";
 
-type ScheduleInput = ScheduleSchemaR5 & {};
+type ScheduleInput = {
+    readonly actors: Bookable[], 
+    readonly period: {
+        start: Date,
+        end: Date
+    },
+    readonly options?: ScheduleOptions
+}
 
 export class OpenSchedule implements UseCase<Schedule, ScheduleInput> {
     resource!: Schedule
@@ -30,7 +39,7 @@ export class OpenSchedule implements UseCase<Schedule, ScheduleInput> {
     }
 
     exec(input: ScheduleInput) {
-        this.resource = new Schedule(input);
+        this.resource = new Schedule(input.actors, input.period, input.options);
         this.repository.saveSchedule(this.resource);
         return {}
     }

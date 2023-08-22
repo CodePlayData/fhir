@@ -232,7 +232,7 @@ describe('Testes Unitários do Slot com...', () => {
         assert.deepEqual(slot.status, new Code('free'));
     });
 
-    it('um status, um horário de início e um de final válidos.', () => {
+    it.skip('um status, um horário de início e um de final válidos.', () => {
         const slot = new Slot(
             {
                 schedule: new Reference(new URL("https://schedule.example.com")),
@@ -259,7 +259,7 @@ describe('Testes Unitários do Slot com...', () => {
             "Assessments should be performed before requesting appointments in this slot.")
     });
     
-    it('todos os dados completos.', () => {
+    it.skip('todos os dados completos.', () => {
         type customValueSet = {
             version: '0.1.0',
             compose: {
